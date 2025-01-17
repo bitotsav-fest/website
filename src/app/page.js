@@ -1,7 +1,8 @@
 import { BitotsavHero } from "@/components/landing/BG";
-import { Nav } from "@/components/landing/NAV";
+import Footer from "@/components/landing/FOOTER";
+ import { Nav } from "@/components/landing/NAV";
 import { Connect } from "@/components/landing/TICKET";
- 
+  
   
 export default function Home() {
   return (
@@ -10,7 +11,11 @@ export default function Home() {
       <Nav/>
       <BitotsavHero/>
       <Connect/>
-    </div>
+
+      <Footer/>
+      
+
+     </div>
     </>
   );
 }
