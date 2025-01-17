@@ -3,6 +3,7 @@ import { Waves } from "@/components/ui/waves-background"
 import { Button } from "@/components/ui/button"
 import { RainbowButton } from "../ui/rainbow-button"
 import { ConfettiButton } from "../ui/confetti"
+import { SparklesText } from "../ui/sparkles-text"
 
 function BitotsavHero() {
   return (
@@ -26,9 +27,9 @@ function BitotsavHero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-8xl font-black mb-6 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+        <SparklesText className="md:text-8xl text-4xl font-black mb-6 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
           Bitotsav'25
-        </h1>
+        </SparklesText>
         <p className="text-2xl font-medium text-gray-300 max-w-3xl mb-10">
           🚀 Where tech meets culture in an epic showdown of creativity! 🎭
         </p>
