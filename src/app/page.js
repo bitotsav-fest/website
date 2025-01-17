@@ -1,5 +1,6 @@
 import { BitotsavHero } from "@/components/landing/BG";
 import { Nav } from "@/components/landing/NAV";
+import { Connect } from "@/components/landing/TICKET";
  
   
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <div>
       <Nav/>
       <BitotsavHero/>
+      <Connect/>
     </div>
     </>
   );
