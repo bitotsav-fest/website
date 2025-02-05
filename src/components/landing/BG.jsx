@@ -41,16 +41,16 @@ function BitotsavHero() {
         </ConfettiButton>
         <div className="mt-12 flex space-x-8">
           <div className="text-center">
-            <p className="text-4xl font-bold text-white">50+</p>
-            <p className="text-sm text-gray-400">Events</p>
+            <p className="text-4xl font-bold text-white">100+</p>
+            <p className="text-sm text-gray-400">Colleges</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-white">5000+</p>
-            <p className="text-sm text-gray-400">Participants</p>
+            <p className="text-4xl font-bold text-white">72hrs</p>
+            <p className="text-sm text-gray-400">Non-Stop</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-white">₹5L+</p>
-            <p className="text-sm text-gray-400">Prize Pool</p>
+            <p className="text-4xl font-bold text-white">20+</p>
+            <p className="text-sm text-gray-400">Sponsors</p>
           </div>
         </div>
       </div>
