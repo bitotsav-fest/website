@@ -1,21 +1,21 @@
 import { BitotsavHero } from "@/components/landing/BG";
 import Footer from "@/components/landing/FOOTER";
- import { Nav } from "@/components/landing/NAV";
+import { Nav } from "@/components/landing/NAV";
+import { TestimonialsSectionDemo } from "@/components/landing/Testimonials";
 import { Connect } from "@/components/landing/TICKET";
-  
-  
+
 export default function Home() {
   return (
     <>
-    <div>
-      <Nav/>
-      <BitotsavHero/>
-      <Connect/>
+      <div>
+        <Nav />
+        <BitotsavHero />
+        <Connect />
 
-      <Footer/>
-      
+        <TestimonialsSectionDemo />
 
-     </div>
+        <Footer />
+      </div>
     </>
   );
 }
