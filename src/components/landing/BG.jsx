@@ -1,9 +1,10 @@
-'use client'
-import { Waves } from "@/components/ui/waves-background"
-import { Button } from "@/components/ui/button"
-import { RainbowButton } from "../ui/rainbow-button"
-import { ConfettiButton } from "../ui/confetti"
-import { SparklesText } from "../ui/sparkles-text"
+"use client";
+import { Waves } from "@/components/ui/waves-background";
+import { Button } from "@/components/ui/button";
+import { RainbowButton } from "../ui/rainbow-button";
+import { ConfettiButton } from "../ui/confetti";
+import { SparklesText } from "../ui/sparkles-text";
+import { HeroPillFirst } from "./HeroPill";
 
 function BitotsavHero() {
   return (
@@ -23,10 +24,10 @@ function BitotsavHero() {
           yGap={40}
         />
       </div>
-
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <HeroPillFirst />
+
         <SparklesText className="md:text-8xl text-4xl font-black mb-6 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
           Bitotsav'25
         </SparklesText>
@@ -54,7 +55,7 @@ function BitotsavHero() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export { BitotsavHero }
+export { BitotsavHero };
