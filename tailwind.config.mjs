@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        container: "1280px",
+        container: '1280px'
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -66,7 +66,7 @@ module.exports = {
       animation: {
         'wave-pulse': 'wave-pulse 4s ease-in-out infinite',
         rainbow: 'rainbow var(--speed, 2s) infinite linear',
-        marquee: 'marquee var(--duration) linear infinite',
+        marquee: 'marquee var(--duration, 30s) linear infinite'
       },
       keyframes: {
         'wave-pulse': {
@@ -94,10 +94,13 @@ module.exports = {
           }
         },
         marquee: {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+          to: { transform: 'translateX(-50%)' }
         }
       },
+      backgroundImage: {
+        'grid-pattern': '',
+        'grid-pattern-light': ''
+      }
     }
   },
   plugins: [require("tailwindcss-animate")],

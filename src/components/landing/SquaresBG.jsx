@@ -1,7 +1,7 @@
 "use client";
 
 import { Squares } from "@/components/ui/squares-background";
-
+ 
 export function SquaresDemo() {
   return (
     <div className="space-y-8">
