@@ -1,3 +1,4 @@
+"use client";
 import { BitotsavHero } from "@/components/landing/BG";
 import Footer from "@/components/landing/FOOTER";
 import { BentoGridGallery } from "@/components/landing/Gallery";
@@ -6,6 +7,7 @@ import { Sponsors } from "@/components/landing/Sponsors";
 import { SquaresDemo } from "@/components/landing/SquaresBG";
 import { TestimonialsSectionDemo } from "@/components/landing/Testimonials";
 import { Connect } from "@/components/landing/TICKET";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -13,19 +15,43 @@ export default function Home() {
       <div>
         <Nav />
         <BitotsavHero />
-        <div className=" w-full flex justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full flex justify-center items-center"
+        >
           <BentoGridGallery />
-        </div>
-        <Connect />
-        <TestimonialsSectionDemo />
-        <div className="space-y-8">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Connect />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <TestimonialsSectionDemo />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="space-y-8"
+        >
           <h2 className="text-center text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
             Our Esteemed Sponsors
           </h2>
-
-           <SquaresDemo />
-        </div>
-
+          <SquaresDemo />
+        </motion.div>
         <Footer />
       </div>
     </>
