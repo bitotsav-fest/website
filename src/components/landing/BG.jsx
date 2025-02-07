@@ -28,9 +28,15 @@ function BitotsavHero() {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <HeroPillFirst />
 
-        <SparklesText className="md:text-8xl text-4xl font-black mb-6 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+        {/* <SparklesText className="md:text-8xl text-4xl font-black mb-6 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
           Bitotsav'25
-        </SparklesText>
+        </SparklesText> */}
+        {/* bitotsav logo */}
+        <img
+          src="/logo.png"
+          alt="Bitotsav Logo"
+          className="w-1/2 md:w-1/3 my-4"
+        />
         <p className="text-2xl font-medium text-gray-300 max-w-3xl mb-10">
           🚀 Where tech meets culture in an epic showdown of creativity! 🎭
         </p>
