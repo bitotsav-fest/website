@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Bitotsav",
+  title: "Bitotsav - BIT Mesra Fest",
   description: "BIT Mesra",
   metadataBase: new URL('https://bitotsav.com'),
   alternates: {
