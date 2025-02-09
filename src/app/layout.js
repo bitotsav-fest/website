@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/landing/FOOTER";
+import { Nav } from "@/components/landing/NAV";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,30 +16,30 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Bitotsav - BIT Mesra Fest",
   description: "BIT Mesra",
-  metadataBase: new URL('https://bitotsav.com'),
+  metadataBase: new URL("https://bitotsav.com"),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    title: 'Bitotsav',
-    description: 'BIT Mesra',
-    url: 'https://bitotsav.com',
-    siteName: 'Bitotsav',
+    title: "Bitotsav",
+    description: "BIT Mesra",
+    url: "https://bitotsav.com",
+    siteName: "Bitotsav",
     images: [
       {
-        url: '/logo.png',
+        url: "/logo.png",
         width: 800,
         height: 600,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Bitotsav',
-    description: 'BIT Mesra',
-    images: ['/logo.png'],
+    card: "summary_large_image",
+    title: "Bitotsav",
+    description: "BIT Mesra",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -45,22 +47,23 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
-  manifest: '/manifest.json',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+  manifest: "/manifest.json",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({ children }) {
@@ -69,7 +72,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Nav />
+        <main
+        className="container mx-auto mt-20 px-4"
+        >
         {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

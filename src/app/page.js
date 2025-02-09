@@ -3,6 +3,7 @@ import { BitotsavHero } from "@/components/landing/BG";
 import Footer from "@/components/landing/FOOTER";
 import { BentoGridGallery } from "@/components/landing/Gallery";
 import { Nav } from "@/components/landing/NAV";
+import { NotableAlumni } from "@/components/landing/NotableAlumni";
 import { Sponsors } from "@/components/landing/Sponsors";
 import { SquaresDemo } from "@/components/landing/SquaresBG";
 import { TestimonialsSectionDemo } from "@/components/landing/Testimonials";
@@ -13,7 +14,6 @@ export default function Home() {
   return (
     <>
       <div>
-        <Nav />
         <BitotsavHero />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -32,6 +32,8 @@ export default function Home() {
         >
           <Connect />
         </motion.div>
+        <NotableAlumni />
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +54,7 @@ export default function Home() {
           </h2>
           <SquaresDemo />
         </motion.div>
-        <Footer />
+ 
       </div>
     </>
   );
