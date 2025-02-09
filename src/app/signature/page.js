@@ -1,7 +1,19 @@
-import React from 'react'
+"use client";
+import dynamic from "next/dynamic";
+import 'tldraw/tldraw.css';
 
-export default function page() {
-  return (
-    <div>page</div>
-  )
+const Tldraw = dynamic(
+    () => import('tldraw').then((mod) => mod.Tldraw),
+    {
+        ssr: false,
+        loading: () => <p>Loading...</p>
+    }
+);
+
+export default function Page() {
+    return (
+        <div className="h-screen">
+            <Tldraw />
+        </div>
+    );
 }

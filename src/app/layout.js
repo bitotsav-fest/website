@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
       >
         <Nav />
         <main
-        className="container mx-auto mt-20 px-4"
+        className="    "
         >
         {children}
         </main>

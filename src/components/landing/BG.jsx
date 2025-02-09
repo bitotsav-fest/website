@@ -7,6 +7,7 @@ import { SparklesText } from "../ui/sparkles-text";
 import { HeroPillFirst } from "./HeroPill";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 function BitotsavHero() {
@@ -102,7 +103,7 @@ function BitotsavHero() {
         >
           <ConfettiButton asChild className="space-x-6">
             <RainbowButton size="xl" className="animate-bounce bg-transparent">
-              Signature
+             <Link href={"/signature"}>Signature</Link> 
             </RainbowButton>
           </ConfettiButton>
         </motion.div>
