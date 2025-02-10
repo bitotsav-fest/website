@@ -2,6 +2,30 @@
 
 Bitotsav is the annual socio-cultural festival of Birla Institute of Technology, Mesra, Ranchi. It's a four-day extravaganza that stands as one of the most awaited events in the eastern region, attracting a diverse audience. 
 
+
+
+---
+
+
+## git clone
+
+```bash
+git clone https://github.com/bitotsav-fest/website .
+```
+
+## Start Server
+
+```bash
+npm i && npm run dev
+
+```
+
+---
+
+```bash
+cp env.example .env
+```
+
 ## Objectives
 
 - **Inform**: Provide comprehensive details about Bitotsav, including dates, events, schedules, and venues.
