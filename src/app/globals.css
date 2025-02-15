@@ -79,3 +79,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+canvas {
+  height: 50vh !important;
+  width: 50vw !important;
+  /* border: red 1px solid; */
+}
+
+@media screen and (max-width: 768px) {
+  canvas {
+    height: 30vh !important;
+    width: 90vw !important;
+  }
+}
