@@ -134,7 +134,7 @@ const Model = () => {
     let hoverAnimationId
     const hover = () => {
       if (model) {
-        model.position.z = Math.sin(Date.now() * 0.002) * 0.02
+        model.position.z = Math.sin(Date.now() * 0.002) * 0.05
       }
       hoverAnimationId = requestAnimationFrame(hover)
     }
