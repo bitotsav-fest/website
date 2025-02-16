@@ -32,7 +32,6 @@ const Model = () => {
       model = gltf.scene
       scene.add(model)
 
-      // Find the mesh named "70" and store its original and gold materials
       model.traverse((child) => {
         if (child.isMesh && child.name === "70") {
           originalMaterial = child.material
@@ -59,22 +58,19 @@ const Model = () => {
     const raycaster = new THREE.Raycaster()
     const mouse = new THREE.Vector2()
 
-    const onMouseMove = (event) => {
+    const onMouseHover = (event) => {
       if (!model) return
 
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
 
       raycaster.setFromCamera(mouse, camera)
-      const intersects = raycaster.intersectObject(model, true)
+      const intersects = raycaster.intersectObjects(model.children, true)
 
       if (intersects.length > 0) {
-        console.log("on model")
-        model.traverse((child) => {
-          if (child.isMesh && child.name === "70") {
-            child.material = goldMaterial
-          }
-        })
+        if (intersects[0].object.name === "70") {
+          intersects[0].object.material = goldMaterial
+        }
       } else {
         model.traverse((child) => {
           if (child.isMesh && child.name === "70") {
@@ -82,6 +78,10 @@ const Model = () => {
           }
         })
       }
+    }
+
+    const onMouseMove = (event) => {
+      if (!model) return
 
       var mouseX = (event.clientX / window.innerWidth - 0.5) * 2
       var mouseY = -(event.clientY / window.innerHeight - 0.5) * 2
@@ -125,11 +125,35 @@ const Model = () => {
     }
 
     animate()
+    window.addEventListener("mousemove", onMouseHover)
 
-    window.addEventListener("mousemove", onMouseMove)
+    if (window.innerWidth > 768) {
+      window.addEventListener("mousemove", onMouseMove)
+    }
+
+    let hoverAnimationId
+    const hover = () => {
+      if (model) {
+        model.position.z = Math.sin(Date.now() * 0.002) * 0.02
+      }
+      hoverAnimationId = requestAnimationFrame(hover)
+    }
+    hover()
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove)
+      if (window.innerWidth > 768) {
+        window.removeEventListener("mousemove", onMouseMove)
+        cancelAnimationFrame(hoverAnimationId)
+
+        return () => {
+          cancelAnimationFrame(hoverAnimationId)
+          if (window.innerWidth > 768) {
+            window.removeEventListener("mousemove", onMouseMove)
+            cancelAnimationFrame(hoverAnimationId)
+          }
+          mountRef.current.removeChild(renderer.domElement)
+        }
+      }
       mountRef.current.removeChild(renderer.domElement)
     }
   }, [])
