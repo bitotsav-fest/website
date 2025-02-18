@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Home, Calendar, Ticket, Info, Music } from "lucide-react"
-import { AnimeNavBar } from "@/components/ui/anime-navbar"
+import { Navbar } from "@/components/ui/navbar"
 
 const items = [
   {
@@ -38,5 +38,5 @@ const items = [
 ]
 
 export function Nav() {
-  return <AnimeNavBar items={items} defaultActive="Home" />
+  return <Navbar items={items} />
 }

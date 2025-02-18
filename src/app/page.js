@@ -1,5 +1,5 @@
 "use client";
-import { BitotsavHero } from "@/components/landing/BG";
+import { HeroSection } from "@/components/landing/HeroSection";
 import Footer from "@/components/landing/FOOTER";
 import { BentoGridGallery } from "@/components/landing/Gallery";
 import { Nav } from "@/components/landing/NAV";
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <div>
-        <BitotsavHero />
+        <HeroSection />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,6 @@ export default function Home() {
           </h2>
           <SquaresDemo />
         </motion.div>
- 
       </div>
     </>
   );

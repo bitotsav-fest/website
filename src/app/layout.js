@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/landing/FOOTER";
@@ -68,18 +69,20 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Nav />
-        <main
-        className="    "
+    <ClerkProvider>
+      <html lang="en" className="dark">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
+          <Nav />
+          <main
+          className="    "
+          >
+          {children}
+          </main>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
