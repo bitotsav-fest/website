@@ -1,8 +1,8 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/landing/FOOTER";
 import { Nav } from "@/components/landing/NAV";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,11 +69,11 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
       <html lang="en" className="dark">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <SessionProvider>
           <Nav />
           <main
           className="    "
@@ -81,8 +81,8 @@ export default function RootLayout({ children }) {
           {children}
           </main>
           <Footer />
+          </SessionProvider>
         </body>
       </html>
-    </ClerkProvider>
   );
 }

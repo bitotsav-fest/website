@@ -1,57 +1,67 @@
-"use client";
-import React from 'react';
-import { SignIn } from '@clerk/nextjs';
-import { motion } from 'framer-motion';
+'use client'
+import { signIn, useSession } from 'next-auth/react'
+import { motion } from 'framer-motion'
+import { IconBrandGoogle } from '@tabler/icons-react'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (session) {
+      router.push('/dashboard')
+    }
+  }, [session, router])
+
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    )
+  }
+  
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0A0118] flex items-center justify-center py-20 px-4">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
-      <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
-      <div className="absolute top-0 -right-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-      
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 w-full max-w-md"
+        transition={{ duration: 0.5 }}
+        className="max-w-md w-full"
       >
+        {/* Logo and Title */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-            Welcome Back
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            Welcome to Bitotsav
           </h1>
-          <p className="text-gray-400">Sign in to access your festival pass</p>
+          <p className="text-gray-400 mt-2">Sign in to continue to Bitotsav</p>
         </div>
 
-        <div className="backdrop-blur-xl bg-black/40 border border-white/10 rounded-2xl p-4 shadow-xl">
-          <SignIn
-            routing="path"
-            path="/login"
-            signUpUrl="/signup"
-            redirectUrl="/dashboard"
-            appearance={{
-              layout: {
-                socialButtonsVariant: "blockButton",
-                privacyPageUrl: "/privacy",
-                termsPageUrl: "/terms"
-              },
-              elements: {
-                formButtonPrimary: 'bg-gradient-to-r from-violet-500 to-pink-500 hover:from-violet-600 hover:to-pink-600 text-white',
-                card: 'bg-transparent shadow-none',
-                headerTitle: 'text-white',
-                headerSubtitle: 'text-gray-400',
-                socialButtonsBlockButton: 'border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-200',
-                socialButtonsBlockButtonText: 'text-white',
-                dividerText: 'text-gray-500',
-                formFieldLabel: 'text-gray-300',
-                formFieldInput: 'bg-white/5 border-white/10 text-white',
-                footerActionText: 'text-gray-400',
-                footerActionLink: 'text-violet-400 hover:text-violet-300'
-              }
-            }}
-          />
-        </div>
+        {/* Login Button */}
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
+          className="w-full flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white py-4 px-6 rounded-2xl hover:bg-white/20 transition-all duration-200 border border-white/10"
+        >
+          <IconBrandGoogle size="1.5rem" />
+          <span>Continue with Google</span>
+        </motion.button>
+
+        {/* Additional Info */}
+        <p className="text-center text-sm text-gray-500 mt-8">
+          By continuing, you agree to our{' '}
+          <a href="/terms" className="text-purple-400 hover:text-purple-300">
+            Terms of Service
+          </a>{' '}
+          and{' '}
+          <a href="/privacy" className="text-purple-400 hover:text-purple-300">
+            Privacy Policy
+          </a>
+        </p>
       </motion.div>
     </div>
-  );
+  )
 }

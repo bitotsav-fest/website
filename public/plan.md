@@ -1,0 +1,1 @@
+Multiple qrs will be generated auto changing in qr like paytm payments by changing the last 4 digits in qr code that are not for any significance will be removed later
