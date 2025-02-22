@@ -1,6 +1,5 @@
 import React from "react"
 import Model from "./Model"
-import Model2 from "./Model2"
 
 const Landing = () => {
   return (
