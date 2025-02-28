@@ -1,5 +1,4 @@
 "use client"
-import { HeroSection } from "@/components/landing/HeroSection"
 import Footer from "@/components/landing/FOOTER"
 import { BentoGridGallery } from "@/components/landing/Gallery"
 import { Nav } from "@/components/landing/NAV"
@@ -9,13 +8,15 @@ import { SquaresDemo } from "@/components/landing/SquaresBG"
 import { TestimonialsSectionDemo } from "@/components/landing/Testimonials"
 import { Connect } from "@/components/landing/TICKET"
 import { motion } from "framer-motion"
-import Landing from "@/components/landing/Landing"
+import Hero from "@/components/landing/Hero"
+import NightEvents from "@/components/landing/night-events"
 
 export default function Home() {
   return (
     <>
       <div>
-        <Landing />
+        <Hero />
+        <NightEvents />
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="w-full flex justify-center items-center">
           <BentoGridGallery />
         </motion.div>

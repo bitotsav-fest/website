@@ -1,7 +1,7 @@
 import React from "react"
 import Model from "./Model"
 
-const Landing = () => {
+const Hero = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <Model />
@@ -9,4 +9,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Hero
