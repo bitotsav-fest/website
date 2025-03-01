@@ -31,14 +31,14 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black text-white px-10 py-24">
+    <section ref={sectionRef} className="bg-black text-white px-6 py-24">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
         {/* Left Text Section */}
         <div>
           <h2 className="text-4xl font-extrabold uppercase mb-4">About Bitotsav</h2>
           <div className="w-16 h-2 bg-[#EFCA4E] mb-6"></div>
-          <p className="text-base leading-relaxed">
+          <p className="text-lg leading-relaxed">
             BITOTSAV offers a plethora of events that not only entertain but also promote meaningful societal causes. 
             As the festival continues to grow in scale and impact, BITOTSAV 2025 is set to be bigger and more spectacular than ever!
           </p>

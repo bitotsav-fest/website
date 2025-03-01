@@ -48,26 +48,26 @@ const NightEvents = () => {
     const eventButtons = useMemo(() => {
         return events.map((event, index) => (
             <button
-                key={index}
-                onClick={() => setSelectedEvent(event)}
-                className={`bg-[#F6F1E2] text-[#2D1E0F] px-4 py-2 rounded-md border border-[#EFCA4E] flex items-center space-x-2 shadow-md ${
-                    selectedEvent.day === event.day ? "ring-2 ring-[#EFCA4E]" : ""
-                }`}
+            key={index}
+            onClick={() => setSelectedEvent(event)}
+            className={`bg-[#F6F1E2] text-[#2D1E0F] px-2 py-1 md:px-6 md:py-2 rounded-lg border border-[#EFCA4E] flex items-center space-x-2 shadow-md ${
+                selectedEvent.day === event.day ? "ring-2 ring-[#EFCA4E]" : ""
+            }`}
             >
-                <img
-                    src={event.icon}
-                    alt={`${event.day} icon`}
-                    className="w-6 h-6 object-contain"
-                />
-                <span>{event.day}</span>
+            <img
+                src={event.icon}
+                alt={`${event.day} icon`}
+                className="w-4 h-4 md:w-6 md:h-6 object-contain"
+            />
+            <span className="text-sm md:text-base">{event.day}</span>
             </button>
         ));
     }, [selectedEvent]);
 
     return (
-        <div className="text-[#F6F1E2] mb-12 rounded-lg max-w-6xl mx-auto px-10">
-            <h1 className="text-6xl mb-16">Night Events</h1>
-            <div className="flex justify-center space-x-4 mb-16">
+        <div className="text-[#F6F1E2] mb-12 rounded-lg max-w-6xl mx-auto px-6 md:px-16">
+            <h1 className="text-5xl md:text-6xl mb-16">Night Events</h1>
+            <div className="flex justify-center space-x-2 sm:space-x-4 mb-16">
                 {eventButtons}
             </div>
             <AnimatePresence mode="wait">
