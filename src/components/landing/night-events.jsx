@@ -65,7 +65,7 @@ const NightEvents = () => {
     }, [selectedEvent]);
 
     return (
-        <div className="text-[#F6F1E2] mb-12 rounded-lg max-w-6xl mx-auto">
+        <div className="text-[#F6F1E2] mb-12 rounded-lg max-w-6xl mx-auto px-10">
             <h1 className="text-6xl mb-16">Night Events</h1>
             <div className="flex justify-center space-x-4 mb-16">
                 {eventButtons}

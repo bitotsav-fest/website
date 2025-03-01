@@ -10,7 +10,7 @@ export default function Footer() {
           {/* College Logo & Description */}
           <section className="md:w-1/3 text-center md:text-left">
             <h2 className="text-lg font-semibold flex items-center gap-2">
-              <span> X </span> {/* Replace*/}
+              <img src="/bitotsav-logo.svg" alt="bitotsav logo" className="w-10 h-auto"/> {/* Replace*/}
               Birla Institute of Technology, Mesra
             </h2>
             <p className="text-sm mt-2 opacity-80">

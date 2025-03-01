@@ -10,12 +10,14 @@ import { Connect } from "@/components/landing/TICKET"
 import { motion } from "framer-motion"
 import Hero from "@/components/landing/Hero"
 import NightEvents from "@/components/landing/night-events"
+import About from "@/components/landing/about"
 
 export default function Home() {
   return (
     <>
       <div>
         <Hero />
+        <About />
         <NightEvents />
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="w-full flex justify-center items-center">
           <BentoGridGallery />
