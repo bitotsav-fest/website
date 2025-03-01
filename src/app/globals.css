@@ -86,8 +86,8 @@ p {
   }
 }
 canvas {
-  height: 50vh !important;
-  width: 50vw !important;
+  height: 100vh !important;
+  width: 100vw !important;
   /* border: red 1px solid; */
 }
 
