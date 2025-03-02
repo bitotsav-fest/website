@@ -74,9 +74,7 @@ const Model_2 = () => {
     window.addEventListener("resize", handleResize)
 
     return () => {
-      if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement)
-      }
       window.removeEventListener("resize", handleResize)
     }
   }, [])

@@ -83,7 +83,7 @@ export default function EventsPage() {
   }, [dayEvents, selectedDay, selectedCategory, selectedClub]);
 
   return (
-    <div className="text-white p-20">
+    <div className="text-white py-20 px-6">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">Events</h1>
@@ -109,7 +109,7 @@ export default function EventsPage() {
 
       {/* Filters for Day Events */}
       {activeTab === "day" && (
-        <div className="mt-6 flex flex-wrap justify-center items-center gap-3 md:gap-6 w-full">
+        <div className="mt-6 flex flex-wrap justify-center items-center gap-4 md:gap-6 w-full">
           {/* Day Selector  */}
           <div className="flex items-center bg-gray-800 px-4 py-2 rounded-full w-48 md:w-64 relative">
             <span className="text-sm mr-3">Day</span>
@@ -194,7 +194,7 @@ export default function EventsPage() {
 
       {/* Night Events */}
       {activeTab === "night" && (
-        <div className="mt-6 grid grid-cols-2 gap-4">
+        <div className="mt-6 grid md:grid-cols-2 grid-cols-1 gap-4">
           {nightEvents.map((event) => (
             <div
               key={event.id}
