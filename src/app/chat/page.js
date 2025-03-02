@@ -227,7 +227,7 @@ export default function Home() {
                             key={index}
                             onClick={() => handlePredefinedQuestion(question)}
                             disabled={loading}
-                            className="w-full px-4 py-2 bg-[#fce2bf]/40 text-[#FCE2BF] font-bold rounded-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed"
+                            className="w-full px-4 py-2 bg-[#fce2bf]/40 text-[white] font-bold rounded-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed"
                         >
                             {question}
                         </button>
@@ -297,9 +297,7 @@ export default function Home() {
                     100% {background-size:100% 20%}
                 }
 
-                .neon-text {
-                    text-shadow: 0 0 3px #FCE2BF, 0 0 5px #FCE2BF;
-                }
+                
 
                 .neon-text-red {
                     text-shadow: 0 0 5px #FCE2BF, 0 0 10px #FCE2BF, 0 0 20px #B92A18, 0 0 40px #B92A18;
