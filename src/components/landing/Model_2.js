@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 const Model_2 = () => {
@@ -25,9 +26,13 @@ const Model_2 = () => {
     scene.add(directionalLight)
 
     const loader = new GLTFLoader()
+    const dracoLoader = new DRACOLoader()
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/") // Set the path to the Draco decoder
+    loader.setDRACOLoader(dracoLoader)
+
     let mixer
     loader.load(
-      "/Lsvg.glb",
+      "/BIT-v1.glb",
       (gltf) => {
         scene.add(gltf.scene)
         mixer = new THREE.AnimationMixer(gltf.scene)
