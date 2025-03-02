@@ -1,93 +1,6 @@
 "use client"
+import Footer from '@/components/landing/FOOTER';
 import { useState, useEffect, useRef } from 'react';
-
-// Particle Background Component
-const ParticleBackground = () => {
-    const canvasRef = useRef(null);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        const particles = [];
-        const particleCount = 0;
-
-        // Set canvas size
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        // Particle class
-        class Particle {
-            constructor(x, y, size, velocityX, velocityY, color) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.velocityX = velocityX;
-                this.velocityY = velocityY;
-                this.color = color;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-
-            update() {
-                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
-                    this.velocityX = -this.velocityX;
-                }
-                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
-                    this.velocityY = -this.velocityY;
-                }
-                this.x += this.velocityX;
-                this.y += this.velocityY;
-                this.draw();
-            }
-        }
-
-        // Initialize particles
-        const init = () => {
-            particles.length = 0;
-            for (let i = 0; i < particleCount; i++) {
-                const size = Math.random() * 3 + 5;
-                const x = Math.random() * (canvas.width - size * 2) + size;
-                const y = Math.random() * (canvas.height - size * 2) + size;
-                const velocityX = (Math.random() - 0.5) * 2;
-                const velocityY = (Math.random() - 0.5) * 2;
-                const color = `rgba(252, 226, 191, ${Math.random()})`; // Light peach color
-                particles.push(new Particle(x, y, size, velocityX, velocityY, color));
-            }
-        };
-
-        // Animation loop
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((particle) => particle.update());
-            requestAnimationFrame(animate);
-        };
-
-        init();
-        animate();
-
-        // Handle window resize
-        const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    return (
-        <canvas
-            ref={canvasRef}
-            className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
-        ></canvas>
-    );
-};
 
 // Neon Wave Background Component
 const NeonWaveBackground = () => {
@@ -117,7 +30,7 @@ export default function Home() {
     const [chatHistory, setChatHistory] = useState([]); // Chat history array
     const [isPredefinedQuestion, setIsPredefinedQuestion] = useState(false); // New state
     const [isQuestionAsked, setIsQuestionAsked] = useState(false); // Track if a question has been asked
-
+    const isInitialRender = useRef(true);
     const [placeholderText, setPlaceholderText] = useState('');
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -138,24 +51,34 @@ export default function Home() {
 
     // Ref for the last message in the chat history
     const chatEndRef = useRef(null);
+    const prevChatHistoryLength = useRef(0);
 
-    // Scroll to the bottom of the chat history when it updates
     useEffect(() => {
-        if (chatEndRef.current) {
-            // Scroll to the bottom of the chat history
-            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
-
-            // Add a small offset to ensure the buttons are fully visible
-            setTimeout(() => {
-                window.scrollBy({ top: 200, behavior: 'smooth' }); // Adjust the offset (50px) as needed
-            }, 300); // Wait for the initial scroll to complete
+        // Skip the scroll behavior on initial render or page refresh
+        if (chatHistory.length > prevChatHistoryLength.current) {
+            if (chatEndRef.current) {
+                // Calculate the offset (e.g., 200px above the footer)
+                const offset = 280; // Adjust this value as needed
+                const elementPosition = chatEndRef.current.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - offset;
+    
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth',
+                });
+            }
         }
-    }, [chatHistory]); // Trigger when chatHistory changes
+    
+        // Update the previous chat history length
+        prevChatHistoryLength.current = chatHistory.length;
+    }, [chatHistory]); // Trigger when chatHistory changes// Trigger when chatHistory changes; // Trigger when chatHistory changes
 
     // Handle predefined question button click
     const handlePredefinedQuestion = (question) => {
         setIsPredefinedQuestion(true); // Mark as predefined question
+        setTimeout(() => {
         setPrompt(question.toLowerCase()); // Set the prompt state
+        }, 200)
     };
 
     // Use useEffect to trigger handleSearch when prompt changes (only for predefined questions)
@@ -212,10 +135,10 @@ export default function Home() {
         setChatHistory((prev) => [...prev, { type: 'bot', text: 'loading', isLoading: true }]);
 
         try {
-            const response = await fetch('/api/search', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt: cleanedPrompt, filename: 'my-document' }), // Use cleanedPrompt
+                body: JSON.stringify({ prompt: cleanedPrompt, filename: 'chunks' }), // Use cleanedPrompt
             });
 
             if (!response.ok) {
@@ -246,22 +169,18 @@ export default function Home() {
     };
 
     return (
-        <div className="min-h-screen text-white font-sans p-8 flex flex-col items-center relative overflow-y-auto">
+        <div className="min-h-screen text-white font-sans flex flex-col items-center relative overflow-y-auto">
             {/* Background Components */}
-            <ParticleBackground />
             <NeonWaveBackground />
 
             {/* Chatbot Interface */}
-            <div
-                className={`w-full max-w-3xl z-10 transition-all duration-500 px-4 ${isQuestionAsked ? 'sticky top-0' : 'absolute top-1/2 -translate-y-1/2'
-                    }`}
-            >
+            <div className="w-full max-w-3xl z-10 px-4 pb-8 flex flex-col items-center" style={{ marginTop: '11rem' }}>
                 <h1 className="text-5xl font-bold mb-8 text-center text-[#FCE2BF] neon-text">
                     Ask Me Anything
                 </h1>
 
                 {/* Chat History with Texting Bubbles */}
-                <div className="mb-6 space-y-4">
+                <div className="w-full mb-6 space-y-4">
                     {chatHistory.map((message, index) => (
                         <div
                             key={index}
@@ -287,7 +206,7 @@ export default function Home() {
                 </div>
 
                 {/* Input and Ask Button */}
-                <div className="flex flex-col md:flex-row gap-4 mb-4">
+                <div className="w-full flex flex-col md:flex-row gap-4 mb-4">
                     <input
                         type="text"
                         value={prompt}
@@ -325,7 +244,7 @@ export default function Home() {
                 </div>
 
                 {/* Predefined Question Buttons */}
-                <div className="flex flex-col md:flex-row gap-2">
+                <div className="w-full flex flex-col md:flex-row gap-2">
                     {predefinedQuestions.map((question, index) => (
                         <button
                             key={index}
@@ -348,101 +267,101 @@ export default function Home() {
 
             {/* Custom Spinner Styles */}
             <style jsx>{`
-        @keyframes jiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            50% { transform: rotate(-10deg); }
-            75% { transform: rotate(7deg); }
-        }
+                @keyframes jiggle {
+                    0%, 100% { transform: rotate(0deg); }
+                    25% { transform: rotate(10deg); }
+                    50% { transform: rotate(-10deg); }
+                    75% { transform: rotate(7deg); }
+                }
 
-        .group:hover .jiggle-animation {
-            animation: jiggle 0.3s ease-in-out;
-        }
-        .group:hover .jiggle-animation {
-            animation: jiggle 0.3s ease-in-out;
-        }
-        .loader {
-            width: 40px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: #f03355;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            animation: l1 2s infinite cubic-bezier(0.3, 1, 0, 1);
-        }
-        @keyframes l1 {
-            33% {
-                border-radius: 0;
-                background: #514b82;
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            }
-            66% {
-                border-radius: 0;
-                background: #ffa516;
-                clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
-            }
-        }
+                .group:hover .jiggle-animation {
+                    animation: jiggle 0.3s ease-in-out;
+                }
+                .group:hover .jiggle-animation {
+                    animation: jiggle 0.3s ease-in-out;
+                }
+                .loader {
+                    width: 40px;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background: #f03355;
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                    animation: l1 2s infinite cubic-bezier(0.3, 1, 0, 1);
+                }
+                @keyframes l1 {
+                    33% {
+                        border-radius: 0;
+                        background: #514b82;
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                    }
+                    66% {
+                        border-radius: 0;
+                        background: #ffa516;
+                        clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+                    }
+                }
 
-        .button-loader {
-            width: 24px; /* Fixed size */
-            height: 24px; /* Fixed size */
-            --c: no-repeat linear-gradient(#FCE2BF 0 0);
-            background: 
-                var(--c) 0    0, 
-                var(--c) 50%  50%, 
-                var(--c) 100% 100%;
-            background-size: 20% 20%; /* Initial size */
-            animation: l17 1s infinite alternate;
-        }
-        @keyframes l17 {
-            0%,
-            10%  {background-size:20% 100%}
-            50%  {background-size:20% 20%}
-            90%,
-            100% {background-size:100% 20%}
-        }
+                .button-loader {
+                    width: 24px; /* Fixed size */
+                    height: 24px; /* Fixed size */
+                    --c: no-repeat linear-gradient(#FCE2BF 0 0);
+                    background: 
+                        var(--c) 0    0, 
+                        var(--c) 50%  50%, 
+                        var(--c) 100% 100%;
+                    background-size: 20% 20%; /* Initial size */
+                    animation: l17 1s infinite alternate;
+                }
+                @keyframes l17 {
+                    0%,
+                    10%  {background-size:20% 100%}
+                    50%  {background-size:20% 20%}
+                    90%,
+                    100% {background-size:100% 20%}
+                }
 
-        .neon-text {
-            text-shadow: 0 0 3px #FCE2BF, 0 0 5px #FCE2BF;
-        }
+                .neon-text {
+                    text-shadow: 0 0 3px #FCE2BF, 0 0 5px #FCE2BF;
+                }
 
-        .neon-text-red {
-            text-shadow: 0 0 5px #FCE2BF, 0 0 10px #FCE2BF, 0 0 20px #B92A18, 0 0 40px #B92A18;
-        }
+                .neon-text-red {
+                    text-shadow: 0 0 5px #FCE2BF, 0 0 10px #FCE2BF, 0 0 20px #B92A18, 0 0 40px #B92A18;
+                }
 
-        .shadow-neon-orange {
-            box-shadow: 0 0 5px #E18E04, 0 0 10px #E18E04, 0 0 20px #E18E04;
-        }
+                .shadow-neon-orange {
+                    box-shadow: 0 0 5px #E18E04, 0 0 10px #E18E04, 0 0 20px #E18E04;
+                }
 
-        .shadow-neon-red {
-            box-shadow: 0 0 5px #B92A18, 0 0 10px #B92A18, 0 0 20px #B92A18;
-        }
+                .shadow-neon-red {
+                    box-shadow: 0 0 5px #B92A18, 0 0 10px #B92A18, 0 0 20px #B92A18;
+                }
 
-        @keyframes wave {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
+                @keyframes wave {
+                    0% {
+                        transform: translateX(-100%);
+                    }
+                    100% {
+                        transform: translateX(100%);
+                    }
+                }
 
-        @keyframes wave-reverse {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
+                @keyframes wave-reverse {
+                    0% {
+                        transform: translateX(100%);
+                    }
+                    100% {
+                        transform: translateX(-100%);
+                    }
+                }
 
-        .animate-wave {
-            animation: wave 10s linear infinite;
-        }
+                .animate-wave {
+                    animation: wave 10s linear infinite;
+                }
 
-        .animate-wave-reverse {
-            animation: wave-reverse 15s linear infinite;
-        }
-    `}</style>
+                .animate-wave-reverse {
+                    animation: wave-reverse 15s linear infinite;
+                }
+            `}</style>
         </div>
     );
 }
