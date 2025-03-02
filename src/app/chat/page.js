@@ -1,26 +1,5 @@
 "use client"
-import Footer from '@/components/landing/FOOTER';
 import { useState, useEffect, useRef } from 'react';
-
-// Neon Wave Background Component
-const NeonWaveBackground = () => {
-    return (
-        <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
-            <div
-                className="absolute inset-0 opacity-40 animate-wave"
-                style={{
-                    background: 'linear-gradient(142deg, rgba(205,34,13,1) 37%, rgba(225,142,4,1) 67%)',
-                }}
-            ></div>
-            <div
-                className="absolute inset-0 opacity-20 animate-wave-reverse"
-                style={{
-                    background: 'linear-gradient(142deg, rgba(205,34,13,1) 37%, rgba(225,142,4,1) 67%)',
-                }}
-            ></div>
-        </div>
-    );
-};
 
 export default function Home() {
     // Chatbot States
@@ -171,8 +150,6 @@ export default function Home() {
     return (
         <div className="min-h-screen text-white font-sans flex flex-col items-center relative overflow-y-auto">
             {/* Background Components */}
-            <NeonWaveBackground />
-
             {/* Chatbot Interface */}
             <div className="w-full max-w-3xl z-10 px-4 pb-8 flex flex-col items-center" style={{ marginTop: '11rem' }}>
                 <h1 className="text-5xl font-bold mb-8 text-center text-[#FCE2BF] neon-text">
