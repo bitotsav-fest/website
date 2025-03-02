@@ -1,15 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Russo One', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Russo One", sans-serif;
 }
 
 p {
-  font-family: 'Urbanist', sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
 @layer base {
@@ -85,14 +90,14 @@ p {
     @apply bg-background text-foreground;
   }
 }
-canvas {
+.canvas-style {
   height: 100vh !important;
   width: 100vw !important;
   /* border: red 1px solid; */
 }
 
 @media screen and (max-width: 768px) {
-  canvas {
+  .canvas-style-2 {
     height: 30vh !important;
     width: 90vw !important;
   }

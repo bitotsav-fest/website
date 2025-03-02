@@ -22,6 +22,7 @@ const Model = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.domElement.classList.add("canvas-style-2")
     mountRef.current.appendChild(renderer.domElement)
 
     const loader = new GLTFLoader()

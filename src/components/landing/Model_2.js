@@ -14,6 +14,7 @@ const Model_2 = () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.domElement.classList.add("canvas-style-1")
     mountRef.current.appendChild(renderer.domElement)
 
     camera.position.set(0, 0.3, 1)
