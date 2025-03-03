@@ -10,6 +10,8 @@ const Model_2 = () => {
   const mountRef = useRef(null)
 
   useEffect(() => {
+    if (!mountRef.current) return
+
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -28,7 +30,7 @@ const Model_2 = () => {
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/") // Set the path to the Draco decoder
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/")
     loader.setDRACOLoader(dracoLoader)
 
     let mixer
@@ -43,7 +45,7 @@ const Model_2 = () => {
       },
       undefined,
       (error) => {
-        console.error(error)
+        console.error("An error happened while loading the model:", error)
       }
     )
 
@@ -74,7 +76,9 @@ const Model_2 = () => {
     window.addEventListener("resize", handleResize)
 
     return () => {
+      if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement)
+      }
       window.removeEventListener("resize", handleResize)
     }
   }, [])
