@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image"; // Next.js Image
 import { Eventsday, clubs, Eventsnight } from "./data";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day");
@@ -27,139 +30,153 @@ export default function EventsPage() {
   }, [dayEvents, selectedDay, selectedCategory, selectedClub]);
 
   return (
-    <div
-    // className={`min-h-screen w-full bg-cover bg-center bg-fixed bg-no-repeat ${
-    //   activeTab === "day"
-    //     ? "bg-[url('/dayeve.jpeg')]"
-    //     : "bg-[url('/night-eve.jpeg')]"
-    // }`}
-    >
-      <div className="relative min-h-screen text-white py-20 px-6 md:px-12 backdrop-blur-[2px] bg-black/20 bg-opacity-30">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-black dark:to-gray-900">
+      <div className="relative min-h-screen text-gray-900 dark:text-white py-20 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center">
-          <h1 className="text-4xl font-bold">Events</h1>
-          <div className="flex bg-gray-800 p-1 rounded-full w-40 md:w-60 justify-between">
-            <button
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+          <h1 className="text-3xl font-medium">Events</h1>
+          <div className="flex bg-white dark:bg-gray-800 shadow-sm p-1 rounded-full w-full md:w-auto justify-between border border-gray-200 dark:border-gray-700">
+            <Button
+              variant={activeTab === "day" ? "default" : "ghost"}
               onClick={() => setActiveTab("day")}
-              className={`flex-1 px-3 py-2 rounded-full text-xs md:text-base transition-all duration-300 text-center ${
-                activeTab === "day" ? "bg-blue-500 text-white" : "text-gray-400"
-              }`}
+              className="flex-1 md:flex-none rounded-full text-sm font-medium px-6"
             >
               Day Events
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={activeTab === "night" ? "default" : "ghost"}
               onClick={() => setActiveTab("night")}
-              className={`flex-1 px-3 py-2 rounded-full text-xs md:text-base transition-all duration-300 text-center ${
-                activeTab === "night"
-                  ? "bg-blue-500 text-white"
-                  : "text-gray-400"
-              }`}
+              className="flex-1 md:flex-none rounded-full text-sm font-medium px-6"
             >
               Night Events
-            </button>
+            </Button>
           </div>
         </div>
 
         {/* Filters for Day Events */}
         {activeTab === "day" && (
-          <div className="mt-6 flex flex-wrap justify-center items-center gap-4 md:gap-6 w-full">
-            {/* Day Selector  */}
-            <div className="flex items-center bg-gray-800 px-4 py-2 rounded-full w-48 md:w-64 relative">
-              <span className="text-sm mr-3">Day</span>
-              <div className="flex flex-col items-center w-full">
-                <input
-                  type="range"
-                  min="1"
-                  max="3"
-                  value={selectedDay}
-                  onChange={(e) => setSelectedDay(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer accent-blue-500"
-                />
-                <div className="flex justify-between w-full text-xs mt-1 px-3">
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
+          <div className="mt-8 mb-12 space-y-6">
+            <div className="flex flex-wrap justify-center items-center gap-6 w-full">
+              {/* Day Selector */}
+              <div className="flex items-center bg-white/5 dark:bg-gray-800/50 px-6 py-3 rounded-full w-64 backdrop-blur-sm border border-gray-200/10 dark:border-gray-700/50 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-300 mr-4">Day</span>
+                <div className="flex flex-col items-center w-full">
+                  <Slider
+                    defaultValue={[1]}
+                    max={3}
+                    min={1}
+                    step={1}
+                    value={[selectedDay]}
+                    onValueChange={(value) => setSelectedDay(value[0])}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between w-full text-xs mt-2 text-gray-500 dark:text-gray-400">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Category Selector */}
-            <div className="bg-gray-800 px-4 py-2 rounded-full w-40 text-center">
-              <select
-                className="bg-transparent text-blue-600 w-full outline-none focus:ring-0 focus:outline-none"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                <option>All Categories</option>
-                <option>Flagship</option>
-                <option>Formal</option>
-                <option>Informal</option>
-              </select>
-            </div>
+              {/* Category Selector */}
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="w-48 bg-white/5 dark:bg-gray-800/50 border-gray-200/10 dark:border-gray-700/50 hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors duration-200 backdrop-blur-sm shadow-sm hover:shadow-md">
+                  <SelectValue placeholder="Select category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="All Categories">All Categories</SelectItem>
+                  <SelectItem value="Flagship">Flagship</SelectItem>
+                  <SelectItem value="Formal">Formal</SelectItem>
+                  <SelectItem value="Informal">Informal</SelectItem>
+                </SelectContent>
+              </Select>
 
-            {/* Club Selector */}
-            <div className="bg-gray-800 px-4 py-2 rounded-full w-40 text-center">
-              <select
-                className="bg-transparent text-blue-600 w-full outline-none focus:ring-0 focus:outline-none"
-                value={selectedClub}
-                onChange={(e) => setSelectedClub(e.target.value)}
-              >
-                <option>All Clubs</option>
-                {clubs.map((club) => (
-                  <option key={club} value={club}>
-                    {club}
-                  </option>
-                ))}
-              </select>
+              {/* Club Selector */}
+              <Select value={selectedClub} onValueChange={setSelectedClub}>
+                <SelectTrigger className="w-48 bg-white/5 dark:bg-gray-800/50 border-gray-200/10 dark:border-gray-700/50 hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors duration-200 backdrop-blur-sm shadow-sm hover:shadow-md">
+                  <SelectValue placeholder="Select club" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="All Clubs">All Clubs</SelectItem>
+                  {clubs.map((club) => (
+                    <SelectItem key={club} value={club}>
+                      {club}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
         )}
 
         {/* Event Cards */}
         {activeTab === "day" && (
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6 place-items-center">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
             {filteredDayEvents.map((event) => (
               <motion.div
                 key={event.id}
-                className="bg-gray-800 rounded-lg shadow-lg flex flex-col items-center w-full max-w-[250px] min-h-[485px] text-center"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm border border-white/5 hover:border-white/10 transition-all duration-500"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5 }}
               >
-                <Link href={`/events/${event.id}`}>
-                  {/* image loading */}
-                  <Image
-                    src={event.imgURL}
-                    alt={event.name}
-                    width={250}
-                    height={150}
-                    className="object-cover rounded-lg"
-                    priority
-                  />
-                  <div className="p-3 flex flex-col flex-grow">
-                    <h2 className="text-xl font-semibold mt-1 min-h-[80px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-violet-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Link href={`/events/${event.id}`} className="block">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={event.imgURL}
+                      alt={event.name}
+                      width={400}
+                      height={300}
+                      className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-80"></div>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                        {event.category}
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                        Day {event.day}
+                      </span>
+                    </div>
+                    <h2 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
                       {event.name}
                     </h2>
-                    <p className="text-l text-white-400 mt-1">
-                      By {event.club}
-                    </p>
-                    <p className="text-md text-white-400">
-                      {event.category} Event
-                    </p>
-                    <p className="text-md text-white-400">
-                      Venue: {event.venue}
-                    </p>
+                    <div className="space-y-2 text-sm text-gray-400">
+                      <p className="flex items-center gap-2">
+                        <span className="w-4 h-4 rounded-full bg-violet-500/10 flex items-center justify-center">
+                          <svg className="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
+                          </svg>
+                        </span>
+                        {event.club}
+                      </p>
+                      <p className="flex items-center gap-2">
+                        <span className="w-4 h-4 rounded-full bg-blue-500/10 flex items-center justify-center">
+                          <svg className="w-3 h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                        </span>
+                        {event.venue}
+                      </p>
+                    </div>
                   </div>
                 </Link>
-                <Link
-                  href="LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className=""
-                >
-                  <button className="my-1 px-4 py-2 bg-white text-black font-semibold rounded-lg transition-all duration-300 hover:bg-opacity-90 hover:scale-105 hover:shadow-lg">
-                    Register
-                  </button>
-                </Link>
+                <div className="p-6 pt-0">
+                  <Button
+                    asChild
+                    variant="default"
+                    className="w-full bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-600 hover:to-violet-600 transform hover:scale-[1.02] transition-all duration-300"
+                  >
+                    <Link href="LINK" target="_blank" rel="noopener noreferrer">
+                      Register Now
+                    </Link>
+                  </Button>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -171,9 +188,8 @@ export default function EventsPage() {
             {nightEvents.map((event) => (
               <div
                 key={event.id}
-                className="bg-gray-800 shadow-lg p-8 rounded-lg w-[350px] sm:w-[500px] text-center"
+                className="bg-gray-800/40 backdrop-blur-sm shadow-lg p-8 rounded-lg w-[350px] sm:w-[500px] text-center border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-purple-500/20 hover:shadow-xl"
               >
-                {/*  image loading */}
                 <Image
                   src={event.photo}
                   alt={event.name}
