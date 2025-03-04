@@ -6,7 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
-const Model_2 = () => {
+const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const Model_2 = () => {
         gltf.animations.forEach((clip) => {
           mixer.clipAction(clip).play()
         })
+        onLoad && onLoad()
       },
       undefined,
       (error) => {
