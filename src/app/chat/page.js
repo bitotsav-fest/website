@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
@@ -16,21 +16,54 @@ export default function Home() {
     const [typingSpeed, setTypingSpeed] = useState(50);
     const questions = [
         "What events are conducted by IEEE?",
-        "Whom should I contact for CSS Battle?",
-        "What is the timing for Talking Prompt?",
-        "What is the category of Codezilla?",
+        "Whom should I contact for Mr and Ms Pantheon?",
+        "When is Bitotsav going to happen?",
+        "What is the category of Dance Saga?",
     ];
 
     // Predefined questions for the buttons
     const predefinedQuestions = [
-        "What is the timing for Codezilla?",
-        "What events are conducted by EDC?",
-        "Whom to contact regarding SDS events?",
+        "What are the events conducted by IEEE?",
+        "What are the events conducted by EDC?",
+        "What are the events conducted by SDS?",
+        "What are the events conducted by ECESOC?",
+        "What are the events by Literary Society?",
+        "What are the Flagship Events?",
+        "What are the events conducted by Dance Club?",
+        "What are the events conducted by NAPS?",
+        "What are the events conducted by Aero Society?",
+        "What are the events conducted by 180DC?",
+        "What are the events conducted by EEESOC?",
+        "What are the events conducted by Srijan?",
+        "What are the events conducted by LEO?",
+        "What are the events conducted by IETE?",
+        "What are the events conducted by Civil Engineering Society?",
+        "What are the events conducted by Dhwani?",
+        "What are the events conducted by Ehsaas Dramatics Society?",
+        "What are the events conducted by Events Team?",
+        "What are the events conducted by Rotaract?",
+        "What is \"where in bit?\"",
+        "What are the details of Cinema Chess Clash?",
+        "Tell me something about Dance Saga."
     ];
+
+    // State to store 3 random predefined questions
+    const [randomQuestions, setRandomQuestions] = useState([]);
 
     // Ref for the last message in the chat history
     const chatEndRef = useRef(null);
     const prevChatHistoryLength = useRef(0);
+
+    // Function to shuffle the array and pick 3 random questions
+    const getRandomQuestions = () => {
+        const shuffled = [...predefinedQuestions].sort(() => 0.5 - Math.random()); // Shuffle the array
+        return shuffled.slice(0, 3); // Pick the first 3 questions
+    };
+
+    // Set random questions on component mount
+    useEffect(() => {
+        setRandomQuestions(getRandomQuestions());
+    }, []);
 
     useEffect(() => {
         // Skip the scroll behavior on initial render or page refresh
@@ -40,24 +73,24 @@ export default function Home() {
                 const offset = 280; // Adjust this value as needed
                 const elementPosition = chatEndRef.current.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.scrollY - offset;
-    
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth',
                 });
             }
         }
-    
+
         // Update the previous chat history length
         prevChatHistoryLength.current = chatHistory.length;
-    }, [chatHistory]); // Trigger when chatHistory changes// Trigger when chatHistory changes; // Trigger when chatHistory changes
+    }, [chatHistory]); // Trigger when chatHistory changes
 
     // Handle predefined question button click
     const handlePredefinedQuestion = (question) => {
         setIsPredefinedQuestion(true); // Mark as predefined question
         setTimeout(() => {
-        setPrompt(question.toLowerCase()); // Set the prompt state
-        }, 200)
+            setPrompt(question.toLowerCase()); // Set the prompt state
+        }, 200);
     };
 
     // Use useEffect to trigger handleSearch when prompt changes (only for predefined questions)
@@ -82,14 +115,16 @@ export default function Home() {
                     setTypingSpeed(50); // Reset typing speed
                 }
             }, typingSpeed);
+        } else if (placeholderText.length === currentQuestion.length) {
+            // If the question is fully typed, wait for a delay before starting to delete
+            timer = setTimeout(() => {
+                setIsDeleting(true);
+                setTypingSpeed(50); // Faster deletion speed
+            }, 500); // 1 second delay before deletion starts
         } else {
             // Type text
             timer = setTimeout(() => {
                 setPlaceholderText(currentQuestion.substring(0, placeholderText.length + 1));
-                if (placeholderText.length === currentQuestion.length) {
-                    setIsDeleting(true);
-                    setTypingSpeed(50); // Faster deletion speed
-                }
             }, typingSpeed);
         }
 
@@ -132,6 +167,7 @@ export default function Home() {
                 ...prev.slice(0, -1), // Remove the last message (spinner)
                 { type: 'bot', text: data.geminiResponse, isLoading: false }, // Add the actual response
             ]);
+            setRandomQuestions(getRandomQuestions());
         } catch (err) {
             console.error("Error searching chunks:", err);
             setError("Error searching chunks: " + err.message);
@@ -169,8 +205,8 @@ export default function Home() {
                             ) : (
                                 <div
                                     className={`max-w-[70%] p-4 rounded-lg backdrop-blur-md ${message.type === 'user'
-                                            ? 'bg-[#813C01]/20 border border-[#813C01]/50 text-[#FCE2BF] shadow-neon-red' // User bubble
-                                            : 'bg-[#E18E04]/20 border border-[#E18E04]/50 text-[#FCE2BF] shadow-neon-orange' // Bot bubble
+                                        ? 'bg-[#813C01]/20 border border-[#813C01]/50 text-[#FCE2BF] shadow-neon-red' // User bubble
+                                        : 'bg-[#E18E04]/20 border border-[#E18E04]/50 text-[#FCE2BF] shadow-neon-orange' // Bot bubble
                                         } transition-all duration-300 hover:scale-105`}
                                 >
                                     <p className="whitespace-pre-wrap">{message.text}</p>
@@ -222,7 +258,7 @@ export default function Home() {
 
                 {/* Predefined Question Buttons */}
                 <div className="w-full flex flex-col md:flex-row gap-2">
-                    {predefinedQuestions.map((question, index) => (
+                    {randomQuestions.map((question, index) => (
                         <button
                             key={index}
                             onClick={() => handlePredefinedQuestion(question)}
@@ -296,8 +332,6 @@ export default function Home() {
                     90%,
                     100% {background-size:100% 20%}
                 }
-
-                
 
                 .neon-text-red {
                     text-shadow: 0 0 5px #FCE2BF, 0 0 10px #FCE2BF, 0 0 20px #B92A18, 0 0 40px #B92A18;
