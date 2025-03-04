@@ -33,7 +33,7 @@ const Model_2 = ({ onLoad }) => {
 
     // Camera setup with better initial position
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
-    camera.position.set(2, 1, 3)
+    camera.position.set(5, 3, 5) // Changed initial position for dramatic entry
     camera.lookAt(0, 0, 0)
 
     // Enhanced lighting setup
@@ -67,6 +67,9 @@ const Model_2 = ({ onLoad }) => {
           mixer.clipAction(clip).play()
         })
         onLoad && onLoad()
+
+        // Start the initial camera animation
+        initialAnimation()
       },
       undefined,
       (error) => {
@@ -77,12 +80,47 @@ const Model_2 = ({ onLoad }) => {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     controls.dampingFactor = 0.05
-    controls.enablePan = false
+    controls.enablePan = true
     controls.enableZoom = true
     controls.minDistance = 2
     controls.maxDistance = 10
-    controls.minPolarAngle = Math.PI / 3
+    controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
+
+    // Keyboard controls
+    const keyboardControls = {
+      moveForward: false,
+      moveBackward: false,
+      moveLeft: false,
+      moveRight: false,
+      moveUp: false,
+      moveDown: false
+    }
+
+    const onKeyDown = (event) => {
+      switch (event.code) {
+        case 'KeyW': keyboardControls.moveForward = true; break
+        case 'KeyS': keyboardControls.moveBackward = true; break
+        case 'KeyA': keyboardControls.moveLeft = true; break
+        case 'KeyD': keyboardControls.moveRight = true; break
+        case 'Space': keyboardControls.moveUp = true; break
+        case 'ShiftLeft': keyboardControls.moveDown = true; break
+      }
+    }
+
+    const onKeyUp = (event) => {
+      switch (event.code) {
+        case 'KeyW': keyboardControls.moveForward = false; break
+        case 'KeyS': keyboardControls.moveBackward = false; break
+        case 'KeyA': keyboardControls.moveLeft = false; break
+        case 'KeyD': keyboardControls.moveRight = false; break
+        case 'Space': keyboardControls.moveUp = false; break
+        case 'ShiftLeft': keyboardControls.moveDown = false; break
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    window.addEventListener('keyup', onKeyUp)
 
     // Initial camera animation
     const initialAnimation = () => {
@@ -112,17 +150,26 @@ const Model_2 = ({ onLoad }) => {
       animate()
     }
 
-    initialAnimation()
-
+    // Animation loop
     const clock = new THREE.Clock()
-
     const animate = () => {
-      requestAnimationFrame(animate)
       const delta = clock.getDelta()
-      if (mixer) mixer.update(delta)
+
+      // Update camera position based on keyboard input
+      const moveSpeed = 0.1
+      if (keyboardControls.moveForward) camera.translateZ(-moveSpeed)
+      if (keyboardControls.moveBackward) camera.translateZ(moveSpeed)
+      if (keyboardControls.moveLeft) camera.translateX(-moveSpeed)
+      if (keyboardControls.moveRight) camera.translateX(moveSpeed)
+      if (keyboardControls.moveUp) camera.translateY(moveSpeed)
+      if (keyboardControls.moveDown) camera.translateY(-moveSpeed)
+
       controls.update()
+      if (mixer) mixer.update(delta)
       renderer.render(scene, camera)
+      requestAnimationFrame(animate)
     }
+
     animate()
 
     const handleResize = () => {
@@ -130,17 +177,19 @@ const Model_2 = ({ onLoad }) => {
       camera.updateProjectionMatrix()
       renderer.setSize(window.innerWidth, window.innerHeight)
     }
-    window.addEventListener("resize", handleResize)
+
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement)
-      }
-      window.removeEventListener("resize", handleResize)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('keyup', onKeyUp)
+      mountRef.current?.removeChild(renderer.domElement)
+      renderer.dispose()
     }
   }, [])
 
-  return <div ref={mountRef}></div>
+  return <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />
 }
 
 export default Model_2
