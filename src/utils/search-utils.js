@@ -68,7 +68,7 @@ export async function getGeminiAnswer(userQuery, chunks) {
 
     try {
         const context = chunks.map(chunk => chunk.chunk).join("\n\n");
-        const prompt = `You should only answer questions that are in the context of the text provided. NOTHING ELSE ASKED BY THE USER SHOULD BE ANSWERED. In case the user asks a question that is not in the context of the data, just reply with "Question asked is out of context. Please ask something related to the event.". Answer in a nicely formatted paragraph and don't just return raw text. You should find all the events that mention the club name and answer accordingly. No events should be left out.  Don't include phrases like "The provided text mentions..." etc. in the response. Use the following context to answer the question:\n\n${context}\n\nQuestion: ${userQuery}`;
+        const prompt = `You should only answer questions that are in the context of the text provided. NOTHING ELSE ASKED BY THE USER SHOULD BE ANSWERED. In case the user asks a question that is not in the context of the data, just reply with "Question asked is out of context. Please ask something related to the event.". Answer in a nicely formatted paragraph and don't just return raw text. When the user is asking about an event provide the user with the full text about the event formatted in a humane way. Use the following context to answer the question:\n\n${context}\n\nQuestion: ${userQuery}`;
 
         const payload = {
             "contents": [{ "parts": [{ "text": prompt }] }],
@@ -135,9 +135,10 @@ export async function calculateTfIdfSimilarity(prompt, chunks) {
     }).sort((a, b) => b.similarity - a.similarity);
 
     // Filter and return top chunks
-    const SIMILARITY_THRESHOLD = 0.0000001;
-    const TOP_N = Math.min(10, chunks.length);
+    const SIMILARITY_THRESHOLD = 0.01;
+    const TOP_N = Math.min(20, chunks.length);
     const filteredChunks = rankedChunks.filter((chunk) => chunk.similarity >= SIMILARITY_THRESHOLD);
+    console.log(filteredChunks);
     return filteredChunks.slice(0, TOP_N);
 }
 
