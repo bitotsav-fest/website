@@ -13,20 +13,44 @@ const Model_2 = ({ onLoad }) => {
     if (!mountRef.current) return
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    scene.fog = new THREE.Fog(0x000000, 1, 15)
+
+    // Renderer setup with enhanced settings
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance"
+    })
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.shadowMap.enabled = true
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap
+    renderer.outputEncoding = THREE.sRGBEncoding
+    renderer.toneMapping = THREE.ACESFilmicToneMapping
+    renderer.toneMappingExposure = 1.2
     renderer.domElement.classList.add("canvas-style-1")
     mountRef.current.appendChild(renderer.domElement)
 
-    camera.position.set(0, 0.3, 1)
+    // Camera setup with better initial position
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
+    camera.position.set(2, 1, 3)
+    camera.lookAt(0, 0, 0)
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 50)
+    // Enhanced lighting setup
+    const ambientLight = new THREE.AmbientLight(0x404040, 2)
     scene.add(ambientLight)
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-    directionalLight.position.set(5, 5, 5).normalize()
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3)
+    directionalLight.position.set(5, 5, 5)
+    directionalLight.castShadow = true
+    directionalLight.shadow.mapSize.width = 2048
+    directionalLight.shadow.mapSize.height = 2048
+    directionalLight.shadow.camera.near = 0.5
+    directionalLight.shadow.camera.far = 500
     scene.add(directionalLight)
+
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x404040, 2)
+    scene.add(hemisphereLight)
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
