@@ -15,7 +15,7 @@ export default function Register() {
                 >
                     Individual
                 </button>
-                <button
+                {/* <button
                     onClick={() => setActiveTab("team")}
                     className={`px-4 py-2 rounded-md ${
                         activeTab === "team" ? "bg-blue-500 text-white" : "bg-gray-600"
@@ -30,17 +30,17 @@ export default function Register() {
                     }`}
                 >
                     Events
-                </button>
+                </button> */}
             </div>
 
             {activeTab === "individual" && (
                 <form className="space-y-2 max-w-md">
-                    <input className="w-full p-2 border border-gray-300 rounded-md" placeholder="Name" />
-                    <input className="w-full p-2 border border-gray-300 rounded-md" placeholder="Email" />
-                    <input className="w-full p-2 border border-gray-300 rounded-md" placeholder="Phone Number" />
-                    <input className="w-full p-2 border border-gray-300 rounded-md" placeholder="Roll Number" />
+                    <input className="w-full p-2 border text-black border-gray-300 rounded-md" placeholder="Name" />
+                    <input className="w-full p-2 border text-black border-gray-300 rounded-md" placeholder="Email" />
+                    <input className="w-full p-2 border text-black border-gray-300 rounded-md" placeholder="Phone Number" />
+                    <input className="w-full p-2 border text-black border-gray-300 rounded-md" placeholder="Roll Number" />
                     <input
-                        className="w-full p-2 border border-gray-300 rounded-md"
+                        className="w-full p-2 border border-gray-300 rounded-md text-black"
                         type="password"
                         placeholder="Password"
                     />
@@ -50,7 +50,7 @@ export default function Register() {
                 </form>
             )}
 
-            {activeTab === "team" && (
+            {/* {activeTab === "team" && (
                 <div className="space-y-4 max-w-sm">
                     <form className="space-y-2">
                         <h4 className="text-lg font-semibold">Create Team</h4>
@@ -87,7 +87,7 @@ export default function Register() {
                         </button>
                     </form>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

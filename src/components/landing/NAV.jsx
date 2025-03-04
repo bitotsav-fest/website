@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Home, Calendar, Ticket, Info, Music,Images } from "lucide-react"
+import { Home, Calendar, Ticket, Info, Music, Images } from "lucide-react"
 import { Navbar } from "@/components/ui/navbar"
 
 const items = [
