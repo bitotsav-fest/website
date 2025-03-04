@@ -78,9 +78,41 @@ const Model_2 = ({ onLoad }) => {
     controls.enableDamping = true
     controls.dampingFactor = 0.05
     controls.enablePan = false
-    controls.enableZoom = false
+    controls.enableZoom = true
+    controls.minDistance = 2
+    controls.maxDistance = 10
     controls.minPolarAngle = Math.PI / 3
     controls.maxPolarAngle = Math.PI / 2 - 0.1
+
+    // Initial camera animation
+    const initialAnimation = () => {
+      const duration = 4000 // 4 seconds
+      const startTime = Date.now()
+      const startPosition = { x: 5, y: 3, z: 5 }
+      const endPosition = { x: 2, y: 1, z: 3 }
+
+      const animate = () => {
+        const elapsed = Date.now() - startTime
+        const progress = Math.min(elapsed / duration, 1)
+
+        // Smooth easing
+        const easeProgress = 1 - Math.pow(1 - progress, 3)
+
+        camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
+        camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
+        camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
+
+        camera.lookAt(0, 0, 0)
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+
+      animate()
+    }
+
+    initialAnimation()
 
     const clock = new THREE.Clock()
 
