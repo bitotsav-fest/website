@@ -19,7 +19,7 @@ const Model_2 = ({ onLoad }) => {
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
-      powerPreference: "high-performance"
+      powerPreference: "high-performance",
     })
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -83,7 +83,7 @@ const Model_2 = ({ onLoad }) => {
     controls.enablePan = true
     controls.enableZoom = true
     controls.minDistance = 2
-    controls.maxDistance = 10
+    controls.maxDistance = 6.3
     controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
 
@@ -94,33 +94,57 @@ const Model_2 = ({ onLoad }) => {
       moveLeft: false,
       moveRight: false,
       moveUp: false,
-      moveDown: false
+      moveDown: false,
     }
 
     const onKeyDown = (event) => {
       switch (event.code) {
-        case 'KeyW': keyboardControls.moveForward = true; break
-        case 'KeyS': keyboardControls.moveBackward = true; break
-        case 'KeyA': keyboardControls.moveLeft = true; break
-        case 'KeyD': keyboardControls.moveRight = true; break
-        case 'Space': keyboardControls.moveUp = true; break
-        case 'ShiftLeft': keyboardControls.moveDown = true; break
+        case "KeyW":
+          keyboardControls.moveForward = true
+          break
+        case "KeyS":
+          keyboardControls.moveBackward = true
+          break
+        case "KeyA":
+          keyboardControls.moveLeft = true
+          break
+        case "KeyD":
+          keyboardControls.moveRight = true
+          break
+        case "Space":
+          keyboardControls.moveUp = true
+          break
+        case "ShiftLeft":
+          keyboardControls.moveDown = true
+          break
       }
     }
 
     const onKeyUp = (event) => {
       switch (event.code) {
-        case 'KeyW': keyboardControls.moveForward = false; break
-        case 'KeyS': keyboardControls.moveBackward = false; break
-        case 'KeyA': keyboardControls.moveLeft = false; break
-        case 'KeyD': keyboardControls.moveRight = false; break
-        case 'Space': keyboardControls.moveUp = false; break
-        case 'ShiftLeft': keyboardControls.moveDown = false; break
+        case "KeyW":
+          keyboardControls.moveForward = false
+          break
+        case "KeyS":
+          keyboardControls.moveBackward = false
+          break
+        case "KeyA":
+          keyboardControls.moveLeft = false
+          break
+        case "KeyD":
+          keyboardControls.moveRight = false
+          break
+        case "Space":
+          keyboardControls.moveUp = false
+          break
+        case "ShiftLeft":
+          keyboardControls.moveDown = false
+          break
       }
     }
 
-    window.addEventListener('keydown', onKeyDown)
-    window.addEventListener('keyup', onKeyUp)
+    window.addEventListener("keydown", onKeyDown)
+    window.addEventListener("keyup", onKeyUp)
 
     // Initial camera animation
     const initialAnimation = () => {
@@ -128,6 +152,12 @@ const Model_2 = ({ onLoad }) => {
       const startTime = Date.now()
       const startPosition = { x: 5, y: 3, z: 5 }
       const endPosition = { x: 2, y: 1, z: 3 }
+      const isMobile = /Mobi|Android/i.test(navigator.userAgent)
+      if (isMobile) {
+        endPosition.x = 0
+        endPosition.y = 0.8
+        endPosition.z = 3
+      }
 
       const animate = () => {
         const elapsed = Date.now() - startTime
@@ -178,18 +208,20 @@ const Model_2 = ({ onLoad }) => {
       renderer.setSize(window.innerWidth, window.innerHeight)
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('keydown', onKeyDown)
-      window.removeEventListener('keyup', onKeyUp)
-      mountRef.current?.removeChild(renderer.domElement)
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("keydown", onKeyDown)
+      window.removeEventListener("keyup", onKeyUp)
+      if (mountRef.current && renderer.domElement) {
+        mountRef.current.removeChild(renderer.domElement)
+      }
       renderer.dispose()
     }
   }, [])
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />
+  return <div ref={mountRef} style={{ width: "100%", height: "100vh" }} />
 }
 
 export default Model_2

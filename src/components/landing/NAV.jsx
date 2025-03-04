@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Home, Calendar, Ticket, Info, Music } from "lucide-react"
+import { Home, Calendar, Ticket, Info, Music,Images } from "lucide-react"
 import { Navbar } from "@/components/ui/navbar"
 
 const items = [
@@ -35,6 +35,12 @@ const items = [
     href: "/about",
     icon: Info,
   },
+  {
+    name: "Gallery",
+    url: "/gallery",
+    href: "/gallery",
+    icon: Images,
+  }
 ]
 
 export function Nav() {

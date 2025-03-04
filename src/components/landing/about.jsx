@@ -31,8 +31,8 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black text-white px-6 py-24">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <section ref={sectionRef} className="text-[#F6F1E2] px-6 py-24">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
         {/* Left Text Section */}
         <div>

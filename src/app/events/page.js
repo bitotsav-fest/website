@@ -6,7 +6,6 @@ import Image from "next/image"; // Next.js Image
 import { Eventsday, clubs, Eventsnight } from "./data";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import { Calendar, MapPin, Users, Star } from "lucide-react";
 
 export default function EventsPage() {
@@ -84,7 +83,7 @@ export default function EventsPage() {
 
                     {/* Category Selector */}
                     <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-xl px-4 py-2 text-violet-300">
+                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
                         <SelectValue placeholder="Category" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#1A0B2E] border border-white/10">
@@ -97,7 +96,7 @@ export default function EventsPage() {
 
                     {/* Club Selector */}
                     <Select value={selectedClub} onValueChange={setSelectedClub}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-xl px-4 py-2 text-violet-300">
+                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
                         <SelectValue placeholder="Club" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#1A0B2E] border border-white/10">
@@ -111,7 +110,7 @@ export default function EventsPage() {
                     {/* Tab Navigation */}
         <div className="flex justify-center">
           <motion.div 
-            className="bg-white/5 backdrop-blur-xl  rounded-2xl border border-white/10"
+            className="bg-white/5 backdrop-blur-xl  rounded-xl border border-white/10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
