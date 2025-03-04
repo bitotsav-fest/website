@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Home, Calendar, Ticket, Info, Music } from "lucide-react"
-import { Navbar } from "@/components/ui/navbar"
+import { AnimeNavBar } from "@/components/ui/anime-navbar"
 
 const items = [
   {
@@ -38,5 +38,5 @@ const items = [
 ]
 
 export function Nav() {
-  return <Navbar items={items} />
+  return <AnimeNavBar items={items} />
 }

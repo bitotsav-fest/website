@@ -58,13 +58,12 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en" className="dark">
+      <html lang="en" className="dark bg-black">
         <body
         >
           <SessionProvider>
           <Nav />
           <main
-          className="    "
           >
           {children}
           </main>

@@ -33,7 +33,7 @@ export function AnimeNavBar({
   if (!mounted) return null
 
   return (
-    (<div className="fixed top-5 left-0 right-0 z-[9999]">
+    (<div className="fixed top-0 left-0 right-0 z-[9999]">
       <div className="flex justify-center pt-6">
         <motion.div
           className="flex items-center gap-3 bg-black/50 border border-white/10 backdrop-blur-lg py-2 px-2 rounded-full shadow-lg relative"
@@ -46,15 +46,14 @@ export function AnimeNavBar({
           }}>
           {items.map((item) => {
             const Icon = item.icon
-            const isActive = activeTab === item.name
+            const isActive = pathname === item.url
             const isHovered = hoveredTab === item.name
 
             return (
               (<Link
                 key={item.name}
                 href={item.url}
-                onClick={(e) => {
-                  e.preventDefault()
+                onClick={() => {
                   setActiveTab(item.name)
                 }}
                 onMouseEnter={() => setHoveredTab(item.name)}
@@ -244,4 +243,4 @@ export function AnimeNavBar({
       </div>
     </div>)
   );
-} 
+}
