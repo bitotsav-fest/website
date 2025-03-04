@@ -118,3 +118,15 @@ p {
     width: 90vw !important;
   }
 }
+canvas {
+  height: 100vh !important;
+  width: 100vw !important;
+  /* border: red 1px solid; */
+}
+
+@media screen and (max-width: 768px) {
+  canvas {
+    height: 30vh !important;
+    width: 90vw !important;
+  }
+}
