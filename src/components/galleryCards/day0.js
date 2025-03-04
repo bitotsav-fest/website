@@ -328,13 +328,13 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `p1.webp`, text: '' },
-      { image: `p2.webp`, text: '' },
-      { image: `p6.webp`, text: '' },
-      { image: `p3.webp`, text: '' },
-      { image: `p4.webp`, text: '' },
-      { image: `p5.webp`, text: '' },
-      { image: `p7.webp`, text: '' },
+      { image: `day0/p1.webp`, text: '' },
+      { image: `day1/p2.webp`, text: '' },
+      { image: `day0/p6.webp`, text: '' },
+      { image: `day2/p3.webp`, text: '' },
+      { image: `day2/p4.webp`, text: '' },
+      { image: `day0/p5.webp`, text: '' },
+      { image: `day1/p7.webp`, text: '' },
     ]
     const galleryItems = items && items.length ? items : defaultItems
     this.mediasImages = galleryItems.concat(galleryItems)
