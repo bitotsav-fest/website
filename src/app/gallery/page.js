@@ -12,8 +12,6 @@ import {
 import Image from "next/image";
 
 export default function GalleryPage() {
-  const images = ["/p1.webp", "/p2.webp", "/p3.webp", "/p4.webp", "/p5.webp", "/p6.webp", "/p7.webp"];
-  
   const descriptions = [
     "The grand opening ceremony of Bitotsav, full of energy and excitement!",
     "A breathtaking performance that left the audience in awe.",
@@ -30,14 +28,14 @@ export default function GalleryPage() {
         Last Year Glimpse of Bitotsav
       </h1>
     
-      {['Day 0', 'Day 1', 'Day 2'].map((day, index) => (
+      {["day0", "day1", "day2"].map((day, index) => (
         <div key={index} className="w-full max-w-screen-lg mt-10 flex flex-col md:flex-row items-center md:items-start gap-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center w-full">{day}</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center w-full">{`Day ${index}`}</h2>
           <Carousel className="w-full md:w-3/4">
             <CarouselContent>
-              {images.map((src, i) => (
+              {[1, 2, 3, 4, 5, 6, 7].map((num, i) => (
                 <CarouselItem key={i} className="flex flex-col md:flex-row items-center gap-4">
-                  <Image src={src} width={500} height={500} alt={`Image ${i + 1}`} className="rounded-lg" />
+                  <Image src={`/${day}/p${num}.webp`} width={500} height={500} alt={`Image ${num}`} className="rounded-lg" />
                   <p className="text-sm md:text-base text-gray-300 max-w-sm text-center md:text-left">{descriptions[i]}</p>
                 </CarouselItem>
               ))}
@@ -45,7 +43,6 @@ export default function GalleryPage() {
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
-
         </div>
       ))}
       <div className="relative w-full max-w-screen-lg flex justify-center items-center">
