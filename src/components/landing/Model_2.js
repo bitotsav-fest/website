@@ -13,7 +13,6 @@ const Model_2 = ({ onLoad }) => {
     if (!mountRef.current) return
 
     const scene = new THREE.Scene()
-    scene.fog = new THREE.Fog(0x000000, 1, 15)
 
     // Renderer setup with enhanced settings
     const renderer = new THREE.WebGLRenderer({
@@ -34,7 +33,6 @@ const Model_2 = ({ onLoad }) => {
     // Camera setup with better initial position
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
     camera.position.set(5, 3, 5) // Changed initial position for dramatic entry
-    camera.lookAt(0, 0, 0)
 
     // Enhanced lighting setup
     const ambientLight = new THREE.AmbientLight(0x404040, 2)
@@ -79,11 +77,11 @@ const Model_2 = ({ onLoad }) => {
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
+    controls.enablePan = false
     controls.dampingFactor = 0.05
-    controls.enablePan = true
     controls.enableZoom = true
     controls.minDistance = 2
-    controls.maxDistance = 6.3
+    controls.maxDistance = 6
     controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
 
@@ -159,6 +157,108 @@ const Model_2 = ({ onLoad }) => {
         endPosition.z = 3
       }
 
+      //Navigation Bar
+      const lanternPositions = [
+        { x: -0.1, y: 2.5, z: -6, id: "Login/Register", route: "/login" },
+        { x: -2, y: 2, z: -1, id: "Events", route: "/events" },
+        { x: 2, y: 2, z: 1, id: "Teams", route: "/teams" },
+        { x: -2, y: 2, z: 0, id: "About", route: "/about" },
+        { x: 2, y: 2, z: 2.5, id: "Sponsors", route: "/sponsors" },
+        { x: 2, y: 2, z: 0, id: "Developers", route: "/developers" },
+        { x: -2, y: 2, z: 1, id: "LeaderBoards", route: "/leaderboard" },
+        { x: -2, y: 2, z: 2.5, id: "Alumini", route: "/signature" },
+        { x: 2, y: 2, z: -1, id: "Gallery", route: "/gallery" },
+      ]
+
+      const lanterns = []
+
+      const lanternLoader = new GLTFLoader()
+      lanternLoader.load(
+        "/Lanterns.glb",
+        (gltf) => {
+          const lanternModel = gltf.scene
+
+          lanternPositions.forEach((pos) => {
+            const lantern = lanternModel.clone()
+            lantern.position.set(pos.x, pos.y, pos.z)
+            lantern.userData = { originalPosition: pos, id: pos.id, route: pos.route }
+            scene.add(lantern)
+            lanterns.push(lantern)
+            const textDiv = document.createElement("div")
+            textDiv.style.position = "absolute"
+            textDiv.style.color = "#fff"
+            textDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
+            textDiv.style.padding = "2px 5px"
+            textDiv.style.borderRadius = "3px"
+            textDiv.style.pointerEvents = "none"
+            textDiv.innerHTML = pos.id
+            document.body.appendChild(textDiv)
+
+            const updateTextPosition = () => {
+              const vector = new THREE.Vector3(pos.x, pos.y, pos.z)
+              vector.project(camera)
+
+              const x = (vector.x * 0.5 + 0.5) * window.innerWidth
+              const y = (vector.y * -0.5 + 0.5) * window.innerHeight
+
+              textDiv.style.left = `${x}px`
+              textDiv.style.top = `${y}px`
+            }
+
+            const animateText = () => {
+              updateTextPosition()
+              requestAnimationFrame(animateText)
+            }
+
+            animateText()
+          })
+        },
+        undefined,
+        (error) => {
+          console.error("An error happened while loading the lantern model:", error)
+        }
+      )
+
+      const raycaster = new THREE.Raycaster()
+      const mouse = new THREE.Vector2()
+
+      // Zoom to the clicked lantern
+      window.addEventListener("click", (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+        raycaster.setFromCamera(mouse, camera)
+        const intersects = raycaster.intersectObjects(lanterns, true)
+
+        if (intersects.length > 0) {
+          let clickedLantern = intersects[0].object
+          while (clickedLantern.parent && clickedLantern.parent !== scene) {
+            clickedLantern = clickedLantern.parent
+          }
+          const targetPosition = clickedLantern.position.clone()
+          const zoomDuration = 5000
+          const zoomStartTime = Date.now()
+          const initialCameraPosition = camera.position.clone()
+
+          const zoomAnimate = () => {
+            const elapsed = Date.now() - zoomStartTime
+            const progress = Math.min(elapsed / zoomDuration, 1)
+
+            const easeProgress = 1 - Math.pow(1 - progress, 3)
+
+            camera.position.lerpVectors(initialCameraPosition, targetPosition, easeProgress)
+
+            if (progress < 0.5) {
+              requestAnimationFrame(zoomAnimate)
+            } else {
+              window.location.href = clickedLantern.userData.route
+            }
+          }
+
+          zoomAnimate()
+        }
+      })
+
       const animate = () => {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
@@ -169,8 +269,6 @@ const Model_2 = ({ onLoad }) => {
         camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
         camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
         camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
-
-        camera.lookAt(0, 0, 0)
 
         if (progress < 1) {
           requestAnimationFrame(animate)
