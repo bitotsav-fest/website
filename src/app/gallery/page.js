@@ -21,7 +21,7 @@ export default function GalleryPage() {
   return (
     <div className="text-white p-4 md:p-10 lg:p-20 w-full overflow-hidden flex flex-col items-center">
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center">
-      Bitotsav 2024: Reliving the Unforgettable Moments!
+        Bitotsav 2024: Reliving the Unforgettable Moments!
       </h1>
 
       {["day0", "day1", "day2"].map((day, index) => (
@@ -31,7 +31,7 @@ export default function GalleryPage() {
           ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
         >
           {/* Description */}
-          <div className="w-full md:w-1/3 text-center md:text-left">
+          <div className="w-full md:w-1/3 text-center md:text-left p-6">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               {`Day ${index}`}
             </h2>
