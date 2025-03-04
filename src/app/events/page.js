@@ -1,12 +1,13 @@
 "use client";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image"; // Next.js Image
 import { Eventsday, clubs, Eventsnight } from "./data";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { Calendar, MapPin, Users, Star } from "lucide-react";
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day");
@@ -30,180 +31,230 @@ export default function EventsPage() {
   }, [dayEvents, selectedDay, selectedCategory, selectedClub]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-black dark:to-gray-900">
-      <div className="relative min-h-screen text-gray-900 dark:text-white py-20 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] text-white">
+      <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
+
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-          <h1 className="text-3xl font-medium">Events</h1>
-          <div className="flex bg-white dark:bg-gray-800 shadow-sm p-1 rounded-full w-full md:w-auto justify-between border border-gray-200 dark:border-gray-700">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center space-y-4 mb-16"
+        >
+          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
+            Bitotsav Events
+          </h1>
+          <p className="text-gray-400 text-lg">Discover amazing events and performances</p>
+        </motion.div>
+
+        
+
+        {/* Filters for Day Events */}
+        <AnimatePresence mode="wait">
+          {activeTab === "day" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="mb-12"
+            >
+              <div className="flex flex-wrap justify-center items-center gap-6">
+                {/* Day Selector */}
+                <div className="bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 flex flex-wrap items-center gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {/* Day Selection Tabs */}
+                    <div className="flex bg-white/5 rounded-xl p-1 gap-1">
+                      {[1, 2, 3].map((day) => (
+                        <Button
+                          key={day}
+                          variant={selectedDay === day ? "default" : "ghost"}
+                          onClick={() => setSelectedDay(day)}
+                          className={`rounded-lg px-4 py-2 ${selectedDay === day ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Day {day}
+                        </Button>
+                      ))}
+                    </div>
+
+                    {/* Category Selector */}
+                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-xl px-4 py-2 text-violet-300">
+                        <SelectValue placeholder="Category" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                        <SelectItem value="All Categories">All Categories</SelectItem>
+                        <SelectItem value="Flagship">Flagship</SelectItem>
+                        <SelectItem value="Formal">Formal</SelectItem>
+                        <SelectItem value="Informal">Informal</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    {/* Club Selector */}
+                    <Select value={selectedClub} onValueChange={setSelectedClub}>
+                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-xl px-4 py-2 text-violet-300">
+                        <SelectValue placeholder="Club" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                        <SelectItem value="All Clubs">All Clubs</SelectItem>
+                        {clubs.map((club) => (
+                          <SelectItem key={club} value={club}>{club}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    {/* Tab Navigation */}
+        <div className="flex justify-center">
+          <motion.div 
+            className="bg-white/5 backdrop-blur-xl  rounded-2xl border border-white/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <Button
               variant={activeTab === "day" ? "default" : "ghost"}
               onClick={() => setActiveTab("day")}
-              className="flex-1 md:flex-none rounded-full text-sm font-medium px-6"
+              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "day" ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
             >
               Day Events
             </Button>
             <Button
               variant={activeTab === "night" ? "default" : "ghost"}
               onClick={() => setActiveTab("night")}
-              className="flex-1 md:flex-none rounded-full text-sm font-medium px-6"
+              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "night" ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
             >
               Night Events
             </Button>
-          </div>
+          </motion.div>
         </div>
+                 </div>
 
-        {/* Filters for Day Events */}
-        {activeTab === "day" && (
-          <div className="mt-8 mb-12 space-y-6">
-            <div className="flex flex-wrap justify-center items-center gap-6 w-full">
-              {/* Day Selector */}
-              <div className="flex items-center bg-white/5 dark:bg-gray-800/50 px-6 py-3 rounded-full w-64 backdrop-blur-sm border border-gray-200/10 dark:border-gray-700/50 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-300 mr-4">Day</span>
-                <div className="flex flex-col items-center w-full">
-                  <Slider
-                    defaultValue={[1]}
-                    max={3}
-                    min={1}
-                    step={1}
-                    value={[selectedDay]}
-                    onValueChange={(value) => setSelectedDay(value[0])}
-                    className="w-full"
-                  />
-                  <div className="flex justify-between w-full text-xs mt-2 text-gray-500 dark:text-gray-400">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                  </div>
-                </div>
+              
               </div>
-
-              {/* Category Selector */}
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-48 bg-white/5 dark:bg-gray-800/50 border-gray-200/10 dark:border-gray-700/50 hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors duration-200 backdrop-blur-sm shadow-sm hover:shadow-md">
-                  <SelectValue placeholder="Select category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All Categories">All Categories</SelectItem>
-                  <SelectItem value="Flagship">Flagship</SelectItem>
-                  <SelectItem value="Formal">Formal</SelectItem>
-                  <SelectItem value="Informal">Informal</SelectItem>
-                </SelectContent>
-              </Select>
-
-              {/* Club Selector */}
-              <Select value={selectedClub} onValueChange={setSelectedClub}>
-                <SelectTrigger className="w-48 bg-white/5 dark:bg-gray-800/50 border-gray-200/10 dark:border-gray-700/50 hover:bg-white/10 dark:hover:bg-gray-700/50 transition-colors duration-200 backdrop-blur-sm shadow-sm hover:shadow-md">
-                  <SelectValue placeholder="Select club" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="All Clubs">All Clubs</SelectItem>
-                  {clubs.map((club) => (
-                    <SelectItem key={club} value={club}>
-                      {club}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Event Cards */}
-        {activeTab === "day" && (
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
-            {filteredDayEvents.map((event) => (
-              <motion.div
-                key={event.id}
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm border border-white/5 hover:border-white/10 transition-all duration-500"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-violet-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <Link href={`/events/${event.id}`} className="block">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+        <AnimatePresence mode="wait">
+          {activeTab === "day" && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
+            >
+              {filteredDayEvents.map((event, index) => (
+                <motion.div
+                  key={event.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-violet-500/30 transition-all duration-500 shadow-lg hover:shadow-violet-500/10"
+                >
+                  <Link href={`/events/${event.id}`} className="block">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={event.imgURL}
+                        alt={event.name}
+                        width={400}
+                        height={300}
+                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A0B2E] via-transparent opacity-90"></div>
+                    </div>
+                    <div className="p-8 space-y-6">
+                      <div className="flex items-center gap-3">
+                        <span className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20 text-sm">
+                          {event.category}
+                        </span>
+                        <span className="px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 text-sm">
+                          Day {event.day}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl font-bold text-white group-hover:text-violet-400 transition-colors duration-300">
+                        {event.name}
+                      </h2>
+                      <div className="space-y-3 text-gray-400">
+                        <p className="flex items-center gap-3">
+                          <Users className="w-5 h-5 text-violet-400" />
+                          {event.club}
+                        </p>
+                        <p className="flex items-center gap-3">
+                          <MapPin className="w-5 h-5 text-pink-400" />
+                          {event.venue}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="p-8 pt-0">
+                    <Button
+                      asChild
+                      variant="default"
+                      className="w-full bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white rounded-xl py-6 font-medium text-lg shadow-lg shadow-violet-900/20 transform hover:scale-[1.02] transition-all duration-300"
+                    >
+                      <Link href="/tickets" target="_blank" rel="noopener noreferrer">
+                        Register Now
+                      </Link>
+                    </Button>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* Night Events */}
+          {activeTab === "night" && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="space-y-8"
+            >
+              {nightEvents.map((event, index) => (
+                <motion.div
+                  key={event.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-violet-500/30 transition-all duration-300 shadow-lg hover:shadow-violet-500/10 max-w-3xl mx-auto"
+                >
+                  <div className="relative aspect-[21/9] overflow-hidden rounded-xl mb-8">
                     <Image
-                      src={event.imgURL}
+                      src={event.photo}
                       alt={event.name}
-                      width={400}
-                      height={300}
-                      className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                      width={800}
+                      height={400}
+                      className="object-cover w-full h-full"
                       priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent opacity-80"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0B2E] via-transparent opacity-90"></div>
                   </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center gap-2 text-xs">
-                      <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                        {event.category}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">
-                        Day {event.day}
-                      </span>
-                    </div>
-                    <h2 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
+                  <div className="text-center space-y-4">
+                    <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-pink-400">
                       {event.name}
                     </h2>
-                    <div className="space-y-2 text-sm text-gray-400">
-                      <p className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-violet-500/10 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
-                          </svg>
-                        </span>
-                        {event.club}
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-blue-500/10 flex items-center justify-center">
-                          <svg className="w-3 h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                        </span>
-                        {event.venue}
-                      </p>
-                    </div>
+                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">{event.description}</p>
+                    <Button
+                      asChild
+                      variant="default"
+                      className="bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white rounded-xl px-12 py-6 font-medium text-lg shadow-lg shadow-violet-900/20 transform hover:scale-[1.02] transition-all duration-300"
+                    >
+                      <Link href="/tickets">
+                        Get Tickets
+                      </Link>
+                    </Button>
                   </div>
-                </Link>
-                <div className="p-6 pt-0">
-                  <Button
-                    asChild
-                    variant="default"
-                    className="w-full bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-600 hover:to-violet-600 transform hover:scale-[1.02] transition-all duration-300"
-                  >
-                    <Link href="LINK" target="_blank" rel="noopener noreferrer">
-                      Register Now
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Night Events */}
-        {activeTab === "night" && (
-          <div className="mt-6 space-y-6 flex flex-col items-center w-full">
-            {nightEvents.map((event) => (
-              <div
-                key={event.id}
-                className="bg-gray-800/40 backdrop-blur-sm shadow-lg p-8 rounded-lg w-[350px] sm:w-[500px] text-center border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-purple-500/20 hover:shadow-xl"
-              >
-                <Image
-                  src={event.photo}
-                  alt={event.name}
-                  width={500}
-                  height={300}
-                  className="w-full h-56 object-cover rounded-md"
-                  priority
-                />
-                <h2 className="text-2xl font-semibold mt-2">{event.name}</h2>
-                <p className="text-md opacity-75">{event.description}</p>
-              </div>
-            ))}
-          </div>
-        )}
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
