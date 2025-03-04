@@ -4,7 +4,7 @@ import { Nav } from "@/components/landing/NAV";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
-  title: "Bitotsav - BIT Mesra Fest",
+  title: "Bitotsav - BIT Mesra",
   description: "BIT Mesra",
   metadataBase: new URL("https://bitotsav.com"),
   alternates: {
@@ -58,19 +58,14 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en" className="dark">
-        <body
-        >
-          <SessionProvider>
+    <html lang="en" className="dark h-full">
+      <body className="flex flex-col min-h-screen">
+        <SessionProvider>
           <Nav />
-          <main
-          className="    "
-          >
-          {children}
-          </main>
-          <Footer />
-          </SessionProvider>
-        </body>
-      </html>
+          <main className="flex-1">{children}</main>
+        </SessionProvider>
+        <Footer />
+      </body>
+    </html>
   );
 }

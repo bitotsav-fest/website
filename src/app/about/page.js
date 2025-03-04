@@ -8,7 +8,7 @@ import NightEvents from "@/components/landing/night-events"
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="bg-gradient-to-b from-[#150E06] to-[#2B1A09] fixed top-0 left-0 w-full h-full overflow-auto">
       <Hero />
       <About />
       <NightEvents />
