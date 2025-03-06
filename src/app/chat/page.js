@@ -14,6 +14,8 @@ export default function Home() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [typingSpeed, setTypingSpeed] = useState(50);
+    const [botTypingText, setBotTypingText] = useState(''); // State for bot's typing effect
+    const [botTypingIndex, setBotTypingIndex] = useState(0); // State to track the current index of the bot's response
     const questions = [
         "What events are conducted by IEEE?",
         "Whom should I contact for Mr and Ms Pantheon?",
@@ -166,11 +168,33 @@ export default function Home() {
             let sanitizedResponse = data.geminiResponse.replace(/<br\s*\/?>/gi, '');
             sanitizedResponse = sanitizedResponse.replace(/^\n+/, '');
     
-            // Replace the spinner with the actual bot response
+            // Start the typing effect for the bot's response
+            setBotTypingText(sanitizedResponse);
+            setBotTypingIndex(0);
+    
+            // Remove the spinner and start typing the bot's response
             setChatHistory((prev) => [
                 ...prev.slice(0, -1), // Remove the last message (spinner)
-                { type: 'bot', text: sanitizedResponse, isLoading: false }, // Add the sanitized response
+                { type: 'bot', text: '', isLoading: false }, // Add an empty bot message
             ]);
+    
+            // Start the typing effect
+            const typingInterval = setInterval(() => {
+                setChatHistory((prev) => {
+                    const lastMessage = prev[prev.length - 1];
+                    if (lastMessage.type === 'bot' && lastMessage.text.length < sanitizedResponse.length) {
+                        const newText = sanitizedResponse.substring(0, lastMessage.text.length + 1);
+                        return [
+                            ...prev.slice(0, -1),
+                            { ...lastMessage, text: newText },
+                        ];
+                    } else {
+                        clearInterval(typingInterval);
+                        return prev;
+                    }
+                });
+            }, 5); // Adjust typing speed here
+    
             setRandomQuestions(getRandomQuestions());
         } catch (err) {
             console.error("Error searching chunks:", err);
