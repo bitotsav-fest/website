@@ -6,6 +6,10 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
 
@@ -84,6 +88,7 @@ const Model_2 = ({ onLoad }) => {
     controls.maxDistance = 6
     controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
+    controls.target.set(0, 0, 0)
 
     // Keyboard controls
     const keyboardControls = {
@@ -144,8 +149,6 @@ const Model_2 = ({ onLoad }) => {
     window.addEventListener("keydown", onKeyDown)
     window.addEventListener("keyup", onKeyUp)
 
-    const lanternMixers = []
-
     // Initial camera animation
     const initialAnimation = () => {
       const duration = 4000 // 4 seconds
@@ -159,91 +162,112 @@ const Model_2 = ({ onLoad }) => {
         endPosition.z = 3
       }
 
-      //Navigation Bar
-      const lanternPositions = [
-        { x: -0.1, y: 2.5, z: -6, id: "Login/Register", route: "/login" },
-        { x: -2, y: 1.4, z: -1, id: "Events", route: "/events" },
-        { x: 2, y: 1.25, z: 1, id: "Teams", route: "/teams" },
-        { x: -2, y: 1.9, z: 0, id: "About", route: "/about" },
-        { x: 2, y: 1.9, z: 2.5, id: "Sponsors", route: "/sponsors" },
-        { x: 2, y: 1.8, z: 0, id: "Developers", route: "/developers" },
-        { x: -2, y: 1.6, z: 1, id: "LeaderBoards", route: "/leaderboard" },
-        { x: -2, y: 1.5, z: 2.5, id: "Alumini", route: "/signature" },
-        { x: 2, y: 1.3, z: -1, id: "Gallery", route: "/gallery" },
+      const StallPos = [
+        { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login", top: 0xffffff, table: 0x000000 },
+        { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
+        { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
+        { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
+        { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
+        { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
+        { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
+        { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
+        { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
       ]
 
-      const lanterns = []
-
-      let lanternMixer
-      lanternPositions.forEach((pos) => {
+      const Stalls = []
+      //Navigation Bar
+      StallPos.forEach((stall) => {
         loader.load(
-          "/Lanterns.glb",
+          "/Stall.glb",
           (gltf) => {
-            const lantern = gltf.scene
-            lantern.position.set(pos.x, pos.y, pos.z)
-            lantern.userData.route = pos.route
-            scene.add(lantern)
-            lanterns.push(lantern)
-
-            lanternMixer = new THREE.AnimationMixer(gltf.scene)
-            lanternMixers.push(lanternMixer)
-            gltf.animations.forEach((clip) => {
-              lanternMixer.clipAction(clip).play()
+            const model = gltf.scene.clone() // Clone the model to create separate instances
+            model.position.set(stall.x, stall.y, stall.z)
+            model.rotation.y = stall.Y
+            model.userData = { originalPosition: model.position, originalRotation: model.rotation.y, id: stall.id, route: stall.route }
+            Stalls.push(model)
+            scene.add(model)
+            model.traverse((child) => {
+              if (child.isMesh) {
+                if (child.material.name === "Top") {
+                  child.material = new THREE.MeshStandardMaterial({ color: stall.top })
+                } else if (child.material.name === "Table") {
+                  child.material = new THREE.MeshStandardMaterial({ color: stall.table })
+                }
+                child.userData = model.userData // Ensure userData is set on child meshes
+              }
             })
 
-            // Add hovering effect
-            const hoverAnimation = new THREE.AnimationClip("hover", -1, [
-              new THREE.VectorKeyframeTrack(".position[y]", [0, 2, 4], [lantern.position.y, lantern.position.y + 0.1, lantern.position.y], THREE.InterpolateSmooth),
-            ])
-            const hoverAction = lanternMixer.clipAction(hoverAnimation)
-            hoverAction.setLoop(THREE.LoopRepeat)
-            hoverAction.play()
+            // Add click event listener for zooming into the stall
+            const raycaster = new THREE.Raycaster()
+            const mouse = new THREE.Vector2()
+
+            const onMouseClick = (event) => {
+              mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+              mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+              raycaster.setFromCamera(mouse, camera)
+              const intersects = raycaster.intersectObjects(scene.children, true)
+
+              if (intersects.length > 0) {
+                let intersected = intersects[0].object
+
+                // Ensure we are getting the correct parent stall model
+                while (intersected.parent && !intersected.userData.id) {
+                  intersected = intersected.parent
+                }
+                zoomToStall(intersected)
+              }
+            }
+
+            const zoomToStall = (object) => {
+              const duration = 2000 // 2 seconds
+              const startTime = Date.now()
+              const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
+              const endPosition = { x: object.userData.originalPosition.x, y: object.userData.originalPosition.y, z: object.userData.originalPosition.z }
+              controls.target.set(endPosition.x, endPosition.y, endPosition.z)
+              controls.update()
+              const startRotation = {
+                x: camera.rotation.x,
+                y: camera.rotation.y, // Rotate 180 degrees
+                z: camera.rotation.z,
+              }
+              const endRotation = { x: 0, y: object.userData.originalRotation / 2, z: 0 }
+
+              const animateZoom = () => {
+                const elapsed = Date.now() - startTime
+                const progress = Math.min(elapsed / duration, 1)
+
+                // Smooth easing
+                const easeProgress = 1 - Math.pow(1 - progress, 3)
+
+                // Interpolate position
+                camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
+                camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
+                camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
+
+                // Interpolate rotation
+                // camera.rotation.x = startRotation.x + (endRotation.x - startRotation.x) * easeProgress
+                // camera.rotation.y = startRotation.y + (endRotation.y - startRotation.y) * easeProgress
+                // camera.rotation.z = startRotation.z + (endRotation.z - startRotation.z) * easeProgress
+
+                if (progress < 1) {
+                  requestAnimationFrame(animateZoom)
+                  sleep(2000).then(() => {
+                    window.location.href = object.userData.route
+                  })
+                }
+              }
+
+              animateZoom()
+            }
+
+            window.addEventListener("click", onMouseClick)
           },
           undefined,
           (error) => {
-            console.error("An error happened while loading the lantern model:", error)
+            console.error("An error happened while loading the stall model:", error)
           }
         )
-      })
-
-      const raycaster = new THREE.Raycaster()
-      const mouse = new THREE.Vector2()
-
-      // Zoom to the clicked lantern
-      window.addEventListener("click", (event) => {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-
-        raycaster.setFromCamera(mouse, camera)
-        const intersects = raycaster.intersectObjects(lanterns, true)
-
-        if (intersects.length > 0) {
-          let clickedLantern = intersects[0].object
-          while (clickedLantern.parent && clickedLantern.parent !== scene) {
-            clickedLantern = clickedLantern.parent
-          }
-          const targetPosition = clickedLantern.position.clone()
-          const zoomDuration = 5000
-          const zoomStartTime = Date.now()
-          const initialCameraPosition = camera.position.clone()
-
-          const zoomAnimate = () => {
-            const elapsed = Date.now() - zoomStartTime
-            const progress = Math.min(elapsed / zoomDuration, 1)
-
-            const easeProgress = 1 - Math.pow(1 - progress, 3)
-
-            camera.position.lerpVectors(initialCameraPosition, targetPosition, easeProgress)
-
-            if (progress < 0.5) {
-              requestAnimationFrame(zoomAnimate)
-            } else {
-              window.location.href = clickedLantern.userData.route
-            }
-          }
-
-          zoomAnimate()
-        }
       })
 
       const animate = () => {
@@ -280,7 +304,6 @@ const Model_2 = ({ onLoad }) => {
 
       controls.update()
       if (mixer) mixer.update(delta)
-      lanternMixers.forEach((lanternMixer) => lanternMixer.update(delta))
       renderer.render(scene, camera)
       requestAnimationFrame(animate)
     }
