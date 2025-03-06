@@ -188,7 +188,7 @@ export default function Home() {
     };
 
     return (
-        <div className="min-h-screen text-white font-sans flex flex-col items-center relative overflow-y-auto">
+        <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] text-white font-sans flex flex-col items-center relative overflow-y-auto">
             {/* Background Components */}
             {/* Chatbot Interface */}
             <div className="w-full max-w-3xl z-10 px-4 pb-8 flex flex-col items-center" style={{ marginTop: '11rem' }}>
