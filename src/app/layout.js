@@ -1,7 +1,6 @@
 import "./globals.css";
-import Footer from "@/components/landing/FOOTER";
-import { Nav } from "@/components/landing/NAV";
 import { SessionProvider } from "next-auth/react";
+import LayoutWrapper from "@/components/LayoutWrapper"; // Adjust the import path as needed
 
 export const metadata = {
   title: "Bitotsav - BIT Mesra",
@@ -61,10 +60,8 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark h-full">
       <body className="flex flex-col min-h-screen">
         <SessionProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
+          <LayoutWrapper>{children}</LayoutWrapper>
         </SessionProvider>
-        <Footer />
       </body>
     </html>
   );
