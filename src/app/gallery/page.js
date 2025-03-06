@@ -19,8 +19,8 @@ export default function GalleryPage() {
   ];
 
   return (
-    <div className="text-white p-4 md:p-10 lg:p-20 w-full overflow-hidden flex flex-col items-center">
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center">
+    <div className="text-white p-4 md:p-10 lg:p-20 w-full overflow-hidden flex flex-col items-center bg-gradient-to-b from-black via-purple-900 to-black">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center bg-gradient-to-r from-purple-400 to-orange-400 text-transparent bg-clip-text">
         Bitotsav 2024: Reliving the Unforgettable Moments!
       </h1>
 
