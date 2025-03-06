@@ -1,7 +1,11 @@
-import nlp from "compromise";
 import stringSimilarity from 'string-similarity';
 
-// Basic stopwords to remove (customize as needed)
+const API_KEYS = [
+    "AIzaSyBkyHKIW_LmTQr029mky-9ImgDQm7i6grs",
+    "AIzaSyCr_I_5l2PVIT0oqsTXbNMDDyVT8a92Yzk",
+];
+
+
 const STOPWORDS = new Set([
     'a', 'an', 'the', 'and', 'or', 'but', 'if', 'in', 'on', 'with', 'as', 'by', 'for', 'of', 'at', 'to', 'from', 'up', 'down', 'out', 'over', 'under', 'again', 'further', 'then', 'once'
 ]);
@@ -12,10 +16,10 @@ const idfCache = new Map();
 // Function to preprocess text (stopword removal + normalization)
 function preprocessText(text) {
     return text
-        .toLowerCase() // Convert to lowercase
-        .replace(/[^\w\s]/g, '') // Remove punctuation
-        .split(/\s+/) // Split into words
-        .filter(word => word.length > 2 && !STOPWORDS.has(word)); // Remove short words and stopwords
+        .toLowerCase() 
+        .replace(/[^\w\s]/g, '')
+        .split(/\s+/)
+        .filter(word => word.length > 2 && !STOPWORDS.has(word));
 }
 
 function calculateTF(words, uniqueWords) {
@@ -63,8 +67,15 @@ function cosineSimilarity(vec1, vec2) {
     return dotProduct / (magnitude1 * magnitude2);
 }
 
-export async function getGeminiAnswer(userQuery, chunks) {
-    const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBkyHKIW_LmTQr029mky-9ImgDQm7i6grs";
+function getRandomApiKey() {
+    const randomIndex = Math.floor(Math.random() * API_KEYS.length);
+    console.log(API_KEYS[randomIndex]);
+    return API_KEYS[randomIndex];
+}
+
+export async function getGeminiAnswer(userQuery, chunks, retryCount = 0) {
+    const MAX_RETRIES = API_KEYS.length - 1;
+    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${getRandomApiKey()}`;
 
     try {
         const context = chunks.map(chunk => chunk.chunk).join("\n\n");
@@ -89,7 +100,12 @@ export async function getGeminiAnswer(userQuery, chunks) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+            if (errorData.error?.message.includes("quota") && retryCount < MAX_RETRIES) {
+                // Retry with a different API key
+                return getGeminiAnswer(userQuery, chunks, retryCount + 1);
+            } else {
+                throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+            }
         }
 
         const result = await response.json();
@@ -103,7 +119,12 @@ export async function getGeminiAnswer(userQuery, chunks) {
 
     } catch (error) {
         console.error("Error calling Gemini API:", error);
-        return "Error fetching response. Please try again later.";
+        if (retryCount < MAX_RETRIES) {
+            // Retry with a different API key
+            return getGeminiAnswer(userQuery, chunks, retryCount + 1);
+        } else {
+            return "Error fetching response. Please try again later.";
+        }
     }
 }
 
@@ -138,7 +159,6 @@ export async function calculateTfIdfSimilarity(prompt, chunks) {
     const SIMILARITY_THRESHOLD = 0.01;
     const TOP_N = Math.min(20, chunks.length);
     const filteredChunks = rankedChunks.filter((chunk) => chunk.similarity >= SIMILARITY_THRESHOLD);
-    console.log(filteredChunks);
     return filteredChunks.slice(0, TOP_N);
 }
 
