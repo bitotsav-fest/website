@@ -134,44 +134,48 @@ export default function Home() {
     // Handle Chatbot Search
     const handleSearch = async () => {
         if (!prompt.trim()) return; // Ignore empty prompts
-
+    
         setLoading(true);
         setError(null);
-
+    
         // Strip special characters from the prompt
         const cleanedPrompt = prompt.replace(/[^a-zA-Z0-9\s]/g, '');
-
+    
         // Add user message to chat history immediately
         setChatHistory((prev) => [...prev, { type: 'user', text: cleanedPrompt }]);
         setPrompt(''); // Clear input after sending
-
+    
         // Add a temporary bot message with the custom spinner
         setChatHistory((prev) => [...prev, { type: 'bot', text: 'loading', isLoading: true }]);
-
+    
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt: cleanedPrompt, filename: 'chunks' }), // Use cleanedPrompt
             });
-
+    
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.message || response.statusText);
             }
-
+    
             const data = await response.json();
-
+    
+            // Remove <br> tags entirely
+            let sanitizedResponse = data.geminiResponse.replace(/<br\s*\/?>/gi, '');
+            sanitizedResponse = sanitizedResponse.replace(/^\n+/, '');
+    
             // Replace the spinner with the actual bot response
             setChatHistory((prev) => [
                 ...prev.slice(0, -1), // Remove the last message (spinner)
-                { type: 'bot', text: data.geminiResponse, isLoading: false }, // Add the actual response
+                { type: 'bot', text: sanitizedResponse, isLoading: false }, // Add the sanitized response
             ]);
             setRandomQuestions(getRandomQuestions());
         } catch (err) {
             console.error("Error searching chunks:", err);
             setError("Error searching chunks: " + err.message);
-
+    
             // Replace the spinner with an error message
             setChatHistory((prev) => [
                 ...prev.slice(0, -1), // Remove the last message (spinner)
