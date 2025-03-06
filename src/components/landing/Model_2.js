@@ -144,6 +144,8 @@ const Model_2 = ({ onLoad }) => {
     window.addEventListener("keydown", onKeyDown)
     window.addEventListener("keyup", onKeyUp)
 
+    const lanternMixers = []
+
     // Initial camera animation
     const initialAnimation = () => {
       const duration = 4000 // 4 seconds
@@ -160,64 +162,49 @@ const Model_2 = ({ onLoad }) => {
       //Navigation Bar
       const lanternPositions = [
         { x: -0.1, y: 2.5, z: -6, id: "Login/Register", route: "/login" },
-        { x: -2, y: 2, z: -1, id: "Events", route: "/events" },
-        { x: 2, y: 2, z: 1, id: "Teams", route: "/teams" },
-        { x: -2, y: 2, z: 0, id: "About", route: "/about" },
-        { x: 2, y: 2, z: 2.5, id: "Sponsors", route: "/sponsors" },
-        { x: 2, y: 2, z: 0, id: "Developers", route: "/developers" },
-        { x: -2, y: 2, z: 1, id: "LeaderBoards", route: "/leaderboard" },
-        { x: -2, y: 2, z: 2.5, id: "Alumini", route: "/signature" },
-        { x: 2, y: 2, z: -1, id: "Gallery", route: "/gallery" },
+        { x: -2, y: 1.4, z: -1, id: "Events", route: "/events" },
+        { x: 2, y: 1.25, z: 1, id: "Teams", route: "/teams" },
+        { x: -2, y: 1.9, z: 0, id: "About", route: "/about" },
+        { x: 2, y: 1.9, z: 2.5, id: "Sponsors", route: "/sponsors" },
+        { x: 2, y: 1.8, z: 0, id: "Developers", route: "/developers" },
+        { x: -2, y: 1.6, z: 1, id: "LeaderBoards", route: "/leaderboard" },
+        { x: -2, y: 1.5, z: 2.5, id: "Alumini", route: "/signature" },
+        { x: 2, y: 1.3, z: -1, id: "Gallery", route: "/gallery" },
       ]
 
       const lanterns = []
 
-      const lanternLoader = new GLTFLoader()
-      lanternLoader.load(
-        "/Lanterns.glb",
-        (gltf) => {
-          const lanternModel = gltf.scene
-
-          lanternPositions.forEach((pos) => {
-            const lantern = lanternModel.clone()
+      let lanternMixer
+      lanternPositions.forEach((pos) => {
+        loader.load(
+          "/Lanterns.glb",
+          (gltf) => {
+            const lantern = gltf.scene
             lantern.position.set(pos.x, pos.y, pos.z)
-            lantern.userData = { originalPosition: pos, id: pos.id, route: pos.route }
+            lantern.userData.route = pos.route
             scene.add(lantern)
             lanterns.push(lantern)
-            const textDiv = document.createElement("div")
-            textDiv.style.position = "absolute"
-            textDiv.style.color = "#fff"
-            textDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
-            textDiv.style.padding = "2px 5px"
-            textDiv.style.borderRadius = "3px"
-            textDiv.style.pointerEvents = "none"
-            textDiv.innerHTML = pos.id
-            document.body.appendChild(textDiv)
 
-            const updateTextPosition = () => {
-              const vector = new THREE.Vector3(pos.x, pos.y, pos.z)
-              vector.project(camera)
+            lanternMixer = new THREE.AnimationMixer(gltf.scene)
+            lanternMixers.push(lanternMixer)
+            gltf.animations.forEach((clip) => {
+              lanternMixer.clipAction(clip).play()
+            })
 
-              const x = (vector.x * 0.5 + 0.5) * window.innerWidth
-              const y = (vector.y * -0.5 + 0.5) * window.innerHeight
-
-              textDiv.style.left = `${x}px`
-              textDiv.style.top = `${y}px`
-            }
-
-            const animateText = () => {
-              updateTextPosition()
-              requestAnimationFrame(animateText)
-            }
-
-            animateText()
-          })
-        },
-        undefined,
-        (error) => {
-          console.error("An error happened while loading the lantern model:", error)
-        }
-      )
+            // Add hovering effect
+            const hoverAnimation = new THREE.AnimationClip("hover", -1, [
+              new THREE.VectorKeyframeTrack(".position[y]", [0, 2, 4], [lantern.position.y, lantern.position.y + 0.1, lantern.position.y], THREE.InterpolateSmooth),
+            ])
+            const hoverAction = lanternMixer.clipAction(hoverAnimation)
+            hoverAction.setLoop(THREE.LoopRepeat)
+            hoverAction.play()
+          },
+          undefined,
+          (error) => {
+            console.error("An error happened while loading the lantern model:", error)
+          }
+        )
+      })
 
       const raycaster = new THREE.Raycaster()
       const mouse = new THREE.Vector2()
@@ -277,7 +264,6 @@ const Model_2 = ({ onLoad }) => {
 
       animate()
     }
-
     // Animation loop
     const clock = new THREE.Clock()
     const animate = () => {
@@ -294,6 +280,7 @@ const Model_2 = ({ onLoad }) => {
 
       controls.update()
       if (mixer) mixer.update(delta)
+      lanternMixers.forEach((lanternMixer) => lanternMixer.update(delta))
       renderer.render(scene, camera)
       requestAnimationFrame(animate)
     }
