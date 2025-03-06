@@ -65,8 +65,10 @@ export default function ConcertsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16 space-y-6"
         >
-          <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400">
-            Concert Nights
+           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-tight mb-10 sm:mb-12">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
+             Concert Nights
+            </span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Three unforgettable nights of music, energy, and pure entertainment

@@ -43,8 +43,10 @@ export default function EventsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-4 mb-16"
         >
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-            Bitotsav Events
+           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-10 sm:mb-12">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
+             Bitotsav Events
+            </span>
           </h1>
           <p className="text-gray-400 text-lg">Discover amazing events and performances</p>
         </motion.div>
