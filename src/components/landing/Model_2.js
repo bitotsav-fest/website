@@ -5,6 +5,9 @@ import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
+import { Bold } from "lucide-react"
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -50,6 +53,7 @@ const Model_2 = ({ onLoad }) => {
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/")
     loader.setDRACOLoader(dracoLoader)
+    const fontLoader = new FontLoader()
 
     let mixer
     loader.load(
@@ -76,10 +80,12 @@ const Model_2 = ({ onLoad }) => {
     controls.enablePan = false
     controls.dampingFactor = 0.05
     controls.enableZoom = true
-    controls.minDistance = 2
+    controls.minDistance = 1
     controls.maxDistance = 6
     controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
+    controls.target.set(0, 0.15)
+    controls.update()
 
     // Keyboard controls
     const keyboardControls = {
@@ -206,10 +212,12 @@ const Model_2 = ({ onLoad }) => {
       { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
       { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
       { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
-      { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat", top: 0xffffff, table: 0x000000 },
     ]
 
     const Stalls = []
+
+    let font = ""
     //Navigation Bar
     StallPos.forEach((stall) => {
       loader.load(
@@ -231,6 +239,35 @@ const Model_2 = ({ onLoad }) => {
               child.userData = model.userData // Ensure userData is set on child meshes
             }
           })
+
+          fontLoader.load(
+            "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
+            (font) => {
+              const textGeometry = new TextGeometry(stall.id, {
+                font: font,
+                size: 0.1,
+                height: 0.01,
+                depth: 0.01,
+              })
+              textGeometry.center()
+              textGeometry.computeBoundingBox()
+              const maxWidth = 0.4
+              const textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x
+              if (textWidth > maxWidth) {
+                const scale = maxWidth / textWidth
+                textGeometry.scale(scale, scale, scale)
+              }
+              const textMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
+              const text = new THREE.Mesh(textGeometry, textMaterial)
+              text.position.set(stall.x + (stall.x < 0 ? 0.4 : stall.x > 0 ? -0.4 : -0.05), stall.y + 0.08, stall.z + (stall.x === 0 ? 0.4 : stall.x < 0 ? 0.05 : -0.05))
+              text.rotation.y = stall.Y * (stall.id === "LOGIN" ? 0 : -1)
+              scene.add(text)
+            },
+            undefined,
+            (error) => {
+              console.error("An error happened while loading the stall model:", error)
+            }
+          )
 
           // Add click event listener for zooming into the stall
           const raycaster = new THREE.Raycaster()
@@ -297,11 +334,11 @@ const Model_2 = ({ onLoad }) => {
               } else {
                 // Re-enable min/max distance and polar angle
                 sleep(5000).then(() => {
-                  controls.minDistance = 2
+                  controls.minDistance = 1
                   controls.maxDistance = 6
                   controls.minPolarAngle = Math.PI / 4
                   controls.maxPolarAngle = Math.PI / 2 - 0.1
-                  controls.target.set(0, 0, 0)
+                  controls.target.set(0, 0.15, 0)
                   controls.update()
                 })
               }
