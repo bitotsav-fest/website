@@ -310,7 +310,7 @@ const Model_2 = ({ onLoad }) => {
             animateZoom()
           }
 
-          // window.addEventListener("click", onMouseClick)
+          window.addEventListener("click", onMouseClick)
         },
         undefined,
         (error) => {
