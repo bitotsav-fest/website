@@ -20,19 +20,19 @@ export default function Footer() {
           </p>
           {/* Social Media */}
           <div className="flex justify-center md:justify-start space-x-4 mt-4">
-            <Link href="https://twitter.com/Bitotsav" className="hover:opacity-80">
+            <Link href="https://twitter.com/Bitotsav" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <FaXTwitter size={20} />
             </Link>
-            <Link href="https://www.instagram.com/bitotsav.25/" className="hover:opacity-80">
+            <Link href="https://www.instagram.com/bitotsav.25/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <FaInstagram size={20} />
             </Link>
-            <Link href="https://www.youtube.com/@bitotsav3377" className="hover:opacity-80">
+            <Link href="https://www.youtube.com/@bitotsav3377" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <FaYoutube size={20} />
             </Link>
-            <Link href="https://www.facebook.com/bitotsav/" className="hover:opacity-80">
+            <Link href="https://www.facebook.com/bitotsav/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <FaFacebook size={20} />
             </Link>
-            <Link href="https://www.linkedin.com/company/bitotsavbitmesra/" className="hover:opacity-80">
+            <Link href="https://www.linkedin.com/company/bitotsavbitmesra/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
               <FaLinkedin size={20} />
             </Link>
           </div>
