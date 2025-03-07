@@ -39,20 +39,12 @@ const Model_2 = ({ onLoad }) => {
     camera.position.set(5, 3, 5) // Changed initial position for dramatic entry
 
     // Enhanced lighting setup
-    const ambientLight = new THREE.AmbientLight(0x404040, 2)
+    const ambientLight = new THREE.AmbientLight(0xdddddd, 2)
     scene.add(ambientLight)
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 3)
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
     directionalLight.position.set(5, 5, 5)
-    directionalLight.castShadow = true
-    directionalLight.shadow.mapSize.width = 2048
-    directionalLight.shadow.mapSize.height = 2048
-    directionalLight.shadow.camera.near = 0.5
-    directionalLight.shadow.camera.far = 500
     scene.add(directionalLight)
-
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x404040, 2)
-    scene.add(hemisphereLight)
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
@@ -88,7 +80,6 @@ const Model_2 = ({ onLoad }) => {
     controls.maxDistance = 6
     controls.minPolarAngle = Math.PI / 4
     controls.maxPolarAngle = Math.PI / 2 - 0.1
-    controls.target.set(0, 0, 0)
 
     // Keyboard controls
     const keyboardControls = {
@@ -159,116 +150,11 @@ const Model_2 = ({ onLoad }) => {
       if (isMobile) {
         endPosition.x = 0
         endPosition.y = 0.8
-        endPosition.z = 3
+        endPosition.z = 5
+        controls.minDistance = 2
+        controls.maxDistance = 6
+        controls.update()
       }
-
-      const StallPos = [
-        { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login", top: 0xffffff, table: 0x000000 },
-        { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
-        { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
-        { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
-        { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
-        { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
-        { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
-        { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
-        { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
-      ]
-
-      const Stalls = []
-      //Navigation Bar
-      StallPos.forEach((stall) => {
-        loader.load(
-          "/Stall.glb",
-          (gltf) => {
-            const model = gltf.scene.clone() // Clone the model to create separate instances
-            model.position.set(stall.x, stall.y, stall.z)
-            model.rotation.y = stall.Y
-            model.userData = { originalPosition: model.position, originalRotation: model.rotation.y, id: stall.id, route: stall.route }
-            Stalls.push(model)
-            scene.add(model)
-            model.traverse((child) => {
-              if (child.isMesh) {
-                if (child.material.name === "Top") {
-                  child.material = new THREE.MeshStandardMaterial({ color: stall.top })
-                } else if (child.material.name === "Table") {
-                  child.material = new THREE.MeshStandardMaterial({ color: stall.table })
-                }
-                child.userData = model.userData // Ensure userData is set on child meshes
-              }
-            })
-
-            // Add click event listener for zooming into the stall
-            const raycaster = new THREE.Raycaster()
-            const mouse = new THREE.Vector2()
-
-            const onMouseClick = (event) => {
-              mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-              mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
-
-              raycaster.setFromCamera(mouse, camera)
-              const intersects = raycaster.intersectObjects(scene.children, true)
-
-              if (intersects.length > 0) {
-                let intersected = intersects[0].object
-
-                // Ensure we are getting the correct parent stall model
-                while (intersected.parent && !intersected.userData.id) {
-                  intersected = intersected.parent
-                }
-                zoomToStall(intersected)
-              }
-            }
-
-            const zoomToStall = (object) => {
-              const duration = 2000 // 2 seconds
-              const startTime = Date.now()
-              const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
-              const endPosition = { x: object.userData.originalPosition.x, y: object.userData.originalPosition.y, z: object.userData.originalPosition.z }
-              controls.target.set(endPosition.x, endPosition.y, endPosition.z)
-              controls.update()
-              const startRotation = {
-                x: camera.rotation.x,
-                y: camera.rotation.y, // Rotate 180 degrees
-                z: camera.rotation.z,
-              }
-              const endRotation = { x: 0, y: object.userData.originalRotation / 2, z: 0 }
-
-              const animateZoom = () => {
-                const elapsed = Date.now() - startTime
-                const progress = Math.min(elapsed / duration, 1)
-
-                // Smooth easing
-                const easeProgress = 1 - Math.pow(1 - progress, 3)
-
-                // Interpolate position
-                camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
-                camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
-                camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
-
-                // Interpolate rotation
-                // camera.rotation.x = startRotation.x + (endRotation.x - startRotation.x) * easeProgress
-                // camera.rotation.y = startRotation.y + (endRotation.y - startRotation.y) * easeProgress
-                // camera.rotation.z = startRotation.z + (endRotation.z - startRotation.z) * easeProgress
-
-                if (progress < 1) {
-                  requestAnimationFrame(animateZoom)
-                  sleep(2000).then(() => {
-                    window.location.href = object.userData.route
-                  })
-                }
-              }
-
-              animateZoom()
-            }
-
-            window.addEventListener("click", onMouseClick)
-          },
-          undefined,
-          (error) => {
-            console.error("An error happened while loading the stall model:", error)
-          }
-        )
-      })
 
       const animate = () => {
         const elapsed = Date.now() - startTime
@@ -303,12 +189,135 @@ const Model_2 = ({ onLoad }) => {
       if (keyboardControls.moveDown) camera.translateY(-moveSpeed)
 
       controls.update()
+
       if (mixer) mixer.update(delta)
       renderer.render(scene, camera)
       requestAnimationFrame(animate)
     }
 
     animate()
+
+    const StallPos = [
+      { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
+    ]
+
+    const Stalls = []
+    //Navigation Bar
+    StallPos.forEach((stall) => {
+      loader.load(
+        "/Stall.glb",
+        (gltf) => {
+          const model = gltf.scene.clone() // Clone the model to create separate instances
+          model.position.set(stall.x, stall.y, stall.z)
+          model.rotation.y = stall.Y
+          model.userData = { originalPosition: model.position, originalRotation: model.rotation.y, id: stall.id, route: stall.route }
+          Stalls.push(model)
+          scene.add(model)
+          model.traverse((child) => {
+            if (child.isMesh) {
+              if (child.material.name === "Top") {
+                child.material = new THREE.MeshStandardMaterial({ color: stall.top })
+              } else if (child.material.name === "Table") {
+                child.material = new THREE.MeshStandardMaterial({ color: stall.table })
+              }
+              child.userData = model.userData // Ensure userData is set on child meshes
+            }
+          })
+
+          // Add click event listener for zooming into the stall
+          const raycaster = new THREE.Raycaster()
+          const mouse = new THREE.Vector2()
+
+          const onMouseClick = (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+            raycaster.setFromCamera(mouse, camera)
+            const intersects = raycaster.intersectObjects(scene.children, true)
+
+            if (intersects.length > 0) {
+              let intersected = intersects[0].object
+
+              // Ensure we are getting the correct parent stall model
+              while (intersected.parent && !intersected.userData.id) {
+                intersected = intersected.parent
+              }
+              zoomToStall(intersected)
+            }
+          }
+
+          const zoomToStall = (object) => {
+            // Disable min/max distance and polar angle
+            controls.minDistance = 0
+            controls.maxDistance = Infinity
+            controls.minPolarAngle = 0
+            controls.maxPolarAngle = Math.PI
+
+            const duration = 2000 // 2 seconds
+            const startTime = Date.now()
+            const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
+            const endPosition = {
+              x: object.userData.originalPosition.x + (object.userData.originalPosition.x < 0 ? 0.6 : object.userData.originalPosition.x > 0 ? -0.6 : 0),
+              y: object.userData.originalPosition.y + 0.3,
+              z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 0.6 : 0),
+            }
+            const startRotation = {
+              x: camera.rotation.x,
+              y: camera.rotation.y, // Rotate 180 degrees
+              z: camera.rotation.z,
+            }
+            const endRotation = { x: 0, y: object.userData.originalRotation / 2, z: 0 }
+
+            const animateZoom = () => {
+              const elapsed = Date.now() - startTime
+              const progress = Math.min(elapsed / duration, 1)
+
+              // Smooth easing
+              const easeProgress = 1 - Math.pow(1 - progress, 3)
+
+              // Interpolate position
+
+              controls.target.set(object.userData.originalPosition.x, object.userData.originalPosition.y, object.userData.originalPosition.z)
+              controls.update()
+              camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
+              camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
+              camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
+
+              if (progress < 1) {
+                requestAnimationFrame(animateZoom)
+                window.location.href = object.userData.route
+              } else {
+                // Re-enable min/max distance and polar angle
+                sleep(5000).then(() => {
+                  controls.minDistance = 2
+                  controls.maxDistance = 6
+                  controls.minPolarAngle = Math.PI / 4
+                  controls.maxPolarAngle = Math.PI / 2 - 0.1
+                  controls.target.set(0, 0, 0)
+                  controls.update()
+                })
+              }
+            }
+
+            animateZoom()
+          }
+
+          // window.addEventListener("click", onMouseClick)
+        },
+        undefined,
+        (error) => {
+          console.error("An error happened while loading the stall model:", error)
+        }
+      )
+    })
 
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight
