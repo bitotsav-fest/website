@@ -7,7 +7,6 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
-import { Bold } from "lucide-react"
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -180,6 +179,7 @@ const Model_2 = ({ onLoad }) => {
 
       animate()
     }
+
     // Animation loop
     const clock = new THREE.Clock()
     const animate = () => {
@@ -216,6 +216,7 @@ const Model_2 = ({ onLoad }) => {
     ]
 
     const Stalls = []
+    const TextMeshes = []
 
     let font = ""
     //Navigation Bar
@@ -261,6 +262,8 @@ const Model_2 = ({ onLoad }) => {
               const text = new THREE.Mesh(textGeometry, textMaterial)
               text.position.set(stall.x + (stall.x < 0 ? 0.4 : stall.x > 0 ? -0.4 : -0.05), stall.y + 0.08, stall.z + (stall.x === 0 ? 0.4 : stall.x < 0 ? 0.05 : -0.05))
               text.rotation.y = stall.Y * (stall.id === "LOGIN" ? 0 : -1)
+              text.userData = model.userData // Ensure userData is set on text meshes
+              TextMeshes.push(text)
               scene.add(text)
             },
             undefined,
@@ -278,7 +281,7 @@ const Model_2 = ({ onLoad }) => {
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
 
             raycaster.setFromCamera(mouse, camera)
-            const intersects = raycaster.intersectObjects(scene.children, true)
+            const intersects = raycaster.intersectObjects([...scene.children, ...TextMeshes], true)
 
             if (intersects.length > 0) {
               let intersected = intersects[0].object
@@ -294,9 +297,8 @@ const Model_2 = ({ onLoad }) => {
           const zoomToStall = (object) => {
             // Disable min/max distance and polar angle
             controls.minDistance = 0
-            controls.maxDistance = Infinity
+            controls.maxDistance = 6
             controls.minPolarAngle = 0
-            controls.maxPolarAngle = Math.PI
 
             const duration = 2000 // 2 seconds
             const startTime = Date.now()
@@ -306,12 +308,6 @@ const Model_2 = ({ onLoad }) => {
               y: object.userData.originalPosition.y + 0.3,
               z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 0.6 : 0),
             }
-            const startRotation = {
-              x: camera.rotation.x,
-              y: camera.rotation.y, // Rotate 180 degrees
-              z: camera.rotation.z,
-            }
-            const endRotation = { x: 0, y: object.userData.originalRotation / 2, z: 0 }
 
             const animateZoom = () => {
               const elapsed = Date.now() - startTime
@@ -330,10 +326,10 @@ const Model_2 = ({ onLoad }) => {
 
               if (progress < 1) {
                 requestAnimationFrame(animateZoom)
-                window.location.href = object.userData.route
               } else {
                 // Re-enable min/max distance and polar angle
                 sleep(5000).then(() => {
+                  window.location.href = object.userData.route
                   controls.minDistance = 1
                   controls.maxDistance = 6
                   controls.minPolarAngle = Math.PI / 4
