@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="text-center md:text-left">
           <h3 className="font-semibold text-md pb-1">Technical Queries</h3>
           <p className="text-sm">
-            Shashwat Raj: <a href="tel:+919508846600">9508846600</a>
+            Shaswat Raj: <a href="tel:+919508846600">9508846600</a>
           </p>
           <p className="text-sm">
             Abhinav Kumar Choudhary: <a href="tel:+919939110848">9939110848</a>
