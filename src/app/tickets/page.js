@@ -186,7 +186,7 @@ export default function TicketPage() {
           <h2 className="text-4xl font-bold mb-6">Why Choose Bitotsav?</h2>
           <p className="text-xl text-gray-400 leading-relaxed mb-12">
             Join us for an unforgettable celebration of talent, technology, and culture. 
-            Create memories that will last a lifetime at BIT Mesra's flagship festival.
+            Create memories that will last a lifetime at BIT Mesra&nbsp;s flagship festival.
           </p>
           <RainbowButton className="px-12 py-4 text-lg">
             Secure Your Spot Now
