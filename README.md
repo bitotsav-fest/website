@@ -96,6 +96,12 @@ cp env.example .env
 - **Follow Us**: Promote social media channels for updates.
 - **Volunteer**: Invite individuals to join the organizing team.
 
+# Contributors
+
+![Contributors](/public/contributions.png)
+
+
+
 ## References
 
 - [Bitotsav Instagram](https://www.instagram.com/bitotsav24/)
