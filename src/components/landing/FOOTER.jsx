@@ -1,70 +1,84 @@
-// Footer.jsx
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-8 px-6 md:px-20 border-t border-white border-opacity-25 z-50">
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start space-y-6 md:space-y-0">
-        {/* College Logo & Description */}
-        <div className="md:w-1/3 text-center md:text-left">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <img src="/bitotsav-logo.svg" alt="bitotsav logo" className="w-10 h-auto" />
-            Birla Institute of Technology, Mesra
-          </h2>
-          <p className="text-sm mt-2 opacity-80">
-            Bitotsav is a grand celebration of India's rich cultural
-            heritage, bringing together students from all walks of life to
-            revel in the vibrant essence of tradition and creativity.
-          </p>
-          {/* Social Media */}
-          <div className="flex justify-center md:justify-start space-x-4 mt-4">
-            <Link href="https://twitter.com/Bitotsav" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
-              <FaXTwitter size={20} />
-            </Link>
-            <Link href="https://www.instagram.com/bitotsav.25/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
-              <FaInstagram size={20} />
-            </Link>
-            <Link href="https://www.youtube.com/@bitotsav3377" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
-              <FaYoutube size={20} />
-            </Link>
-            <Link href="https://www.facebook.com/bitotsav/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
-              <FaFacebook size={20} />
-            </Link>
-            <Link href="https://www.linkedin.com/company/bitotsavbitmesra/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
-              <FaLinkedin size={20} />
+    <footer className="w-full bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] py-12 px-6 md:px-20 border-t border-[#EFCA4E]/20 z-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+          {/* College Logo & Description */}
+          <div className="md:w-1/3 text-center md:text-left space-y-4">
+            <h2 className="text-xl font-bold flex items-center gap-3 text-[#EFCA4E]">
+              <img src="/bitotsav-logo.svg" alt="bitotsav logo" className="w-12 h-auto" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
+                Birla Institute of Technology, Mesra
+              </span>
+            </h2>
+            <p className="text-sm leading-relaxed text-[#F6F1E2]/80">
+              Bitotsav is a grand celebration of India's rich cultural
+              heritage, bringing together students from all walks of life to
+              revel in the vibrant essence of tradition and creativity.
+            </p>
+            {/* Social Media */}
+            <div className="flex justify-center md:justify-start space-x-4 mt-6">
+              {[
+                { icon: FaXTwitter, href: "https://twitter.com/Bitotsav", label: "Twitter" },
+                { icon: FaInstagram, href: "https://www.instagram.com/bitotsav.25/", label: "Instagram" },
+                { icon: FaYoutube, href: "https://www.youtube.com/@bitotsav3377", label: "YouTube" },
+                { icon: FaFacebook, href: "https://www.facebook.com/bitotsav/", label: "Facebook" },
+                { icon: FaLinkedin, href: "https://www.linkedin.com/company/bitotsavbitmesra/", label: "LinkedIn" }
+              ].map((social, index) => (
+                <Link 
+                  key={index}
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 rounded-full bg-[#EFCA4E]/10 hover:bg-[#EFCA4E]/20 transition-all duration-300 hover:scale-110"
+                >
+                  <social.icon size={20} className="text-[#EFCA4E]" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Technical Queries */}
+          <div className="text-center md:text-left bg-[#EFCA4E]/5 p-6 rounded-2xl backdrop-blur-sm border border-[#EFCA4E]/10">
+            <h3 className="text-lg font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
+              Technical Queries
+            </h3>
+            <div className="space-y-3">
+              <p className="text-sm">
+                <span className="text-[#EFCA4E]/80">Shaswat Raj:</span>{" "}
+                <a href="tel:+919508846600" className="hover:text-[#EFCA4E] transition-colors">9508846600</a>
+              </p>
+              <p className="text-sm">
+                <span className="text-[#EFCA4E]/80">Abhinav Kumar Choudhary:</span>{" "}
+                <a href="tel:+919939110848" className="hover:text-[#EFCA4E] transition-colors">9939110848</a>
+              </p>
+            </div>
+          </div>
+
+          {/* Virtual Helpdesk */}
+          <div className="text-center md:text-left bg-[#EFCA4E]/5 p-6 rounded-2xl backdrop-blur-sm border border-[#EFCA4E]/10">
+            <h3 className="text-lg font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
+              Need Assistance?
+            </h3>
+            <p className="text-sm text-[#F6F1E2]/80 mb-4">Get in touch with our team</p>
+            <Link href="/virtual-helpdesk"  rel="noopener noreferrer">
+              <button className="w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#EFCA4E]/20 hover:scale-105 border border-[#EFCA4E]/20">
+                Virtual Helpdesk
+              </button>
             </Link>
           </div>
         </div>
 
-        {/* Technical Queries */}
-        <div className="text-center md:text-left">
-          <h3 className="font-semibold text-md pb-1">Technical Queries</h3>
-          <p className="text-sm">
-            Shaswat Raj: <a href="tel:+919508846600">9508846600</a>
-          </p>
-          <p className="text-sm">
-            Abhinav Kumar Choudhary: <a href="tel:+919939110848">9939110848</a>
-          </p>
+        {/* Copyright Line */}
+        <div className="mt-12 pt-6 border-t border-[#EFCA4E]/10">
+          <div className="text-center text-sm text-[#F6F1E2]/60">
+            © {new Date().getFullYear()} BIT Mesra. All rights reserved.
+          </div>
         </div>
-
-        {/* Virtual Helpdesk */}
-        <div className="text-center md:text-left">
-          <h3 className="font-semibold text-md">Need Assistance?</h3>
-          <p className="text-sm opacity-80">Get in touch</p>
-          <Link href="LINK" target="_blank" rel="noopener noreferrer">
-            <button className="mt-3 px-4 py-2 bg-white text-black font-semibold rounded-lg transition-all duration-300 hover:bg-opacity-90 hover:scale-105 hover:shadow-lg">
-              Virtual Helpdesk
-            </button>
-          </Link>
-        </div>
-      </div>
-
-      {/* Copyright Line */}
-      <div className="border-t border-white border-opacity-25 my-4"></div>
-      <div className="text-center text-sm mt-6 opacity-70">
-        © {new Date().getFullYear()} BIT Mesra. All rights reserved.
       </div>
     </footer>
   );

@@ -9,7 +9,16 @@ import { getUserUUID } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaXmark } from "react-icons/fa6";
-
+import { motion } from "framer-motion";
+import {
+  MapPin,
+  Clock,
+  Sparkles,
+  Calendar,
+  Star,
+  Gift,
+  Music,
+} from "lucide-react";
 export default function EventDetailPage() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
@@ -91,107 +100,164 @@ export default function EventDetailPage() {
   if (!event) {
     return <div className="text-center text-white mt-10">Event Not Found</div>;
   }
-
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6 flex justify-center py-20">
-      <div className="max-w-3xl w-full bg-gray-800 p-6 rounded-lg flex flex-col gap-6">
-        {/*Close Button */}
-        <div
-          className="w-[10px] h-[10px] relative top-[10] right-[10] flex z-10 self-end items-center cursor-pointer scale-125 hover:scale-150"
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] p-6 flex justify-center py-20">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl w-full bg-[#2D1E0F]/20 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/10 flex flex-col gap-8"
+      >
+        {/* Close Button */}
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="self-end p-2 cursor-pointer text-[#EFCA4E] hover:text-[#EFCA4E]/80 transition-colors"
           onClick={() => router.push("/events")}
         >
-          <FaXmark />
-        </div>
-        {/* Upper Side*/}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+          <FaXmark className="w-6 h-6" />
+        </motion.div>
+        {/* Upper Side */}
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           {/* Left: Image */}
-          <Image
-            src={event.imgURL}
-            alt={event.name}
-            width={800}
-            height={450}
-            className="w-[300px] h-[200px] object-cover rounded-md"
-          />
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="relative w-full md:w-[400px] h-[390px] rounded-xl overflow-hidden border border-[#EFCA4E]/20 group"
+          >
+            <Image
+              src={event.imgURL}
+              alt={event.name}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118] via-transparent opacity-60" />
+          </motion.div>
 
           {/* Right: Content */}
-          <div className="flex flex-col">
-            <h1 className="text-xl font-bold">{event.name}</h1>
-            <p className="text-sm opacity-75">Club: {event.club}</p>
-            <p className="text-sm opacity-75">Category: {event.category}</p>
-            <p className="text-sm opacity-75">Venue: {event.venue}</p>
-            <p className="text-sm opacity-75">Time: {event.time}</p>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex-1 space-y-6"
+          >
+            <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
+              {event.name}
+            </h1>
+            <div className="grid gap-4 text-[#F6F1E2]/70">
+              <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
+                <Calendar className="w-5 h-5 text-[#EFCA4E]" />
+                <span>Club: {event.club}</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
+                <Star className="w-5 h-5 text-[#EFCA4E]" />
+                <span>Category: {event.category}</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
+                <MapPin className="w-5 h-5 text-[#EFCA4E]" />
+                <span>Venue: {event.venue}</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
+                <Clock className="w-5 h-5 text-[#EFCA4E]" />
+                <span>Time: {event.time}</span>
+              </div>
+            </div>
 
             {/* Register Button */}
-            <button
-              className="mt-4 px-4 py-2 bg-white text-black font-semibold rounded-lg transition-all duration-300 hover:bg-opacity-90 hover:scale-105 hover:shadow-lg"
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full px-6 py-4 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#EFCA4E]/20 border border-[#EFCA4E]/20"
               onClick={handleRegister}
             >
-              Register
-            </button>
-          </div>
+              Register Now
+            </motion.button>
+          </motion.div>
         </div>
 
-        {/* Bottom Side*/}
-        <div className="space-y-10">
-          {/* Prize (if exists) */}
+        {/* Bottom Side */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-10"
+        >
+          {/* Prize */}
           {event.prize && (
-            <h3 className="text-xl font-semibold">
-              PRIZE:{" "}
-              <span className="font-normal text-lg opacity-75">
-                {event.prize}
-              </span>
-            </h3>
+            <div className="p-6 rounded-xl bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20">
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-2">Prize Pool</h3>
+              <p className="text-xl text-[#F6F1E2]/70">{event.prize}</p>
+            </div>
           )}
 
-          {/* Description*/}
-          <div>
-            <h3 className="font-semibold text-xl mb-2">DESCRIPTION:</h3>
-            <p className="text-lg opacity-75 whitespace-pre-line">
+          {/* Description */}
+          <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">About the Event</h3>
+            <p className="text-lg text-[#F6F1E2]/70 whitespace-pre-line leading-relaxed">
               {event.description}
             </p>
           </div>
 
-          {/* Rules (if exists) */}
+          {/* Rules */}
           {event.rules && event.rules.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-xl mb-2">
-                📌 RULES AND REGULATIONS:
-              </h3>
-              <ul className="list-disc list-outside ml-6 space-y-2 text-lg opacity-75">
+            <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">📌 Rules and Regulations</h3>
+              <ul className="list-none space-y-4">
                 {event.rules.map((rule, index) => (
-                  <li key={index}>{rule}</li>
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-4 text-lg text-[#F6F1E2]/70"
+                  >
+                    <span className="text-[#EFCA4E] font-semibold">{index + 1}.</span>
+                    <span>{rule}</span>
+                  </motion.li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Judgement Criteria (if exists) */}
+          {/* Judgement Criteria */}
           {event.judgement_criteria && event.judgement_criteria.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-xl mb-2">
-                🏆 JUDGEMENT CRITERIA:
-              </h3>
-              <ul className="list-disc list-outside ml-6 space-y-2 text-lg opacity-75">
+            <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">🏆 Judgement Criteria</h3>
+              <ul className="list-none space-y-4">
                 {event.judgement_criteria.map((criteria, index) => (
-                  <li key={index}>{criteria}</li>
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-4 text-lg text-[#F6F1E2]/70"
+                  >
+                    <span className="text-[#EFCA4E] font-semibold">{index + 1}.</span>
+                    <span>{criteria}</span>
+                  </motion.li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Contact Information (if exists) */}
+          {/* Contact Information */}
           {event.contact && event.contact.length > 0 && (
-            <div>
-              <h3 className="font-semibold text-xl mb-2">CONTACT:</h3>
-              <ul className="text-lg opacity-75 space-y-1">
+            <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">Contact Information</h3>
+              <ul className="space-y-3">
                 {event.contact.map((contact, index) => (
-                  <li key={index}>{contact}</li>
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="text-lg text-[#F6F1E2]/70"
+                  >
+                    {contact}
+                  </motion.li>
                 ))}
               </ul>
             </div>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

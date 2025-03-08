@@ -38,27 +38,50 @@ export default function EventsPage() {
   }, [dayEvents, selectedDay, selectedCategory, selectedClub]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2]">
       <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Background effects */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-[#2D1E0F] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
 
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4 mb-16"
+          className="text-center space-y-4 mb-6"
         >
-           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-10 sm:mb-12">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-             Bitotsav Events
+          <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-4 sm:mb-12">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+              Bitotsav <span className=" underline decoration-wavy decoration-fuchsia-500">Events</span>
             </span>
           </h1>
-          <p className="text-gray-400 text-lg">Discover amazing events and performances</p>
+          <p className="text-[#F6F1E2]/70 text-lg">Discover amazing events and performances</p>
         </motion.div>
 
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <motion.div 
+            className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Button
+              variant={activeTab === "day" ? "default" : "ghost"}
+              onClick={() => setActiveTab("day")}
+              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "day" ? 'bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2]' : 'text-[#F6F1E2]/70 hover:text-[#F6F1E2]'}`}
+            >
+              Day Events
+            </Button>
+            <Button
+              variant={activeTab === "night" ? "default" : "ghost"}
+              onClick={() => setActiveTab("night")}
+              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "night" ? 'bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2]' : 'text-[#F6F1E2]/70 hover:text-[#F6F1E2]'}`}
+            >
+              Night Events
+            </Button>
+          </motion.div>
+        </div>
         
 
         {/* Filters for Day Events */}
@@ -72,77 +95,48 @@ export default function EventsPage() {
             >
               <div className="flex flex-wrap justify-center items-center gap-6">
                 {/* Day Selector */}
-                <div className="bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 flex flex-wrap items-center gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    {/* Day Selection Tabs */}
-                    <div className="flex bg-white/5 rounded-xl p-1 gap-1">
-                      {[1, 2, 3].map((day) => (
-                        <Button
-                          key={day}
-                          variant={selectedDay === day ? "default" : "ghost"}
-                          onClick={() => setSelectedDay(day)}
-                          className={`rounded-lg px-4 py-2 ${selectedDay === day ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
-                          Day {day}
-                        </Button>
+                <div className="bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 flex flex-wrap items-center gap-4">
+                  {/* Day Selection Tabs */}
+                  <div className="flex bg-white/5 rounded-xl p-1 gap-1">
+                    {[1, 2, 3].map((day) => (
+                      <Button
+                        key={day}
+                        variant={selectedDay === day ? "default" : "ghost"}
+                        onClick={() => setSelectedDay(day)}
+                        className={`rounded-lg px-4 py-2 ${selectedDay === day ? 'bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2]' : 'text-[#F6F1E2]/70 hover:text-[#F6F1E2]'}`}
+                      >
+                        <Calendar className="w-4 h-4 mr-2" />
+                        Day {day}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {/* Category Selector */}
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
+                      <SelectValue placeholder="Category" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                      <SelectItem value="All Categories">All Categories</SelectItem>
+                      <SelectItem value="Flagship">Flagship</SelectItem>
+                      <SelectItem value="Formal">Formal</SelectItem>
+                      <SelectItem value="Informal">Informal</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {/* Club Selector */}
+                  <Select value={selectedClub} onValueChange={setSelectedClub}>
+                    <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
+                      <SelectValue placeholder="Club" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                      <SelectItem value="All Clubs">All Clubs</SelectItem>
+                      {clubs.map((club) => (
+                        <SelectItem key={club} value={club}>{club}</SelectItem>
                       ))}
-                    </div>
-
-                    {/* Category Selector */}
-                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
-                        <SelectValue placeholder="Category" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
-                        <SelectItem value="All Categories">All Categories</SelectItem>
-                        <SelectItem value="Flagship">Flagship</SelectItem>
-                        <SelectItem value="Formal">Formal</SelectItem>
-                        <SelectItem value="Informal">Informal</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    {/* Club Selector */}
-                    <Select value={selectedClub} onValueChange={setSelectedClub}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
-                        <SelectValue placeholder="Club" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
-                        <SelectItem value="All Clubs">All Clubs</SelectItem>
-                        {clubs.map((club) => (
-                          <SelectItem key={club} value={club}>{club}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    {/* Tab Navigation */}
-        <div className="flex justify-center">
-          <motion.div 
-            className="bg-white/5 backdrop-blur-xl  rounded-xl border border-white/10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Button
-              variant={activeTab === "day" ? "default" : "ghost"}
-              onClick={() => setActiveTab("day")}
-              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "day" ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
-            >
-              Day Events
-            </Button>
-            <Button
-              variant={activeTab === "night" ? "default" : "ghost"}
-              onClick={() => setActiveTab("night")}
-              className={`rounded-xl text-base font-medium px-8 py-3 ${activeTab === "night" ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
-            >
-              Night Events
-            </Button>
-          </motion.div>
-        </div>
-                 </div>
-
-              
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </motion.div>
           )}
@@ -172,46 +166,35 @@ export default function EventsPage() {
                         alt={event.name}
                         width={400}
                         height={300}
-                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500 object-top"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A0B2E] via-transparent opacity-90"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="p-8 space-y-6">
-                      <div className="flex items-center gap-3">
-                        <span className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20 text-sm">
-                          {event.category}
-                        </span>
-                        <span className="px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 text-sm">
+                    <div className="p-6 space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 text-sm rounded-full bg-[#EFCA4E]/10 border border-[#EFCA4E]/20 text-[#EFCA4E]">
                           Day {event.day}
                         </span>
+                        <span className="px-3 py-1 text-sm rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300">
+                          {event.category}
+                        </span>
                       </div>
-                      <h2 className="text-2xl font-bold text-white group-hover:text-violet-400 transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-white group-hover:text-violet-300 transition-colors duration-300">
                         {event.name}
-                      </h2>
-                      <div className="space-y-3 text-gray-400">
-                        <p className="flex items-center gap-3">
-                          <Users className="w-5 h-5 text-violet-400" />
-                          {event.club}
-                        </p>
-                        <p className="flex items-center gap-3">
-                          <MapPin className="w-5 h-5 text-pink-400" />
-                          {event.venue}
-                        </p>
+                      </h3>
+                      <div className="flex items-center gap-4 text-gray-400">
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          <span>{event.club}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{event.venue}</span>
+                        </div>
                       </div>
                     </div>
                   </Link>
-                  <div className="p-8 pt-0">
-                    <Button
-                      asChild
-                      variant="default"
-                      className="w-full bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white rounded-xl py-6 font-medium text-lg shadow-lg shadow-violet-900/20 transform hover:scale-[1.02] transition-all duration-300"
-                    >
-                      <Link href="/tickets" target="_blank" rel="noopener noreferrer">
-                        Register Now
-                      </Link>
-                    </Button>
-                  </div>
                 </motion.div>
               ))}
             </motion.div>

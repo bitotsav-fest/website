@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Music, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Spotlight } from '@/components/ui/spotlight';
 
 const concerts = [
   {
@@ -49,7 +50,7 @@ export default function ConcertsPage() {
   const [selectedDay, setSelectedDay] = useState(1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none" />
@@ -57,6 +58,7 @@ export default function ConcertsPage() {
         <div className="absolute top-0 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000" />
         <div className="absolute -bottom-40 left-20 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000" />
       </div>
+      <Spotlight/>
 
       <div className="max-w-7xl mx-auto px-4 py-24 relative">
         {/* Header */}
@@ -66,8 +68,8 @@ export default function ConcertsPage() {
           className="text-center mb-16 space-y-6"
         >
            <h1 className="text-6xl md:text-7xl text-center font-bold tracking-tight mb-10 sm:mb-12">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-             Concert Nights
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+             Concert <span className="underline decoration-wavy decoration-fuchsia-500">Nights</span>
             </span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -83,8 +85,8 @@ export default function ConcertsPage() {
               onClick={() => setSelectedDay(day)}
               className={`px-8 py-4 rounded-xl backdrop-blur-md transition-all duration-300 ${
                 selectedDay === day
-                  ? 'bg-white/10 border-purple-500/50 border-2 text-white shadow-lg shadow-purple-500/20'
-                  : 'bg-white/5 border-transparent border-2 text-gray-400 hover:bg-white/10'
+                  ? 'bg-white/10 border-[#EFCA4E]/50 border-2 text-[#F6F1E2] shadow-lg shadow-[#EFCA4E]/20'
+                  : 'bg-white/5 border-transparent border-2 text-[#F6F1E2]/70 hover:bg-white/10'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -110,7 +112,7 @@ export default function ConcertsPage() {
               .map((concert) => (
                 <motion.div
                   key={concert.id}
-                  className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 group"
+                  className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-[#EFCA4E]/10 group"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -123,38 +125,38 @@ export default function ConcertsPage() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 mix-blend-overlay" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/20 to-[#F6F1E2]/20 mix-blend-overlay" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118] via-transparent opacity-80" />
                     </div>
                     <div className="p-8 md:w-3/5 relative">
                       <div className="flex flex-wrap gap-3 mb-4">
-                        <span className="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium backdrop-blur-md">
+                        <span className="px-4 py-1.5 rounded-full bg-[#EFCA4E]/10 border border-[#EFCA4E]/20 text-[#EFCA4E] text-sm font-medium backdrop-blur-md">
                           Day {concert.day}
                         </span>
-                        <span className="px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-medium backdrop-blur-md">
+                        <span className="px-4 py-1.5 rounded-full bg-[#F6F1E2]/10 border border-[#F6F1E2]/20 text-[#F6F1E2] text-sm font-medium backdrop-blur-md">
                           {concert.genre}
                         </span>
                       </div>
-                      <h2 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                      <h2 className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
                         {concert.artist}
                       </h2>
-                      <h3 className="text-xl text-purple-400 mb-4">{concert.name}</h3>
+                      <h3 className="text-xl text-[#EFCA4E] mb-4">{concert.name}</h3>
                       <p className="text-gray-400 mb-6 leading-relaxed">{concert.description}</p>
                       <div className="grid grid-cols-2 gap-4 text-sm text-gray-400 mb-6">
                         <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
-                          <Calendar className="w-4 h-4 text-purple-400" />
+                          <Calendar className="w-4 h-4 text-[#EFCA4E]" />
                           {concert.date}
                         </div>
                         <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
-                          <Clock className="w-4 h-4 text-purple-400" />
+                          <Clock className="w-4 h-4 text-[#EFCA4E]" />
                           {concert.time}
                         </div>
                         <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
-                          <MapPin className="w-4 h-4 text-purple-400" />
+                          <MapPin className="w-4 h-4 text-[#EFCA4E]" />
                           {concert.venue}
                         </div>
                         <div className="flex items-center gap-2 bg-white/5 p-3 rounded-lg backdrop-blur-sm">
-                          <Star className="w-4 h-4 text-purple-400" />
+                          <Star className="w-4 h-4 text-[#EFCA4E]" />
                           Live Performance
                         </div>
                       </div>
