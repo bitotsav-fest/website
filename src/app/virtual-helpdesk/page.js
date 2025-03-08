@@ -1,0 +1,99 @@
+"use client";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Bug, Lightbulb, HelpCircle, Phone } from 'lucide-react';
+
+export default function VirtualHelpdesk() {
+  const supportCategories = [
+    {
+      title: 'Technical Support',
+      icon: <Bug className="w-6 h-6" />,
+      contacts: [
+        { name: 'Shaswat Raj', role: 'Lead Developer', email: 'shaswat@bitotsav.in', phone: '+91 9876543210' },
+        { name: 'Kunal Kumar', role: 'Backend Developer', email: 'kunal@bitotsav.in', phone: '+91 9876543211' }
+      ]
+    },
+    {
+      title: 'Feature Requests',
+      icon: <Lightbulb className="w-6 h-6" />,
+      contacts: [
+        { name: 'Aniket Raj', role: 'UI/UX Developer', email: 'aniket@bitotsav.in', phone: '+91 9876543212' },
+        { name: 'Arya Raj', role: 'Frontend Developer', email: 'arya@bitotsav.in', phone: '+91 9876543213' }
+      ]
+    },
+    {
+      title: 'General Inquiries',
+      icon: <HelpCircle className="w-6 h-6" />,
+      contacts: [
+        { name: 'Deepak Kumar', role: 'Project Manager', email: 'deepak@bitotsav.in', phone: '+91 9876543214' },
+        { name: 'Vaibhav Kumar', role: 'Support Lead', email: 'vaibhav@bitotsav.in', phone: '+91 9876543215' }
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen mt-20 bg-[#0A0118] relative overflow-hidden p-8">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
+      <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
+      <div className="absolute top-0 -right-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-16 relative z-10"
+      >
+        <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+          Virtual Helpdesk
+        </h1>
+        <p className="text-xl text-gray-400">
+          Get support from our dedicated team of developers
+        </p>
+      </motion.div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
+        {supportCategories.map((category, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 rounded-full bg-gradient-to-r from-[#EFCA4E]/20 to-[#F6F1E2]/20 border border-[#EFCA4E]/20">
+                {category.icon}
+              </div>
+              <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
+            </div>
+
+            <div className="space-y-6">
+              {category.contacts.map((contact, contactIndex) => (
+                <div key={contactIndex} className="space-y-2">
+                  <h3 className="text-lg font-medium text-[#EFCA4E]">{contact.name}</h3>
+                  <p className="text-gray-400">{contact.role}</p>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#EFCA4E] transition-colors"
+                    >
+                      <Mail className="w-4 h-4" />
+                      {contact.email}
+                    </a>
+                    <a
+                      href={`tel:${contact.phone}`}
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#EFCA4E] transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      {contact.phone}
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}

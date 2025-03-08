@@ -65,7 +65,7 @@ export default function Footer() {
               Need Assistance?
             </h3>
             <p className="text-sm text-[#F6F1E2]/80 mb-4">Get in touch with our team</p>
-            <Link href="LINK" target="_blank" rel="noopener noreferrer">
+            <Link href="/virtual-helpdesk"  rel="noopener noreferrer">
               <button className="w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#EFCA4E]/20 hover:scale-105 border border-[#EFCA4E]/20">
                 Virtual Helpdesk
               </button>
