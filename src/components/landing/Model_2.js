@@ -7,6 +7,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
+import { useRouter } from "next/navigation"
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -14,6 +15,7 @@ function sleep(ms) {
 
 const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
+  const router = useRouter()
 
   useEffect(() => {
     if (!mountRef.current) return
@@ -208,11 +210,11 @@ const Model_2 = ({ onLoad }) => {
       { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
       { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
       { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
-      { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
+      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
       { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
       { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
       { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
-      { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat", top: 0xffffff, table: 0x000000 },
+      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat", top: 0xffffff, table: 0x000000 },
     ]
 
     const Stalls = []
@@ -326,17 +328,7 @@ const Model_2 = ({ onLoad }) => {
 
               if (progress < 1) {
                 requestAnimationFrame(animateZoom)
-              } else {
-                // Re-enable min/max distance and polar angle
-                sleep(5000).then(() => {
-                  window.location.href = object.userData.route
-                  controls.minDistance = 1
-                  controls.maxDistance = 6
-                  controls.minPolarAngle = Math.PI / 4
-                  controls.maxPolarAngle = Math.PI / 2 - 0.1
-                  controls.target.set(0, 0.15, 0)
-                  controls.update()
-                })
+                router.push(object.userData.route)
               }
             }
 
