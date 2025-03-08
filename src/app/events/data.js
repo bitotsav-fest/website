@@ -1,7 +1,7 @@
 export const Eventsday = [
   {
     id: 1,
-    imgURL: "/comingsoon.png",
+    imgURL: "/events/5262515422702461913.jpg",
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
@@ -32,7 +32,7 @@ export const Eventsday = [
   },
   {
     id: 2,
-    imgURL: "/comingsoon.png",
+    imgURL: "/events/5323368748440215051.jpg",
     name: "FOOTLOOSE",
     club: "Dance club",
     category: "Formal",

@@ -166,7 +166,7 @@ export default function EventsPage() {
                         alt={event.name}
                         width={400}
                         height={300}
-                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500 object-top"
                         priority
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
