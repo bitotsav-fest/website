@@ -8,6 +8,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import { useRouter } from "next/navigation"
+import { loadModelFromCacheOrNetwork } from "./cacheModel"
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -57,24 +58,15 @@ const Model_2 = ({ onLoad }) => {
     const fontLoader = new FontLoader()
 
     let mixer
-    loader.load(
-      "/BIT-v1.glb",
-      (gltf) => {
-        scene.add(gltf.scene)
-        mixer = new THREE.AnimationMixer(gltf.scene)
-        gltf.animations.forEach((clip) => {
-          mixer.clipAction(clip).play()
-        })
-        onLoad && onLoad()
-
-        // Start the initial camera animation
-        initialAnimation()
-      },
-      undefined,
-      (error) => {
-        console.error("An error happened while loading the model:", error)
-      }
-    )
+    loadModelFromCacheOrNetwork("/BIT-v1.glb", (gltf) => {
+      scene.add(gltf.scene)
+      mixer = new THREE.AnimationMixer(gltf.scene)
+      gltf.animations.forEach((clip) => {
+        mixer.clipAction(clip).play()
+      })
+      onLoad && onLoad()
+      initialAnimation()
+    })
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
@@ -328,6 +320,7 @@ const Model_2 = ({ onLoad }) => {
 
               if (progress < 1) {
                 requestAnimationFrame(animateZoom)
+              } else {
                 router.push(object.userData.route)
               }
             }
