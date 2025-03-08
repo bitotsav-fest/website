@@ -12,13 +12,6 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/manoj-kumar-1a3765254/", 
     instagram: "https://www.instagram.com/infinite_realm_?igsh=dW5jZHdsZzV0ZG12", 
     description: "I’m Manoj Kumar, a passionate software developer with a deep interest in AI and Machine Learning. I constantly learn and innovate, exploring diverse projects to harness technology for meaningful impact."
-  },  { 
-    name: "Shaswat Raj", 
-    role: "Tech Team", 
-    img: "/developers/shaswat.jpeg", 
-    linkedin: "https://www.linkedin.com/in/sh20raj/", 
-    instagram: "https://instagram.com/sh20raj/", 
-    description: "I am Shaswat Raj, a first-year student passionate about web development, open-source contributions, and creating impactful projects. With proficiency in JavaScript and frameworks like Next.js, I enjoy turning ideas into user-friendly digital experiences."
   },
   { 
     name: "Venkat Saahit Kamu", 
@@ -36,7 +29,14 @@ const developers = [
     instagram: "https://instagram.com/notmrityunjay", 
     description: "Passionate about innovation, I enjoy building impactful projects, exploring new ideas, and taking on challenges in development, cybersecurity, and AI."
   },
-
+  { 
+    name: "Shaswat Raj", 
+    role: "Tech Team", 
+    img: "/developers/shaswat.jpeg", 
+    linkedin: "https://www.linkedin.com/in/sh20raj/", 
+    instagram: "https://instagram.com/sh20raj/", 
+    description: "I am Shaswat Raj, a first-year student passionate about web development, open-source contributions, and creating impactful projects. With proficiency in JavaScript and frameworks like Next.js, I enjoy turning ideas into user-friendly digital experiences."
+  },
   { 
     name: "Abhinav Kumar Choudhary", 
     role: "Tech Team", 
@@ -190,9 +190,9 @@ export default function DevelopersPage() {
 
                 {/* Back Side */}
                 <div className="absolute inset-0 h-full w-full [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <div className="h-full bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-xl border border-[#EFCA4E]/20 rounded-2xl p-8 flex items-center justify-center text-center">
+                  <div className="h-full bg-gradient-to-br from-black/80 to-black/95 backdrop-blur-2xl border border-[#EFCA4E]/20 rounded-2xl p-8 flex items-center justify-center text-center">
                     <div className="space-y-6">
-                      <p className="text-lg text-[#F6F1E2]/90 leading-relaxed">{dev.description}</p>
+                      <p className="text-lg text-[#F6F1E2] leading-relaxed">{dev.description}</p>
                       <div className="flex justify-center gap-4">
                         <a href={dev.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-[#EFCA4E]/10 hover:bg-[#EFCA4E]/20 transition-all duration-300 hover:scale-110">
                           <FaLinkedin className="w-5 h-5 text-[#EFCA4E]" />
