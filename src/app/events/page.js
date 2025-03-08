@@ -1,21 +1,29 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image"; // Next.js Image
 import { Eventsday, clubs, Eventsnight } from "./data";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, MapPin, Users, Star } from "lucide-react";
+import { Calendar, MapPin, Users } from "lucide-react";
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day");
   const [selectedDay, setSelectedDay] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedClub, setSelectedClub] = useState("All Clubs");
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const [dayEvents, setdayEvents] = useState(Eventsday);
   const [nightEvents, setnightEvents] = useState(Eventsnight);
+
+  // Set initial selected event for night events
+  useEffect(() => {
+    if (activeTab === "night" && nightEvents.length > 0 && !selectedEvent) {
+      setSelectedEvent(nightEvents[0]);
+    }
+  }, [activeTab, nightEvents, selectedEvent]);
 
   //  Memoized Filtering
   const filteredDayEvents = useMemo(() => {
@@ -211,40 +219,50 @@ export default function EventsPage() {
 
           {/* Night Events */}
           {activeTab === "night" && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="space-y-8"
-            >
-              {nightEvents.map((event, index) => (
+            <div className="relative text-[#F6F1E2] pb-12 rounded-lg max-w-6xl mx-auto px-6 md:px-16">
+              <h1 className="text-5xl md:text-6xl mb-16">Night Events</h1>
+              <div className="flex justify-center space-x-2 sm:space-x-4 mb-16">
+                {nightEvents.map((event, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedEvent(event)}
+                    className={`bg-[#F6F1E2] text-[#2D1E0F] px-2 py-1 md:px-6 md:py-2 rounded-lg border border-[#EFCA4E] flex items-center space-x-1 shadow-md ${event === selectedEvent ? "ring-2 ring-[#EFCA4E]" : ""}`}
+                  >
+                    <img
+                      src={`/day${index}.png`}
+                      alt={`Day ${index} icon`}
+                      className="w-4 h-4 md:w-6 md:h-6 object-contain"
+                    />
+                    <span className="text-sm md:text-base">Day {index}</span>
+                  </button>
+                ))}
+              </div>
+              <AnimatePresence mode="wait">
                 <motion.div
-                  key={event.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-violet-500/30 transition-all duration-300 shadow-lg hover:shadow-violet-500/10 max-w-3xl mx-auto"
+                  key={selectedEvent?.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8"
                 >
-                  <div className="relative aspect-[21/9] overflow-hidden rounded-xl mb-8">
+                  <div className="w-full md:w-1/2">
                     <Image
-                      src={event.photo}
-                      alt={event.name}
+                      src={selectedEvent?.photo || "/revealing-soon.jpg"}
+                      alt={selectedEvent?.name || "Event"}
                       width={800}
                       height={400}
-                      className="object-cover w-full h-full"
+                      className="w-full h-80 object-cover rounded-lg"
                       priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0B2E] via-transparent opacity-90"></div>
                   </div>
-                  <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-pink-400">
-                      {event.name}
-                    </h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">{event.description}</p>
+                  <div className="w-full md:w-1/2 flex flex-col justify-center text-start">
+                    <h2 className="text-4xl font-bold">{selectedEvent?.name}</h2>
+                    <p className="text-lg mt-2">{selectedEvent?.description}</p>
                     <Button
                       asChild
                       variant="default"
-                      className="bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white rounded-xl px-12 py-6 font-medium text-lg shadow-lg shadow-violet-900/20 transform hover:scale-[1.02] transition-all duration-300"
+                      className="mt-6 bg-[#F6F1E2] text-[#2D1E0F] hover:bg-[#EFCA4E] rounded-lg px-8 py-4 font-medium text-lg shadow-md transform hover:scale-[1.02] transition-all duration-300"
                     >
                       <Link href="/tickets">
                         Get Tickets
@@ -252,8 +270,8 @@ export default function EventsPage() {
                     </Button>
                   </div>
                 </motion.div>
-              ))}
-            </motion.div>
+              </AnimatePresence>
+            </div>
           )}
         </AnimatePresence>
       </div>
