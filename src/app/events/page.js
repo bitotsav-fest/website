@@ -51,76 +51,18 @@ export default function EventsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-4 mb-16"
         >
-           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-10 sm:mb-12">
+          <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-10 sm:mb-12">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-             Bitotsav Events
+              Bitotsav Events
             </span>
           </h1>
           <p className="text-gray-400 text-lg">Discover amazing events and performances</p>
         </motion.div>
 
-        
-
-        {/* Filters for Day Events */}
-        <AnimatePresence mode="wait">
-          {activeTab === "day" && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="mb-12"
-            >
-              <div className="flex flex-wrap justify-center items-center gap-6">
-                {/* Day Selector */}
-                <div className="bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 flex flex-wrap items-center gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    {/* Day Selection Tabs */}
-                    <div className="flex bg-white/5 rounded-xl p-1 gap-1">
-                      {[1, 2, 3].map((day) => (
-                        <Button
-                          key={day}
-                          variant={selectedDay === day ? "default" : "ghost"}
-                          onClick={() => setSelectedDay(day)}
-                          className={`rounded-lg px-4 py-2 ${selectedDay === day ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
-                          Day {day}
-                        </Button>
-                      ))}
-                    </div>
-
-                    {/* Category Selector */}
-                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
-                        <SelectValue placeholder="Category" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
-                        <SelectItem value="All Categories">All Categories</SelectItem>
-                        <SelectItem value="Flagship">Flagship</SelectItem>
-                        <SelectItem value="Formal">Formal</SelectItem>
-                        <SelectItem value="Informal">Informal</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    {/* Club Selector */}
-                    <Select value={selectedClub} onValueChange={setSelectedClub}>
-                      <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
-                        <SelectValue placeholder="Club" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1A0B2E] border border-white/10">
-                        <SelectItem value="All Clubs">All Clubs</SelectItem>
-                        {clubs.map((club) => (
-                          <SelectItem key={club} value={club}>{club}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-
-                    {/* Tab Navigation */}
-        <div className="flex justify-center">
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
           <motion.div 
-            className="bg-white/5 backdrop-blur-xl  rounded-xl border border-white/10"
+            className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -140,9 +82,61 @@ export default function EventsPage() {
             </Button>
           </motion.div>
         </div>
-                 </div>
+        
 
-              
+        {/* Filters for Day Events */}
+        <AnimatePresence mode="wait">
+          {activeTab === "day" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="mb-12"
+            >
+              <div className="flex flex-wrap justify-center items-center gap-6">
+                {/* Day Selector */}
+                <div className="bg-white/5 backdrop-blur-xl p-2 rounded-2xl border border-white/10 flex flex-wrap items-center gap-4">
+                  {/* Day Selection Tabs */}
+                  <div className="flex bg-white/5 rounded-xl p-1 gap-1">
+                    {[1, 2, 3].map((day) => (
+                      <Button
+                        key={day}
+                        variant={selectedDay === day ? "default" : "ghost"}
+                        onClick={() => setSelectedDay(day)}
+                        className={`rounded-lg px-4 py-2 ${selectedDay === day ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                      >
+                        <Calendar className="w-4 h-4 mr-2" />
+                        Day {day}
+                      </Button>
+                    ))}
+                  </div>
+
+                  {/* Category Selector */}
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
+                      <SelectValue placeholder="Category" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                      <SelectItem value="All Categories">All Categories</SelectItem>
+                      <SelectItem value="Flagship">Flagship</SelectItem>
+                      <SelectItem value="Formal">Formal</SelectItem>
+                      <SelectItem value="Informal">Informal</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {/* Club Selector */}
+                  <Select value={selectedClub} onValueChange={setSelectedClub}>
+                    <SelectTrigger className="w-44 bg-white/5 backdrop-blur-xl border-white/10 hover:border-violet-500/30 transition-all duration-300 rounded-lg px-4 py-2 text-violet-300">
+                      <SelectValue placeholder="Club" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#1A0B2E] border border-white/10">
+                      <SelectItem value="All Clubs">All Clubs</SelectItem>
+                      {clubs.map((club) => (
+                        <SelectItem key={club} value={club}>{club}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </motion.div>
           )}
@@ -175,43 +169,32 @@ export default function EventsPage() {
                         className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A0B2E] via-transparent opacity-90"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="p-8 space-y-6">
-                      <div className="flex items-center gap-3">
-                        <span className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20 text-sm">
-                          {event.category}
-                        </span>
-                        <span className="px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 text-sm">
+                    <div className="p-6 space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 text-sm rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300">
                           Day {event.day}
                         </span>
+                        <span className="px-3 py-1 text-sm rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300">
+                          {event.category}
+                        </span>
                       </div>
-                      <h2 className="text-2xl font-bold text-white group-hover:text-violet-400 transition-colors duration-300">
+                      <h3 className="text-xl font-semibold text-white group-hover:text-violet-300 transition-colors duration-300">
                         {event.name}
-                      </h2>
-                      <div className="space-y-3 text-gray-400">
-                        <p className="flex items-center gap-3">
-                          <Users className="w-5 h-5 text-violet-400" />
-                          {event.club}
-                        </p>
-                        <p className="flex items-center gap-3">
-                          <MapPin className="w-5 h-5 text-pink-400" />
-                          {event.venue}
-                        </p>
+                      </h3>
+                      <div className="flex items-center gap-4 text-gray-400">
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4" />
+                          <span>{event.club}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{event.venue}</span>
+                        </div>
                       </div>
                     </div>
                   </Link>
-                  <div className="p-8 pt-0">
-                    <Button
-                      asChild
-                      variant="default"
-                      className="w-full bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white rounded-xl py-6 font-medium text-lg shadow-lg shadow-violet-900/20 transform hover:scale-[1.02] transition-all duration-300"
-                    >
-                      <Link href="/tickets" target="_blank" rel="noopener noreferrer">
-                        Register Now
-                      </Link>
-                    </Button>
-                  </div>
                 </motion.div>
               ))}
             </motion.div>
