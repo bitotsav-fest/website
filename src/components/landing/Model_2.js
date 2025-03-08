@@ -176,7 +176,12 @@ const Model_2 = ({ onLoad }) => {
         camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
 
         if (progress < 1) {
+          controls.enabled = false
+          controls.update()
           requestAnimationFrame(animate)
+        } else {
+          controls.enabled = true
+          controls.update()
         }
       }
 
@@ -328,6 +333,8 @@ const Model_2 = ({ onLoad }) => {
               camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
 
               if (progress < 1) {
+                controls.enabled = false
+                controls.update()
                 requestAnimationFrame(animateZoom)
               } else {
                 router.push(object.userData.route)
