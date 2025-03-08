@@ -1,11 +1,41 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import CircularGalleryDay0 from "@/components/sponsors/circular";
+import React from "react";
+import { motion } from "framer-motion";
+import { LampContainer } from "../../components/sponsors/lamp";
+//import InfiniteCarousel from "@/components/sponsors/infirow";
+const sponsors = [
+  {
+    text: "Jharkhand Tourism - Title Sponsor",
+    image: "/sponsors/JharkhandTourism.png",
+  },
+  {
+    text: "CMPDI",
+    image: "/sponsors/Cmpdi.png",
+  },
+  {
+    text: "SBI - Banking Partner",
+    image: "/sponsors/SBI.png",
+  },
+  {
+    text: "RedBull",
+    image: "/sponsors/Red-Bull.png",
+  },
+  {
+    text: "Nestle",
+    image: "/sponsors/Nestle.png",
+  },
+  {
+    text: "Frostive",
+    image: "/sponsors/Frostive.png",
+  },
+];
 
 const Sponsors = () => {
-  const sponsorRef = useRef(null);
+  const spotlightWrapperRef = useRef(null);
 
   useEffect(() => {
     AOS.init({
@@ -14,128 +44,59 @@ const Sponsors = () => {
       easing: "ease-in-out",
     });
 
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
-
-    const callback = (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("aos-animate");
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-    if (sponsorRef.current) {
-      observer.observe(sponsorRef.current);
+    // Find the center image and add the 'highlight' class
+    const images = spotlightWrapperRef.current.querySelectorAll("img");
+    if (images.length > 0) {
+      const centerImage = images[Math.floor(images.length / 2)]; // Highlight the middle image
+      centerImage.classList.add("brightness-100", "opacity-100"); // Brighten the center image
+      centerImage.classList.remove("brightness-50", "opacity-50"); // Remove dim effect
     }
-
-    return () => {
-      if (sponsorRef.current) {
-        observer.unobserve(sponsorRef.current);
-      }
-    };
-  }, []);
-
-  const sponsors = [
-    {
-      name: "Jharkhand Tourism - Title Sponsor",
-      image: "/sponsors/JharkhandTourism.png",
-    },
-    {
-      name: "CMPDI",
-      image: "/sponsors/Cmpdi.png",
-    },
-    {
-      name: "SBI - Banking Partner",
-      image: "/sponsors/SBI.png",
-    },
-    {
-      name: "RedBull",
-      image: "/sponsors/Red-Bull.png",
-    },
-    {
-      name: "Nestle",
-      image: "/sponsors/Nestle.png",
-    },
-    {
-      name: "Frostive",
-      image: "/sponsors/Frostive.png",
-    },
-  ];
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div
-      className="min-h-screen text-white pb-4 mt-6 sm:mt-12 mb-4 px-6 sm:px-4"
-      style={{ backgroundColor: "#0A0118" }}
-      ref={sponsorRef}
-    >
-      <div className="container mx-auto pt-6 sm:pt-10 md:pt-10">
-        {/* Heading */}
-        <h1 className="text-6xl md:text-7xl text-center font-bold tracking-tight mb-10 sm:mb-12">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-             Past Sponsors
-            </span>
-          </h1>
+    <div className="bg-[#0A0118] text-white overflow-hidden pt-8">
+      {/* "Our Sponsors" Heading */}
+      <h1 className="text-6xl font-bold text-center pt-10">Our Sponsors</h1>
 
-
-        {/* Sponsor Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 sm:gap-12 lg:gap-14">
-          {sponsors.map((sponsor, index) => (
-            <div
-              key={index}
-              className="sponsor relative flex flex-col items-center justify-center group"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              style={{
-                animation: `slide-in 0.5s ease-out ${index * 0.2}s forwards`,
-                opacity: 0,
-                transform: "translateY(-50px)",
-              }}
-            >
-              {/* Sponsor Image */}
-              <div className="rounded-[16px] sm:rounded-[20px] mb-5 overflow-hidden relative transition-all duration-300 hover:shadow-glow w-[82%] sm:w-[78%] lg:w-[88%] xl:w-[92%]">
-                <img
-                  src={sponsor.image}
-                  alt={sponsor.name}
-                  className="rounded-[16px] sm:rounded-[20px] hover:scale-105 transition-transform duration-300 w-full h-auto"
-                />
-              </div>
-              <p className="text-white font-semibold text-center text-base sm:text-lg md:text-xl mt-2 sm:mt-3">
-                {sponsor.name}
-              </p>
-            </div>
-          ))}
-        </div>
+      {/* "Coming Soon" Text centered vertically */}
+      <div className="flex items-center justify-center min-h-screen text-4xl font-bold text-gray-400">
+        Coming Soon
       </div>
 
-      {/* Custom CSS for Gradient */}
-      <style jsx>{`
-        .hover\:shadow-glow:hover {
-          box-shadow: 0 0 20px 5px rgba(124, 58, 237, 0.2), /* Violet */
-                      0 0 20px 10px rgba(236, 72, 153, 0.2), /* Pink */
-                      0 0 20px 15px rgba(249, 115, 22, 0.2); /* Orange */
-        }
+      {/* "Past Sponsors" Heading */}
+      <h1 className="text-6xl font-bold text-center mb-40 z-40 relative">
+        Past Sponsors
+      </h1>
 
-        @keyframes slide-in {
-          from {
-            opacity: 0;
-            transform: translateY(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      {/* Full-Screen Lamp Container */}
+      <div className="relative w-full h-screen flex items-center justify-center">
+        <LampContainer>
+          <motion.h1
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="mt-4 bg-gradient-to-br from-slate-300 to-slate-500 py-2 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+          >
+            {/* Sponsors in Circular Path */}
+            <div
+              className="relative w-full h-full flex justify-center items-center"
+              ref={spotlightWrapperRef}
+            >
+              {/* Circular Gallery */}
+              <CircularGalleryDay0
+                items={sponsors}
+                bend={3}
+                textColor="#ffffff"
+                borderRadius={0.05}
+              />
+            </div>
+          </motion.h1>
+        </LampContainer>
+      </div>
     </div>
   );
 };
