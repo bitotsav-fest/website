@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Calendar, Clock, MapPin, Music, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Spotlight } from '@/components/ui/spotlight';
 
 const concerts = [
   {
@@ -57,6 +58,7 @@ export default function ConcertsPage() {
         <div className="absolute top-0 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000" />
         <div className="absolute -bottom-40 left-20 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000" />
       </div>
+      <Spotlight/>
 
       <div className="max-w-7xl mx-auto px-4 py-24 relative">
         {/* Header */}

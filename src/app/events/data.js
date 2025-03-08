@@ -68,7 +68,7 @@ export const Eventsday = [
   },
   {
     id: 3,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://i.imgur.com/Y2uWrLP.jpeg",
     name: "KBC: KOUN BANEGA COLLECTOR",
     club: "NAPS",
     category: "Formal",
@@ -90,7 +90,7 @@ export const Eventsday = [
   },
   {
     id: 5,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://i.imgur.com/zk71pca.jpeg",
     name: "CIRCUIT CHASE",
     club: "ECESoc",
     category: "Formal",
