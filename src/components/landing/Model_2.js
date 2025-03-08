@@ -7,6 +7,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader"
 import { useRouter } from "next/navigation"
 import { loadModelFromCacheOrNetwork } from "./cacheModel"
 
@@ -50,6 +51,14 @@ const Model_2 = ({ onLoad }) => {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
     directionalLight.position.set(5, 5, 5)
     scene.add(directionalLight)
+
+    // Load HDRI environment map
+    // const rgbeLoader = new RGBELoader()
+    // rgbeLoader.load("/pretoria_gardens_1k.hdr", (texture) => {
+    //   texture.mapping = THREE.EquirectangularReflectionMapping
+    //   // scene.environment = texture
+    //   // scene.background = texture
+    // })
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
@@ -198,15 +207,15 @@ const Model_2 = ({ onLoad }) => {
     animate()
 
     const StallPos = [
-      { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login", top: 0xffffff, table: 0x000000 },
-      { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
-      { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
-      { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
-      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
-      { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
-      { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
-      { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
-      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat", top: 0xffffff, table: 0x000000 },
+      { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login" },
+      { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events" },
+      { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about" },
+      { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers" },
+      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard"},
+      { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team" },
+      { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery" },
+      { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors" },
+      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat"},
     ]
 
     const Stalls = []
@@ -227,9 +236,9 @@ const Model_2 = ({ onLoad }) => {
           model.traverse((child) => {
             if (child.isMesh) {
               if (child.material.name === "Top") {
-                child.material = new THREE.MeshStandardMaterial({ color: stall.top })
+                child.material = new THREE.MeshStandardMaterial({ color: 0xffe6a1 })
               } else if (child.material.name === "Table") {
-                child.material = new THREE.MeshStandardMaterial({ color: stall.table })
+                child.material = new THREE.MeshStandardMaterial({ color: 0x572d00 })
               }
               child.userData = model.userData // Ensure userData is set on child meshes
             }
@@ -298,9 +307,9 @@ const Model_2 = ({ onLoad }) => {
             const startTime = Date.now()
             const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
             const endPosition = {
-              x: object.userData.originalPosition.x + (object.userData.originalPosition.x < 0 ? 0.6 : object.userData.originalPosition.x > 0 ? -0.6 : 0),
+              x: object.userData.originalPosition.x + (object.userData.originalPosition.x < 0 ? 1 : object.userData.originalPosition.x > 0 ? -1 : 0),
               y: object.userData.originalPosition.y + 0.3,
-              z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 0.6 : 0),
+              z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 1 : object.userData.originalPosition.x < 0 ? 0.15 : -0.15),
             }
 
             const animateZoom = () => {
