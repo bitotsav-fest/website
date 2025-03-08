@@ -3,7 +3,8 @@ import React from 'react';
 import { RainbowButton } from '@/components/ui/rainbow-button';
 import { motion } from 'framer-motion';
 import { Sparkles, Calendar, Star, Gift, Music } from 'lucide-react';
- import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
  
 export default function TicketPage() {
 
@@ -47,8 +48,8 @@ export default function TicketPage() {
           className="text-center space-y-6 mb-16"
         >
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-pink-500 to-orange-500">
-              Bitotsav 2025
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+              Bitotsav <span className="underline decoration-wavy decoration-fuchsia-500">2025</span>
             </span>
           </h1>
           <p className="text-2xl text-gray-400 max-w-2xl mx-auto">
@@ -62,7 +63,7 @@ export default function TicketPage() {
           animate={{ opacity: 1, y: 0 }}
           className="relative max-w-4xl mx-auto mb-24"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-600/30 via-pink-600/30 to-orange-600/30 rounded-[2rem] blur-xl transform rotate-1"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/30 via-[#F6F1E2]/30 to-[#EFCA4E]/30 rounded-[2rem] blur-xl transform rotate-1"></div>
           <div className="relative backdrop-blur-xl bg-black/40 border border-white/10 rounded-[2rem] p-8 md:p-12 overflow-hidden">
             <div className="absolute top-0 right-0 w-full h-full bg-[url('/ticket-pattern.svg')] opacity-[0.03]"></div>
             
@@ -70,9 +71,9 @@ export default function TicketPage() {
               <div className="flex-1 space-y-8">
                 <div>
                   <h2 className="text-3xl font-bold mb-4">All-Access Festival Pass</h2>
-                  <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-violet-500/10 to-pink-500/10 border border-violet-500/20">
-                    <Sparkles className="w-4 h-4 mr-2 text-violet-400" />
-                    <span className="text-violet-300 text-sm font-medium">Premium Experience</span>
+                  <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-[#EFCA4E]/10 to-[#F6F1E2]/10 border border-[#EFCA4E]/20">
+                    <Sparkles className="w-4 h-4 mr-2 text-[#EFCA4E]" />
+                    <span className="text-[#F6F1E2] text-sm font-medium">Premium Experience</span>
                   </div>
                 </div>
 
@@ -99,19 +100,19 @@ export default function TicketPage() {
 
               <div className="flex-1">
                 <div className="space-y-6">
-                  <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-500/10 to-transparent border border-violet-500/20">
-                    <div className="text-sm text-violet-300 mb-2">Outside Students</div>
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20">
+                    <div className="text-sm text-[#EFCA4E] mb-2">Outside Students</div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold text-white">₹1500</span>
-                      <span className="text-violet-400">early bird</span>
+                      <span className="text-5xl font-bold text-[#F6F1E2]">₹1500</span>
+                      <span className="text-[#EFCA4E]">early bird</span>
                     </div>
                   </div>
 
-                  <div className="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-transparent border border-pink-500/20">
-                    <div className="text-sm text-pink-300 mb-2">BIT Mesra Students</div>
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-[#F6F1E2]/10 to-transparent border border-[#F6F1E2]/20">
+                    <div className="text-sm text-[#F6F1E2] mb-2">BIT Mesra Students</div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold text-white">FREE</span>
-                      <span className="text-pink-400">with ID</span>
+                      <span className="text-5xl font-bold text-[#F6F1E2]">FREE</span>
+                      <span className="text-[#F6F1E2]">with ID</span>
                     </div>
                   </div>
                   
@@ -134,7 +135,7 @@ export default function TicketPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-24"
         >
-          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500">
+          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
             Artist Lineup Reveal
           </h2>
           

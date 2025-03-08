@@ -49,11 +49,11 @@ export default function EventsPage() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4 mb-16"
+          className="text-center space-y-4 mb-6"
         >
-          <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-10 sm:mb-12">
+          <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-4 sm:mb-12">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-              Bitotsav Events
+              Bitotsav <span className=" underline decoration-wavy decoration-fuchsia-500">Events</span>
             </span>
           </h1>
           <p className="text-[#F6F1E2]/70 text-lg">Discover amazing events and performances</p>
