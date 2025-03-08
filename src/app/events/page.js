@@ -39,7 +39,9 @@ export default function EventsPage() {
   }, [dayEvents, selectedDay, selectedCategory, selectedClub]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2]">
+   <>
+    <div className="min-h-screen bg-[#0A0118] fixed inset-0 -z-20"></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10">
       <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Background effects */}
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
@@ -89,9 +91,9 @@ export default function EventsPage() {
         <AnimatePresence mode="wait">
           {activeTab === "day" && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               className="mb-12"
             >
               <div className="flex flex-wrap justify-center items-center gap-6">
@@ -181,10 +183,10 @@ export default function EventsPage() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedEvent?.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
                   className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8"
                 >
                   <div className="w-full md:w-1/2">
@@ -217,5 +219,4 @@ export default function EventsPage() {
         </AnimatePresence>
       </div>
     </div>
-  );
-}
+</>)}

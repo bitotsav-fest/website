@@ -80,7 +80,7 @@ export const Eventsday = [
   {
     id: 4,
     imgURL: "/comingsoon.png",
-    name: "BEYOND THE SCREEN - THE PRESS CONFERENCE",
+    name: "BEYOND THE SCREEN ",
     club: "NAPS",
     category: "Formal",
     description: "",

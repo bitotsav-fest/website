@@ -8,23 +8,23 @@ import { GlowingEffect } from "../ui/glowing-effect";
 export default function EventCard({ event, index, className }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ delay: index * 0.1 }}
       className={`group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#EFCA4E]/30 transition-all duration-500 shadow-lg hover:shadow-[#EFCA4E]/10 ${className}`}
-    >
-      <Link href={`/events/${event.id}`} className="block">
-        <div className="relative aspect-[4/3] overflow-hidden">
-        <GlowingEffect
+    >  <GlowingEffect
           color="#EFCA4E"
           blur={0}
-          borderWidth={3}
+          borderWidth={30}
           spread={80}
           glow={true}
           disabled={false}
           proximity={64}
           inactiveZone={0.01}
         />
+      <Link href={`/events/${event.id}`} className="block">
+        <div className="relative aspect-[4/3] overflow-hidden">
+      
           <Image
             src={event.imgURL}
             alt={event.name}
@@ -35,7 +35,7 @@ export default function EventCard({ event, index, className }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm rounded-xl -mt-4 z-10">
           <div className="flex flex-wrap gap-2">
             <span className="px-3 py-1 text-sm rounded-full bg-[#EFCA4E]/10 border border-[#EFCA4E]/20 text-[#EFCA4E]">
               Day {event.day}
