@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Bug, Lightbulb, HelpCircle, Phone } from 'lucide-react';
+import { Mail, Bug, Lightbulb, HelpCircle, Phone, Home, Calendar, Ticket, Music, Info, Images, Star } from 'lucide-react';
+import Link from 'next/link';
 
 export default function VirtualHelpdesk() {
   const supportCategories = [
@@ -38,10 +39,8 @@ export default function VirtualHelpdesk() {
       <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
       <div className="absolute top-0 -right-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
       
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16 relative z-10"
+     
+      <div className="text-center mb-16 relative z-10"
       >
         <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
           Virtual Helpdesk
@@ -49,7 +48,7 @@ export default function VirtualHelpdesk() {
         <p className="text-xl text-gray-400">
           Get support from our dedicated team of developers
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
         {supportCategories.map((category, index) => (
@@ -94,6 +93,40 @@ export default function VirtualHelpdesk() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-7xl mx-auto mt-16 relative z-10"
+      >
+        <h2 className="text-3xl font-semibold mb-8 text-center text-[#EFCA4E]">Quick Navigation</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {[
+            { name: 'Home', icon: Home, href: '/' },
+            { name: 'Events', icon: Calendar, href: '/events' },
+            { name: 'Tickets', icon: Ticket, href: '/tickets' },
+            { name: 'Concerts', icon: Music, href: '/concerts' },
+            { name: 'About', icon: Info, href: '/about' },
+            { name: 'Gallery', icon: Images, href: '/gallery' },
+            { name: 'Sponsors', icon: Star, href: '/sponsors' }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Link
+                href={item.href}
+                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:bg-white/10 hover:border-[#EFCA4E]/30 transition-all duration-300 group h-full"
+              >
+                <item.icon className="w-6 h-6 text-[#EFCA4E] group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-gray-300 group-hover:text-[#EFCA4E] transition-colors duration-300">{item.name}</span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }

@@ -6,7 +6,8 @@ import Image from "next/image"; // Next.js Image
 import { Eventsday, clubs, Eventsnight } from "./data";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { Calendar } from "lucide-react";
+import EventCard from "@/components/events/EventCard";
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day");
@@ -152,50 +153,7 @@ export default function EventsPage() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
             >
               {filteredDayEvents.map((event, index) => (
-                <motion.div
-                  key={event.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-violet-500/30 transition-all duration-500 shadow-lg hover:shadow-violet-500/10"
-                >
-                  <Link href={`/events/${event.id}`} className="block">
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <Image
-                        src={event.imgURL}
-                        alt={event.name}
-                        width={400}
-                        height={300}
-                        className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500 object-top"
-                        priority
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 text-sm rounded-full bg-[#EFCA4E]/10 border border-[#EFCA4E]/20 text-[#EFCA4E]">
-                          Day {event.day}
-                        </span>
-                        <span className="px-3 py-1 text-sm rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300">
-                          {event.category}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-white group-hover:text-violet-300 transition-colors duration-300">
-                        {event.name}
-                      </h3>
-                      <div className="flex items-center gap-4 text-gray-400">
-                        <div className="flex items-center gap-2">
-                          <Users className="w-4 h-4" />
-                          <span>{event.club}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4" />
-                          <span>{event.venue}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                <EventCard key={event.id} event={event} index={index} />
               ))}
             </motion.div>
           )}
