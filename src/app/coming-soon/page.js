@@ -17,7 +17,7 @@ export default function ComingSoonPage() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const eventDate = new Date('2025-03-15');
+      const eventDate = new Date('2025-03-13');
       const difference = eventDate - new Date();
 
       if (difference > 0) {
