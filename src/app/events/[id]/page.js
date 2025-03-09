@@ -1,5 +1,5 @@
 "use client";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import { useState, useEffect, use } from "react";
 import Image from "next/image";
 import { Eventsday } from "../data";
@@ -65,6 +65,8 @@ export default function EventDetailPage() {
 
   const handleRegister = () => {
     // Implement registration logic here
+    redirect("/coming-soon");
+    return;
     const eventId = event.id;
     const eventName = event.name;
 

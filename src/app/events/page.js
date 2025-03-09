@@ -59,6 +59,7 @@ export default function EventsPage() {
               Bitotsav <span className=" dw decoration-fuchsia-500">Events</span>
             </span>
           </h1>
+          <p className="text-[#F6F1E2]/70 text-lg">Registration starting soon!</p>
           <p className="text-[#F6F1E2]/70 text-lg">Discover amazing events and performances</p>
         </motion.div>
 
