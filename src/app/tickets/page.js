@@ -49,7 +49,7 @@ export default function TicketPage() {
         >
           <h1 className="text-6xl md:text-7xl font-bold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-              Bitotsav <span className="underline decoration-wavy decoration-fuchsia-500">2025</span>
+              Bitotsav <span className="dw decoration-fuchsia-500">2025</span>
             </span>
           </h1>
           <p className="text-2xl text-gray-400 max-w-2xl mx-auto">

@@ -28,7 +28,7 @@ export default function GalleryPage() {
         >
           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-4 sm:mb-12">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-              Bitotsav <span className="underline decoration-wavy decoration-fuchsia-500">Gallery</span>
+              Bitotsav <span className="dw decoration-fuchsia-500">Gallery</span>
             </span>
           </h1>
           <p className="text-[#F6F1E2]/70 text-lg">Reliving the Unforgettable Moments</p>
