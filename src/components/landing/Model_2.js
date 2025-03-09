@@ -82,8 +82,8 @@ const Model_2 = ({ onLoad }) => {
     controls.dampingFactor = 0.05
     controls.enableZoom = true
     controls.minDistance = 1
-    controls.maxDistance = 6
-    controls.minPolarAngle = Math.PI / 4
+    controls.maxDistance = 4
+    controls.minPolarAngle = Math.PI / 3
     controls.maxPolarAngle = Math.PI / 2 - 0.1
     controls.target.set(0, 0.15)
     controls.update()
@@ -152,7 +152,7 @@ const Model_2 = ({ onLoad }) => {
       const duration = 4000 // 4 seconds
       const startTime = Date.now()
       const startPosition = { x: 5, y: 3, z: 5 }
-      const endPosition = { x: 2, y: 1, z: 3 }
+      const endPosition = { x: 0.7, y: 1, z: 3 }
       const isMobile = /Mobi|Android/i.test(navigator.userAgent)
       if (isMobile) {
         endPosition.x = 0
