@@ -52,12 +52,12 @@ const Model_2 = ({ onLoad }) => {
     scene.add(directionalLight)
 
     // Load HDRI environment map
-    // const rgbeLoader = new RGBELoader()
-    // rgbeLoader.load("/pretoria_gardens_1k.hdr", (texture) => {
-    //   texture.mapping = THREE.EquirectangularReflectionMapping
-    //   // scene.environment = texture
-    //   // scene.background = texture
-    // })
+    const rgbeLoader = new RGBELoader()
+    rgbeLoader.load("/pretoria_gardens_1k.hdr", (texture) => {
+      texture.mapping = THREE.EquirectangularReflectionMapping
+      scene.environment = texture
+      scene.background = texture
+    })
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
