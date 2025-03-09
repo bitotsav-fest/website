@@ -3,9 +3,11 @@ import { signIn, useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 
 export default function LoginPage() {
+
+  redirect('/coming-soon');
   const { data: session, status } = useSession()
   const router = useRouter()
 
