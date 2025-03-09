@@ -88,10 +88,10 @@ const Texts = ({ texts }) => {
   const { text1Ref, text2Ref } = useMorphingText(texts);
   return (<>
     <span
-      className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+      className="absolute inset-x-0 top-0 m-auto inline-block w-full bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]"
       ref={text1Ref} />
     <span
-      className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+      className="absolute inset-x-0 top-0 m-auto inline-block w-full bg-clip-text text-transparent bg-gradient-to-r from-[#671d98] via-[#F6F1E2] to-[#4c0765]"
       ref={text2Ref} />
   </>);
 };
@@ -121,7 +121,7 @@ export const MorphingText = ({
 }) => (
   <div
     className={cn(
-      "relative  h-16 w-full  text-center font-sans   font-bold   [filter:url(#threshold)_blur(0.6px)] md:h-24  ",
+      "relative  h-16 w-full  text-center font-sans   font-bold   [filter:url(#threshold)_blur(0.6px)] md:h-24  bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]",
       className
     )}>
     <Texts texts={texts} />
