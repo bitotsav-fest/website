@@ -69,7 +69,7 @@ export default function ConcertsPage() {
         >
            <h1 className="text-6xl md:text-7xl text-center font-bold tracking-tight mb-10 sm:mb-12">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-             Concert <span className="underline decoration-wavy decoration-fuchsia-500">Nights</span>
+             Concert <span className="dw decoration-fuchsia-500">Nights</span>
             </span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

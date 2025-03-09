@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import CircularGalleryDay0 from "@/components/galleryCards/day0";
+import { ImagesSlider } from "@/components/ui/images-slider";
 
 export default function GalleryPage() {
   const dayDescriptions = [
@@ -19,20 +20,21 @@ export default function GalleryPage() {
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
         <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
         <div className="absolute top-0 -right-4 w-96 h-96 bg-[#2D1E0F] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-
-        {/* Header */}
+{/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-4 mb-12"
+          className="text-center space-y-1 mb-8"
         >
           <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-4 sm:mb-12">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-              Bitotsav <span className="underline decoration-wavy decoration-fuchsia-500">Gallery</span>
+              Bitotsav <span className="dw decoration-fuchsia-500">Gallery</span>
             </span>
           </h1>
-          <p className="text-[#F6F1E2]/70 text-lg">Reliving the Unforgettable Moments</p>
+          {/* <p className="text-[#F6F1E2]/70 text-lg">Reliving the Unforgettable Moments</p> */}
         </motion.div>
+        <ImagesSliderDemo/>
+        
 
         {/* Gallery Content */}
         <AnimatePresence>
@@ -93,15 +95,62 @@ export default function GalleryPage() {
           ))}
         </AnimatePresence>
 
-        {/* Circular Gallery */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative w-full flex justify-center items-center mt-16 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8"
-        >
-          <CircularGalleryDay0 bend={3} textColor="#F6F1E2" borderRadius={0.05} />
-        </motion.div>
       </div>
     </div>
+  );
+}
+
+
+export function ImagesSliderDemo() {
+  const images = [
+    "/day0/p1.webp",
+    "/day0/p2.webp",
+    "/day0/p3.webp",
+    "/day0/p4.webp",
+    "/day0/p5.webp",
+    "/day0/p6.webp",
+    "/day0/p7.webp",
+    "/day1/p1.webp",
+    "/day1/p2.webp",
+    "/day1/p3.webp",
+    "/day1/p4.webp",
+    "/day1/p5.webp",
+    "/day1/p6.webp",
+    "/day1/p7.webp",
+    "/day2/p1.webp",
+    "/day2/p2.webp",
+    "/day2/p3.webp",
+    "/day2/p4.webp",
+    "/day2/p5.webp",
+    "/day2/p6.webp",
+    "/day2/p7.webp",
+  ];
+  return (
+    (<ImagesSlider className="h-[40rem] my-10" images={images}>
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: -80,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+        }}
+        className="z-50 flex flex-col justify-center items-center">
+        <motion.p
+          className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
+          Relive the Magic of Bitotsav <br /> Through Our Lens
+        </motion.p>
+        <button
+          className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-4">
+          <span>Explore Memories →</span>
+          <div
+            className="absolute inset-x-0  h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent" />
+        </button>
+      </motion.div>
+    </ImagesSlider>)
   );
 }
