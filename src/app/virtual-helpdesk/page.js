@@ -73,13 +73,11 @@ export default function VirtualHelpdesk() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 w-[400px] flex flex-col items-center justify-center text-center"
-
-
         >
           <h2 className="text-2xl font-semibold text-[#EFCA4E] mb-2">Looking for assistance?</h2>
           <p className="text-gray-400 mb-4">Get in touch with our dedicated team on WhatsApp.</p>
           <a
-           href="https://chat.whatsapp.com/JZlNrpn0DAjE0CCBUcqU26"
+           href="https://chat.whatsapp.com/KOqn2PWDhQ1LGlGqSMU4SK"
            target="_blank"
            rel="noopener noreferrer"
            className="px-6 py-2.5 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#EFCA4E]/20 hover:scale-105 border border-[#EFCA4E]/20 text-center"
