@@ -19,6 +19,9 @@ const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
   const router = useRouter()
 
+  let isModel = false
+  let isStalls = false
+
   useEffect(() => {
     if (!mountRef.current) return
 
@@ -72,8 +75,13 @@ const Model_2 = ({ onLoad }) => {
       gltf.animations.forEach((clip) => {
         mixer.clipAction(clip).play()
       })
-      onLoad && onLoad()
-      initialAnimation()
+      if (onLoad) {
+        isModel = true
+      }
+      if (isModel && isStalls) {
+        onLoad()
+        initialAnimation()
+      }
     })
 
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -245,6 +253,9 @@ const Model_2 = ({ onLoad }) => {
                 child.material = new THREE.MeshStandardMaterial({ color: 0x572d00 })
               }
               child.userData = model.userData // Ensure userData is set on child meshes
+            }
+            if (onLoad) {
+              isStalls = true
             }
           })
 
