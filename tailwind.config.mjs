@@ -76,10 +76,11 @@ export default {
   		animation: {
   			'wave-pulse': 'wave-pulse 4s ease-in-out infinite',
   			rainbow: 'rainbow var(--speed, 2s) infinite linear',
-  			marquee: 'marquee var(--duration, 30s) linear infinite',
+  			marquee: 'marquee var(--duration) infinite linear',
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite'
+  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
   		},
   		keyframes: {
   			'wave-pulse': {
@@ -108,7 +109,10 @@ export default {
   			},
   			marquee: {
   				to: {
-  					transform: 'translateX(-50%)'
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				},
+  				from: {
+  					transform: 'translateX(0)'
   				}
   			},
   			'accordion-down': {
@@ -133,6 +137,14 @@ export default {
   				},
   				'50%': {
   					transform: 'translate(-50%, -50%) scale(0.9)'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
   				}
   			}
   		},
