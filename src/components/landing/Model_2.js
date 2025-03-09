@@ -7,7 +7,6 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader"
 import { useRouter } from "next/navigation"
 import { loadModelFromCacheOrNetwork } from "./cacheModel"
 
@@ -51,14 +50,6 @@ const Model_2 = ({ onLoad }) => {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
     directionalLight.position.set(5, 5, 5)
     scene.add(directionalLight)
-
-    // Load HDRI environment map
-    // const rgbeLoader = new RGBELoader()
-    // rgbeLoader.load("/pretoria_gardens_1k.hdr", (texture) => {
-    //   texture.mapping = THREE.EquirectangularReflectionMapping
-    //   // scene.environment = texture
-    //   // scene.background = texture
-    // })
 
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
@@ -176,12 +167,7 @@ const Model_2 = ({ onLoad }) => {
         camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
 
         if (progress < 1) {
-          controls.enabled = false
-          controls.update()
           requestAnimationFrame(animate)
-        } else {
-          controls.enabled = true
-          controls.update()
         }
       }
 
@@ -212,15 +198,15 @@ const Model_2 = ({ onLoad }) => {
     animate()
 
     const StallPos = [
-      { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login" },
-      { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events" },
-      { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about" },
-      { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers" },
-      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard"},
-      { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team" },
-      { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery" },
-      { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors" },
-      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat"},
+      { x: 0, y: 0, z: -3.5, Y: Math.PI, id: "LOGIN", route: "/login", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about", top: 0xffffff, table: 0x000000 },
+      { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers", top: 0xffffff, table: 0x000000 },
+      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery", top: 0xffffff, table: 0x000000 },
+      { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors", top: 0xffffff, table: 0x000000 },
+      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat", top: 0xffffff, table: 0x000000 },
     ]
 
     const Stalls = []
@@ -241,9 +227,9 @@ const Model_2 = ({ onLoad }) => {
           model.traverse((child) => {
             if (child.isMesh) {
               if (child.material.name === "Top") {
-                child.material = new THREE.MeshStandardMaterial({ color: 0xffe6a1 })
+                child.material = new THREE.MeshStandardMaterial({ color: stall.top })
               } else if (child.material.name === "Table") {
-                child.material = new THREE.MeshStandardMaterial({ color: 0x572d00 })
+                child.material = new THREE.MeshStandardMaterial({ color: stall.table })
               }
               child.userData = model.userData // Ensure userData is set on child meshes
             }
@@ -284,6 +270,24 @@ const Model_2 = ({ onLoad }) => {
           const raycaster = new THREE.Raycaster()
           const mouse = new THREE.Vector2()
 
+          const onMouseMove = (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+            raycaster.setFromCamera(mouse, camera)
+            const intersects = raycaster.intersectObjects([...scene.children, ...TextMeshes], true)
+
+            if (intersects.length > 0) {
+              let intersected = intersects[0].object
+              while (intersected.parent && !intersected.userData.id) {
+                intersected = intersected.parent
+              }
+              renderer.domElement.style.cursor = 'pointer'
+            } else {
+              renderer.domElement.style.cursor = 'default'
+            }
+          }
+
           const onMouseClick = (event) => {
             mouse.x = (event.clientX / window.innerWidth) * 2 - 1
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
@@ -298,7 +302,9 @@ const Model_2 = ({ onLoad }) => {
               while (intersected.parent && !intersected.userData.id) {
                 intersected = intersected.parent
               }
-              zoomToStall(intersected)
+              if (intersected.userData && intersected.userData.id) {
+                zoomToStall(intersected)
+              }
             }
           }
 
@@ -307,36 +313,33 @@ const Model_2 = ({ onLoad }) => {
             controls.minDistance = 0
             controls.maxDistance = 6
             controls.minPolarAngle = 0
-
+            
             const duration = 2000 // 2 seconds
             const startTime = Date.now()
             const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
             const endPosition = {
-              x: object.userData.originalPosition.x + (object.userData.originalPosition.x < 0 ? 1 : object.userData.originalPosition.x > 0 ? -1 : 0),
+              x: object.userData.originalPosition.x + (object.userData.originalPosition.x < 0 ? 0.6 : object.userData.originalPosition.x > 0 ? -0.6 : 0),
               y: object.userData.originalPosition.y + 0.3,
-              z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 1 : object.userData.originalPosition.x < 0 ? 0.15 : -0.15),
+              z: object.userData.originalPosition.z + (object.userData.originalPosition.x === 0 ? 0.6 : 0),
             }
-
+            
             const animateZoom = () => {
               const elapsed = Date.now() - startTime
               const progress = Math.min(elapsed / duration, 1)
-
+            
               // Smooth easing
               const easeProgress = 1 - Math.pow(1 - progress, 3)
-
+            
               // Interpolate position
-
               controls.target.set(object.userData.originalPosition.x, object.userData.originalPosition.y, object.userData.originalPosition.z)
               controls.update()
               camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easeProgress
               camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easeProgress
               camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easeProgress
-
+            
               if (progress < 1) {
-                controls.enabled = false
-                controls.update()
                 requestAnimationFrame(animateZoom)
-              } else {
+              } else if (object.userData && object.userData.route) {
                 router.push(object.userData.route)
               }
             }
@@ -345,6 +348,7 @@ const Model_2 = ({ onLoad }) => {
           }
 
           window.addEventListener("click", onMouseClick)
+          window.addEventListener("mousemove", onMouseMove)
         },
         undefined,
         (error) => {
