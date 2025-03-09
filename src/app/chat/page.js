@@ -193,7 +193,7 @@ export default function Home() {
                         return prev;
                     }
                 });
-            }, 5); // Adjust typing speed here
+            }, 10); // Adjust typing speed here
     
             setRandomQuestions(getRandomQuestions());
         } catch (err) {
@@ -216,7 +216,7 @@ export default function Home() {
             {/* Background Components */}
             {/* Chatbot Interface */}
             <div className="w-full max-w-3xl z-10 px-4 pb-8 flex flex-col items-center" style={{ marginTop: '11rem' }}>
-                <h1 className="text-5xl font-bold mb-8 text-center text-[#FCE2BF] neon-text">
+                <h1 className="text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
                     Ask Me Anything
                 </h1>
 
