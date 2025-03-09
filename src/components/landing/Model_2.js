@@ -55,7 +55,7 @@ const Model_2 = ({ onLoad }) => {
     const rgbeLoader = new RGBELoader()
     rgbeLoader.load("/pretoria_gardens_1k.hdr", (texture) => {
       texture.mapping = THREE.EquirectangularReflectionMapping
-      scene.environment = texture
+      // scene.environment = texture
       scene.background = texture
     })
 
@@ -159,7 +159,7 @@ const Model_2 = ({ onLoad }) => {
         endPosition.y = 0.8
         endPosition.z = 5
         controls.minDistance = 2
-        controls.maxDistance = 6
+        controls.maxDistance = 4
         controls.update()
       }
 
