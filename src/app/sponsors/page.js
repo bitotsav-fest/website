@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import React from "react";
@@ -8,41 +8,20 @@ import { LampContainer } from "../../components/sponsors/lamp";
 import ComingSoonPage from "../coming-soon/page";
 
 const sponsors = [
-  {
-    text: "Jharkhand Tourism - Title Sponsor",
-    image: "/sponsors/JharkhandTourism.png",
-  },
-  {
-    text: "CMPDI",
-    image: "/sponsors/Cmpdi.png",
-  },
-  {
-    text: "SBI - Banking Partner",
-    image: "/sponsors/SBI.png",
-  },
-  {
-    text: "RedBull",
-    image: "/sponsors/Red-Bull.png",
-  },
-  {
-    text: "Nestle",
-    image: "/sponsors/Nestle.png",
-  },
-  {
-    text: "Frostive",
-    image: "/sponsors/Frostive.png",
-  },
+  { text: "Jharkhand Tourism - Title Sponsor", image: "/sponsors/JharkhandTourism.png" },
+  { text: "CMPDI", image: "/sponsors/Cmpdi.png" },
+  { text: "SBI - Banking Partner", image: "/sponsors/SBI.png" },
+  { text: "RedBull", image: "/sponsors/Red-Bull.png" },
+  { text: "Nestle", image: "/sponsors/Nestle.png" },
+  { text: "Frostive", image: "/sponsors/Frostive.png" },
 ];
 
-const Sponsors = () => {
-  const spotlightWrapperRef = useRef(null);
 
+const infiniteSponsors = [...sponsors, ...sponsors];
+
+const Sponsors = () => {
   useEffect(() => {
-    AOS.init({
-      once: false,
-      duration: 500,
-      easing: "ease-in-out",
-    });
+    AOS.init({ once: false, duration: 500, easing: "ease-in-out" });
   }, []);
 
   return (
@@ -66,60 +45,40 @@ const Sponsors = () => {
         </motion.h2>
 
         {/* Sponsors Gallery with Lamp Effect */}
-        <div className="relative w-full min-h-[80vh]">
+        <div className="relative w-full min-h-[80vh] overflow-hidden">
           <LampContainer>
             <motion.div
               initial={{ opacity: 0.5, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
+              transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
               className="relative w-full h-full"
-              ref={spotlightWrapperRef}
             >
-              <div className="relative overflow-hidden">
-                <div className="flex animate-marquee whitespace-nowrap space-x-8 p-4">
-                  {sponsors.map((sponsor, index) => (
-                    <div
-                      key={index}
-                      className="flex-none w-72 h-72 relative group transition-all duration-300 hover:scale-105"
+              <div className="relative overflow-hidden w-full">
+                {/* Sponsors */}
+                <div className="flex space-x-8 overflow-hidden w-full h-[350px] items-center">
+                  {/* infinite scrolling */}
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="flex space-x-8 animate-scroll"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/20 via-[#F6F1E2]/20 to-[#EFCA4E]/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl rounded-xl p-6 border border-[#EFCA4E]/10 group-hover:border-[#EFCA4E]/30 transition-all duration-300">
-                        <motion.img
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          whileInView={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: index * 0.1, duration: 0.5 }}
-                          src={sponsor.image}
-                          alt={sponsor.text}
-                          className="w-52 h-52 object-contain mb-4 drop-shadow-2xl"
-                        />
-                        <p className="text-center text-[#F6F1E2] font-semibold text-lg">{sponsor.text}</p>
+                      {sponsors.map((sponsor, index) => (
+                        <div key={index} className="flex-none w-72 h-72 relative group transition-all duration-300 hover:scale-105">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/20 via-[#F6F1E2]/20 to-[#EFCA4E]/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl rounded-xl p-6 border border-[#EFCA4E]/10 group-hover:border-[#EFCA4E]/50 shadow-lg group-hover:shadow-[0_0_30px_#EFCA4E] transition-all duration-300">
+                          <motion.img
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            src={sponsor.image}
+                            alt={sponsor.text}
+                            className="w-52 h-52 object-contain mb-4 drop-shadow-2xl"
+                          />
+                          <p className="text-center text-[#F6F1E2] font-semibold text-lg">{sponsor.text}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex absolute top-0 animate-marquee2 whitespace-nowrap space-x-8 p-4">
-                  {sponsors.map((sponsor, index) => (
-                    <div
-                      key={`duplicate-${index}`}
-                      className="flex-none w-72 h-72 relative group transition-all duration-300 hover:scale-105"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/20 via-[#F6F1E2]/20 to-[#EFCA4E]/20 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-black/30 backdrop-blur-xl rounded-xl p-6 border border-[#EFCA4E]/10 group-hover:border-[#EFCA4E]/30 transition-all duration-300">
-                        <motion.img
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          whileInView={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: index * 0.1, duration: 0.5 }}
-                          src={sponsor.image}
-                          alt={sponsor.text}
-                          className="w-52 h-52 object-contain mb-4 drop-shadow-2xl"
-                        />
-                        <p className="text-center text-[#F6F1E2] font-semibold text-lg">{sponsor.text}</p>
-                      </div>
-                    </div>
+                      ))}
+                    </motion.div>
                   ))}
                 </div>
               </div>
