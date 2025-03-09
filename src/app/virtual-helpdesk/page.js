@@ -75,7 +75,7 @@ export default function VirtualHelpdesk() {
           className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 w-[400px] flex flex-col items-center justify-center text-center"
         >
           <h2 className="text-2xl font-semibold text-[#EFCA4E] mb-2">Looking for assistance?</h2>
-          <p className="text-gray-400 mb-4">Get in touch with our dedicated team on WhatsApp.</p>
+          <p className="text-gray-400 mb-4">For any queries, feedbacks get in touch with our dedicated team on WhatsApp.</p>
           <a
            href="https://chat.whatsapp.com/KOqn2PWDhQ1LGlGqSMU4SK"
            target="_blank"
