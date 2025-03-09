@@ -28,7 +28,6 @@ const Model_2 = ({ onLoad }) => {
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
-      powerPreference: "high-performance",
     })
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -355,7 +354,7 @@ const Model_2 = ({ onLoad }) => {
                 // controls.update()
                 requestAnimationFrame(animateZoom)
               } else {
-                router.push(object.userData.route)
+                window.location.href = object.userData.route
               }
             }
 
