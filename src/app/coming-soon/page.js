@@ -6,6 +6,7 @@ import { Ripple } from '@/components/magicui/ripple';
 import TypeWriter from '@/components/ui/typewriter';
 
 export default function ComingSoonPage() {
+
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const texts = [
     "Stay Tuned!",

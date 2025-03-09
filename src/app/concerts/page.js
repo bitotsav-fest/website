@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Calendar, Clock, MapPin, Music, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Spotlight } from '@/components/ui/spotlight';
+import { redirect } from 'next/navigation';
 
 const concerts = [
   {
@@ -47,6 +48,8 @@ const concerts = [
 ];
 
 export default function ConcertsPage() {
+  redirect('/coming-soon');
+
   const [selectedDay, setSelectedDay] = useState(1);
 
   return (
