@@ -26,9 +26,9 @@ export const Eventsday = [
       "In case of conflicts, the decision of the judges would be considered final.",
       "There will be 2 winners - 1st & 2nd place.",
     ],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "GP BIRLA",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 2,
@@ -60,8 +60,8 @@ export const Eventsday = [
     ],
 
     contact: ["Reetika Tiwary - 70612 07063", "Ayushi Purty - 96305 26027"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "SHORBAGH",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -93,9 +93,9 @@ export const Eventsday = [
     ],
 
     contact: ["Nidhi: 6392639105"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "233A & 235",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 4,
@@ -149,9 +149,9 @@ export const Eventsday = [
     ],
 
     contact: ["Mohit: 7970752663", "Abhinav: 99341 26439"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "NCC",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 6,
@@ -165,8 +165,8 @@ export const Eventsday = [
     rules: ["Players: (divided into 1-2 members in a team)"],
 
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "219 & 220",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -190,9 +190,9 @@ export const Eventsday = [
       "The organising team reserves the right to disqualify any team engaging in malpractice.",
       "The decision of the organising team is final, binding, and indisputable for any discrepancies or disputes.",
     ],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "NCC GROUND",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 8,
@@ -228,9 +228,9 @@ export const Eventsday = [
       "1. In this event, participants get the opportunity to step into a flight simulator, where they can try piloting an aircraft.\n2. They can simulate takeoff, navigation, and landing, giving them a taste of what it's like to fly a plane.",
 
     contact: ["Prakriti Kumari: 9142714804"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "231 & 237",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 10,
@@ -250,9 +250,9 @@ export const Eventsday = [
     ],
 
     contact: ["Amar: 7782951149"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "206 & 207",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 11,
@@ -272,9 +272,9 @@ export const Eventsday = [
     ],
 
     contact: ["Amar: 7782951149"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "206 & 207",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 12,
@@ -296,8 +296,8 @@ export const Eventsday = [
     ],
 
     contact: ["Vasundhara Arya: 9973215134", "Lucky Kr.: 7544063758"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "233A & 235",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -315,14 +315,14 @@ export const Eventsday = [
     ],
 
     contact: ["Akash Kumar Tiwary: 7070489408"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "216 & 217",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
     id: 14,
     imgURL: "/comingsoon.png",
-    name: "PITSTOP PIRSUIT",
+    name: "PITSTOP PURSUIT",
     club: "Srijan",
     category: "Formal",
     description:
@@ -348,9 +348,9 @@ export const Eventsday = [
     ],
 
     contact: ["Ayush Nigam: 9305891636"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "205 & 209",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 15,
@@ -379,9 +379,9 @@ export const Eventsday = [
     ],
 
     contact: ["Shubham Kumar: 6200926298", "Khushi Sharma: 9137128115"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "237 & 231",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 16,
@@ -409,9 +409,9 @@ export const Eventsday = [
     ],
 
     contact: ["Shubham Kumar: 6200926298", "Khushi Sharma: 9137128115"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "NCC",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 17,
@@ -428,8 +428,8 @@ export const Eventsday = [
     ],
 
     contact: ["Sushant Gupta: 8860489995", "Akansha Chouhan: 9905786357"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "231 & 237",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -446,8 +446,8 @@ export const Eventsday = [
     ],
 
     contact: ["Soamya Parashar: 9771753905", "Anand Kumar: 9905590361"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "209 & 205",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -464,9 +464,9 @@ export const Eventsday = [
     ],
 
     contact: ["Soamya Parashar: 9771753905", "Anand Kumar: 9905590361"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "206 & 207",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 20,
@@ -489,9 +489,9 @@ export const Eventsday = [
     ],
 
     contact: ["Pranav Raj Srivastav: 969316974", "Yogesh Kumar: 9708619840"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "LH-2",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 21,
@@ -513,8 +513,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Exceeding the time limit will result in a penalty of point deduction.",
     ],
     contact: ["Sanjay Thakur: +919088911111", "Khushi Kumari: +917970499566"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "CAT HALL",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -575,8 +575,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Rachit Bansal: 9935441066", "Tejas: 7679500688"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "235 & 233A",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -598,9 +598,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Sakshi Sinha: 6299504311", "Nishant Kumar: 6206597108"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "217",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 26,
@@ -619,9 +619,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Aashish Ranjan: 9262815123", "Aditya: 8797316741"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "SHORBAGH",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 27,
@@ -639,9 +639,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Pratik Singh: +91 8809493882", "Aditya Agarwal: +91 9508454048"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "237 & 231",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 28,
@@ -660,9 +660,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Aastha Chhabra: 9693759698", "Mouli: 8292992499"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "233A & 235",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 29,
@@ -682,8 +682,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Shail: +916201493576", "Ayush Raj: 8789610656"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "206 & 207",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -704,8 +704,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Mohit: 7970752663", "Abhinav: 9934126439"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "RnD",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -762,9 +762,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Md Raja Istekhar: +91 6204185245",
       "Naman Khatwani: +91 7880036191",
     ],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "216 & 217",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 32,
@@ -778,8 +778,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     rules: ["Time Duration: 3 hours."],
 
     contact: ["Prakriti Kumari: 9142714804"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "OAT",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -800,9 +800,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Adarsh - 6202172061", "Ramendra – 9570245195"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "SHORBAGH",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 34,
@@ -822,8 +822,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Rishabh Choudhary: 7903831772", "Richik: 9430372857"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "208 & NCC GROUND",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -847,9 +847,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Aayush: 7859087199", "Apoorva Prakash: 6205558349"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "205 & 209",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 36,
@@ -920,7 +920,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     id: 39,
     imgURL: "/comingsoon.png",
     name: "INDUSTRIAL MAYHEM",
-    club: "Industrial Management",
+    club: "SIME",
     category: "Flagship",
     description:
       "The competition contains 2 rounds.\n\nRound 1: Nearly 50 teams can apply.\n- Participants have to give a quiz consisting of 10 questions related to:\n  • Marketing\n  • Industrial Management\n  • Business Ideas\n- Note: The top 20 teams will qualify for Round 2.\n\nRound 2: Judges will question participants on industrial-related issues, such as:\n- Loss of revenue over the last two months for FMCG industries.\n- Expansion of South India-based clothing brands into North India.\n- Case studies related to various industries (FMCG, Iron & Steel, etc.).\n- Answers must contain all specific details.",
@@ -932,15 +932,15 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "206 & 207",
+    time: "12PM - 3PM",
+    day: 2,
   },
   {
     id: 40,
     imgURL: "/comingsoon.png",
     name: "SHARK TANK 2.O",
-    club: "Industrial Management",
+    club: "SIME",
     category: "Formal",
     description:
       "The competition consists of two rounds:\n\nRound 1: Business Plan Submission (Elimination Round)\n- About 40 teams will participate in Round 1.\n- Participants must submit a concise business plan in a short video (2-3 minutes) covering:\n  • Business Idea & Problem Statement\n  • Market Analysis & Target Audience\n  • SAM (Service Addressable Market)\n  • TAM (Total Addressable Market)\n  • Competitive Advantage\n  • Scalability & Future Plans\n- Judges will shortlist 30 teams based on clarity, feasibility, and innovation. The top 10 teams will advance to the final round.\n\nRound 2: The Final Pitch & Q&A (Final Round)\n- Shortlisted teams will present their pitch in front of a panel of sharks.\n- Pitch Duration: 5-7 minutes per team, followed by a Q&A session where judges challenge their business strategy.\n- Participants must justify:\n  a) The uniqueness of their idea\n  b) The financial feasibility and sustainability\n  c) How they plan to scale their business.",
@@ -962,9 +962,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "LH-1",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 41,
@@ -989,8 +989,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Latisha Tiga: 9931653674", "Nishu Kumari: 6299303104"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "LH-1",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -1011,9 +1011,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Latisha Tiga: 9931653674", "Nishu Kumari: 6299303104"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "OAT",
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 43,
@@ -1049,9 +1049,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Debjyoti: 9341822684", "Aashish Ranjan: 9262815123"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "CAT HALL",
+    time: "9AM - 3PM",
+    day: 3,
   },
   {
     id: 44,
@@ -1072,8 +1072,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Decision of the judges will remain final and binding.",
     ],
     contact: ["Adarsh: 6202172061", "Ramendra: 9570245195"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "SHORBAGH",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -1097,9 +1097,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
       "NOTE: In case of any discrepancies or disputes, the decision of the organizing team will be final, abiding, and indisputable.",
     ],
     contact: ["Khushi Kumari: 7970499566", "Sanjay Thakur: 9088911111"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "CAT HALL",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 46,
@@ -1127,8 +1127,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     ],
 
     contact: ["Siddharth Singh: 8235524068", "Ujjawal Kumar: 9602050464"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "NCC",
+    time: "12PM - 3PM",
     day: 1,
   },
   {
@@ -1149,9 +1149,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     ],
 
     contact: ["Ritik: 8340540911", "Ekika: 6200715662"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "219 & 220",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 48,
@@ -1169,9 +1169,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
       "Judging Criteria: Videos will be evaluated based on the following - Creativity: 30%, Storytelling: 30%, Production Quality: 20%, Brand Message Effectiveness: 20%.",
       "Submission Guidelines: Entries must be submitted before the deadline through the provided submission link. Late or non-compliant submissions will be disqualified.",
     ],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "LH-1",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 49,
@@ -1195,9 +1195,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
 
       "Judging Criteria: Entries will be evaluated based on the following - Creativity & Originality: 30%, Composition & Framing: 30%, Relevance to Given Half: 20%, Technical Execution: 20%.",
     ],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "LH-2",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 50,
@@ -1278,15 +1278,14 @@ export const clubs = [
   "Finance", //
   "180DC", //
   "AeroSoc", //
-  "SIME",
+  "SIME", //
   "LITSoc", //
   "UNESQUO", //
   "BIOTS", //
-  "SAC",
+  "SAC", //
   "FAS",
   "CES", //
   "ECESoc", //
   "EEESoc", //
   "Events Team",
-  "Industrial Management",
 ];
