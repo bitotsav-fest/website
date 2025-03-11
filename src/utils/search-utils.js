@@ -69,7 +69,6 @@ function cosineSimilarity(vec1, vec2) {
 
 function getRandomApiKey() {
     const randomIndex = Math.floor(Math.random() * API_KEYS.length);
-    console.log(API_KEYS[randomIndex]);
     return API_KEYS[randomIndex];
 }
 
