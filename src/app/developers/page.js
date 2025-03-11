@@ -19,7 +19,9 @@ const developers = [
     img: "/developers/saahit.jpeg", 
     linkedin: "https://www.linkedin.com/in/venkat-saahit-kamu-324204299", 
     instagram: "https://www.instagram.com/saahit_008", 
-    description: "Techy interested in development and innovation constantly improving my skills to stand out among the best. Lazy but gets the job done kinda guy."
+    description: "Tech enthusiast passionate about development and innovation, continuously honing my skills to excel in the field. I take a strategic and efficient approach to problem-solving, ensuring high-quality results with minimal inefficiency."
+
+
   },
   { 
     name: "Mritunjay Raj", 
