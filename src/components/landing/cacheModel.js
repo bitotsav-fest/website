@@ -1,42 +1,46 @@
-import { get, set } from "idb-keyval"
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 async function loadModelFromCacheOrNetwork(url, onLoad) {
-  const cache = await caches.open("models-cache")
-  const cachedResponse = await cache.match(url)
+  try {
+    const cache = await caches.open("models-cache");
+    const cachedResponse = await cache.match(url);
 
-  if (cachedResponse) {
-    console.log("Loaded model from cache")
-    const blob = await cachedResponse.blob()
-    const objectURL = URL.createObjectURL(blob)
-    loadModel(objectURL, onLoad)
-  } else {
-    console.log("Fetching model from network")
-    await fetchAndCacheModel(url, onLoad)
+    if (cachedResponse) {
+      // Use arrayBuffer directly – NO BLOBS
+      const arrayBuffer = await cachedResponse.arrayBuffer();
+      loadModelDirectly(arrayBuffer, onLoad);
+    } else {
+      const response = await fetch(url);
+      const clone = response.clone();
+      await cache.put(url, clone);
+      const arrayBuffer = await response.arrayBuffer();
+      loadModelDirectly(arrayBuffer, onLoad);
+    }
+  } catch (error) {
+    console.error("Model load failed:", error);
+    // Fallback to direct fetch if necessary
   }
 }
 
-async function fetchAndCacheModel(url, onLoad) {
-  const response = await fetch(url)
-  const clone = response.clone() // Clone response before reading it
-  const cache = await caches.open("models-cache")
-  await cache.put(url, clone)
+function loadModelDirectly(arrayBuffer, onLoad) {
+  const loader = new GLTFLoader();
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+  loader.setDRACOLoader(dracoLoader);
 
-  const blob = await response.blob()
-  const objectURL = URL.createObjectURL(blob)
-  loadModel(objectURL, onLoad)
+  // Use parse() instead of load()
+  loader.parse(
+    arrayBuffer,
+    "",
+    (gltf) => {
+      onLoad(gltf);
+    },
+    (error) => {
+      console.error("GLTF parse error:", error);
+    }
+  );
 }
 
-function loadModel(url, onLoad) {
-  const loader = new GLTFLoader()
-  const dracoLoader = new DRACOLoader()
-  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/")
-  loader.setDRACOLoader(dracoLoader)
+export { loadModelFromCacheOrNetwork };
 
-  loader.load(url, (gltf) => {
-    onLoad(gltf)
-  })
-}
-
-export { loadModelFromCacheOrNetwork }
