@@ -1,46 +1,42 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { get, set } from "idb-keyval"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 
 async function loadModelFromCacheOrNetwork(url, onLoad) {
-  try {
-    const cache = await caches.open("models-cache");
-    const cachedResponse = await cache.match(url);
+  let cachedModel = await get("BIT-v1.glb")
 
-    if (cachedResponse) {
-      // Use arrayBuffer directly – NO BLOBS
-      const arrayBuffer = await cachedResponse.arrayBuffer();
-      loadModelDirectly(arrayBuffer, onLoad);
-    } else {
-      const response = await fetch(url);
-      const clone = response.clone();
-      await cache.put(url, clone);
-      const arrayBuffer = await response.arrayBuffer();
-      loadModelDirectly(arrayBuffer, onLoad);
-    }
-  } catch (error) {
-    console.error("Model load failed:", error);
-    // Fallback to direct fetch if necessary
+  console.log("Cached model", cachedModel)
+
+  if (!cachedModel) {
+    console.log("Fetching model from network")
+    url = "/BIT-v1.glb"
+    fetchAndCacheModel(url, onLoad)
+  } else {
+    console.log("Loaded model from cache")
+    const blob = new Blob([cachedModel], { type: "model/gltf-binary" })
+    const objectURL = URL.createObjectURL(blob)
+    loadModel(objectURL, onLoad)
   }
 }
 
-function loadModelDirectly(arrayBuffer, onLoad) {
-  const loader = new GLTFLoader();
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
-  loader.setDRACOLoader(dracoLoader);
-
-  // Use parse() instead of load()
-  loader.parse(
-    arrayBuffer,
-    "",
-    (gltf) => {
-      onLoad(gltf);
-    },
-    (error) => {
-      console.error("GLTF parse error:", error);
-    }
-  );
+async function fetchAndCacheModel(url, onLoad) {
+  const response = await fetch(url)
+  const arrayBuffer = await response.arrayBuffer()
+  await set("BIT-v1.glb", arrayBuffer)
+  const blob = new Blob([arrayBuffer], { type: "model/gltf-binary" })
+  const objectURL = URL.createObjectURL(blob)
+  loadModel(objectURL, onLoad)
 }
 
-export { loadModelFromCacheOrNetwork };
+function loadModel(url, onLoad) {
+  const loader = new GLTFLoader()
+  const dracoLoader = new DRACOLoader()
+  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/")
+  loader.setDRACOLoader(dracoLoader)
 
+  loader.load(url, (gltf) => {
+    onLoad(gltf)
+  })
+}
+
+export { loadModelFromCacheOrNetwork }
