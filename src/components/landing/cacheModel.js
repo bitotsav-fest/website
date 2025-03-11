@@ -3,24 +3,27 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 
 async function loadModelFromCacheOrNetwork(url, onLoad) {
-  let cachedModel = await get("BIT-v1.glb")
+  const cache = await caches.open("models-cache")
+  const cachedResponse = await cache.match(url)
 
-  if (!cachedModel) {
-    url = "/BIT-v1.glb"
-    fetchAndCacheModel(url, onLoad)
-  } else {
+  if (cachedResponse) {
     console.log("Loaded model from cache")
-    const blob = new Blob([cachedModel], { type: "model/gltf-binary" })
+    const blob = await cachedResponse.blob()
     const objectURL = URL.createObjectURL(blob)
     loadModel(objectURL, onLoad)
+  } else {
+    console.log("Fetching model from network")
+    await fetchAndCacheModel(url, onLoad)
   }
 }
 
 async function fetchAndCacheModel(url, onLoad) {
   const response = await fetch(url)
-  const arrayBuffer = await response.arrayBuffer()
-  await set("BIT-v1.glb", arrayBuffer)
-  const blob = new Blob([arrayBuffer], { type: "model/gltf-binary" })
+  const clone = response.clone() // Clone response before reading it
+  const cache = await caches.open("models-cache")
+  await cache.put(url, clone)
+
+  const blob = await response.blob()
   const objectURL = URL.createObjectURL(blob)
   loadModel(objectURL, onLoad)
 }
