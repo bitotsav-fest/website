@@ -3,16 +3,16 @@ import { SessionProvider } from "next-auth/react";
 import LayoutWrapper from "@/components/LayoutWrapper"; // Adjust the import path as needed
 
 export const metadata = {
-  title: "Bitotsav - BIT Mesra",
-  description: "BIT Mesra",
-  metadataBase: new URL("https://bitotsav.com"),
+  title: "Bitotsav 2025 - BIT Mesra",
+  description: "Bitotsav - The Annual Cultural, Sports and Technical Festival of Birla Institute of Technology, Mesra. Join us for an unforgettable celebration of talent, creativity and excellence.",
+  metadataBase: new URL("https://www.bitotsav.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Bitotsav",
     description: "BIT Mesra",
-    url: "https://bitotsav.com",
+    url: "https://www.bitotsav.com",
     siteName: "Bitotsav",
     images: [
       {
@@ -20,6 +20,9 @@ export const metadata = {
         width: 800,
         height: 600,
       },
+      {
+        url : "day2/p7.webp"
+      }
     ],
     locale: "en_US",
     type: "website",
@@ -44,7 +47,7 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/logo.png",
   },
   manifest: "/manifest.json",
 };
