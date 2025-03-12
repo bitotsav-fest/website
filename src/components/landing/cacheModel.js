@@ -3,19 +3,25 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 
 async function loadModelFromCacheOrNetwork(url, onLoad) {
-  let cachedModel = await get("BIT-v1.glb")
-
-  console.log("Cached model", cachedModel)
-
-  if (!cachedModel) {
-    console.log("Fetching model from network")
+  if (isIOS()) {
+    console.log("iOS device detected, loading model from network")
     url = "/BIT-v1.glb"
-    fetchAndCacheModel(url, onLoad)
+    loadModel(url, onLoad)
   } else {
-    console.log("Loaded model from cache")
-    const blob = new Blob([cachedModel], { type: "model/gltf-binary" })
-    const objectURL = URL.createObjectURL(blob)
-    loadModel(objectURL, onLoad)
+    let cachedModel = await get("BIT-v1.glb")
+
+    console.log("Cached model", cachedModel)
+
+    if (!cachedModel) {
+      console.log("Fetching model from network")
+      url = "/BIT-v1.glb"
+      fetchAndCacheModel(url, onLoad)
+    } else {
+      console.log("Loaded model from cache")
+      const blob = new Blob([cachedModel], { type: "model/gltf-binary" })
+      const objectURL = URL.createObjectURL(blob)
+      loadModel(objectURL, onLoad)
+    }
   }
 }
 
@@ -38,5 +44,10 @@ function loadModel(url, onLoad) {
     onLoad(gltf)
   })
 }
-
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+}
+function isIncognito() {
+  return window.requestFileSystem || window.webkitRequestFileSystem
+}
 export { loadModelFromCacheOrNetwork }

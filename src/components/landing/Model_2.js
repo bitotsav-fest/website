@@ -157,7 +157,7 @@ const Model_2 = ({ onLoad }) => {
 
     // Initial camera animation
     const initialAnimation = () => {
-      const duration = 4000 // 4 seconds
+      const duration = 3000 // 4 seconds
       const startTime = Date.now()
       const startPosition = { x: 5, y: 3, z: 5 }
       const endPosition = { x: 0.7, y: 1, z: 3 }
@@ -336,7 +336,7 @@ const Model_2 = ({ onLoad }) => {
             controls.maxDistance = 6
             controls.minPolarAngle = 0
 
-            const duration = 2000 // 2 seconds
+            const duration = 1000 // 1 second
             const startTime = Date.now()
             const startPosition = { x: camera.position.x, y: camera.position.y, z: camera.position.z }
             const endPosition = {
