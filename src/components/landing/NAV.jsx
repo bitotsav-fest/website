@@ -1,17 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Home, Calendar, Ticket, Info, Music, Images, Menu } from "lucide-react"
+import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser } from "lucide-react"
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 
 const items = [
-  {
-    name: "Home",
-    url: "/",
-    href: "/",
-    icon: Home,
-  },
   {
     name: "Events",
     url: "/events",
@@ -37,10 +31,22 @@ const items = [
     icon: Info,
   },
   {
+    name: "Developers",
+    url: "/developers",
+    href: "/developers",
+    icon: SquareUser,
+  },
+  {
     name: "Gallery",
     url: "/gallery",
     href: "/gallery",
     icon: Images,
+  },
+  {
+    name: "Sponsors",
+    url: "/sponsors",
+    href: "/sponsors",
+    icon: Handshake,
   },
 ]
 

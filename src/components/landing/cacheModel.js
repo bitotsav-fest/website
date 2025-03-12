@@ -5,7 +5,10 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 async function loadModelFromCacheOrNetwork(url, onLoad) {
   let cachedModel = await get("BIT-v1.glb")
 
+  console.log("Cached model", cachedModel)
+
   if (!cachedModel) {
+    console.log("Fetching model from network")
     url = "/BIT-v1.glb"
     fetchAndCacheModel(url, onLoad)
   } else {
