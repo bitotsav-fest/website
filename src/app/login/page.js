@@ -3,11 +3,10 @@ import { signIn, useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { IconBrandGoogle } from '@tabler/icons-react'
 import { useEffect } from 'react'
-import { redirect, useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 
 export default function LoginPage() {
 
-  redirect('/coming-soon');
   const { data: session, status } = useSession()
   const router = useRouter()
 
@@ -41,6 +40,16 @@ export default function LoginPage() {
           <p className="text-gray-400 mt-2">Sign in to continue to Bitotsav</p>
         </div>
 
+        {/* Additional Info */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-center mb-6 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10"
+        >
+          <span className="text-purple-400">BIT Mesra Students:</span>{' '}
+          <span className="text-gray-300">Get free access with your @bitmesra.ac.in email!</span>
+        </motion.p>
         {/* Login Button */}
         <motion.button
           whileHover={{ scale: 1.02 }}
