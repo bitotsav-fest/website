@@ -2,6 +2,8 @@
 import React from "react"
 import About from "@/components/landing/about"
 import NightEvents from "@/components/landing/night-events"
+import AfterMovie from "@/components/landing/aftermovie"
+
 
 export default function AboutPage() {
   return (
@@ -9,6 +11,7 @@ export default function AboutPage() {
       {/* <Hero /> */}
       <About />
       <NightEvents />
+      <AfterMovie />
     </>
   )
 }
