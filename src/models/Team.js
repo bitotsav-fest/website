@@ -9,7 +9,15 @@ const teamSchema = new mongoose.Schema({
   },
   teamName: { type: String, required: true },
   leader: { type: String, required: true }, // Prisma User UUID
-  members: [{ type: String }], // List of Prisma User UUIDs
+  members: {
+    type: [{ type: String }], // List of Prisma User UUIDs
+    validate: {
+      validator: function (members) {
+        return members.length <= 8; // Maximum of 8 members
+      },
+      message: "A team can have a maximum of 8 members.",
+    },
+  },
   events: [{ type: String }], // Array to store event names
   leaderMobileNumber: { type: String, required: true },
   rollNumber: { type: String, required: true }, // apply validation for roll number
