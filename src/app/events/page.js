@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar } from "lucide-react";
 import EventCard from "@/components/events/EventCard";
+import ChatbotPopup from "@/components/chatbot/chatbot-popup";
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day");
@@ -218,6 +219,7 @@ export default function EventsPage() {
             </div>
           )}
         </AnimatePresence>
+        <ChatbotPopup />
       </div>
     </div>
 </>)}
