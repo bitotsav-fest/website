@@ -132,18 +132,18 @@ export default function DevelopersPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center py-20 px-5 bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
+      <div className="absolute inset-0  opacity-[0.05] pointer-events-none"></div>
       <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
       <div className="absolute top-0 -right-4 w-96 h-96 bg-[#2D1E0F] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
       
-      {/* Heading with enhanced animation */}
+      {/* Heading */}
       <h1 className="text-6xl md:text-7xl text-center font-bold tracking-tight mb-10 sm:mb-12 animate-fade-in">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E] animate-gradient-x">
           Developers Team
         </span>
       </h1>
 
-      {/* Developer Cards Grid */}
+      {/* Developer Cards */}
       <div className="relative z-10 max-w-7xl w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
           {developers.map((dev, index) => (
@@ -159,15 +159,16 @@ export default function DevelopersPage() {
                 <div className="absolute inset-0 rounded-2xl">
                   <div className="relative h-full bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-xl border border-[#EFCA4E]/20 rounded-2xl p-6 overflow-hidden group-hover:border-[#EFCA4E]/40 transition-all duration-300">
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#EFCA4E]/10 via-transparent to-[#2D1E0F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#EFCA4E]/10 via-transparent to-[#2D1E0F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     
                     {/* Profile Image */}
                     <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#EFCA4E]/20 group-hover:border-[#EFCA4E]/40 transition-all duration-300 transform group-hover:scale-105">
                       <Image
                         src={dev.img}
                         alt={`Profile picture of ${dev.name}`}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                        style={{ objectFit: "cover" }}
                         className="rounded-full transform transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
