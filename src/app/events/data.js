@@ -5,7 +5,8 @@ export const Eventsday = [
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
-    prize: "15K",
+    prize: "Worth 15K",
+    theme: "Performing Arts",
     description: `"If you stumble, make it a part of the dance." Wavy steps, lacy moves, and graceful expressions—when all these occur in unison, the result is angelic! Dance is an art that comes straight from the heart. So, get ready to enthrall the audience as Bitotsav '25 brings to you its flagship event—Dance Saga! Get set to let yourself loose as your energy rattles the stage. Bring your group and stand a chance to win exciting cash prizes.`,
     rules: [
       "Team Size: 6-20.",
@@ -28,7 +29,7 @@ export const Eventsday = [
     ],
     venue: "GP BIRLA",
     time: "12PM - 3PM",
-    day: 3,
+    day: 1,
   },
   {
     id: 2,
@@ -36,6 +37,8 @@ export const Eventsday = [
     name: "FOOTLOOSE",
     club: "Dance club",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Performing Arts",
     description:
       "Dancers set the stage on fire with their smooth moves and rhythm. Every move is an expression of emotion. Through their captivating performances, which feature both exquisite pirouettes and forceful leaps, they tell tales. Cheers take on a rhythm of their own, reflecting the appreciation of the crowd. In the stillness, dancers commune with their innermost selves, a communion of souls. They depict tenacity and inventiveness with every flourish and twirl. Dreams soar and souls dance unrestrained in this celebration of the limitless manifestation of the human spirit.",
 
@@ -61,15 +64,17 @@ export const Eventsday = [
 
     contact: ["Reetika Tiwary - 70612 07063", "Ayushi Purty - 96305 26027"],
     venue: "SHORBAGH",
-    time: "9AM - 12PM",
-    day: 1,
+    time: "12PM - 3PM",
+    day: 3,
   },
   {
     id: 3,
     imgURL: "/comingsoon.png",
     name: "KBC: KOUN BANEGA COLLECTOR",
     club: "NAPS",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Personality Development",
     description:
       "Mission UPSC: The Simulation is a unique event designed to replicate the UPSC selection process, giving participants a real-time experience of the prestigious exam. This event aims to provide a realistic and challenging UPSC selection experience, helping participants identify their strengths, improve their analytical skills, and enhance their ability to handle complex situations under pressure.",
 
@@ -103,6 +108,8 @@ export const Eventsday = [
     name: "BEYOND THE SCREEN",
     club: "NAPS",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Literature & Oration",
     description:
       "The News and Publication Society presents Beyond the Screen: The Press Conference, an exciting and immersive event where participants will step into the shoes of journalists covering a high-stakes press conference in a fictional world. Fictional Worlds to Explore: Friends – Dive into Ross and Rachel’s legendary 'We were on a break' debate. Taarak Mehta Ka Ooltah Chashmah – Interact with the Gokuldham Society members and uncover their daily dilemmas. Money Heist – Challenge The Professor and his crew on their master heist strategies.",
 
@@ -127,16 +134,18 @@ export const Eventsday = [
     ],
 
     contact: ["Alisha: 7632847971"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "216 & 217",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 5,
     imgURL: "/comingsoon.png",
     name: "Race Rumble",
     club: "SAC",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Strategy & Gaming",
     description:
       "This event will include 3 rounds. Teams will advance to the next round after winning their current round. The 3rd round will be the final one, deciding the winner.\n\nRound 1: SAC the Ball\n- Team of max 5 members.\n- Players form a line, with the front person throwing the ball through their legs to the last person.\n- The last person receives the ball, runs to the front, and repeats the process.\n- The team moving forward the fastest and reaching the finish line first will advance to the next round.\n\nRound 2: Sack Race\n- One participant from each team competes.\n- Participants must jump in a sack to cross the finish line.\n- The fastest teams will proceed to the final round.\n\nRound 3: 5-Legged Race\n- A 5-legged race with two checkpoints.\n- Teams start at the starting line, reach a checkpoint, complete a mini-game, and continue.\n- The team reaching the finish line in the least time wins.\n\nCheckpoint 1: One member (out of 3) must hit a ground target with a ball.\nCheckpoint 2: One member (out of 3) must balance a marble on a spoon (held in their mouth) while continuing the 5-legged race to the finish line.",
 
@@ -158,14 +167,16 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "ELECTRONICS BINGO",
     club: "ECESoc",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Strategy & Gaming",
     description:
       "Players: (divided into 1-2 members in a team)\nDistribute Bingo cards: Give each player a Bingo card.\nExplain the rules: Briefly explain the rules and objectives of the game.\nStart the game: The caller starts calling out electronics-related terms or images from the prepared list.\nMark off terms: Players mark off the called terms or images on their Bingo cards.\nGet five in a row: The first player to get five correct marks in a row (horizontally, vertically, or diagonally) calls out Bingo and wins.\nVerify the win: The caller verifies the winning player's Bingo card to ensure they have indeed gotten five correct marks in a row.",
 
     rules: ["Players: (divided into 1-2 members in a team)"],
 
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
-    venue: "219 & 220",
+    venue: "231 & 237",
     time: "12PM - 3PM",
     day: 1,
   },
@@ -175,6 +186,8 @@ export const Eventsday = [
     name: "HIT OR MISS",
     club: "Events Team",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Strategy & Gaming",
     description:
       "ROUND 1:\nPrepare for heart-pounding action as each round will feature 10 fearless players, one representing each team, stepping into the arena for the elimination round. With balls flying and adrenaline pumping, it's a test of speed, agility, and precision. Each hit results in elimination. The last person standing from each elimination round secures a spot in the final round.\n\nROUND 2:\nTwo teams will be positioned diagonally on opposite sides of the field, competing against each other. Each team must complete a series of tasks from their designated stations, positioned at the center of the field. Upon completing all tasks, players will remain at their respective positions and start throwing balls at the opposing team. If a player is hit by a ball, they will be eliminated. The game will have a set time limit and a fixed number of throws.",
 
@@ -200,6 +213,8 @@ export const Eventsday = [
     name: "HERA PHERI PHIR SE",
     club: "BIOTS",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fun",
     description:
       "Hera Pheri-Phir Se is a treasure hunt competition which unfolds on a journey of exhilaration, exploration and excitement. It involves the art of cracking cryptic clues to find the way out. The walkway through is full of ups and downs, thrilling adventures and unified team work. Conquering the final destination to unravel the treasure demands sharp intellect, teamwork, and an adventurous spirit. With each turn, the excitement builds, pushing you beyond your limits as you decode hidden messages and puzzles that test your patience, perseverance, and problem-solving skills.",
 
@@ -214,8 +229,8 @@ export const Eventsday = [
     ],
 
     contact: ["Komal: 6202328526", "Adya: 8789021714"],
-    venue: "TBD",
-    time: "TBD",
+    venue: "Outdoor",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -224,6 +239,8 @@ export const Eventsday = [
     name: "FLIGHT SIMULATION",
     club: "AeroSoc",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Technical",
     description:
       "1. In this event, participants get the opportunity to step into a flight simulator, where they can try piloting an aircraft.\n2. They can simulate takeoff, navigation, and landing, giving them a taste of what it's like to fly a plane.",
 
@@ -237,7 +254,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "BUSINESS CRISIS SIMULATION",
     club: "180DC",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Entrepreneurship & Business",
     description:
       "Step into the role of elite business consultants! Participants will be presented with a high-stakes corporate crisis—ranging from PR disasters to financial downturns. Their task is to develop a rapid yet effective strategy to mitigate the crisis, stabilize the company, and ensure long-term recovery.\n\nTeam Size: 3 to 4 members per team.\n\n1. Crisis Briefing (15 mins)\nEach team receives a randomly assigned crisis scenario (e.g., financial distress, product recall, data breach). Relevant background materials and hints will be provided.\n\n2. Solution Development (30 mins)\nTeams must develop a strategic action plan addressing the crisis. Solutions must be feasible, considering corporate constraints and stakeholder impact.\n\n3. Presentation & Defense (15 mins)\nEach team presents a 5-minute solution to a panel of judges acting as company executives. Judges will challenge their approach with counter-questions to assess adaptability.",
 
@@ -260,6 +279,8 @@ export const Eventsday = [
     name: "TIME TRAVELLER CONSULTANT",
     club: "180DC",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "Step into the shoes of a historical strategist! Participants will be transported to a randomly assigned historical era—be it the Roman Empire, Mughal Age, or Industrial Revolution—and will act as consultants to the ruler of that time. Their mission: to formulate innovative strategies to enhance the empire’s trade, economy, and military strength using their knowledge of modern-day advancements while ensuring historical accuracy...",
 
@@ -274,14 +295,16 @@ export const Eventsday = [
     contact: ["Amar: 7782951149"],
     venue: "206 & 207",
     time: "9AM - 12PM",
-    day: 3,
+    day: 2,
   },
   {
     id: 12,
     imgURL: "/comingsoon.png",
     name: "BYTEHUNT",
     club: "EEESoc",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description: `This is a two-round event designed to challenge participants with speed and problem-solving abilities. The event consists of two rounds: the first is a rapid-fire quiz, and the second is a treasure hunt.`,
 
     rules: [
@@ -305,7 +328,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "WHERE IN BIT?",
     club: "IEEE",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description: `The participants will be shown a picture from someplace in BIT. Then, they must find the location on Google Maps and submit the respective coordinates on the Google Forms link provided by the organizers within the given time frame.`,
 
     rules: [
@@ -324,7 +349,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "PITSTOP PURSUIT",
     club: "Srijan",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "Compete in a high-stakes auction and race your way to victory! In the first round, teams will bid on essential car components like engines, tires, aerodynamics, and nitro boosts using limited virtual points. Strategic bidding is key—overspending on one part may weaken others. The top teams with the highest total points will qualify for the next round. In the final phase, the top five teams will enter a racing simulation, where their chosen setup will determine their lap time. The fastest lap wins, with prizes for the top three teams. Think smart, bid wisely, and race to glory!",
 
@@ -358,6 +385,8 @@ export const Eventsday = [
     name: "MISMATCHED",
     club: "Leo",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Strategy & Gaming",
     description:
       "Round 1: Telepathy Test\nTeam members attempt to match their choices without direct communication. Pairs are placed in separate rooms and presented with a series of prompts requiring them to predict their partner’s response. Points are awarded for correct matches, and the top teams move to the next round.\n\nRound 2: Draw Relay\nOne player is given a word or object to draw. Instead of using paper, they sketch it on the back of their teammate. The second player, based on the sensation, attempts to replicate the drawing on a provided sheet or board. The team that produces the most accurate drawings within the time limit moves to the next round.\n\nRound 3: Synergy Quest\nOne person from the team will be locked to a chair, while the other member will be blindfolded. The locked participant must guide their blindfolded teammate to complete a given task and retrieve the key to unlock them. The team that completes the challenge in the shortest time wins.",
 
@@ -389,6 +418,8 @@ export const Eventsday = [
     name: "TAKESHI'S CASTLE",
     club: "Leo",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fun",
     description:
       "Round 1: One Way Out\nOne member from each team will choose one of the three doors based on a given clue. Only the correct door will lead to the next round while the other two will be blocked.\n\nRound 2: Sync and Sprint\nPlayers from each team will be given shape cards. They must form shape-based groups matching the displayed number and rush to an assigned stop. Those left without a group when the music stops will be eliminated.\n\nRound 3: Roll to Win\nParticipants will lie flat on skateboards and propel themselves forward using their hands, aiming to stop as close to the finish line as possible without crossing it. Those nearest to the line will advance to the next stage.\n\nRound 4: Blind Quest\nOne blindfolded player from each team will have to navigate a maze, guided solely by verbal instructions from their teammate outside the maze. The player completing the maze in the shortest time will secure victory.",
 
@@ -418,7 +449,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "CINEMA CHESS CLASH",
     club: "IETE",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description:
       "Introducing Hand and Brain!\nTeam up with a friend and try this exciting twist on traditional chess! One person is the 'Brain' and gives piece-by-piece instructions. The other person is the 'Hand' and makes the moves on the board. Communicate (but in a limit), strategize, and have fun!",
 
@@ -437,7 +470,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "BRIDGE THE GAP",
     club: "CES",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
 
@@ -455,7 +490,9 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "PLANE CRASH",
     club: "CES",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
 
@@ -474,6 +511,8 @@ export const Eventsday = [
     name: "FOUNDER'S FACEOFF",
     club: "EDC",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "Step into the world of 'Founder’s Faceoff,' a platform where innovative ideas, humor, and strategic thinking collide. This two-round event challenges participants to showcase their entrepreneurial skills through a blend of wit, knowledge, and business acumen. The first-round tests participants’ business and startup knowledge through a fast-paced quiz. The second round brings the heat with a unique Roast & Debate Battle, where rival brands (e.g., Zomato vs. Swiggy, Apple vs. Samsung) take center stage to critique and defend their strategies humorously. The event promises a thrilling journey into the dynamic world of business, offering participants a unique space to learn, compete, and excel.",
 
@@ -499,6 +538,8 @@ export const Eventsday = [
     name: "NATSAMRAT",
     club: "Ehsaas",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Performing Arts",
     description: `Step into the spotlight with “NATSAMRAT: The Monoact Extravaganza”— a mesmerizing celebration of solo artistry! Witness the magic of a single actor transforming the stage into a kaleidoscope of emotions, characters, and stories. 
 
 With nothing but raw talent and boundless creativity, performers will captivate you, weaving intricate tales of love, laughter, and longing. Each act is a breathtaking journey, a masterclass in versatility, and a testament to the power of one. 
@@ -544,7 +585,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "KKK: KRAZY KAREN KUIZ",
     club: "UNESQUO",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Oratory",
     description:
       "Round 1: Prelims – Quiz Round. A total of 20 questions will be asked, in which the participants will have to pick the lie out of the multiple options given. The questions will be majorly based on internet culture.\n\nRound 2: Finals. The top 6 teams will qualify the prelims and will be eligible for this round and called on stage. The next round will be done in a formal quiz manner and the team with the highest points will win.",
 
@@ -556,9 +599,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Raghav: 7068122307", "Siddhant: 7208633208"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "233A & 235",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 24,
@@ -566,6 +609,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "SPOTIFY WRAPPED",
     club: "SDS",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fun",
     description: "TEAM SIZE: 2-3",
 
     rules: [
@@ -584,7 +629,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "ENGINEERS ROAST BATTLE",
     club: "IICHE",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description:
       "Ten teams from their respective branches (one team from each branch) will take part in a fun roasting rivalry. It will consist of 2 rounds. Winners will be decided based on the points given by the judging panel. If the number of registrations is high, we may have a shortlisting round to choose a team from a branch as only one team can participate from one branch.\n\nBranches allowed: AIML, CSE, ECE, EEE, MECH, CHEM, CIVIL, BIOTECH, PRODUCTION, MBA.\n\nRound 1: The teams will face-off in a 1V1 pre-prepared roast battle within a time limit of 1 minute. The 5 winning teams will qualify for the second round.\n\nRound 2 (Final round): The qualifying teams will then get their opponent's team based on the name they draw from a bowl of chits. Teams will take alternate turns to roast the opponent for 30 seconds, and the other team will get 30 seconds to reply. Then the teams exchange roles and the winner will be decided based on points scored in this round.",
 
@@ -608,6 +655,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "BIT ROADIES",
     club: "Rotaract",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Strategy & Gaming",
     description:
       "Round 1:\n(Elimination Round)\nParticipants will be selected based on their physical strength, which will be tested through a race and series of tasks.\n\nRound 2:\n(Task Round)\n15 teams will qualify for the next round, which will be a mix of multiple hurdle fusion races and tasks which must be completed with their partners' help. 3 teams who complete the set of tasks the fastest will move to the next round.\n\nRound 3:\n(Interview Round)\nAll 3 teams qualified for this round will have an individual round table interview and the winner shall be decided based on the performance in tasks and interview.",
 
@@ -629,6 +678,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "CAMPUS CAPITALIST",
     club: "Finance",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "We’ve all played the Business Board Game during our childhood. This game is similar to that, but to make it more interesting, we have replaced the normal properties with properties of BIT, such as the Main Building, R&D Building, IC, and more. Participants will also face some surprise hurdles, which will be announced just before the start of Round 2 to make the game even more exciting.",
 
@@ -649,6 +700,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "QUILL QUEST",
     club: "LITSoc",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Literature & Oration",
     description:
       "The Literary Society has brought you magic in its antique allure - The Quill Quest. Sharpen up your quills and get ready to bleed ink and fabricate your own literary masterpiece. Join in and explore the scarlet connection between genres you never knew could be related and make your own magical composition and carry the epiphany you absorb for the time that comes.",
 
@@ -670,6 +723,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "KALAM-E-TAHIR",
     club: "LITSoc",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Literature & Oration",
     description:
       "दी लिटरेरी सोसायटी, बी० आई० टी० मेसरा आयोजित कर रहा है 'कलम-ए-ताहिर', जिसमें हर प्रतिभागी को स्वयं-रचित कविताओं का अनुवाचन कर, अपने विचारों को दूसरों के सामने खुलकर व्यक्त करने का बेहतरीन मंच प्रदान किया जाएगा।  सभी अपनी रचनाओं के साथ सादर आमंत्रित हैं, काव्य व कल्पना की अद्भुत शाम को और भी खूबसूरत बनाने के लिए।",
 
@@ -691,7 +746,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "VALOMANIA",
     club: "SAC",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Strategy & Gaming",
     description:
       "Valorant is a free-to-play tactical first-person shooter developed by Riot Games. Players compete in 5v5 matches, with one team attacking and the other defending. Each agent has distinct abilities that can turn the tide of battle, requiring teamwork and strategy to win. With frequent updates, new agents, maps, and a competitive ranking system.",
 
@@ -713,7 +770,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "JUMANJI 3.O",
     club: "EPAC",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Strategy & Gaming",
     description:
       "JUMANJI 3.0 is an exciting and engaging event that will showcase participants' team spirit, creativity, and coordination. The event consists of multiple sub-parts designed to test problem-solving skills, speed, accuracy, balance, focus, and teamwork.",
 
@@ -771,7 +830,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "SKYFALL SCRAMBLE",
     club: "AeroSoc",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "(Egg on Parachute): In this event, participants will drop an egg with a parachute. The goal is to ensure the egg survives the fall, testing both the effectiveness of the parachute and the participants' ability to design a safe landing system.",
 
@@ -788,6 +849,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "JUKEBOX",
     club: "Dhwani",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Performing Arts",
     description: "Solo/Group acoustic music performances.",
 
     rules: [
@@ -810,6 +873,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "EN CHESSANT",
     club: "IEI Civil",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Strategy & Gaming",
     description:
       "EN CHESSANT is an exciting chess event. This unique competition features live matches, with only the finals and semifinals being broadcast. Teams of skilled chess players come together to battle it out on the board, showcasing their strategic powers and tactical brilliance. En Chessant is not just a competition; it's a test of skill, strategy, and teamwork. It showcases the timeless appeal of chess, where every move can change the course of the game, and where intellect triumphs over brute force.",
 
@@ -831,7 +896,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "THE TALLEST",
     club: "IEI Civil",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "In this very event, the challenge starts with the formation of structures using playing cards. Height constraint does not apply here but the process involves meticulous planning and execution, as each card placement affects the stability and height of the structure. The tallest structures stand as a testament to the team's perseverance and innovation, showcasing the power of collaboration and imagination.",
 
@@ -854,20 +921,20 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 36,
     imgURL: "/comingsoon.png",
-    name: "CYBERBRIGTON",
-    club: "IEI Civil",
+    name: "BAZINGAA!",
+    club: "Events Team",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "",
     description:
-      "This event consists of two phases: Phase 1 (1.5 hrs) - teams have to complete the first 5 levels of the game on the computer. Phase 2 (1.5 hrs) - the shortlisted teams will complete the remaining 5 levels of the game on the computer.",
+      "Round 1:\nDialogues, music, or speeches will be played, and participants have to guess the person, event, movie, or music.\n\nRound 2:\nPairs compete in a game of 'Higher or Lower.' Participants view pairs of celebrities, monuments, or animals and guess which one meets the given criteria, like more followers or Google searches. Top teams with the most correct guesses advance.\n\nRound 3:\nDumb Charades - Participants will be given words related to an event. One member of the team must act out the words within five minutes while teammates connect the words to guess the historical event. Only 3-4 teams will participate in this round to avoid chaos.",
 
     rules: [
-      "Two phases with shortlisted teams: - Phase 1 (all the teams) - Phase 2 (shortlisted teams).",
-      "The game will be played using software in which players must construct a bridge without causing it to collapse.",
-      "The team which will complete the most levels in software and in the least time will go for the next round.",
-      "The shortlisted team will be allowed for the next level. Result of the round will be published on the same day.",
+      "Each team must consist of 4 members.",
+      "Answers should not be called out loud.",
     ],
 
-    contact: ["Aayush: 7859087199", "Apoorva Prakash: 6205558349"],
+    contact: ["Tanisha: 7064426300"],
     venue: "TBD",
     time: "TBD",
     day: 1,
@@ -921,7 +988,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "INDUSTRIAL MAYHEM",
     club: "SIME",
-    category: "Flagship",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "The competition contains 2 rounds.\n\nRound 1: Nearly 50 teams can apply.\n- Participants have to give a quiz consisting of 10 questions related to:\n  • Marketing\n  • Industrial Management\n  • Business Ideas\n- Note: The top 20 teams will qualify for Round 2.\n\nRound 2: Judges will question participants on industrial-related issues, such as:\n- Loss of revenue over the last two months for FMCG industries.\n- Expansion of South India-based clothing brands into North India.\n- Case studies related to various industries (FMCG, Iron & Steel, etc.).\n- Answers must contain all specific details.",
 
@@ -942,6 +1011,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "SHARK TANK 2.O",
     club: "SIME",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "The competition consists of two rounds:\n\nRound 1: Business Plan Submission (Elimination Round)\n- About 40 teams will participate in Round 1.\n- Participants must submit a concise business plan in a short video (2-3 minutes) covering:\n  • Business Idea & Problem Statement\n  • Market Analysis & Target Audience\n  • SAM (Service Addressable Market)\n  • TAM (Total Addressable Market)\n  • Competitive Advantage\n  • Scalability & Future Plans\n- Judges will shortlist 30 teams based on clarity, feasibility, and innovation. The top 10 teams will advance to the final round.\n\nRound 2: The Final Pitch & Q&A (Final Round)\n- Shortlisted teams will present their pitch in front of a panel of sharks.\n- Pitch Duration: 5-7 minutes per team, followed by a Q&A session where judges challenge their business strategy.\n- Participants must justify:\n  a) The uniqueness of their idea\n  b) The financial feasibility and sustainability\n  c) How they plan to scale their business.",
 
@@ -971,7 +1042,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "LOST IN TRANSLATION",
     club: "SPICMACAY",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description:
       "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
 
@@ -999,6 +1072,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "FOLK & FLAIR",
     club: "SPICMACAY",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fine Arts",
     description:
       "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
 
@@ -1021,7 +1096,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
-    prize: "15K",
+    prize: "Worth 15K",
+    theme: "Personality Development",
 
     description:
       "Round 1: (online)\nWe will organize an online questionnaire round and participants will be shortlisted based on their confidence, speaking skills and presence of mind.\n\nRound 2:\n15 girls and 15 boys will be shortlisted from Round 1. Introduction + First Impression, each contestant will get 30-60 seconds to introduce themselves.\n\nRound 3:\nThe top 5 boys & 5 girls from Round 2 will qualify for the Final Round. Then they must perform ramp walk and answer the questions asked by the judges.",
@@ -1059,7 +1135,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "BATTLE OF BANDS",
     club: "Dhwani",
     category: "Flagship",
-    prize: "15K",
+    prize: "Worth 15K",
+    theme: "Performing Arts",
     description: `The band that scores the highest points in Band Tightness, Overall Stage Presentation, and Music Composition wins.`,
     rules: [
       "Time Limit: 20 minutes (Stage in— Stage out)",
@@ -1073,7 +1150,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
     contact: ["Adarsh: 6202172061", "Ramendra: 9570245195"],
     venue: "SHORBAGH",
-    time: "12PM - 3PM",
+    time: "9AM - 12PM",
     day: 1,
   },
   {
@@ -1082,7 +1159,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     name: "ABHINAY",
     club: "Ehsaas",
     category: "Flagship",
-    prize: "15K",
+    prize: "Worth 15K",
+    theme: "Performing Arts",
     description: `ABHINAY is an exciting stage play event. Prepare to be enthralled by an extraordinary stage play that promises to dazzle and inspire! This captivating event showcases a dynamic performance brimming with vivid storytelling, stunning visuals, and heartfelt emotion. Talented actors bring a compelling narrative to life, weaving together moments of drama, humor, and triumph on a beautifully crafted stage. 
 
 With dazzling costumes, immersive sets, and a powerful soundtrack, every detail is designed to transport you into the heart of the story. Whether you're a theater enthusiast or a first-time attendee, this unforgettable production will leave you spellbound. Don’t miss this magical celebration of creativity and artistry!`,
@@ -1107,7 +1185,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     name: "SQUID GAMES",
     club: "Events Team",
     category: "Flagship",
-    prize: "",
+    prize: "Worth 15k",
+    theme: "Fun",
     description:
       "A fun and competitive event inspired by the popular series! Compete in a series of exciting challenges like Red Light, Green Light, testing your skill, strategy, and teamwork. Whether you're playing for glory or just for laughs, expect high-energy fun and an unforgettable experience. Do you have what it takes to win? Let the games begin!",
 
@@ -1136,7 +1215,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     imgURL: "/comingsoon.png",
     name: "THE LOL CHALLENGE",
     club: "BIOTS",
-    category: "Formal",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Fun",
     description:
       "The LOL Challenge is a fast-paced, laughter-filled event where creativity, humour, and quick thinking take centre stage. From comedy battles to exciting challenges and meme-worthy marketing campaigns, each round will test participants in unexpected and entertaining ways.",
 
@@ -1159,6 +1240,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     name: "Admakers Showdown",
     club: "PSOC",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Entrepreneurship & Business",
     description:
       "Unleash your creativity in the world of advertising with Admakers Showdown, presented by the Photographic Society, BIT Mesra! This is your chance to showcase your filmmaking skills by crafting compelling commercial videos for iconic products like Coke, Coffee, Watches, and more. Whether you're an experienced videographer or an aspiring filmmaker, this competition challenges you to create captivating advertisements that not only sell a product but tell a story, evoke emotions, and leave a lasting impact. From high-energy beverage commercials to elegant luxury watch ads, the creative possibilities are endless! A panel of expert judges will assess each video based on creativity, storytelling, production quality, and brand message effectiveness. Are you ready to take on the challenge and make your mark in the world of advertising?",
 
@@ -1179,6 +1262,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     name: "MATCH THE CUT",
     club: "PSOC",
     category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Photography & Videography",
     ddescription:
       "The LOL Challenge is a fast-paced, laughter-filled event where creativity, humour, and quick thinking take centre stage. From comedy battles to exciting challenges and meme-worthy marketing campaigns, each round will test participants in unexpected and entertaining ways.",
 
@@ -1220,6 +1305,134 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     venue: "TBD",
     time: "TBD",
     day: 1,
+  },
+  {
+    id: 51,
+    imgURL: "/comingsoon.png",
+    name: "BITOTSAV QUIZ",
+    club: "UNESQUO",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Oratory",
+    description:
+      "Round 1:\nPrelims – Quiz Round.\nA total of 20 questions will be asked, in which the participants will have to pick the lie out of the multiple options given.\n\nRound 2:\nFinals.\nThe top 6 teams will qualify the prelims and will be eligible for this round and called on stage. The next round will be conducted in a formal quiz manner, and the team with the highest points will win.",
+
+    rules: [
+      "Round 1 is an elimination round from which only the top six teams will be selected.",
+      "Round 2 will be marked as mentioned above.",
+      "In case of a tie, a 40:60 weightage will be given to the scores of Round 1 and Round 2 respectively to get the final winner’s score.",
+      "Any use of unfair means shall lead to immediate disqualification.",
+    ],
+
+    contact: ["Biprav K: 9608592721", "Shourya Parihar: 9508440137"],
+    venue: "LH-1",
+    time: "9AM - 12PM",
+    day: 3,
+  },
+  {
+    id: 52,
+    imgURL: "/comingsoon.png",
+    name: "A-MAZE-&-MARBLE",
+    club: "Robolution",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Strategy & Gaming",
+    description:
+      "A-MaZe-&-Marble is a high-precision control-based challenge where participants manipulate a dynamic, two-axis maze to guide a marble ball to its destination. Using a dual-axis joystick module, players must carefully adjust the maze’s tilt, navigating the ball through a complex path filled with twists and turns. The game demands a combination of dexterity, strategy, and hand-eye coordination as participants compete in a head-to-head elimination format.",
+
+    rules: [
+      "Each team will have only one player participate in a round.",
+      "The event follows a 1v1 knockout format:\n  • Two players compete simultaneously.\n  • The first player to successfully guide the ball to the destination qualifies for the next round.\n  • The process repeats until a final winner emerges.",
+      "Participants must use only the provided joystick module to control the maze.",
+    ],
+
+    contact: ["Ayush Kumar: 8789727207", "Isha Niru Bara: 7645885441"],
+    venue: "IC ARENA",
+    time: "12PM - 3PM",
+    day: 1,
+  },
+  {
+    id: 53,
+    imgURL: "/comingsoon.png",
+    name: "PANACHE",
+    club: "FAS",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fine Arts",
+    description:
+      "A creative team event where 2-5 participants design a dress using newspaper and basic crafting materials. The event culminates in a ramp walk, where teams showcase their designs and explain their creations.",
+
+    rules: [
+      "Each team must consist of 2-5 participants.",
+      "Teams will be provided with newspapers and basic crafting materials; no external materials are allowed.",
+      "The dress must be entirely made from the provided materials and should be wearable.",
+      "Teams will have a limited time to complete their designs.",
+      "The model wearing the dress must walk the ramp and briefly explain the concept and features of the outfit.",
+      "The dress should be decent, creative, and structurally sound to withstand the ramp walk.",
+      "Teams will be judged on creativity, presentation, durability, and concept explanation.",
+      "Any act of misconduct, delay, or rule violation may lead to disqualification.",
+      "The decision of the judges will be final and binding.",
+    ],
+
+    contact: ["Aditya Singh: 8987820978", "Divya Kamal: 8840729222"],
+    venue: "OAT",
+    time: "9AM - 12PM",
+    day: 2,
+  },
+  {
+    id: 54,
+    imgURL: "/comingsoon.png",
+    name: "BREWED CREATIVITY",
+    club: "FAS",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Fine Arts",
+    description:
+      "It is an event where participants turn accidental coffee spills into stunning artwork. Using only coffee, they create unique designs, judged on creativity, originality, and technique.",
+
+    rules: [
+      "Participants must create artwork using only coffee—no additional colors or materials are permitted.",
+      "The artwork must originate from an accidental spill, which can then be shaped into a design.",
+      "A fixed time limit will be given to complete the artwork.",
+      "Judging criteria include creativity, originality, and effective use of the medium.",
+      "Any form of pre-drawn sketches or tracing is strictly prohibited.",
+      "Participants must work within the provided workspace and cannot bring external materials.",
+      "The decision of the judges will be final and binding.",
+    ],
+
+    contact: ["Aditya Singh: 8987820978", "Divya Kamal: 8840729222"],
+    venue: "OAT",
+    time: "9AM - 12PM",
+    day: 1,
+  },
+  {
+    id: 55,
+    imgURL: "/comingsoon.png",
+    name: "SHORT MOVIE",
+    club: "Events Team",
+    category: "Flagship",
+    prize: "Worth 15k",
+    theme: "Photography & Videography",
+    description:
+      "Step into the world of cinema and storytelling! This Short Movie Making Competition is your chance to showcase acting, direction, and creativity in a 2-3 minute cinematic piece. The theme 'Hastakshar: Celebrating Legends' honors iconic personalities who have left an everlasting mark in history.",
+
+    rules: [
+      "Team Size: 3-5 members.",
+      "Theme Adherence: The movie must revolve around the theme 'Hastakshar – Celebrating Legends' (Historical figures, cultural icons, revolutionaries, sports personalities, etc.).",
+      "Duration: The short film must be between 2 to 3 minutes.",
+      "Format: The final video should be submitted in MP4 format before the deadline.",
+    ],
+
+    judgement_criteria: [
+      "Acting & Performance – How well the actors portray emotions and expressions.",
+      "Storytelling & Creativity – Engaging plot, originality, and message clarity.",
+      "Direction & Cinematic Appeal – Camera work, editing, and technical aspects.",
+      "Theme Relevance – Connection to the theme 'Celebrating Legends'.",
+      "The team with the highest score will be declared the winner! Judges' decisions are final.",
+    ],
+    venue: "CAT HALL",
+    time: "12PM - 3PM",
+    day: 2,
   },
 ];
 
