@@ -34,7 +34,7 @@ export default function TicketPage() {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#0A0118]">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2]">
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none"></div>
       <div className="absolute top-0 -left-4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
