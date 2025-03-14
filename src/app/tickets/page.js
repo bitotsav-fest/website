@@ -114,7 +114,7 @@ export default function TicketPage() {
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold text-[#F6F1E2]">
-                        Starting Soon...
+                        TBD
                       </span>
                       {/* <span className="text-[#EFCA4E]">early bird</span> */}
                     </div>
