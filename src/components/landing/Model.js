@@ -5,7 +5,7 @@ import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
-const Model = () => {
+const Model = ({ onLoad }) => {
   const mountRef = useRef(null)
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const Model = () => {
           goldMaterial = child.material
         }
       })
+      onLoad && onLoad()
     })
 
     const light = new THREE.AmbientLight(0xffffff, 1)

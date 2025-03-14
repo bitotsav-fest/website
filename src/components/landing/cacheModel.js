@@ -44,7 +44,7 @@ function loadModel(url, onLoad) {
     onLoad(gltf)
   })
 }
-function isIOS() {
+export function isIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 }
 function isIncognito() {

@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from "react"
 import Model_2 from "./Model_2"
+import Model from "./Model"
 import { motion } from "framer-motion"
+import { isIOS } from "./cacheModel"
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -11,11 +13,18 @@ const Landing = () => {
   useEffect(() => {
     if (isLoading) {
       const interval = setInterval(() => {
-        setLoadingProgress(prev => Math.min(prev + Math.random() * 10, 99))
+        setLoadingProgress((prev) => Math.min(prev + Math.random() * 10, 99))
       }, 200)
       return () => clearInterval(interval)
     }
   }, [isLoading])
+
+  let ModelComponent
+  if (isIOS()) {
+    ModelComponent = Model
+  } else {
+    ModelComponent = Model_2
+  }
 
   return (
     <div className="h-screen flex justify-center items-center bg-black relative overflow-hidden">
@@ -27,23 +36,18 @@ const Landing = () => {
           transition={{ duration: 0.5 }}
           className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-40 h-40 mb-8"
-          >
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }} className="relative w-40 h-40 mb-8">
             <motion.div
               className="absolute inset-0 border-4 border-[#FFD700]/30 rounded-full shadow-[0_0_15px_rgba(255,215,0,0.3)]"
-              style={{ borderTopColor: 'transparent' }}
+              style={{ borderTopColor: "transparent" }}
               animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
               className="absolute inset-4 border-4 border-[#FFD700]/50 rounded-full shadow-[0_0_10px_rgba(255,215,0,0.5)]"
-              style={{ borderTopColor: 'transparent', borderRightColor: 'transparent' }}
+              style={{ borderTopColor: "transparent", borderRightColor: "transparent" }}
               animate={{ rotate: -360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
@@ -64,48 +68,28 @@ const Landing = () => {
           >
             Welcome to Bitotsav
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-[#FFD700]/80 text-lg font-medium mb-6"
-          >
+          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-[#FFD700]/80 text-lg font-medium mb-6">
             Initializing Virtual Experience
           </motion.p>
-          <motion.div
-            className="flex gap-3 text-[#FFD700]/60"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            <motion.span
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-sm"
-            >
+          <motion.div className="flex gap-3 text-[#FFD700]/60" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}>
+            <motion.span animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-sm">
               Loading Assets
             </motion.span>
-            <motion.span
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
-              className="text-sm"
-            >
+            <motion.span animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }} className="text-sm">
               •
             </motion.span>
-            <motion.span
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-              className="text-sm"
-            >
+            <motion.span animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }} className="text-sm">
               Preparing Scene
             </motion.span>
           </motion.div>
         </motion.div>
       )}
-      <Model_2 onLoad={() => {
-        setLoadingProgress(100)
-        setTimeout(() => setIsLoading(false), 500)
-      }} />
+      <ModelComponent
+        onLoad={() => {
+          setLoadingProgress(100)
+          setTimeout(() => setIsLoading(false), 500)
+        }}
+      />
     </div>
   )
 }

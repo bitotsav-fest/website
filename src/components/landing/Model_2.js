@@ -8,7 +8,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader"
-import { useRouter } from "next/navigation"
 import { loadModelFromCacheOrNetwork } from "./cacheModel"
 
 function sleep(ms) {
@@ -17,8 +16,6 @@ function sleep(ms) {
 
 const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
-  const router = useRouter()
-
   let isModel = false
   let isStalls = false
 
@@ -47,7 +44,7 @@ const Model_2 = ({ onLoad }) => {
     camera.position.set(5, 3, 5) // Changed initial position for dramatic entry
 
     // Enhanced lighting setup
-    const ambientLight = new THREE.AmbientLight(0xdddddd, 2)
+    const ambientLight = new THREE.AmbientLight(0xdddddd, 1)
     scene.add(ambientLight)
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
@@ -106,55 +103,6 @@ const Model_2 = ({ onLoad }) => {
       moveDown: false,
     }
 
-    // const onKeyDown = (event) => {
-    //   switch (event.code) {
-    //     case "KeyW":
-    //       keyboardControls.moveForward = true
-    //       break
-    //     case "KeyS":
-    //       keyboardControls.moveBackward = true
-    //       break
-    //     case "KeyA":
-    //       keyboardControls.moveLeft = true
-    //       break
-    //     case "KeyD":
-    //       keyboardControls.moveRight = true
-    //       break
-    //     case "Space":
-    //       keyboardControls.moveUp = true
-    //       break
-    //     case "ShiftLeft":
-    //       keyboardControls.moveDown = true
-    //       break
-    //   }
-    // }
-
-    // const onKeyUp = (event) => {
-    //   switch (event.code) {
-    //     case "KeyW":
-    //       keyboardControls.moveForward = false
-    //       break
-    //     case "KeyS":
-    //       keyboardControls.moveBackward = false
-    //       break
-    //     case "KeyA":
-    //       keyboardControls.moveLeft = false
-    //       break
-    //     case "KeyD":
-    //       keyboardControls.moveRight = false
-    //       break
-    //     case "Space":
-    //       keyboardControls.moveUp = false
-    //       break
-    //     case "ShiftLeft":
-    //       keyboardControls.moveDown = false
-    //       break
-    //   }
-    // }
-
-    // window.addEventListener("keydown", onKeyDown)
-    // window.addEventListener("keyup", onKeyUp)
-
     // Initial camera animation
     const initialAnimation = () => {
       const duration = 3000 // 4 seconds
@@ -199,15 +147,6 @@ const Model_2 = ({ onLoad }) => {
     const clock = new THREE.Clock()
     const animate = () => {
       const delta = clock.getDelta()
-
-      // Update camera position based on keyboard input
-      // const moveSpeed = 0.1
-      // if (keyboardControls.moveForward) camera.translateZ(-moveSpeed)
-      // if (keyboardControls.moveBackward) camera.translateZ(moveSpeed)
-      // if (keyboardControls.moveLeft) camera.translateX(-moveSpeed)
-      // if (keyboardControls.moveRight) camera.translateX(moveSpeed)
-      // if (keyboardControls.moveUp) camera.translateY(moveSpeed)
-      // if (keyboardControls.moveDown) camera.translateY(-moveSpeed)
 
       controls.update()
 
@@ -392,8 +331,6 @@ const Model_2 = ({ onLoad }) => {
 
     return () => {
       window.removeEventListener("resize", handleResize)
-      // window.removeEventListener("keydown", onKeyDown)
-      // window.removeEventListener("keyup", onKeyUp)
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement)
       }
