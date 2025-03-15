@@ -116,7 +116,8 @@ export function Nav() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="p-2 md:hidden rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300">
+          <button onClick={() => setIsOpen(!isOpen)} className="p-2 
+            rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300">
             <span className="sr-only">Open menu</span>
             <Menu className="h-6 w-6" />
           </button>
