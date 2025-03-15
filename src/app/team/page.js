@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { getUserUUID } from "@/app/actions/auth";
+import { getUser } from "@/app/actions/auth";
 import axios from "axios";
 import { motion } from "framer-motion";
 
@@ -9,14 +9,16 @@ export default function Register() {
   const [activeTab, setActiveTab] = useState("create");
   const [userUUID, setUserUUID] = useState("");
   const [teamCode, setTeamCode] = useState("");
+  const [user, setUser] = useState("");
   const { data: session } = useSession();
 
   useEffect(() => {
     const fetchUserUUID = async () => {
       if (session?.user?.email) {
         try {
-          const uuid = await getUserUUID();
-          setUserUUID(uuid);
+          const user = await getUser();
+          setUserUUID(user.uuid);
+          setUser(user);
         } catch (error) {
           console.error("Error fetching UUID:", error);
         }
@@ -30,7 +32,6 @@ export default function Register() {
       axios
         .get(`/api/user/get?uuid=${userUUID}`)
         .then((res) => {
-          console.log(res.data);
           setTeamCode(res.data.teamCode);
         })
         .catch((err) => {
@@ -38,6 +39,20 @@ export default function Register() {
         });
     }
   }, [userUUID]);
+
+  useEffect(() => {
+    if (teamCode) {
+      axios
+        .get(`/api/teams/get?teamCode=${teamCode}`)
+        .then((res) => {
+          // Handle the response data as needed
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [teamCode]);
 
   const handleCreateTeam = (e) => {
     e.preventDefault();
@@ -54,17 +69,16 @@ export default function Register() {
     // extracting uuid form sesssion storage
     const leaderUUID = userUUID; // uuid;
     if (!leaderUUID) {
-      window.location.href = "/coming-soon";
-      // alert("User ID not found. Please log in again.");
+      alert("User ID not found. Please log in again.");
       return;
     }
-
     axios
       .post("/api/teams/create", {
         teamName,
         leaderUUID,
         leaderMobileNumber,
         rollNumber,
+        user
       })
       .then((res) => {
         if (res.status === 201) {
@@ -95,9 +109,12 @@ export default function Register() {
       alert("User ID not found. Please log in again.");
       return;
     }
+    
+    console.log(teamCode)
+    console.log(userUUID)
 
     axios
-      .post("/api/teams/join", { teamCode, userUUID })
+      .post("/api/teams/join", { teamCode, userUUID, user })
       .then((res) => {
         if (res.status === 200) {
           alert("Team joined successfully!");
