@@ -11,10 +11,6 @@ export default function MerchCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",
-  containerHeight ="30rem",
-  containerWidth = "24rem",
-  imageHeight = "100%",
-  imageWidth = "100%",
   scaleOnHover = 1.1,
   rotateAmplitude = 12,
   showMobileWarning = true,
@@ -74,11 +70,7 @@ export default function MerchCard({
   return (
     <figure
       ref={ref}
-      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
-      style={{
-        height: containerHeight,
-        width: containerWidth,
-      }}
+      className="relative w-full h-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-lg 2xl:max-w-xl mx-auto flex flex-col items-center justify-center [perspective:800px]"
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -90,29 +82,17 @@ export default function MerchCard({
       )}
 
       <motion.div
-        className="relative [transform-style:preserve-3d]"
-        style={{
-          width: imageWidth,
-          height: imageHeight,
-          rotateX,
-          rotateY,
-          scale,
-        }}
+        className="relative w-full h-auto max-h-fit [transform-style:preserve-3d]"
+        style={{ rotateX, rotateY, scale }}
       >
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{
-            width: imageWidth,
-            height: imageHeight,
-          }}
+          className="w-full h-auto max-h-fit rounded-[15px] object-cover will-change-transform [transform:translateZ(0)]"
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div
-            className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]"
-          >
+          <motion.div className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]">
             {overlayContent}
           </motion.div>
         )}
@@ -121,12 +101,7 @@ export default function MerchCard({
       {showTooltip && (
         <motion.figcaption
           className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
-          style={{
-            x,
-            y,
-            opacity,
-            rotate: rotateFigcaption,
-          }}
+          style={{ x, y, opacity, rotate: rotateFigcaption }}
         >
           {captionText}
         </motion.figcaption>
