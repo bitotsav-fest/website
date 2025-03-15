@@ -11,7 +11,7 @@ const Landing = () => {
   useEffect(() => {
     if (isLoading) {
       const interval = setInterval(() => {
-        setLoadingProgress((prev) => Math.min(prev + Math.random() * 10, 99))
+        setLoadingProgress((prev) => Math.min(prev + Math.random() * 10, 100))
       }, 200)
       return () => clearInterval(interval)
     }
@@ -78,7 +78,10 @@ const Landing = () => {
       <Model_2
         onLoad={() => {
           setLoadingProgress(100)
-          setTimeout(() => setIsLoading(false), 500)
+          setTimeout(() => {
+            setIsLoading(false)
+            setLoadingProgress(0) // Reset progress for future use
+          }, 500)
         }}
       />
     </div>
