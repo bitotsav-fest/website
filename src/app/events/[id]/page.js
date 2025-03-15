@@ -123,7 +123,7 @@ export default function EventDetailPage() {
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="relative w-full md:w-[400px] h-[390px] rounded-xl overflow-hidden border border-[#EFCA4E]/20 group"
+            className="relative w-80 h-96 rounded-xl overflow-hidden border border-[#EFCA4E]/20 group"
           >
             <Image
               src={event.imgURL}
