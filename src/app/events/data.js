@@ -160,7 +160,7 @@ export const Eventsday = [
     contact: ["Mohit: 7970752663", "Abhinav: 99341 26439"],
     venue: "NCC",
     time: "9AM - 12PM",
-    day: 2,
+    day: 1,
   },
   {
     id: 6,
@@ -447,8 +447,8 @@ export const Eventsday = [
     imgURL: "/comingsoon.png",
     name: "Hand 'N' Brain",
     club: "IETE",
-    category: "Informal",
-    prize: "180, 150, 120",
+    category: "Formal",
+    prize: "300, 250, 200",
     theme: "Fun",
     description:
       "Hand And Brain is a modern fun twist on the age-old game of Chess. Unlike orthodox chess, this is a team game where each team consists of 2 players – Hand and Brain. \nMake sure your hand has as much brain as the brain has as much hand and maybe the team squabble will result in you winning.\n\nConsists of 2 rounds\n\nRound 1: Elimination round, a quiz on all-time favorite TV Shows, Movies, and Animes. Both players can participate in this (as a team) or only one member can participate (solo). Half an hour of questions such as ‘Who has a lightning scar on the forehead?’ (Difficulty is nowhere near this low). Top 8 teams move ahead to Round 2.\n\nRound 2: Deciding and Final Round. 8 teams play tournament style in a game of Chess with a modern twist – Hand And Brain.",
@@ -568,16 +568,16 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     club: "ECESoc",
     category: "Informal",
     prize: "180, 150, 120",
-    theme: "",
+    theme: "Strategy & Gaming",
     description:
       "Phase 1: Quick-Fire Business game (Earn Components)\nBasically a monopoly in terms of electronics such as like, jail can be termed as power cut and so and so. Player aims to buy out the components required for completing their circuit in phase 2.\n\nPhase 2: Circuit Race (Build & Troubleshoot)\nTeams race to complete a working circuit using the components they earned.\nThe host may introduce random “power cuts” or faulty components to make it challenging!\nThe first team to successfully complete their circuit wins the round.\n\nWINNING CRITERIA\nThe team that completes their circuit first wins!\nBonus points for creativity (if they modify or improve the circuit).",
     rules: [
       "Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board.",
     ],
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "206 & 207",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 23,
@@ -924,7 +924,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     club: "Events Team",
     category: "Informal",
     prize: "180, 150, 120",
-    theme: "",
+    theme: "Fun",
     description:
       "Round 1:\nDialogues, music, or speeches will be played, and participants have to guess the person, event, movie, or music.\n\nRound 2:\nPairs compete in a game of 'Higher or Lower.' Participants view pairs of celebrities, monuments, or animals and guess which one meets the given criteria, like more followers or Google searches. Top teams with the most correct guesses advance.\n\nRound 3:\nDumb Charades - Participants will be given words related to an event. One member of the team must act out the words within five minutes while teammates connect the words to guess the historical event. Only 3-4 teams will participate in this round to avoid chaos.",
 
@@ -934,9 +934,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Tanisha: 7064426300"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "LH-1",
+    time: "12PM - 3PM",
+    day: 2,
   },
   // {
   //   id: 37,
@@ -1091,7 +1091,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 43,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742053026/lxeznn76efn0cymp9ds3.png",
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
@@ -1290,6 +1291,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     club: "Aveon",
     category: "Formal",
     prize: "300, 250, 200",
+    theme: "Strategy & Gaming",
     description:
       "Welcome to Survival Sprint, the ultimate test of endurance, agility, and teamwork at BITOTSAV! Conducted at the Sports Complex, this high-adrenaline obstacle challenge will push participants to their limits as they navigate through grueling physical and skill-based tasks.\n\nTeams must work together, strategize, and race against time to complete a multi-stage course filled with dynamic obstacles, showcasing their strength, speed, and coordination. The team with the highest overall score will be crowned the Survival Sprint Champions.\n\nPreliminary Round – Tire Bowling\n\nDescription:\n● A unique take on bowling, where teams will roll a heavy tire towards a set of cones and obstacles placed at a distance.\n● Each team gets three attempts, and their best attempt is recorded.\n● Teams will be ranked based on accuracy and the number of cones knocked over.\n● The top-performing teams will advance to the final round.\n\nFinal Round – The Ultimate Obstacle Course\n\nDescription:\nThe qualified teams will compete in a high-energy, multi-stage obstacle race, featuring the following challenges:\n\n1️⃣ Sack Race\n● Teams hop in sacks while racing toward a checkpoint.\n● All team members must cross the finish line together.\n● Points awarded based on time taken.\n\n2️⃣ Tyre Run\n● Each team member must carry a heavy tire and run through a zig-zag track.\n● Tires must not touch the ground while running.\n● Penalty for dropping the tire.\n\nATV Pulling Challenge\n● Teams pull an All-Terrain Vehicle (ATV) using a rope over a marked distance.\n● Scoring based on the fastest completion time.\n\nField Obstacle Race\n● Teams navigate through a series of hurdles, ropes, tunnels, and agility-based obstacles to reach the finish line.\n● Each team must finish together.\n\nScoring & Winner Selection:\n● Each challenge awards points based on completion time and accuracy.\n● The team with the highest cumulative score is crowned the Survival Sprint Champions.",
 
@@ -1302,9 +1304,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     ],
 
     contact: ["Vijay Prakash: +91 6205525743", "Aayush Sagar: +91 9835127422"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "NCC",
+    time: "9AM - 12PM",
+    day: 2,
   },
   {
     id: 51,
@@ -1439,9 +1441,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     imgURL: "/comingsoon.png",
     name: "CodeJoust",
     club: "IET",
-    category: "Formal",
-    prize: "300, 250, 200",
-    theme: "",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
     description:
       "CodeJoust is a high-intensity, time-bound pair programming competition designed to test participants' expertise in algorithms, data structures, and logical reasoning. Over the course of two hours, teams will engage in a series of progressively challenging, real-world coding problems that demand precision, efficiency, and strategic collaboration. The event emphasizes synchronized problem-solving, requiring participants to effectively communicate and optimize their approach under competitive constraints. CodeJoust is an opportunity to not only refine coding proficiency but also to develop critical teamwork and analytical thinking skills in a dynamic, high-stakes environment.",
 
@@ -1453,9 +1455,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     ],
 
     contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "211",
+    time: "9AM - 12PM",
+    day: 3,
   },
   {
     id: 57,
@@ -1464,7 +1466,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     club: "IET",
     category: "Formal",
     prize: "300, 250, 200",
-    theme: "",
+    theme: "Technical",
     description:
       "SpeedForces is an intensive time-bound coding sprint designed to assess participants’ ability to solve problems with maximum speed and precision. This competition focuses on solving a series of fundamental coding challenges within a strictly defined timeframe, rewarding those who can think and execute solutions rapidly. Participants must demonstrate quick analytical thinking, efficient implementation, and strategic problem selection to maximize their score. Open to both beginners and experienced programmers, SpeedForces is a test of coding reflexes, accuracy, and time optimization in a competitive environment.",
 
@@ -1475,9 +1477,9 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     ],
 
     contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
+    venue: "211",
+    time: "12PM - 3PM",
+    day: 2,
   },
 ];
 
