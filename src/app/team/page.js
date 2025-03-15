@@ -47,7 +47,7 @@ export default function Register() {
 
   setTimeout(() => {
     setLoading(false)
-  }, 3000)
+  }, 5000)
 
   let teamData
 
@@ -185,8 +185,8 @@ export default function Register() {
             <div>
               <h3 className="text-2xl text-[#EFCA4E] pb-3">Team Members:</h3>
               <ul className="space-y-2 text-md">
-                {teamData?.members.length > 0 ? (
-                  teamData?.members?.map((member, index) => (
+                {teamData.members.length > 0 ? (
+                  teamData.members.map((member, index) => (
                     <li key={index} className="text-[#cbcbcb]">
                       {member.name}
                     </li>
