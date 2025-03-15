@@ -1481,6 +1481,29 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     time: "12PM - 3PM",
     day: 2,
   },
+  {
+    id: 58,
+    imgURL: "/comingsoon.png",
+    name: "BIT GOT TALENT",
+    club: "Events Team",
+    category: "Flagship",
+    prize: "Worth 15k",
+    theme: "Personality Development",
+    description:
+      "Step into the spotlight and showcase your talent at our electrifying college fest talent show! Whether you're a singer, dancer, comedian, or have a unique talent to share, this is your chance to shine. Join us for an unforgettable evening of entertainment, laughter, and incredible performances. Don't miss out on the opportunity to dazzle the crowd and win amazing prizes! See you on stage.",
+
+    rules: [
+      "Members can participate individually or in teams.",
+      "2-3 mins will be provided for every performance.",
+      "No hazardous substances are allowed.",
+      "PA system will be provided.",
+      "Each entry will be judged according to the panel of judges present.",
+      "The decision of the judge will be final and binding.",
+    ],
+    venue: "SHORBAGH",
+    time: "9AM - 12PM",
+    day: 3,
+  },
 ];
 
 export const Eventsnight = [
