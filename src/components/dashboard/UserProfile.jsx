@@ -5,12 +5,24 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getRollNoFromEmail, getYearFromEmail } from '@/lib/email';
+import { getUser } from '@/app/dashboard/actions/getUser';
+import { useEffect, useState } from 'react';
 
-export default function UserProfile({ user }) {
+export default  function UserProfile({ user }) {
   const rollNo = getRollNoFromEmail(user.email);
   const year = getYearFromEmail(user.email);
+const [userData, setUserData] = useState(null);
 
+useEffect(() => {
+  const fetchUserData = async () => {
+    const data = await getUser(user.email);
+    setUserData(data);
+  };
+  
+  fetchUserData();
+}, [user.email]);
   return (
+    <>
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
@@ -65,9 +77,7 @@ export default function UserProfile({ user }) {
                 </div>
               </div>
             </div>
-            <Badge className="bg-gradient-to-r from-violet-900 to-pink-500 text-white border-0 shadow-lg shadow-violet-500/20 px-4 py-1.5 text-sm font-semibold tracking-wide animate-pulse relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent before:animate-[shine_1.5s_ease-in-out_infinite]">
-              VIP Access
-            </Badge>
+           
           </motion.div>
         </CardHeader>
         
@@ -92,8 +102,36 @@ export default function UserProfile({ user }) {
             <div className="text-sm text-gray-400 font-medium mb-1.5">Ticket Type</div>
             <div className="text-white font-medium">{user.ticketType}</div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+            className="pt-4"
+          >
+            <div className="text-sm text-gray-400 font-medium mb-2">Ticket Usage Status</div>
+            <div className="flex gap-3">
+              <Badge 
+                className={`px-3 py-1 ${userData?.usedOnDay1 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-500/20 text-gray-400'} border-0`}
+              >
+                Day 1 {userData?.usedOnDay1 ? '✓' : '○'}
+              </Badge>
+              <Badge 
+                className={`px-3 py-1 ${userData?.usedOnDay2 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-500/20 text-gray-400'} border-0`}
+              >
+                Day 2 {userData?.usedOnDay2 ? '✓' : '○'}
+              </Badge>
+              <Badge 
+                className={`px-3 py-1 ${userData?.usedOnDay3 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-500/20 text-gray-400'} border-0`}
+              >
+                Day 3 {userData?.usedOnDay3 ? '✓' : '○'}
+              </Badge>
+            </div>
+          </motion.div>
         </CardContent>
       </Card>
     </motion.div>
+    
+    </> 
   );
 }
