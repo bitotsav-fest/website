@@ -1,14 +1,21 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 
 const Model = ({ onLoad }) => {
   const mountRef = useRef(null)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true) // Ensure this component only renders on the client
+  }, [])
+
+  useEffect(() => {
+    if (!isClient) return
+
     const scene = new THREE.Scene()
 
     let camera
@@ -158,7 +165,9 @@ const Model = ({ onLoad }) => {
       }
       mountRef.current.removeChild(renderer.domElement)
     }
-  }, [])
+  }, [isClient])
+
+  if (!isClient) return null // Prevent rendering on the server
 
   return <div ref={mountRef} />
 }
