@@ -1,5 +1,5 @@
 "use client";
-import next from "next";
+
 import React from "react";
 import TiltedCard from "../../components/merch-card";
 import MerchCard from "../../components/merch-card";
