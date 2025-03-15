@@ -73,8 +73,8 @@ export function Nav() {
 
   const authItem = {
     name: session ? "Logout" : "Login",
-    url: session ? "/api/auth/signout" : "/login",
-    href: session ? "/api/auth/signout" : "/login",
+    url: session ? "/logout" : "/login",
+    href: session ? "/logout" : "/login",
     icon: LogIn
   }
 
