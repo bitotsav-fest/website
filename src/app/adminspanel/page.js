@@ -2,9 +2,6 @@
 import { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-
-
-
 import { Eventsday, clubs, Eventsnight } from '../events/data';
 
 export default function EventsPage() {
@@ -49,7 +46,7 @@ export default function EventsPage() {
     
         // Prepare data for API
         try {
-            const response = await fetch("/api/adminpanel", {
+            const response = await fetch("/api/adminspanel", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ eventName: selectedEvent }),
