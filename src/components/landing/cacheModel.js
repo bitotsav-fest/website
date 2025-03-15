@@ -45,8 +45,12 @@ function loadModel(url, onLoad) {
   })
 }
 export function isIOS() {
+  if (typeof window === "undefined" || typeof navigator === "undefined") {
+    return false // Default to false during SSR
+  }
   return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 }
+
 function isIncognito() {
   return window.requestFileSystem || window.webkitRequestFileSystem
 }
