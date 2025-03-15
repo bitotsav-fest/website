@@ -76,7 +76,7 @@ export const Eventsday = [
     prize: "180, 150, 120",
     theme: "Personality Development",
     description:
-      "Mission UPSC: The Simulation is a unique event designed to replicate the UPSC selection process, giving participants a real-time experience of the prestigious exam. This event aims to provide a realistic and challenging UPSC selection experience, helping participants identify their strengths, improve their analytical skills, and enhance their ability to handle complex situations under pressure.",
+      "Mission UPSC: The KBC is a unique event designed to replicate the UPSC selection process, giving participants a real-time experience of the prestigious exam. This event aims to provide a realistic and challenging UPSC selection experience, helping participants identify their strengths, improve their analytical skills, and enhance their ability to handle complex situations under pressure.",
 
     rules: [
       "The event is open to all interested participants.",
@@ -445,7 +445,7 @@ export const Eventsday = [
   {
     id: 17,
     imgURL: "/comingsoon.png",
-    name: "Hand and Brain",
+    name: "Hand 'N' Brain",
     club: "IETE",
     category: "Informal",
     prize: "180, 150, 120",
@@ -464,7 +464,7 @@ export const Eventsday = [
     ],
 
     contact: ["Shivansh: 7607154405", "Vir: 7991143242"],
-    venue: "231 & 237",
+    venue: "219 & 220",
     time: "12PM - 3PM",
     day: 1,
   },
