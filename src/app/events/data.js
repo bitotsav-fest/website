@@ -171,10 +171,8 @@ export const Eventsday = [
     prize: "180, 150, 120",
     theme: "Strategy & Gaming",
     description:
-      "Players: (divided into 1-2 members in a team)\nDistribute Bingo cards: Give each player a Bingo card.\nExplain the rules: Briefly explain the rules and objectives of the game.\nStart the game: The caller starts calling out electronics-related terms or images from the prepared list.\nMark off terms: Players mark off the called terms or images on their Bingo cards.\nGet five in a row: The first player to get five correct marks in a row (horizontally, vertically, or diagonally) calls out Bingo and wins.\nVerify the win: The caller verifies the winning player's Bingo card to ensure they have indeed gotten five correct marks in a row.",
-
-    rules: ["Players: (divided into 1-2 members in a team)"],
-
+      "Distribute Bingo cards: Give each player a Bingo card.\nExplain the rules: Briefly explain the rules and objectives of the game.\nStart the game: The caller starts calling out electronic and entertainment questions.\nMark off terms: Players mark off the called terms or images on their Bingo cards.\nGet five in a row: The first player to get five correct marks in a row (horizontally, vertically, or diagonally) calls out Bingo and wins.\nVerify the win: The caller verifies the winning player's Bingo card to ensure they have indeed gotten five correct marks in a row.",
+    rules: ["Players: (divided into 1-2 member in a teams)"],
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
     venue: "231 & 237",
     time: "12PM - 3PM",
@@ -447,20 +445,25 @@ export const Eventsday = [
   {
     id: 17,
     imgURL: "/comingsoon.png",
-    name: "CINEMA CHESS CLASH",
+    name: "Hand 'N' Brain",
     club: "IETE",
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Fun",
     description:
-      "Introducing Hand and Brain!\nTeam up with a friend and try this exciting twist on traditional chess! One person is the 'Brain' and gives piece-by-piece instructions. The other person is the 'Hand' and makes the moves on the board. Communicate (but in a limit), strategize, and have fun!",
+      "Hand And Brain is a modern fun twist on the age-old game of Chess. Unlike orthodox chess, this is a team game where each team consists of 2 players – Hand and Brain. \nMake sure your hand has as much brain as the brain has as much hand and maybe the team squabble will result in you winning.\n\nConsists of 2 rounds\n\nRound 1: Elimination round, a quiz on all-time favorite TV Shows, Movies, and Animes. Both players can participate in this (as a team) or only one member can participate (solo). Half an hour of questions such as ‘Who has a lightning scar on the forehead?’ (Difficulty is nowhere near this low). Top 8 teams move ahead to Round 2.\n\nRound 2: Deciding and Final Round. 8 teams play tournament style in a game of Chess with a modern twist – Hand And Brain.",
 
     rules: [
-      "ROUND 1: CINEMA CLASH\nClips from web series, movies, sitcoms, and anime will be shown.\nTeams must answer questions related to the clips.\nTop teams advance to Round 2.",
-      "ROUND 2: HAND AND BRAIN CHESS\n10 chess boards required.\nTwo roles per team:\nBrain: Calls out the piece to move (e.g., 'Knight').\nHand: Moves the piece without verbal guidance.\nKnockout or timed format.\nWinners: Based on match victories.",
+      "Team Size – 2 (MUST)",
+      "Role of Brain – Announce to the hand which piece to move",
+      "Role of Hand – Move the announced piece to a square of hand’s own choice",
+      "Communication – The brain can not speak anything apart from the piece to move, the hand is not allowed to speak at all",
+      "Any form of talking, gesturing, or anything that can be termed as communication (apart from brain’s telling to hand which piece to move) will result in elimination",
+      "Chess would be played on physical boards, each team has a time of 5 mins",
+      "First team to lose all their time loses, or the first team to checkmate the opponent’s king wins",
     ],
 
-    contact: ["Sushant Gupta: 8860489995", "Akansha Chouhan: 9905786357"],
+    contact: ["Shivansh: 7607154405", "Vir: 7991143242"],
     venue: "231 & 237",
     time: "12PM - 3PM",
     day: 1,
@@ -561,21 +564,17 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 22,
     imgURL: "/comingsoon.png",
-    name: "Go-Kart Showdown",
-    club: "Aveon",
-    category: "Flagship",
+    name: "ELECTROPOLY",
+    club: "ECESoc",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "",
     description:
-      "Experience the thrill of speed, precision, and strategy at Go-Kart Showdown, the most exciting racing challenge of BITOTSAV! Organized in collaboration with 8th Milestone, this event offers participants the unique opportunity to compete on a professional go-kart track, testing their driving skills, reflexes, and teamwork.\n\nThe challenge? Complete the race in the fastest time and claim the title of Go-Kart Champions!\n\nEvent Format:\n\nPreliminary Round – Tire Tossing\n\nDescription:\n● Participants will toss tires towards a designated target from a fixed distance.\n● The goal is to land the tire as close as possible to the target.\n● Each team gets three attempts, and their best throw will be recorded.\n● The top-performing teams based on accuracy will advance to the final race.\n\nFinal Round – The Ultimate Go-Kart Race\n\nDescription:\n● Qualified teams will race on a professional go-kart track.\n● Each team member will take turns driving, with their lap times recorded.\n● The average lap time of all team members will determine their overall ranking.\n● The team with the fastest total race completion time will be crowned the Go-Kart Showdown Champions.",
-
+      "Phase 1: Quick-Fire Business game (Earn Components)\nBasically a monopoly in terms of electronics such as like, jail can be termed as power cut and so and so. Player aims to buy out the components required for completing their circuit in phase 2.\n\nPhase 2: Circuit Race (Build & Troubleshoot)\nTeams race to complete a working circuit using the components they earned.\nThe host may introduce random “power cuts” or faulty components to make it challenging!\nThe first team to successfully complete their circuit wins the round.\n\nWINNING CRITERIA\nThe team that completes their circuit first wins!\nBonus points for creativity (if they modify or improve the circuit).",
     rules: [
-      "Each team must consist of 2-3 members.",
-      "Proper safety gear (helmets, gloves) must be worn at all times.",
-      "Any reckless or unsafe driving will result in immediate disqualification.",
-      "The decision of race officials and timekeepers will be final.",
-      "Obstruction or contact with other racers will lead to penalty time.",
+      "Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board.",
     ],
-
-    contact: ["Vijay Prakash: +91 6205525743", "Aayush Sagar: +91 9835127422"],
+    contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
     venue: "TBD",
     time: "TBD",
     day: 1,
@@ -923,7 +922,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     imgURL: "/comingsoon.png",
     name: "BAZINGAA!",
     club: "Events Team",
-    category: "Formal",
+    category: "Informal",
     prize: "300, 250, 200",
     theme: "",
     description:
@@ -939,50 +938,50 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     time: "TBD",
     day: 1,
   },
-  {
-    id: 37,
-    imgURL: "/comingsoon.png",
-    name: "TUG OF TORQUE",
-    club: "Firebolt",
-    category: "Formal",
-    description:
-      "Welcome to 'Tug of Torque', where raw strength meets teamwork in the ultimate battle of endurance! \n\nBut here’s the catch—our ATV weighs just 180kg, lighter than a Royal Enfield bike, yet pulling it won’t be as easy as you think! It’s not just about brute force; it’s about coordination, strategy, and resilience. Can your team conquer the torque and out-pull the competition? \n\nHow It Works: \n\nA 20-meter track will be marked with 2-meter distance checkpoints for easy tracking. \nTeams will grip a strong, non-slip rope at a designated start point. \nOnce the round begins, the challenge is to pull the ATV as far as possible within 30 seconds to 1 minute. \n\nThe distance covered will decide the rankings—the team that moves the least distance will be eliminated or ranked lower. \n\nWith its light yet powerful 180kg build, this ATV will challenge your teamwork like never before! \n\nWhy It’s Exciting: \n\nLighter than a Royal Enfield, but tougher to pull than you think! \nA test of strength, endurance, and synchronization! \nShort, high-energy rounds keep the adrenaline pumping!",
+  // {
+  //   id: 37,
+  //   imgURL: "/comingsoon.png",
+  //   name: "TUG OF TORQUE",
+  //   club: "Firebolt",
+  //   category: "Formal",
+  //   description:
+  //     "Welcome to 'Tug of Torque', where raw strength meets teamwork in the ultimate battle of endurance! \n\nBut here’s the catch—our ATV weighs just 180kg, lighter than a Royal Enfield bike, yet pulling it won’t be as easy as you think! It’s not just about brute force; it’s about coordination, strategy, and resilience. Can your team conquer the torque and out-pull the competition? \n\nHow It Works: \n\nA 20-meter track will be marked with 2-meter distance checkpoints for easy tracking. \nTeams will grip a strong, non-slip rope at a designated start point. \nOnce the round begins, the challenge is to pull the ATV as far as possible within 30 seconds to 1 minute. \n\nThe distance covered will decide the rankings—the team that moves the least distance will be eliminated or ranked lower. \n\nWith its light yet powerful 180kg build, this ATV will challenge your teamwork like never before! \n\nWhy It’s Exciting: \n\nLighter than a Royal Enfield, but tougher to pull than you think! \nA test of strength, endurance, and synchronization! \nShort, high-energy rounds keep the adrenaline pumping!",
 
-    rules: [
-      "Secure Setup – The ATV and rope are positioned for a controlled, fair challenge.\n",
-      "Clear Markings – Chalk and cones define safe zones and track progress.\n",
-      "Quality Equipment – A sturdy rope ensures a strong yet comfortable grip.\n",
-      "Time-Limited Rounds – Prevents overexertion and keeps the competition fair.\n",
-      "On-Site Support – Safety personnel available for any assistance.\n",
-    ],
+  //   rules: [
+  //     "Secure Setup – The ATV and rope are positioned for a controlled, fair challenge.\n",
+  //     "Clear Markings – Chalk and cones define safe zones and track progress.\n",
+  //     "Quality Equipment – A sturdy rope ensures a strong yet comfortable grip.\n",
+  //     "Time-Limited Rounds – Prevents overexertion and keeps the competition fair.\n",
+  //     "On-Site Support – Safety personnel available for any assistance.\n",
+  //   ],
 
-    contact: ["Lavkesh Jaiswal: +917667094225"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
-  },
-  {
-    id: 38,
-    imgURL: "/comingsoon.png",
-    name: "BLIND FURY",
-    club: "Firebolt",
-    category: "Formal",
-    description:
-      "Remote ATV Challenge\n\nGet ready for an adrenaline-pumping challenge where communication is the key to victory! Blind Fury: Remote ATV Challenge is a test of trust, strategy, and quick decision-making. Each team of two will navigate through unpredictable terrains using a remote-controlled ATV, but there’s a twist—the driver will be blindfolded! \n\nRound 1: Quiz Showdown \nTeams will compete in a knowledge-based quiz to test their understanding of automobiles, off-road racing, and general problem-solving. The top-performing teams advance to the next round. \n\nRound 2: Blind ATV Racing \nThe driver, completely blindfolded, must rely on their teammate’s voice commands (left, right, forward, backward) to maneuver their ATV through a challenging obstacle course. The course will feature sand, gravel, stones, thermocol barriers, and cones to test precision and coordination. Fastest and most accurate teams take the victory!",
+  //   contact: ["Lavkesh Jaiswal: +917667094225"],
+  //   venue: "TBD",
+  //   time: "TBD",
+  //   day: 1,
+  // },
+  // {
+  //   id: 38,
+  //   imgURL: "/comingsoon.png",
+  //   name: "BLIND FURY",
+  //   club: "Firebolt",
+  //   category: "Formal",
+  //   description:
+  //     "Remote ATV Challenge\n\nGet ready for an adrenaline-pumping challenge where communication is the key to victory! Blind Fury: Remote ATV Challenge is a test of trust, strategy, and quick decision-making. Each team of two will navigate through unpredictable terrains using a remote-controlled ATV, but there’s a twist—the driver will be blindfolded! \n\nRound 1: Quiz Showdown \nTeams will compete in a knowledge-based quiz to test their understanding of automobiles, off-road racing, and general problem-solving. The top-performing teams advance to the next round. \n\nRound 2: Blind ATV Racing \nThe driver, completely blindfolded, must rely on their teammate’s voice commands (left, right, forward, backward) to maneuver their ATV through a challenging obstacle course. The course will feature sand, gravel, stones, thermocol barriers, and cones to test precision and coordination. Fastest and most accurate teams take the victory!",
 
-    rules: [
-      "Drivers are completely blindfolded.\n",
-      "Navigators stand at designated points along the track and can only shout commands (e.g., 'Left! Right! Brake!').\n",
-      "Collision = 5-second stop penalty for safety.\n",
-      "Teams must complete 3 laps (or a set time limit).\n",
-      "The winner is decided based on the best completion time with penalties added OR the first team to complete the required laps.\n",
-    ],
+  //   rules: [
+  //     "Drivers are completely blindfolded.\n",
+  //     "Navigators stand at designated points along the track and can only shout commands (e.g., 'Left! Right! Brake!').\n",
+  //     "Collision = 5-second stop penalty for safety.\n",
+  //     "Teams must complete 3 laps (or a set time limit).\n",
+  //     "The winner is decided based on the best completion time with penalties added OR the first team to complete the required laps.\n",
+  //   ],
 
-    contact: ["Lavkesh Jaiswal: +917667094225"],
-    venue: "TBD",
-    time: "TBD",
-    day: 1,
-  },
+  //   contact: ["Lavkesh Jaiswal: +917667094225"],
+  //   venue: "TBD",
+  //   time: "TBD",
+  //   day: 1,
+  // },
   {
     id: 39,
     imgURL: "/comingsoon.png",
@@ -1289,7 +1288,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     imgURL: "/comingsoon.png",
     name: "SURVIVAL SPRINT",
     club: "Aveon",
-    category: "Flagship",
+    category: "Formal",
     description:
       "Welcome to Survival Sprint, the ultimate test of endurance, agility, and teamwork at BITOTSAV! Conducted at the Sports Complex, this high-adrenaline obstacle challenge will push participants to their limits as they navigate through grueling physical and skill-based tasks.\n\nTeams must work together, strategize, and race against time to complete a multi-stage course filled with dynamic obstacles, showcasing their strength, speed, and coordination. The team with the highest overall score will be crowned the Survival Sprint Champions.\n\nPreliminary Round – Tire Bowling\n\nDescription:\n● A unique take on bowling, where teams will roll a heavy tire towards a set of cones and obstacles placed at a distance.\n● Each team gets three attempts, and their best attempt is recorded.\n● Teams will be ranked based on accuracy and the number of cones knocked over.\n● The top-performing teams will advance to the final round.\n\nFinal Round – The Ultimate Obstacle Course\n\nDescription:\nThe qualified teams will compete in a high-energy, multi-stage obstacle race, featuring the following challenges:\n\n1️⃣ Sack Race\n● Teams hop in sacks while racing toward a checkpoint.\n● All team members must cross the finish line together.\n● Points awarded based on time taken.\n\n2️⃣ Tyre Run\n● Each team member must carry a heavy tire and run through a zig-zag track.\n● Tires must not touch the ground while running.\n● Penalty for dropping the tire.\n\nATV Pulling Challenge\n● Teams pull an All-Terrain Vehicle (ATV) using a rope over a marked distance.\n● Scoring based on the fastest completion time.\n\nField Obstacle Race\n● Teams navigate through a series of hurdles, ropes, tunnels, and agility-based obstacles to reach the finish line.\n● Each team must finish together.\n\nScoring & Winner Selection:\n● Each challenge awards points based on completion time and accuracy.\n● The team with the highest cumulative score is crowned the Survival Sprint Champions.",
 
@@ -1474,7 +1473,7 @@ export const clubs = [
   "IETE", //
   "Robolution",
   "Aveon",
-  "Firebolt", //
+  // "Firebolt",
   "Srijan", //
   "Dhwani", //
   "Dance club", //
