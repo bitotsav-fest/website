@@ -66,7 +66,8 @@ const NightEvents = () => {
 
   return (
       <div className="relative text-[#F6F1E2] pb-12 rounded-lg max-w-6xl mx-auto px-6 md:px-16">
-        <h1 className="text-5xl md:text-6xl mb-16">Night Events</h1>
+       <h2 className="text-5xl font-extrabold uppercase mb-4">Night Events</h2>
+       <div className="w-16 h-2 bg-[#EFCA4E] mb-6"></div>
         <div className="flex justify-center space-x-2 sm:space-x-4 mb-16">
           {eventButtons}
         </div>
