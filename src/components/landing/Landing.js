@@ -17,6 +17,16 @@ const Landing = () => {
     }
   }, [isLoading])
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false)
+      }
+    }, 60000) // 60 seconds timeout
+
+    return () => clearTimeout(timeout)
+  }, [isLoading])
+
   return (
     <div className="h-screen flex justify-center items-center bg-black relative overflow-hidden">
       {isLoading && (
