@@ -80,8 +80,8 @@ const Landing = () => {
           setLoadingProgress(100)
           setTimeout(() => {
             setIsLoading(false)
-            setLoadingProgress(0) // Reset progress for future use
           }, 500)
+          setLoadingProgress(0) // Reset progress for future use
         }}
       />
     </div>
