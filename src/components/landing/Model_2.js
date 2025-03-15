@@ -162,11 +162,11 @@ const Model_2 = ({ onLoad }) => {
       { x: -1.7, y: 0, z: -2.5, Y: Math.PI / -2, id: "EVENTS", route: "/events" },
       { x: -1.7, y: 0, z: -0.8, Y: Math.PI / -2, id: "ABOUT", route: "/about" },
       { x: -1.7, y: 0, z: 0.9, Y: Math.PI / -2, id: "DEVELOPERS", route: "/developers" },
-      // { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "LEADERBOARD", route: "/leaderboard"},
+      { x: -1.7, y: 0, z: 2.5, Y: Math.PI / -2, id: "MERCH", route: "/merch" },
       { x: 1.7, y: 0, z: -2.5, Y: Math.PI / 2, id: "TEAM", route: "/team" },
       { x: 1.7, y: 0, z: -0.8, Y: Math.PI / 2, id: "GALLERY", route: "/gallery" },
       { x: 1.7, y: 0, z: 0.9, Y: Math.PI / 2, id: "SPONSORS", route: "/sponsors" },
-      // { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "AI CHAT", route: "/chat"},
+      { x: 1.7, y: 0, z: 2.5, Y: Math.PI / 2, id: "QUERIES", route: "/chat" },
     ]
 
     const Stalls = []
