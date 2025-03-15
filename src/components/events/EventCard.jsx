@@ -23,19 +23,19 @@ export default function EventCard({ event, index, className }) {
         inactiveZone={0.01}
       />
   <Link href={`/events/${event.id}`} className=" h-full flex flex-col">
-    <div className="relative aspect-[4/3] overflow-hidden">
+    <div className="relative aspect-[4/5] overflow-hidden">
       <Image
         src={event.imgURL}
         alt={event.name}
         width={400}
-        height={300}
+        height={500}
         className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500 object-top"
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
 
-    <div className="p-6 space-y-4 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm rounded-xl -mt-4 z-10 flex-grow flex flex-col">
+    <div className="p-6 space-y-4 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm rounded-xl z-10 flex-grow flex flex-col">
       <div className="flex flex-wrap gap-2">
         <span className="px-3 py-1 text-sm rounded-full bg-[#EFCA4E]/10 border border-[#EFCA4E]/20 text-[#EFCA4E]">
           Day {event.day}
