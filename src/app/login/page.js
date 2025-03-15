@@ -40,16 +40,7 @@ export default function LoginPage() {
           <p className="text-gray-400 mt-2">Sign in to continue to Bitotsav</p>
         </div>
 
-        {/* Additional Info */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-center mb-6 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10"
-        >
-          <span className="text-purple-400">BIT Mesra Students:</span>{' '}
-          <span className="text-gray-300">Get free access with your @bitmesra.ac.in email!</span>
-        </motion.p>
+       
         {/* Login Button */}
         <motion.button
           whileHover={{ scale: 1.02 }}
@@ -60,7 +51,26 @@ export default function LoginPage() {
           <IconBrandGoogle size="1.5rem" />
           <span>Continue with Google</span>
         </motion.button>
-
+        {/* Additional Info */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-center mt-4 p-3 rounded-lg bg-white/5 backdrop-blur-sm"
+        >
+          <span className="text-purple-400 font-medium">BIT Mesra Students</span>
+          <span className="text-gray-400 ml-1">
+            - Free Access using your institutional email{' '}
+            <a 
+              href="https://bitmesra.ac.in/Email_Application/index.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300"
+            >
+              Configure email
+            </a>
+          </span>
+        </motion.p>
         {/* Additional Info */}
         <p className="text-center text-sm text-gray-500 mt-8">
           By continuing, you agree to our{' '}

@@ -39,7 +39,7 @@ export default function DashboardPage() {
   };
 
   const eventDetails = {
-    date: 'March 15-17, 2025',
+    date: 'March 21-23, 2025',
     venue: 'BIT Mesra Campus',
     time: '9:00 AM onwards'
   };
