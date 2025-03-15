@@ -12,18 +12,19 @@ import QRTicket from '@/components/dashboard/QRTicket';
 import BitMesraPopup from '@/components/dashboard/BitMesraPopup';
 import { isBitEmail } from '@/lib/email';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
   const { data: session } = useSession();
   const [userUUID, setUserUUID] = useState('');
   const [purchaseDate, setPurchaseDate] = useState('-');
 
-  useEffect(() => {
-    setPurchaseDate(new Date().toLocaleDateString());
-  }, []);
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchUserUUID = async () => {
+    const initializeDashboard = async () => {
+      setPurchaseDate(new Date().toLocaleDateString());
+      
       if (session?.user?.email) {
         try {
           const uuid = await getUserUUID();
@@ -33,7 +34,8 @@ export default function DashboardPage() {
         }
       }
     };
-    fetchUserUUID();
+    
+    initializeDashboard();
   }, [session]);
 
   const user = {
@@ -45,9 +47,10 @@ export default function DashboardPage() {
     avatar: session?.user?.image || '/avatar-placeholder.png'
   };
 
-  if(session?.user?.email && !isBitEmail(session?.user?.email))
-  {
-    redirect('/dashboard/non-bit')
+  if(session?.user?.email && !isBitEmail(session?.user?.email)) {
+    console.log("Not a BITMesra email");
+    router.push('/dashboard/non-bit');
+    return null;
   }
 
   const eventDetails = {
@@ -58,12 +61,10 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen mt-16 relative overflow-hidden bg-gradient-to-br from-[#1A1A1A] via-[#2A1B3D] to-[#382952] py-12 px-6">
-      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none mix-blend-overlay"></div>
       <div className="absolute top-0 -left-4 w-[500px] h-[500px] bg-gradient-to-r from-amber-500/20 to-purple-500/20 rounded-full mix-blend-normal filter blur-[120px] opacity-30 animate-pulse"></div>
       <div className="absolute bottom-0 -right-4 w-[500px] h-[500px] bg-gradient-to-l from-violet-500/20 to-pink-500/20 rounded-full mix-blend-normal filter blur-[120px] opacity-30 animate-pulse animation-delay-2000"></div>
       <div className="max-w-6xl mx-auto relative">
-        {/* Enhanced Logout Button */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +86,6 @@ export default function DashboardPage() {
           transition={{ duration: 0.6 }}
           className="space-y-10"
         >
-          {/* Enhanced Welcome Message */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,6 @@ export default function DashboardPage() {
             <p className="text-gray-400 text-lg">Your premium festival experience awaits</p>
           </motion.div>
 
-          {/* Enhanced Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -117,7 +116,6 @@ export default function DashboardPage() {
             </motion.div>
           </div>
 
-          {/* BitMesra Popup with Animation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

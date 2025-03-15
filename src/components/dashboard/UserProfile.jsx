@@ -77,9 +77,7 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <Badge className="bg-gradient-to-r from-violet-900 to-pink-500 text-white border-0 shadow-lg shadow-violet-500/20 px-4 py-1.5 text-sm font-semibold tracking-wide animate-pulse relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent before:animate-[shine_1.5s_ease-in-out_infinite]">
-              VIP Access
-            </Badge>
+           
           </motion.div>
         </CardHeader>
         
