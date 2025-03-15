@@ -190,33 +190,54 @@ export default function ChatbotPopup() {
             }
         }
     }, [isPopupOpen]);
+    useEffect(() => {
+        if (isPopupOpen && isInitialRender.current) {
+            // Add predefined messages to the chat history
+            setChatHistory([
+                { type: 'user', text: 'Hi! Who are you?' },
+                { type: 'bot', text: 'Hi! I am BitoMind. You can ask me anything regarding the events here. Feel free to share your doubts.' },
+            ]);
+            isInitialRender.current = false; // Ensure this only runs once
+        }
+    }, [isPopupOpen]);
 
     return (
         <>
             {/* Chatbot Toggle Button */}
-            <button
-                onClick={() => setIsPopupOpen(!isPopupOpen)}
-                className={`fixed bottom-8 transition-all duration-300 ${
-                    isPopupOpen ? 'right-[26rem]' : 'right-8'
-                } bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange disabled:bg-[#a53302]/20 disabled:cursor-not-allowed flex items-center justify-center gap-2 group p-4 chatbot-toggle-button`}
-            >
-                <img
-                    src="chat-bot.png"
-                    alt="Chatbot Icon"
-                    className="w-10 h-10"
-                />
-            </button>
+            {!isPopupOpen && (
+                <button
+                    onClick={() => setIsPopupOpen(!isPopupOpen)}
+                    className={`fixed bottom-8 right-8 z-50 bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-full border-2 border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange disabled:bg-[#a53302]/20 disabled:cursor-not-allowed flex items-center justify-center gap-2 group p-4 chatbot-toggle-button transition-all duration-300 ${isPopupOpen ? 'rotate-90' : 'rotate-0'
+                        }`}
+                >
+                    <img
+                        src="chat-bot.png"
+                        alt="Chatbot Icon"
+                        className="w-10 h-10"
+                    />
+                </button>
+            )}
 
             {/* Chatbot Popup */}
             <div
-                className={`fixed bottom-0 right-0 w-96 h-full bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-white font-sans flex flex-col items-center rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 ${
-                    isPopupOpen ? 'translate-x-0' : 'translate-x-full'
-                } chatbot-popup`}
+                className={`fixed bottom-0 right-0 w-full lg:w-[400px] h-[calc(100vh-60px)] bg-[#0A0118]/70 backdrop-blur-lg border-2 border-[#E18E04]/20 rounded-tl-3xl rounded-tr-3xl lg:rounded-tr-none lg:rounded-bl-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 ${isPopupOpen ? 'translate-x-0' : 'translate-x-full'
+                    } chatbot-popup`}
+                style={{
+                    background: `
+                        linear-gradient(
+                            145deg,
+                            rgba(10, 1, 24, 0.8),
+                            rgba(45, 30, 15, 0.8),
+                            rgba(26, 11, 46, 0.8)
+                        ),
+                        url('holographic-bg.png') no-repeat center center/cover
+                    `,
+                }}
             >
                 {/* Vertical Close Button */}
                 <button
                     onClick={() => setIsPopupOpen(false)}
-                    className="fixed left-0 top-1/2 transform -translate-y-1/2 w-10 h-32 bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-r-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 flex items-center justify-center z-50"
+                    className="fixed left-0 top-1/2 transform -translate-y-1/2 w-6 h-32 bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-r-lg border-2 border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 flex items-center justify-center z-50"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -229,9 +250,9 @@ export default function ChatbotPopup() {
                 </button>
 
                 {/* Popup Content */}
-                <div className="w-full max-w-3xl z-10 px-4 pb-8 flex flex-col items-center h-full">
-                    {/* "Ask Me Anything" Title and Close Button */}
-                    <div className="w-full flex justify-between items-center mb-8">
+                <div className="w-full h-full flex flex-col items-center p-6">
+                    {/* "Ask Me Anything" Title */}
+                    <div className="w-full flex justify-center items-center mb-8">
                         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
                             Ask Me Anything
                         </h1>
@@ -240,8 +261,8 @@ export default function ChatbotPopup() {
                     {/* Chat History with Texting Bubbles */}
                     <div
                         ref={chatHistoryContainerRef}
-                        className="w-full mb-6 space-y-4 overflow-y-auto flex-1 px-4"
-                        style={{ maxHeight: 'calc(100vh - 300px)' }}
+                        className="w-full mb-6 space-y-4 overflow-y-auto flex-1 px-4 scrollbar"
+                        style={{ maxHeight: 'calc(100vh - 260px)' }}
                     >
                         {chatHistory.map((message, index) => (
                             <div
@@ -253,9 +274,9 @@ export default function ChatbotPopup() {
                                     <div className="loader"></div>
                                 ) : (
                                     <div
-                                        className={`max-w-[70%] p-4 rounded-lg text-sm backdrop-blur-md ${message.type === 'user'
-                                            ? 'bg-[#813C01]/20 border border-[#813C01]/50 text-[#FCE2BF] shadow-neon-red'
-                                            : 'bg-[#E18E04]/20 border border-[#E18E04]/50 text-[#FCE2BF] shadow-neon-orange'
+                                        className={`max-w-[70%] p-4 rounded-2xl text-xs backdrop-blur-md ${message.type === 'user'
+                                                ? 'bg-[#813C01]/20 border-2 border-[#813C01]/50 text-[#FCE2BF] shadow-neon-red'
+                                                : 'bg-[#E18E04]/20 border-2 border-[#E18E04]/50 text-[#FCE2BF] shadow-neon-orange'
                                             } transition-all duration-300 hover:scale-105`}
                                     >
                                         <p className="whitespace-pre-wrap">{message.text}</p>
@@ -273,7 +294,7 @@ export default function ChatbotPopup() {
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value.toLowerCase())}
                             placeholder={placeholderText}
-                            className="w-full px-4 py-2 bg-[#FCE2BF]/10 text-[#FCE2BF] border border-[#E18E04]/50 rounded-lg backdrop-blur-md focus:outline-none focus:border-[#E18E04] focus:shadow-neon-orange transition-all duration-300"
+                            className="w-full px-4 py-2 bg-[#FCE2BF]/10 text-[#FCE2BF] border-2 border-[#E18E04]/50 rounded-2xl backdrop-blur-md focus:outline-none focus:border-[#E18E04] focus:shadow-neon-orange transition-all duration-300"
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' && !loading) {
                                     handleSearch();
@@ -284,7 +305,7 @@ export default function ChatbotPopup() {
                         <button
                             onClick={handleSearch}
                             disabled={loading}
-                            className="w-full md:w-auto px-6 py-2 bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                            className="w-full md:w-auto px-6 py-2 bg-[#E18E04]/20 text-[#FCE2BF] font-bold rounded-2xl border-2 border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                         >
                             {loading ? (
                                 <div className="button-loader"></div>
@@ -311,7 +332,7 @@ export default function ChatbotPopup() {
                                 key={index}
                                 onClick={() => handlePredefinedQuestion(question)}
                                 disabled={loading}
-                                className="w-full px-4 py-2 bg-[#fce2bf]/40 text-[white] text-sm font-bold rounded-lg border border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed"
+                                className="w-full px-4 py-2 bg-[#fce2bf]/40 text-[white] text-xs font-bold rounded-2xl border-2 border-[#E18E04]/50 backdrop-blur-md hover:bg-[#E18E04]/40 hover:shadow-neon-orange focus:outline-none focus:shadow-neon-orange transition-all duration-300 disabled:bg-[#a53302]/20 disabled:cursor-not-allowed"
                             >
                                 {question}
                             </button>
@@ -404,17 +425,35 @@ export default function ChatbotPopup() {
 
                 @media (max-width: 640px) {
                     .chatbot-toggle-button {
-                        right: 1rem !important; /* Keep the button closer to the right edge on mobile */
+                        right: 1rem !important;
                     }
 
                     .chatbot-popup {
-                        width: 100% !important; /* Make the popup full width on mobile */
-                        right: 0 !important; /* Align the popup to the right edge */
+                        width: 100% !important;
+                        right: 0 !important;
                     }
 
                     .main-content.chatbot-open {
-                        margin-right: 0 !important; /* Remove margin adjustment on mobile */
+                        margin-right: 0 !important;
                     }
+                }
+                .scrollbar::-webkit-scrollbar {
+                    width: 8px; /* Width of the scrollbar */
+                }
+
+                .scrollbar::-webkit-scrollbar-track {
+                    background: transparent; /* Transparent track */
+                }
+
+                .scrollbar::-webkit-scrollbar-thumb {
+                    background: #E18E04; /* Neon orange thumb */
+                    border-radius: 4px; /* Rounded corners */
+                    border: 2px solid transparent; /* Transparent border */
+                    background-clip: padding-box; /* Prevent background from bleeding into the border */
+                }
+
+                .scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #d4b245; /* Lighter orange on hover */
                 }
             `}</style>
         </>
