@@ -12,6 +12,7 @@ export default function Register() {
   const [teamCode, setTeamCode] = useState("")
   const [user, setUser] = useState("")
   const { data: session } = useSession()
+  const [teamData, setTeamData] = useState(null)
 
   useEffect(() => {
     const fetchUserUUID = async () => {
@@ -49,16 +50,15 @@ export default function Register() {
     setLoading(false)
   }, 6000)
 
-  let teamData
-
   useEffect(() => {
     if (teamCode) {
       axios
         .get(`/api/teams/get?teamCode=${teamCode}`)
         .then((res) => {
           // Handle the response data as needed
-          console.log(res.data)
-          teamData = res.data.team
+          const team = res.data.team
+          setTeamData(team)
+          console.log(team)
           console.log(teamData)
         })
         .catch((err) => {
