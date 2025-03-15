@@ -251,7 +251,6 @@ export default function ChatbotPopup() {
 
                 {/* Popup Content */}
                 <div className="w-full h-full flex flex-col items-center p-6">
-                    {/* "Ask Me Anything" Title */}
                     <div className="w-full flex justify-center items-center mb-8">
                         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
                             Ask Me Anything
