@@ -47,7 +47,7 @@ export default function Register() {
 
   setTimeout(() => {
     setLoading(false)
-  }, 5000)
+  }, 6000)
 
   let teamData
 
@@ -58,7 +58,7 @@ export default function Register() {
         .then((res) => {
           // Handle the response data as needed
           console.log(res.data)
-          teamData = res.data
+          teamData = res.data.team
           console.log(teamData)
         })
         .catch((err) => {
@@ -185,7 +185,7 @@ export default function Register() {
             <div>
               <h3 className="text-2xl text-[#EFCA4E] pb-3">Team Members:</h3>
               <ul className="space-y-2 text-md">
-                {teamData.members.length > 0 ? (
+                {teamData?.members.length > 0 ? (
                   teamData.members.map((member, index) => (
                     <li key={index} className="text-[#cbcbcb]">
                       {member.name}
