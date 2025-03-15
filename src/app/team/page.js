@@ -13,6 +13,7 @@ export default function Register() {
   const [user, setUser] = useState("")
   const { data: session } = useSession()
   const [teamData, setTeamData] = useState(null)
+  const [useCollegeNumber, setUseCollegeNumber] = useState(false);
 
   useEffect(() => {
     const fetchUserUUID = async () => {
@@ -152,11 +153,21 @@ export default function Register() {
       <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
       <div className="absolute top-0 -right-4 w-96 h-96 bg-[#2D1E0F] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto space-y-8"
+      >
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">Team Registration</h1>
-          <p className="text-[#F6F1E2]/70 text-lg">{!Loading && !teamCode && "Create or join a team to participate in events"}</p>
+          <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+            Team Registration
+          </h1>
+          <p className="text-[#F6F1E2]/70 text-lg">
+            {!Loading &&
+              !teamCode &&
+              "Create or join a team to participate in events"}
+          </p>
         </div>
         {/* Team Code Display */}
         {Loading && (
@@ -179,9 +190,13 @@ export default function Register() {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20 text-center space-y-4"
           >
-            <h4 className="text-2xl font-semibold text-[#EFCA4E]">Your Team Code</h4>
+            <h4 className="text-2xl font-semibold text-[#EFCA4E]">
+              Your Team Code
+            </h4>
             <p className="text-3xl font-mono text-white">{teamCode}</p>
-            <h4 className="text-lg text-[#F6F1E2]/70">Share this code with your team members to join</h4>
+            <h4 className="text-lg text-[#F6F1E2]/70">
+              Share this code with your team members to join
+            </h4>
             <div>
               <h3 className="text-2xl text-[#EFCA4E] pb-3">Team Members:</h3>
               <ul className="space-y-2 text-md">
@@ -200,13 +215,19 @@ export default function Register() {
         )}
         {/* Team Creation/Join Forms */}
         {!Loading && !teamCode && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20"
+          >
             {/* Tabs */}
             <div className="flex justify-center space-x-4 mb-8">
               <button
                 onClick={() => setActiveTab("create")}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  activeTab === "create" ? "bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-white shadow-lg shadow-[#EFCA4E]/20" : "text-[#F6F1E2]/70 hover:text-[#F6F1E2] bg-white/5"
+                  activeTab === "create"
+                    ? "bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-white shadow-lg shadow-[#EFCA4E]/20"
+                    : "text-[#F6F1E2]/70 hover:text-[#F6F1E2] bg-white/5"
                 }`}
               >
                 Create Team
@@ -214,7 +235,9 @@ export default function Register() {
               <button
                 onClick={() => setActiveTab("join")}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  activeTab === "join" ? "bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-white shadow-lg shadow-[#EFCA4E]/20" : "text-[#F6F1E2]/70 hover:text-[#F6F1E2] bg-white/5"
+                  activeTab === "join"
+                    ? "bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-white shadow-lg shadow-[#EFCA4E]/20"
+                    : "text-[#F6F1E2]/70 hover:text-[#F6F1E2] bg-white/5"
                 }`}
               >
                 Join Team
@@ -223,9 +246,15 @@ export default function Register() {
 
             {/* Create Team Form */}
             {activeTab === "create" && (
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="max-w-md mx-auto">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="max-w-md mx-auto"
+              >
                 <form className="space-y-4" onSubmit={handleCreateTeam}>
-                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">Create Your Team</h4>
+                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
+                    Create Your Team
+                  </h4>
                   <div className="space-y-4">
                     <input
                       className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
@@ -237,12 +266,40 @@ export default function Register() {
                       name="leaderMobileNumber"
                       placeholder="Leader Mobile Number"
                     />
+
+                    {/* Show checkbox only if user is NOT a BIT Mesra student */}
+                    {!user.isBITMesraStudent && (
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="toggleCollegeNumber"
+                          className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
+                          checked={useCollegeNumber}
+                          onChange={() =>
+                            setUseCollegeNumber(!useCollegeNumber)
+                          }
+                        />
+                        <label
+                          htmlFor="toggleCollegeNumber"
+                          className="text-white cursor-pointer"
+                        >
+                          Use College Number instead of Roll Number
+                        </label>
+                      </div>
+                    )}
+
+                    {/* Conditional Input Field */}
                     <input
                       className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
                       name="rollNumber"
-                      placeholder="Roll Number"
+                      placeholder={
+                        user.isBITMesraStudent || !useCollegeNumber
+                          ? "Roll Number"
+                          : "College Name"
+                      }
                     />
                   </div>
+
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -257,9 +314,15 @@ export default function Register() {
 
             {/* Join Team Form */}
             {activeTab === "join" && (
-              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="max-w-md mx-auto">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="max-w-md mx-auto"
+              >
                 <form className="space-y-4" onSubmit={handleJoinTeam}>
-                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">Join a Team</h4>
+                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
+                    Join a Team
+                  </h4>
                   <input
                     className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
                     placeholder="Enter Team ID"
@@ -280,5 +343,5 @@ export default function Register() {
         )}
       </motion.div>
     </div>
-  )
+  );
 }
