@@ -160,16 +160,15 @@ const Model = ({ onLoad }) => {
             window.removeEventListener("mousemove", onMouseMove)
             cancelAnimationFrame(hoverAnimationId)
           }
-          mountRef.current.removeChild(renderer.domElement)
+          if (mountRef.current && renderer.domElement) {
+            mountRef.current.removeChild(renderer.domElement)
+          }
         }
       }
-      mountRef.current.removeChild(renderer.domElement)
     }
   }, [isClient])
 
-  if (!isClient) return null // Prevent rendering on the server
-
-  return <div ref={mountRef} />
+  return isClient ? <div ref={mountRef} /> : null // Render only on the client
 }
 
 export default Model

@@ -2,9 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import Model_2 from "./Model_2"
-import Model from "./Model"
 import { motion } from "framer-motion"
-import { isIOS } from "./cacheModel"
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -18,13 +16,6 @@ const Landing = () => {
       return () => clearInterval(interval)
     }
   }, [isLoading])
-
-  let ModelComponent
-  if (isIOS()) {
-    ModelComponent = Model
-  } else {
-    ModelComponent = Model_2
-  }
 
   return (
     <div className="h-screen flex justify-center items-center bg-black relative overflow-hidden">
@@ -84,7 +75,7 @@ const Landing = () => {
           </motion.div>
         </motion.div>
       )}
-      <ModelComponent
+      <Model_2
         onLoad={() => {
           setLoadingProgress(100)
           setTimeout(() => setIsLoading(false), 500)
