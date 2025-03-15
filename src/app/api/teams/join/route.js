@@ -5,14 +5,14 @@ import User from "@/models/user";
 
 export async function POST(req) {
   await dbConnect();
-  const { userUUID, teamCode } = await req.json();
+  const { userUUID, teamCode, user } = await req.json();
 
-  if (!userUUID || !teamCode) {
+  if (!userUUID || !teamCode || !user) {
     return NextResponse.json({ message: "Missing fields" }, { status: 400 });
   }
 
-  const user = await User.findOne({ uuid: userUUID });
-  if (user) {
+  const userExisting = await User.findOne({ uuid: userUUID });
+  if (userExisting) {
     return NextResponse.json(
       { message: "User is already register" },
       { status: 400 }
@@ -28,15 +28,20 @@ export async function POST(req) {
       return NextResponse.json({ message: "Team not found" }, { status: 404 });
     }
     // Check if user is already in the team from userUUID
-
-    if (team.members.includes(userUUID)) {
+    
+    
+    if (team.members.some(member => member.uuid === userUUID)) {
       return NextResponse.json(
         { message: "User already in the team" },
         { status: 400 }
       );
     }
+    const membersData = {
+      name:user.name,
+      uuid: user.uuid
+    };
 
-    team.members.push(userUUID);
+    team.members.push(membersData);
     await team.save();
 
     const newUser = new User({
@@ -44,6 +49,8 @@ export async function POST(req) {
       teamJoined: true,
       teamCode,
       teamName: team.teamName,
+      email: user.email,
+      name: user.name
     });
 
     await newUser.save();

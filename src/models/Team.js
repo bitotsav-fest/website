@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 const { v4: uuidv4 } = require("uuid"); // For generating unique team codes
 
+const MemberSubSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  uuid: { type: String, required: true },
+});
 const teamSchema = new mongoose.Schema({
   teamCode: {
     type: String,
@@ -8,9 +12,10 @@ const teamSchema = new mongoose.Schema({
     default: () => uuidv4().slice(0, 6).toUpperCase(),
   },
   teamName: { type: String, required: true },
+  leaderName: { type: String, required: true }, // Prisma User UUID
   leader: { type: String, required: true }, // Prisma User UUID
   members: {
-    type: [{ type: String }], // List of Prisma User UUIDs
+    type: [MemberSubSchema], // List of Prisma User UUIDs
     validate: {
       validator: function (members) {
         return members.length <= 8; // Maximum of 8 members

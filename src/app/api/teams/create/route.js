@@ -6,17 +6,17 @@ import User from "@/models/user";
 
 export async function POST(req) {
   await dbConnect();
-  const { teamName, leaderUUID, leaderMobileNumber, rollNumber } =
+  const { teamName, leaderUUID, leaderMobileNumber, rollNumber, user } =
     await req.json();
 
-  if (!teamName || !leaderUUID || !leaderMobileNumber || !rollNumber) {
+  if (!teamName || !leaderUUID || !leaderMobileNumber || !rollNumber || !user) {
     return NextResponse.json({ message: "Missing fields" }, { status: 400 });
   }
 
   // get user UUID
   //checking if user exists
-  const user = await User.findOne({ uuid: leaderUUID });
-  if (user) {
+  const userExisting = await User.findOne({ uuid: leaderUUID });
+  if (userExisting) {
     return NextResponse.json(
       { message: "User is already register" },
       { status: 404 }
@@ -36,14 +36,19 @@ export async function POST(req) {
       isCodeUnique = true; // Code is unique, exit loop
     }
   }
+  const membersData = {
+    name:user.name,
+    uuid: user.uuid
+  };
   try {
     const newTeam = new Team({
       teamName,
       teamCode,
+      leaderName: user.name,
       leader: leaderUUID,
       leaderMobileNumber,
       rollNumber,
-      members: [leaderUUID],
+      members: [membersData],
       events: [],
     });
     await newTeam.save();
@@ -54,6 +59,8 @@ export async function POST(req) {
       teamJoined: true,
       teamCode,
       teamName,
+      email: user.email,
+      name: user.name
     });
     await newUser.save();
 

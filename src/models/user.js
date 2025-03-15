@@ -5,6 +5,8 @@ const userSchema = new mongoose.Schema({
   teamJoined: { type: Boolean, default: false },
   teamCode: { type: String },
   teamName: { type: String },
+  email: { type: String },
+  name: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

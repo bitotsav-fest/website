@@ -1,5 +1,5 @@
 "use client";
-import { redirect, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useState, useEffect, use } from "react";
 import Image from "next/image";
 import { Eventsday } from "../data";
@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { getUserUUID } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaXmark } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import {
@@ -16,8 +16,8 @@ import {
   Sparkles,
   Calendar,
   Star,
-  Gift,
-  Music,
+  // Gift,
+  // Music,
 } from "lucide-react";
 export default function EventDetailPage() {
   const { id } = useParams();
@@ -25,7 +25,7 @@ export default function EventDetailPage() {
   const [userUUID, setUserUUID] = useState("");
   const [teamCode, setTeamCode] = useState("");
   const { data: session } = useSession();
-  const [confirm, setConfirm] = useState(false);
+  // const [confirm, setConfirm] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -64,27 +64,26 @@ export default function EventDetailPage() {
   }, [userUUID]);
 
   const handleRegister = () => {
-    // Implement registration logic here
-    redirect("/coming-soon");
-    return;
     const eventId = event.id;
     const eventName = event.name;
+    const eventClub = event.club;
+    const eventVenue = event.venue;
+    const eventTime = event.time;
 
-    if (!confirm) {
-      alert("Please confirm your registration.");
-      setConfirm(true);
-      return;
-    }
+    // if(!confirm){
+    //   alert("please confirm to register team for the event")
+    //   return;
+    // }
 
     if (!teamCode) {
-      alert("Please create a team first.");
+      alert("Please join or create a team first.");
       return;
     }
 
-    console.log(eventId, teamCode, eventName);
+    console.log(eventId, teamCode, eventName, eventClub, eventVenue, eventTime);
 
     axios
-      .post("/api/events/register", { eventId, teamCode, eventName })
+      .post("/api/events/register", { eventId, teamCode, eventName,  eventClub, eventVenue, eventTime})
       .then((response) => {
         if (response.status === 201) {
           alert("Registered Successfully");
