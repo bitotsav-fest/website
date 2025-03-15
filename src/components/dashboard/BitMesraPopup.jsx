@@ -10,8 +10,10 @@ export default function BitMesraPopup({ email }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (email && isBitEmail(email)) {
+    const hasSeenPopup = localStorage.getItem('bitMesraPopupShown');
+    if (email && isBitEmail(email) && !hasSeenPopup) {
       setIsOpen(true);
+      localStorage.setItem('bitMesraPopupShown', 'true');
     }
   }, [email]);
 
