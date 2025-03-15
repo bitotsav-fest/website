@@ -116,6 +116,7 @@ p {
   .canvas-style-2 {
     height: 30vh !important;
     width: 90vw !important;
+    margin-top: 60px;
   }
 }
 canvas {
