@@ -58,7 +58,8 @@ export default function Register() {
         .then((res) => {
           // Handle the response data as needed
           console.log(res.data)
-          teamData = res.data.team
+          teamData = res.data
+          console.log(teamData)
         })
         .catch((err) => {
           console.error(err)
