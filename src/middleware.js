@@ -6,10 +6,10 @@ export default auth((req) => {
   const { pathname } = req.nextUrl
 
   if (!isAuthenticated && pathname === "/dashboard") {
-    return NextResponse.redirect(new URL("/join", req.url))
+    return NextResponse.redirect(new URL("/login", req.url))
   }
 
-  if (isAuthenticated && pathname === "/join") {
+  if (isAuthenticated && pathname === "/login") {
     return NextResponse.redirect(new URL("/dashboard", req.url))
   }
 

@@ -5,6 +5,7 @@ import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shi
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMediaQuery } from "react-responsive"
+import { useSession } from "next-auth/react"
 
 const items = [
   {
@@ -43,7 +44,6 @@ const items = [
     href: "/about",
     icon: Info,
   },
-  { name: "Login", url: "/login", href: "/login", icon: LogIn },
   {
     name: "Merch",
     url: "/merch",
@@ -67,16 +67,26 @@ const items = [
 export function Nav() {
   const pathname = usePathname()
   const router = useRouter()
+  const { data: session } = useSession()
   const [isOpen, setIsOpen] = React.useState(false)
-  const isMobile = useMediaQuery({ maxWidth: 768 }) // Adjust breakpoint as needed
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+
+  const authItem = {
+    name: session ? "Logout" : "Login",
+    url: session ? "/api/auth/signout" : "/login",
+    href: session ? "/api/auth/signout" : "/login",
+    icon: LogIn
+  }
+
+  const allItems = [...items, authItem]
 
   const handleNavigation = (url) => {
     router.push(url)
     setIsOpen(false)
   }
 
-  const desktopItems = items.slice(0, -4) // First six items for desktop
-  const mobileItems = isMobile ? items : items.slice(-10) // All items on mobile, first six on desktop
+  const desktopItems = allItems.slice(0, -4)
+  const mobileItems = isMobile ? allItems : allItems.slice(-10)
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#2D1E0F]/90 via-[#1A0B2E]/90 to-[#2D1E0F]/90 backdrop-blur-lg border-b border-[#EFCA4E]/20">

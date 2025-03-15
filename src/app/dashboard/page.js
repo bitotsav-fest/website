@@ -45,7 +45,7 @@ export default function DashboardPage() {
     avatar: session?.user?.image || '/avatar-placeholder.png'
   };
 
-  if(!isBitEmail(user.email))
+  if(session?.user?.email && !isBitEmail(session?.user?.email))
   {
     redirect('/dashboard/non-bit')
   }
