@@ -445,7 +445,7 @@ export const Eventsday = [
   {
     id: 17,
     imgURL: "/comingsoon.png",
-    name: "Hand 'N' Brain",
+    name: "Hand and Brain",
     club: "IETE",
     category: "Informal",
     prize: "180, 150, 120",
@@ -1433,6 +1433,51 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     venue: "CAT HALL",
     time: "12PM - 3PM",
     day: 2,
+  },
+  {
+    id: 56,
+    imgURL: "/comingsoon.png",
+    name: "CodeJoust",
+    club: "IET",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "",
+    description:
+      "CodeJoust is a high-intensity, time-bound pair programming competition designed to test participants' expertise in algorithms, data structures, and logical reasoning. Over the course of two hours, teams will engage in a series of progressively challenging, real-world coding problems that demand precision, efficiency, and strategic collaboration. The event emphasizes synchronized problem-solving, requiring participants to effectively communicate and optimize their approach under competitive constraints. CodeJoust is an opportunity to not only refine coding proficiency but also to develop critical teamwork and analytical thinking skills in a dynamic, high-stakes environment.",
+
+    rules: [
+      "Team Composition: Each team must consist of two members. Solo participation is not allowed.",
+      "Time Limit: The competition will last 2 hours, and all solutions must be submitted before the timer ends.",
+      "Challenge Structure: Participants will face a series of coding problems (5-6) of varying difficulty, designed to test their algorithmic thinking, data structure knowledge, and problem-solving skills.",
+      "Collaboration: Effective communication and teamwork are key—both members must contribute to solving the challenges.",
+    ],
+
+    contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
+    venue: "TBD",
+    time: "TBD",
+    day: 1,
+  },
+  {
+    id: 57,
+    imgURL: "/comingsoon.png",
+    name: "SpeedForces",
+    club: "IET",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "",
+    description:
+      "SpeedForces is an intensive time-bound coding sprint designed to assess participants’ ability to solve problems with maximum speed and precision. This competition focuses on solving a series of fundamental coding challenges within a strictly defined timeframe, rewarding those who can think and execute solutions rapidly. Participants must demonstrate quick analytical thinking, efficient implementation, and strategic problem selection to maximize their score. Open to both beginners and experienced programmers, SpeedForces is a test of coding reflexes, accuracy, and time optimization in a competitive environment.",
+
+    rules: [
+      "Individual Participation: This is a solo competition—team entries are not permitted.",
+      "Time Constraint: The contest will take place within a fixed duration, during which participants must solve as many problems as possible.",
+      "Problem Set: The competition will feature multiple coding challenges of varying complexity, mostly easy (15-16), primarily focusing on logic, syntax, and algorithmic implementation.",
+    ],
+
+    contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
+    venue: "TBD",
+    time: "TBD",
+    day: 1,
   },
 ];
 
