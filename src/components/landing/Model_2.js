@@ -10,14 +10,10 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader"
 import { loadModelFromCacheOrNetwork } from "./cacheModel"
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 const Model_2 = ({ onLoad }) => {
   const mountRef = useRef(null)
-  let isModel = false
-  let isStalls = false
+  const isModelRef = useRef(false)
+  const isStallsRef = useRef(false)
 
   useEffect(() => {
     if (!mountRef.current) return
@@ -72,13 +68,8 @@ const Model_2 = ({ onLoad }) => {
       gltf.animations.forEach((clip) => {
         mixer.clipAction(clip).play()
       })
-      if (onLoad) {
-        isModel = true
-      }
-      if (isModel && isStalls) {
-        onLoad()
-        initialAnimation()
-      }
+      isModelRef.current = true
+      checkAndTriggerOnLoad()
     })
 
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -92,16 +83,6 @@ const Model_2 = ({ onLoad }) => {
     controls.maxPolarAngle = Math.PI / 2 - 0.1
     controls.target.set(0, 0.15)
     controls.update()
-
-    // Keyboard controls
-    const keyboardControls = {
-      moveForward: false,
-      moveBackward: false,
-      moveLeft: false,
-      moveRight: false,
-      moveUp: false,
-      moveDown: false,
-    }
 
     // Initial camera animation
     const initialAnimation = () => {
@@ -141,6 +122,12 @@ const Model_2 = ({ onLoad }) => {
       }
 
       animate()
+    }
+    const checkAndTriggerOnLoad = () => {
+      if (isModelRef.current && isStallsRef.current) {
+        onLoad()
+        initialAnimation()
+      }
     }
 
     // Animation loop
@@ -193,9 +180,8 @@ const Model_2 = ({ onLoad }) => {
               }
               child.userData = model.userData // Ensure userData is set on child meshes
             }
-            if (onLoad) {
-              isStalls = true
-            }
+            isStallsRef.current = true
+            checkAndTriggerOnLoad()
           })
 
           fontLoader.load(
