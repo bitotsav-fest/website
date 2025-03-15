@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { prisma } from "@/lib/prisma";
+import { getRollNoFromEmail, isBitEmail } from "./lib/email";
 
 export const { handlers, auth } = NextAuth({
   providers: [
@@ -31,7 +32,12 @@ export const { handlers, auth } = NextAuth({
                 email: profile.email,
                 name: profile.name,
                 username: profile.email.split('@')[0] + Math.floor(Math.random() * 1000000),
-                emailVerified: true
+                emailVerified: true,
+                isBITMesraStudent: isBitEmail(profile.email),
+                rollNumber: isBitEmail(profile.email)?getRollNoFromEmail(profile.email): null,
+                image: profile.image || null,
+                role: isBitEmail(profile.email) ? 'bitian' : 'outsider',
+                isPaid : isBitEmail(profile.email),                
               }
             });
           }

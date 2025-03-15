@@ -23,8 +23,10 @@ model User {
   passMail      String?  @unique
   emailVerified Boolean  @default(false)
   email         String?  @unique
-  isBITMesraStudent Boolean  @default(false)
+  isBITMesraStudent Boolean  @default(false) // for bitians detechtion
+  isPaid         Boolean  @default(false) // for outsiders if paid show tickets
   role          Role     @default(bitian)
+  image         String?
   verified      Boolean  @default(false)
   usedOnDay1    Boolean  @default(false)
   usedOnDay2    Boolean  @default(false)

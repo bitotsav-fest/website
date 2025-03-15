@@ -7,11 +7,9 @@ import { useSession, signOut } from "next-auth/react";
 import { encript } from '@/lib/security';
 import { getUserUUID } from '@/app/actions/auth';
 import UserProfile from '@/components/dashboard/UserProfile';
-import EventDetails from '@/components/dashboard/EventDetails';
 import QRTicket from '@/components/dashboard/QRTicket';
 import BitMesraPopup from '@/components/dashboard/BitMesraPopup';
 import { isBitEmail } from '@/lib/email';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
