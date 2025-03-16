@@ -25,6 +25,7 @@ model User {
   email             String?  @unique
   isBITMesraStudent Boolean  @default(false) // for bitians detechtion
   isPaid            Boolean  @default(false) // for outsiders if paid show tickets
+  isDayScholer      Boolean?  @default(false) // for outsiders if paid show tickets
   role              Role     @default(bitian)
   image             String?
   verified          Boolean  @default(false)
