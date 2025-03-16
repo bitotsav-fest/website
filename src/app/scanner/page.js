@@ -10,7 +10,7 @@ const QrScanner = dynamic(() => import('@yudiel/react-qr-scanner').then(mod => m
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Check, X, Loader2 } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import { decript } from '@/lib/security';
 import { verifyTicket } from '@/app/actions/verify-ticket';
 import Stats from './stats/page';
@@ -20,8 +20,21 @@ export default function ScannerPage() {
   const [userData, setUserData] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passcode, setPasscode] = useState('');
+  const [showPasscodeError, setShowPasscodeError] = useState(false);
 
   const SECURITY_PASSCODE = '192020';
+
+  const handlePasscodeSubmit = (e) => {
+    e.preventDefault();
+    if (passcode === SECURITY_PASSCODE) {
+      setIsAuthenticated(true);
+    } else {
+      setShowPasscodeError(true);
+      setTimeout(() => setShowPasscodeError(false), 3000);
+    }
+  };
 
   const handleScan = async (data) => {
     if (data) {
@@ -64,7 +77,49 @@ export default function ScannerPage() {
         >
           <Card className="bg-black/20 backdrop-blur-xl border-0 shadow-2xl overflow-hidden">
             <CardContent className="p-6">
-              {scanning ? (
+              {!isAuthenticated ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6"
+                >
+                  <div className="text-center">
+                    <motion.h2 
+                      className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      Enter Passcode
+                    </motion.h2>
+                    <p className="text-gray-400 mt-2 text-sm">Please enter the security passcode to access the scanner</p>
+                  </div>
+                  <form onSubmit={handlePasscodeSubmit} className="space-y-4">
+                    <input
+                      type="password"
+                      value={passcode}
+                      onChange={(e) => setPasscode(e.target.value)}
+                      className="w-full px-4 py-3 bg-white/5 border border-violet-500/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-violet-500/50 transition-colors"
+                      placeholder="Enter passcode"
+                      required
+                    />
+                    <Button 
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700 text-white shadow-lg shadow-violet-900/20"
+                    >
+                      Verify
+                    </Button>
+                  </form>
+                  {showPasscodeError && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-red-400 text-center text-sm"
+                    >
+                      Invalid passcode. Please try again.
+                    </motion.div>
+                  )}
+                </motion.div>
+              ) : scanning ? (
                 <div className="space-y-6">
                   <div className="text-center">
                     <motion.h2 
