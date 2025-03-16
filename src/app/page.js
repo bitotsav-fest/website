@@ -13,15 +13,25 @@
 import Landing from "@/components/landing/Landing"
 import Landing_2 from "./landingv2/page"
 import { isIOS } from "@/components/landing/cacheModel"
+import { useEffect } from "react"
 
 let LandingComponent
+let showPopup = false
+
 if (isIOS()) {
   LandingComponent = Landing_2
+  showPopup = true
 } else {
   LandingComponent = Landing
 }
 
 export default function Home() {
+  useEffect(() => {
+    if (showPopup) {
+      alert("Unfortunately your IOS device does not support our 3D model.")
+    }
+  }, [])
+
   return (
     <>
       <LandingComponent />
