@@ -11,7 +11,7 @@ export default function TShirtPage() {
   const sizes = ["XXS", "XS", "S", "M", "L", "XL"];
   const colors = [
     { name: "black", hex: "#000000" },
-    { name: "gray", hex: "#808080" },
+    { name: "white", hex: "#EEEEEE" },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function TShirtPage() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-900">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-gray-900">
               <Image
                 src="/merch.jpeg"
                 alt="Bitotsav T-shirt"
@@ -35,12 +35,12 @@ export default function TShirtPage() {
           <div className="space-y-6">
             <div>
               <h1 className="text-4xl font-bold tracking-tight text-[#F6F1E2]">
-                Basic Tee
+                Oversized Tee
               </h1>
               <div className="mt-3">
                 <p className="text-3xl tracking-tight text-[#EFCA4E]">₹399</p>
               </div>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <div className="flex items-center">
                   <div className="flex items-center">
                     {[...Array(4)].map((_, i) => (
@@ -58,19 +58,16 @@ export default function TShirtPage() {
                     See all 512 reviews
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="space-y-6 border-t border-gray-700 pt-6">
               {/* Description */}
               <div>
-                <h3 className="text-sm font-medium text-[#F6F1E2]">Description</h3>
+                <h3 className="text-base text-[#F6F1E2]">Description</h3>
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-400">
-                    The Basic tee is an honest new take on a classic. The tee uses super
-                    soft, pre-shrunk cotton for true comfort and a dependable fit. They are
-                    hand cut and sewn locally, with a special dye technique that gives each
-                    tee it&apos;s own look.
+                  <p className="text-sm text-gray-300">
+                  Designed for ultimate style and comfort, the BITOTSAV'25 t-shirt is a must-have for every BITian! Made from premium-quality cotton, this t-shirt offers a relaxed, breathable fit perfect for casual wear. The minimalistic design makes it a versatile piece that can be styled in multiple ways. Pair it with your favorite jeans or shorts for a laid-back look that’s perfect for any occasion. Available in two classic colors- black and white.
                   </p>
                 </div>
               </div>
@@ -123,7 +120,7 @@ export default function TShirtPage() {
                   className="w-full bg-[#EFCA4E] text-black hover:bg-[#F6F1E2]"
                   onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScPIysmgSmrWLTGlKMsLROw4WsxqWC0b8YeWFZpqDWRys7CRw/viewform?usp=header', '_blank')}
                 >
-                  Add to cart
+                  Buy Now
                 </Button>
               </div>
 
