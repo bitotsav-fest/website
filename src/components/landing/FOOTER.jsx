@@ -53,6 +53,10 @@ export default function Footer() {
                 <a href="tel:+919508846600" className="hover:text-[#EFCA4E] transition-colors">9508846600</a>
               </p>
               <p className="text-sm">
+                <span className="text-[#EFCA4E]/80">Mrityunjay Raj:</span>{" "}
+                <a href="https://wa.me/919471828932" className="hover:text-[#EFCA4E] transition-colors">9471828932 <span className="text-[9px]">(WhatsApp)</span></a>
+              </p>
+              <p className="text-sm">
                 <span className="text-[#EFCA4E]/80">Abhinav Kumar Choudhary:</span>{" "}
                 <a href="tel:+919939110848" className="hover:text-[#EFCA4E] transition-colors">9939110848</a>
               </p>
