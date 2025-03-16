@@ -13,6 +13,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Check, X, Loader2 } from 'lucide-react';
 import { decript } from '@/lib/security';
 import { verifyTicket } from '@/app/actions/verify-ticket';
+import Stats from './stats/page';
 
 export default function ScannerPage() {
   const [scanning, setScanning] = useState(true);
@@ -54,7 +55,7 @@ export default function ScannerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#1F1033] flex items-center flex-col justify-center p-4">
       <div className="w-full max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -196,6 +197,7 @@ export default function ScannerPage() {
           </AnimatePresence>
         </motion.div>
       </div>
+      <Stats />
     </div>
   );
 }
