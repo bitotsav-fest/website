@@ -40,6 +40,7 @@ export async function POST(req) {
     name:user.name,
     rollNumber:rollNumber,
     uuid: user.uuid,
+    mobileNumber: leaderMobileNumber
   };
   try {
     const newTeam = new Team({
@@ -64,7 +65,8 @@ export async function POST(req) {
       teamName,
       email: user.email,
       name: user.name,
-      rollNumber: user.rollNumber
+      rollNumber: rollNumber,
+      mobileNumber: leaderMobileNumber
     });
     await newUser.save();
 

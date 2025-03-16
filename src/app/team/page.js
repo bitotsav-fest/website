@@ -15,11 +15,17 @@ export default function Register() {
   const { data: session } = useSession();
   const [teamData, setTeamData] = useState(null);
   
-  // New state for student type options
+  // State for student type options - for both create and join forms
   const [isBITStudentNonBITMail, setIsBITStudentNonBITMail] = useState(false);
   const [isNonBITStudent, setIsNonBITStudent] = useState(false);
   const [rollNumber, setRollNumber] = useState("");
   const [collegeName, setCollegeName] = useState("");
+  
+  // Join form specific state
+  const [joinIsBITStudentNonBITMail, setJoinIsBITStudentNonBITMail] = useState(false);
+  const [joinIsNonBITStudent, setJoinIsNonBITStudent] = useState(false);
+  const [joinRollNumber, setJoinRollNumber] = useState("");
+  const [joinCollegeName, setJoinCollegeName] = useState("");
 
   useEffect(() => {
     const fetchUserUUID = async () => {
@@ -75,7 +81,7 @@ export default function Register() {
     }
   }, [teamCode]);
 
-  // Handle student type checkbox changes
+  // Handle student type checkbox changes for Create Team
   const handleBITStudentChange = (e) => {
     setIsBITStudentNonBITMail(e.target.checked);
     if (e.target.checked) {
@@ -92,6 +98,23 @@ export default function Register() {
     }
   };
 
+  // Handle student type checkbox changes for Join Team
+  const handleJoinBITStudentChange = (e) => {
+    setJoinIsBITStudentNonBITMail(e.target.checked);
+    if (e.target.checked) {
+      setJoinIsNonBITStudent(false);
+      setJoinCollegeName("");
+    }
+  };
+
+  const handleJoinNonBITStudentChange = (e) => {
+    setJoinIsNonBITStudent(e.target.checked);
+    if (e.target.checked) {
+      setJoinIsBITStudentNonBITMail(false);
+      setJoinRollNumber("");
+    }
+  };
+
   // Validate roll number format
   const validateRollNumber = (value) => {
     // Regex for patterns like btech10377.23 or imh10121.22
@@ -105,10 +128,22 @@ export default function Register() {
     setRollNumber(value);
   };
 
+  // Handle roll number input change for Join form
+  const handleJoinRollNumberChange = (e) => {
+    const value = e.target.value;
+    setJoinRollNumber(value);
+  };
+
   // Handle college name input change with capitalization
   const handleCollegeNameChange = (e) => {
     const value = e.target.value.toUpperCase();
     setCollegeName(value);
+  };
+
+  // Handle college name input change for Join form
+  const handleJoinCollegeNameChange = (e) => {
+    const value = e.target.value.toUpperCase();
+    setJoinCollegeName(value);
   };
 
   const handleCreateTeam = (e) => {
@@ -179,9 +214,32 @@ export default function Register() {
   const handleJoinTeam = (e) => {
     e.preventDefault();
     const teamCode = e.target.elements.teamId.value.trim();
+    const studentMobileNumber = e.target.elements.studentMobileNumber.value;
 
     if (!teamCode) {
       toast.error("Please enter a valid Team ID.");
+      return;
+    }
+
+    // Get identification info based on user type for Join form
+    let identificationValue = "";
+    
+    if (user.isBITMesraStudent) {
+      identificationValue = user.rollNumber;
+    } else if (joinIsBITStudentNonBITMail) {
+      if (!validateRollNumber(joinRollNumber)) {
+        toast.error("Please enter a valid roll number format (e.g., btech10377.23)");
+        return;
+      }
+      identificationValue = joinRollNumber;
+    } else if (joinIsNonBITStudent) {
+      if (!joinCollegeName.trim()) {
+        toast.error("Please enter your college name");
+        return;
+      }
+      identificationValue = joinCollegeName;
+    } else {
+      toast.error("Please select your student type");
       return;
     }
 
@@ -190,12 +248,20 @@ export default function Register() {
       toast.error("User ID not found. Please log in again.");
       return;
     }
-
-    // console.log(teamCode);
-    // console.log(userUUID);
+    
+    // console.log("Team Code:", teamCode);
+    // console.log("User UUID:", userUUID);
+    // console.log("User ",user)
+    // console.log("Identification Value:", identificationValue);
 
     axios
-      .post("/api/teams/join", { teamCode, userUUID, user })
+      .post("/api/teams/join", { 
+        teamCode, 
+        userUUID, 
+        user,
+        studentMobileNumber,
+        rollNumber: identificationValue // Adding identification value to join request
+      })
       .then((res) => {
         if (res.status === 200) {
           toast.success("Team joined successfully!");
@@ -428,6 +494,8 @@ export default function Register() {
                 </form>
               </motion.div>
             )}
+            
+            {/* Join Team Form - Updated with student verification options */}
             {activeTab === "join" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -443,6 +511,95 @@ export default function Register() {
                     placeholder="Enter Team ID"
                     name="teamId"
                   />
+                  <input
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                      name="studentMobileNumber"
+                      placeholder="Mobile Number"
+                    />
+                  
+                  {/* Show read-only roll number if user is a BIT Mesra student */}
+                  {user.isBITMesraStudent && (
+                    <input
+                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                      name="joinRollNumber"
+                      value={user.rollNumber}
+                      readOnly
+                    />
+                  )}
+                  
+                  {/* Show student type options only if user is NOT a BIT Mesra student */}
+                  {!user.isBITMesraStudent && (
+                    <div className="space-y-3 p-4 bg-white/5 border border-[#EFCA4E]/20 rounded-xl">
+                      <h5 className="text-[#EFCA4E] font-medium">
+                        Select your student type:
+                      </h5>
+
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="joinBitStudentNonBitMail"
+                          className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
+                          checked={joinIsBITStudentNonBITMail}
+                          onChange={handleJoinBITStudentChange}
+                        />
+                        <label
+                          htmlFor="joinBitStudentNonBitMail"
+                          className="text-white cursor-pointer"
+                        >
+                          I am a BIT Mesra student (logged in with non-BIT
+                          mail)
+                        </label>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="joinNonBitStudent"
+                          className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
+                          checked={joinIsNonBITStudent}
+                          onChange={handleJoinNonBITStudentChange}
+                        />
+                        <label
+                          htmlFor="joinNonBitStudent"
+                          className="text-white cursor-pointer"
+                        >
+                          I am not a BIT Mesra student
+                        </label>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Conditional Input Fields based on student type for Join form */}
+                  {joinIsBITStudentNonBITMail && (
+                    <div>
+                      <input
+                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                        name="joinRollNumber"
+                        placeholder="Roll Number (e.g., btech10377.23)"
+                        value={joinRollNumber}
+                        onChange={handleJoinRollNumberChange}
+                      />
+                      {joinRollNumber && !validateRollNumber(joinRollNumber) && (
+                        <p className="text-red-400 text-sm mt-1 ml-1">
+                          Please enter a valid roll number format (e.g.,
+                          btech10377.23)
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {joinIsNonBITStudent && (
+                    <input
+                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                      name="joinCollegeName" 
+                      placeholder="College Name"
+                      value={joinCollegeName}
+                      onChange={handleJoinCollegeNameChange}
+                    />
+                  )}
+                  
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

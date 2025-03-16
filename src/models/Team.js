@@ -5,6 +5,7 @@ const MemberSubSchema = new mongoose.Schema({
   name: { type: String, required: true },
   rollNumber: { type: String, required: true },
   uuid: { type: String, required: true },
+  mobileNumber: { type: String, required: true },
 });
 const teamSchema = new mongoose.Schema({
   teamCode: {

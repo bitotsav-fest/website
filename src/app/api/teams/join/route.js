@@ -5,9 +5,9 @@ import User from "@/models/user";
 
 export async function POST(req) {
   await dbConnect();
-  const { userUUID, teamCode, user } = await req.json();
+  const { userUUID, teamCode, user, rollNumber, studentMobileNumber } = await req.json();
 
-  if (!userUUID || !teamCode || !user) {
+  if (!userUUID || !teamCode || !user || !rollNumber || !studentMobileNumber) {
     return NextResponse.json({ message: "Missing fields" }, { status: 400 });
   }
 
@@ -20,7 +20,18 @@ export async function POST(req) {
   }
 
   try {
-    //TODO: Add validation for userUUID and
+    //TODO: college name se team ka colleege name milao 
+    // if (!rollNumberRegex.test(rollNumber)) {
+    //   // Invalid roll number format
+    //   // mtlb ki college ka name aaya h to match kr lo
+    //   // check if rollNumber == team.RollNumber if yes then give console log
+    //   if (rollNumber === team.rollNumber) {
+    //     console.log("Roll number matches the team's roll number");
+    //   }
+    //   console.log(" rollNumber ",rollNumber)
+    //   console.log("team.rollNumber ",team.rollNumber)
+
+    // }
 
     const team = await Team.findOne({ teamCode });
 
@@ -38,8 +49,9 @@ export async function POST(req) {
     }
     const membersData = {
       name:user.name,
-      rollNumber:user.rollNumber,
-      uuid: user.uuid
+      rollNumber: rollNumber,
+      uuid: user.uuid,
+      mobileNumber: studentMobileNumber
     };
 
     team.members.push(membersData);
@@ -52,7 +64,8 @@ export async function POST(req) {
       teamName: team.teamName,
       email: user.email,
       name: user.name,
-      rollNumber: user.rollNumber
+      rollNumber: rollNumber,
+      mobileNumber: studentMobileNumber
     });
 
     await newUser.save();

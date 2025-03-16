@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   teamName: { type: String },
   email: { type: String },
   name: { type: String },
+  mobileNumber : { type: String, required: true },
   rollNumber: { type: String },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
