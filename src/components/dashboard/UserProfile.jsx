@@ -7,6 +7,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { getRollNoFromEmail, getYearFromEmail } from '@/lib/email';
 import { getUser } from '@/app/dashboard/actions/getUser';
 import { useEffect, useState } from 'react';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import { signOut } from 'next-auth/react';
+import axios from 'axios';
 
 export default  function UserProfile({ user }) {
   const rollNo = getRollNoFromEmail(user.email);
@@ -131,6 +134,45 @@ useEffect(() => {
         </CardContent>
       </Card>
     </motion.div>
+
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full mt-6 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 font-medium rounded-lg border border-red-500/20 transition-all duration-300"
+        >
+          Delete Account
+        </motion.button>
+      </AlertDialogTrigger>
+      <AlertDialogContent className="bg-black/90 border border-white/10 backdrop-blur-xl">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-red-500">Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription className="text-gray-400">
+            This action cannot be undone. This will permanently delete your account and remove all associated data.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel className="bg-white/5 hover:bg-white/10 text-white border border-white/10">
+            Cancel
+          </AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20"
+            onClick={async () => {
+              try {
+                await axios.delete('/api/user/delete');
+                signOut({ callbackUrl: '/' });
+              } catch (error) {
+                console.error('Error deleting account:', error);
+                alert('Failed to delete account. Please try again.');
+              }
+            }}
+          >
+            Delete Account
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
     
     </> 
   );

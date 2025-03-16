@@ -14,25 +14,25 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
-  uuid          String   @unique @default(uuid())
-  username      String   @unique
-  name          String?
-  rollNumber    String?  @unique
-  password      String?
-  passMail      String?  @unique
-  emailVerified Boolean  @default(false)
-  email         String?  @unique
+  id                Int      @id @default(autoincrement())
+  uuid              String   @unique @default(uuid())
+  username          String   @unique
+  name              String?
+  rollNumber        String?  @unique
+  password          String?
+  passMail          String?  @unique
+  emailVerified     Boolean  @default(false)
+  email             String?  @unique
   isBITMesraStudent Boolean  @default(false) // for bitians detechtion
-  isPaid         Boolean  @default(false) // for outsiders if paid show tickets
-  role          Role     @default(bitian)
-  image         String?
-  verified      Boolean  @default(false)
-  usedOnDay1    Boolean  @default(false)
-  usedOnDay2    Boolean  @default(false)
-  usedOnDay3    Boolean  @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  isPaid            Boolean  @default(false) // for outsiders if paid show tickets
+  role              Role     @default(bitian)
+  image             String?
+  verified          Boolean  @default(false)
+  usedOnDay1        Boolean  @default(false)
+  usedOnDay2        Boolean  @default(false)
+  usedOnDay3        Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 enum Role {

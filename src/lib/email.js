@@ -1,5 +1,4 @@
 
-
 // check if the email is of bit mesra
 export function isBitEmail(email) {
   const domain = email.split('@')[1];
@@ -30,3 +29,4 @@ export function getYearFromEmail(email) {
   const year = rollNo.split('.')[1];
   return year;
 }
+
