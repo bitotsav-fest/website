@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bug, Phone, Home, Calendar, Ticket, Music, Info, Images, Star } from 'lucide-react';
+import { Bug, Phone, Home, Calendar, Ticket, Music, Info, Images, Star, SquareUser, Shirt, UsersRound } from 'lucide-react';
 import Link from 'next/link';
 
 export default function VirtualHelpdesk() {
@@ -96,9 +96,12 @@ export default function VirtualHelpdesk() {
             { name: 'Events', icon: Calendar, href: '/events' },
             { name: 'Tickets', icon: Ticket, href: '/tickets' },
             { name: 'Concerts', icon: Music, href: '/concerts' },
+            { name: 'Team', icon: UsersRound, href: '/team' },
+            { name: 'Merch', icon: Shirt, href: '/merch' },
             { name: 'About', icon: Info, href: '/about' },
             { name: 'Gallery', icon: Images, href: '/gallery' },
-            { name: 'Sponsors', icon: Star, href: '/sponsors' }
+            { name: 'Sponsors', icon: Star, href: '/sponsors' },
+            { name: 'Developers', icon: SquareUser, href: '/developers' }
           ].map((item, index) => (
             <motion.div key={index} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
               <Link
