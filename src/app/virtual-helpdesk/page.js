@@ -11,7 +11,8 @@ export default function VirtualHelpdesk() {
       icon: <Bug className="w-6 h-6" />,
       contacts: [
         { name: 'Shaswat Raj', role: 'Tech Team', phone: '+91 9508846600' },
-        { name: 'Abhinav Kumar Choudhary', role: 'Tech Team', phone: '+91 9939110848' }
+        { name: 'Abhinav Kumar Choudhary', role: 'Tech Team', phone: '+91 9939110848' },
+        { name: 'Mrityunjay Raj', role: 'Tech Team', phone: '+91 9471828932' }
       ]
     }
   ];

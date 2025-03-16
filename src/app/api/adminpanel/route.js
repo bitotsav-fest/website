@@ -11,14 +11,14 @@ export async function POST(req) {
     console.log("Received Event Name:", eventName);
 
     if (!eventName) {
-      return NextResponse.json({ message: "Event name is required" }, { status: 400 });
+      return NextResponse.json({ message: "Event name is required." }, { status: 400 });
     }
 
     // Find the event by eventName
     const event = await Event.findOne({eventName});
 
     if (!event) {
-      return NextResponse.json({ message: "Event not found" }, { status: 404 });
+      return NextResponse.json({ message: "No participants found for this event." }, { status: 404 });
     }
 
     return NextResponse.json({
