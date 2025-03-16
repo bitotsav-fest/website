@@ -9,7 +9,7 @@ import { getUserUUID } from '@/app/actions/auth';
 import UserProfile from '@/components/dashboard/UserProfile';
 import QRTicket from '@/components/dashboard/QRTicket';
 import BitMesraPopup from '@/components/dashboard/BitMesraPopup';
-import { isBitEmail } from '@/lib/email';
+import { isBitEmail, isBitWellfareEmail } from '@/lib/email';
 import { useRouter } from 'next/navigation';
 
 export default function DashboardPage() {
@@ -48,6 +48,12 @@ export default function DashboardPage() {
   if(session?.user?.email && !isBitEmail(session?.user?.email)) {
     console.log("Not a BITMesra email");
     router.push('/dashboard/non-bit');
+    return null;
+  }
+
+  if(session?.user?.email && !isBitWellfareEmail(session?.user?.email)) {
+    console.log("Not a BITMesra email");
+    router.push('/dashboard/non-bit?msg=You are a day scholar');
     return null;
   }
 
