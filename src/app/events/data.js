@@ -1,7 +1,8 @@
 export const Eventsday = [
   {
     id: 1,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
@@ -1092,7 +1093,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 43,
     imgURL:
-      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742053026/lxeznn76efn0cymp9ds3.png",
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
@@ -1131,7 +1132,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 44,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
     name: "BATTLE OF BANDS",
     club: "Dhwani",
     category: "Flagship",
@@ -1155,7 +1157,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 45,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
     name: "ABHINAY",
     club: "Ehsaas",
     category: "Flagship",
@@ -1181,7 +1184,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
   },
   {
     id: 46,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
     name: "SQUID GAMES",
     club: "Events Team",
     category: "Flagship",
@@ -1409,7 +1413,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
   },
   {
     id: 55,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
     name: "SHORT MOVIE",
     club: "Events Team",
     category: "Flagship",
@@ -1432,6 +1437,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
       "Theme Relevance – Connection to the theme 'Celebrating Legends'.",
       "The team with the highest score will be declared the winner! Judges' decisions are final.",
     ],
+    contact: ["Divya: 6299854249", "Sanjana: 7541834074"],
     venue: "CAT HALL",
     time: "12PM - 3PM",
     day: 2,
@@ -1483,7 +1489,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
   },
   {
     id: 58,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xtbl9waw48vgo9oerjqe",
     name: "BIT GOT TALENT",
     club: "Events Team",
     category: "Flagship",
@@ -1537,14 +1544,12 @@ export const Eventsnight = [
 ];
 
 export const clubs = [
-  "ACM",
   "IEEE", //
   "SDS",
   "IET",
   "IETE", //
   "Robolution",
   "Aveon",
-  // "Firebolt",
   "Srijan", //
   "Dhwani", //
   "Dance club", //

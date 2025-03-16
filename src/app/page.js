@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // import Footer from "@/components/landing/FOOTER"
 // import { BentoGridGallery } from "@/components/landing/Gallery"
 // import { Nav } from "@/components/landing/NAV"
@@ -10,31 +10,34 @@
 // import { motion } from "framer-motion"
 // import Hero from "@/components/landing/Hero"
 // import NightEvents from "@/components/landing/night-events"
-import Landing from "@/components/landing/Landing"
-import Landing_2 from "./landingv2/page"
-import { isIOS } from "@/components/landing/cacheModel"
-import { useEffect } from "react"
+import Landing from "@/components/landing/Landing";
+import Landing_2 from "./landingv2/page";
+import { isIOS } from "@/components/landing/cacheModel";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
-let LandingComponent
-let showPopup = false
+let LandingComponent;
+let showPopup = false;
 
 if (isIOS()) {
-  LandingComponent = Landing_2
-  showPopup = true
+  LandingComponent = Landing_2;
+  showPopup = true;
 } else {
-  LandingComponent = Landing
+  LandingComponent = Landing;
 }
 
 export default function Home() {
   useEffect(() => {
     if (showPopup) {
-      alert("Unfortunately your IOS device does not support our 3D model.")
+      //alert("Unfortunately your IOS device does not support our 3D model.")
+      toast.dismiss();
+      toast("Unfortunately, your iOS device does not support our 3D model.");
     }
-  }, [])
+  }, []);
 
   return (
     <>
       <LandingComponent />
     </>
-  )
+  );
 }
