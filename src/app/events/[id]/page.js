@@ -19,6 +19,7 @@ import {
   // Gift,
   // Music,
 } from "lucide-react";
+import toast from "react-hot-toast";
 export default function EventDetailPage() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
@@ -76,24 +77,35 @@ export default function EventDetailPage() {
     // }
 
     if (!teamCode) {
-      alert("Please join or create a team first.");
+      //alert("Please join or create a team first.");
+      toast.error("Please join or create a team first.");
       return;
     }
 
     console.log(eventId, teamCode, eventName, eventClub, eventVenue, eventTime);
 
     axios
-      .post("/api/events/register", { eventId, teamCode, eventName,  eventClub, eventVenue, eventTime})
+      .post("/api/events/register", {
+        eventId,
+        teamCode,
+        eventName,
+        eventClub,
+        eventVenue,
+        eventTime,
+      })
       .then((response) => {
         if (response.status === 201) {
-          alert("Registered Successfully");
+          //alert("Registered Successfully");
+          toast.success("Registered Successfully");
         }
       })
       .catch((err) => {
         if (err.response) {
-          alert(err.response.data.message);
+          //alert(err.response.data.message);
+          toast.error(err.response.data.message);
         } else {
-          alert("An error occurred. Please try again later.");
+          //alert("An error occurred. Please try again later.");
+          toast.error("An error occurred. Please try again later.");
         }
       });
   };
@@ -103,7 +115,7 @@ export default function EventDetailPage() {
   }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] p-6 flex justify-center py-20">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-4xl w-full bg-[#2D1E0F]/20 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/10 flex flex-col gap-8"
@@ -120,7 +132,7 @@ export default function EventDetailPage() {
         {/* Upper Side */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           {/* Left: Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="relative w-80 h-96 rounded-xl overflow-hidden border border-[#EFCA4E]/20 group"
@@ -135,7 +147,7 @@ export default function EventDetailPage() {
           </motion.div>
 
           {/* Right: Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex-1 space-y-6"
@@ -175,7 +187,7 @@ export default function EventDetailPage() {
         </div>
 
         {/* Bottom Side */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="space-y-10"
@@ -183,14 +195,18 @@ export default function EventDetailPage() {
           {/* Prize */}
           {event.prize && (
             <div className="p-6 rounded-xl bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20">
-              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-2">Prize Pool</h3>
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-2">
+                Prize Pool
+              </h3>
               <p className="text-xl text-[#F6F1E2]/70">{event.prize}</p>
             </div>
           )}
 
           {/* Description */}
           <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-            <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">About the Event</h3>
+            <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">
+              About the Event
+            </h3>
             <p className="text-lg text-[#F6F1E2]/70 whitespace-pre-line leading-relaxed">
               {event.description}
             </p>
@@ -199,7 +215,9 @@ export default function EventDetailPage() {
           {/* Rules */}
           {event.rules && event.rules.length > 0 && (
             <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">📌 Rules and Regulations</h3>
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">
+                📌 Rules and Regulations
+              </h3>
               <ul className="list-none space-y-4">
                 {event.rules.map((rule, index) => (
                   <motion.li
@@ -209,7 +227,9 @@ export default function EventDetailPage() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-4 text-lg text-[#F6F1E2]/70"
                   >
-                    <span className="text-[#EFCA4E] font-semibold">{index + 1}.</span>
+                    <span className="text-[#EFCA4E] font-semibold">
+                      {index + 1}.
+                    </span>
                     <span>{rule}</span>
                   </motion.li>
                 ))}
@@ -220,7 +240,9 @@ export default function EventDetailPage() {
           {/* Judgement Criteria */}
           {event.judgement_criteria && event.judgement_criteria.length > 0 && (
             <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">🏆 Judgement Criteria</h3>
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">
+                🏆 Judgement Criteria
+              </h3>
               <ul className="list-none space-y-4">
                 {event.judgement_criteria.map((criteria, index) => (
                   <motion.li
@@ -230,7 +252,9 @@ export default function EventDetailPage() {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-4 text-lg text-[#F6F1E2]/70"
                   >
-                    <span className="text-[#EFCA4E] font-semibold">{index + 1}.</span>
+                    <span className="text-[#EFCA4E] font-semibold">
+                      {index + 1}.
+                    </span>
                     <span>{criteria}</span>
                   </motion.li>
                 ))}
@@ -241,7 +265,9 @@ export default function EventDetailPage() {
           {/* Contact Information */}
           {event.contact && event.contact.length > 0 && (
             <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">Contact Information</h3>
+              <h3 className="text-2xl font-semibold text-[#EFCA4E] mb-4">
+                Contact Information
+              </h3>
               <ul className="space-y-3">
                 {event.contact.map((contact, index) => (
                   <motion.li

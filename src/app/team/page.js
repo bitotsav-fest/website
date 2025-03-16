@@ -1,55 +1,56 @@
-"use client"
-import React, { useEffect, useState } from "react"
-import { useSession } from "next-auth/react"
-import { getUser } from "@/app/actions/auth"
-import axios from "axios"
-import { motion } from "framer-motion"
-import { Ripple } from "@/components/magicui/ripple"
+"use client";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { getUser } from "@/app/actions/auth";
+import axios from "axios";
+import { motion } from "framer-motion";
+import { Ripple } from "@/components/magicui/ripple";
+import toast from "react-hot-toast";
 
 export default function Register() {
-  const [activeTab, setActiveTab] = useState("create")
-  const [userUUID, setUserUUID] = useState("")
-  const [teamCode, setTeamCode] = useState("")
-  const [user, setUser] = useState("")
-  const { data: session } = useSession()
-  const [teamData, setTeamData] = useState(null)
+  const [activeTab, setActiveTab] = useState("create");
+  const [userUUID, setUserUUID] = useState("");
+  const [teamCode, setTeamCode] = useState("");
+  const [user, setUser] = useState("");
+  const { data: session } = useSession();
+  const [teamData, setTeamData] = useState(null);
   const [useCollegeNumber, setUseCollegeNumber] = useState(false);
 
   useEffect(() => {
     const fetchUserUUID = async () => {
       if (session?.user?.email) {
         try {
-          const user = await getUser()
-          setUserUUID(user.uuid)
-          setUser(user)
+          const user = await getUser();
+          setUserUUID(user.uuid);
+          setUser(user);
         } catch (error) {
-          console.error("Error fetching UUID:", error)
+          console.error("Error fetching UUID:", error);
         }
       }
-    }
-    fetchUserUUID()
-  }, [session])
+    };
+    fetchUserUUID();
+  }, [session]);
 
-  const [Loading, setLoading] = useState(true)
+  const [Loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (userUUID) {
       axios
         .get(`/api/user/get?uuid=${userUUID}`)
         .then((res) => {
-          setTeamCode(res.data.teamCode)
-          setLoading(false)
+          setTeamCode(res.data.teamCode);
+          setLoading(false);
         })
         .catch((err) => {
-          console.error(err)
-          setLoading(false)
-        })
+          console.error(err);
+          setLoading(false);
+        });
     }
-  }, [userUUID])
+  }, [userUUID]);
 
   setTimeout(() => {
-    setLoading(false)
-  }, 6000)
+    setLoading(false);
+  }, 6000);
 
   useEffect(() => {
     if (teamCode) {
@@ -57,34 +58,36 @@ export default function Register() {
         .get(`/api/teams/get?teamCode=${teamCode}`)
         .then((res) => {
           // Handle the response data as needed
-          const team = res.data.team
-          setTeamData(team)
-          console.log(team)
-          console.log(teamData)
+          const team = res.data.team;
+          setTeamData(team);
+          console.log(team);
+          console.log(teamData);
         })
         .catch((err) => {
-          console.error(err)
-        })
+          console.error(err);
+        });
     }
-  }, [teamCode])
+  }, [teamCode]);
 
   const handleCreateTeam = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const teamName = e.target.elements.teamName.value // Access input by name
-    const leaderMobileNumber = e.target.elements.leaderMobileNumber.value
-    const rollNumber = e.target.elements.rollNumber.value
+    const teamName = e.target.elements.teamName.value; // Access input by name
+    const leaderMobileNumber = e.target.elements.leaderMobileNumber.value;
+    const rollNumber = e.target.elements.rollNumber.value;
 
     if (!teamName.trim() || !leaderMobileNumber || !rollNumber) {
-      alert("Please fill all the fields.")
-      return
+      //alert("Please fill all the fields.");
+      toast.error("Please fill all the fields.");
+      return;
     }
 
     // extracting uuid form sesssion storage
-    const leaderUUID = userUUID // uuid;
+    const leaderUUID = userUUID; // uuid;
     if (!leaderUUID) {
-      alert("User ID not found. Please log in again.")
-      return
+      //alert("User ID not found. Please log in again.");
+      toast.error("User ID not found. Please log in again.");
+      return;
     }
     axios
       .post("/api/teams/create", {
@@ -96,55 +99,66 @@ export default function Register() {
       })
       .then((res) => {
         if (res.status === 201) {
-          alert("Team created successfully")
-          setTeamCode(res.data.teamCode)
+          //alert("Team created successfully");
+          toast.success("Team created successfully");
+          setTeamCode(res.data.teamCode);
         }
       })
       .catch((err) => {
         if (err.response) {
-          alert(err.response.data.message)
+          //alert(err.response.data.message);
+          toast.error(
+            err.response.data.message || "An unexpected error occurred."
+          );
         } else {
-          alert("An error occurred. Please try again later.")
+          //alert("An error occurred. Please try again later.");
+          toast.error("An error occurred. Please try again later.");
         }
-      })
-  }
+      });
+  };
 
   const handleJoinTeam = (e) => {
-    e.preventDefault()
-    const teamCode = e.target.elements.teamId.value.trim()
+    e.preventDefault();
+    const teamCode = e.target.elements.teamId.value.trim();
 
     if (!teamCode) {
-      alert("Please enter a valid Team ID.")
-      return
+      //alert("Please enter a valid Team ID.");
+      toast.error("Please enter a valid Team ID.");
+      return;
     }
 
     // extracting uuid form sesssion storage
     if (!userUUID) {
-      alert("User ID not found. Please log in again.")
-      return
+      //alert("User ID not found. Please log in again.");
+      toast.error("User ID not found. Please log in again.");
+      return;
     }
 
-    console.log(teamCode)
-    console.log(userUUID)
+    console.log(teamCode);
+    console.log(userUUID);
 
     axios
       .post("/api/teams/join", { teamCode, userUUID, user })
       .then((res) => {
         if (res.status === 200) {
-          alert("Team joined successfully!")
-          setTeamCode(res.data.teamCode)
+          //alert("Team joined successfully!");
+          toast.success("Team joined successfully!");
+          setTeamCode(res.data.teamCode);
         } else {
-          alert(`Unexpected response: ${res.status}`)
+          //alert(`Unexpected response: ${res.status}`);
+          toast.error(`Unexpected response: ${res.status}`);
         }
       })
       .catch((err) => {
         if (err.response) {
-          alert(err.response.data.message)
+          //alert(err.response.data.message);
+          toast.error(err.response.data.message);
         } else {
-          alert("An error occurred. Please try again later.")
+          //alert("An error occurred. Please try again later.");
+          toast.error("An error occurred. Please try again later.");
         }
-      })
-  }
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] py-24 px-4 relative">
