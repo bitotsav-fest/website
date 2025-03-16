@@ -78,7 +78,7 @@ export async function getGeminiAnswer(userQuery, chunks, retryCount = 0) {
 
     try {
         const context = chunks.map(chunk => chunk.chunk).join("\n\n");
-        const prompt = `You should only answer questions that are in the context of the text provided. NOTHING ELSE ASKED BY THE USER SHOULD BE ANSWERED. In case the user asks a question that is not in the context of the data, just reply with "Question asked is out of context. Please ask something related to the event.". Answer in a nicely formatted paragraph and don't just return raw text. When the user is asking about an event provide the user with the full text about the event formatted in a humane way. Use the following context to answer the question:\n\n${context}\n\nQuestion: ${userQuery}`;
+        const prompt = `Answer in present tense. You should only answer questions that are in the context of the text provided. NOTHING ELSE ASKED BY THE USER SHOULD BE ANSWERED. In case the user asks a question that is not in the context of the data, just reply with "Question asked is out of context. Please ask something related to the event.". Answer in a nicely formatted paragraph and don't just return raw text. When the user is asking about an event provide the user with the full text about the event formatted in a humane way. Use the following context to answer the question:\n\n${context}\n\nQuestion: ${userQuery}`;
 
         const payload = {
             "contents": [{ "parts": [{ "text": prompt }] }],

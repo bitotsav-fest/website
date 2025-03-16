@@ -194,7 +194,6 @@ export default function ChatbotPopup() {
         if (isPopupOpen && isInitialRender.current) {
             // Add predefined messages to the chat history
             setChatHistory([
-                { type: 'user', text: 'Hi! Who are you?' },
                 { type: 'bot', text: 'Hi! I am BitoMind. You can ask me anything regarding the events here. Feel free to share your doubts.' },
             ]);
             isInitialRender.current = false; // Ensure this only runs once
@@ -269,7 +268,7 @@ export default function ChatbotPopup() {
 
                 {/* Popup Content */}
                 <div className="w-full h-full flex flex-col items-center p-6">
-                    <div className="w-full flex justify-center items-center mb-8 pt-4">
+                    <div className="w-full flex justify-center items-center mb-4 pt-4">
                         <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
                             Ask Me Anything
                         </h1>
@@ -278,7 +277,7 @@ export default function ChatbotPopup() {
                     {/* Chat History with Texting Bubbles */}
                     <div
                         ref={chatHistoryContainerRef}
-                        className="w-full mb-6 space-y-4 overflow-y-auto flex-1 px-4 scrollbar"
+                        className="w-full mb-6 space-y-2 overflow-y-auto flex-1 px-4 scrollbar"
                         style={{ maxHeight: 'calc(100vh - 260px)' }}
                     >
                         {chatHistory.map((message, index) => (
