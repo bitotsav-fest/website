@@ -28,7 +28,7 @@ export default function Register() {
           const user = await getUser();
           setUserUUID(user.uuid);
           setUser(user);
-          console.log(user);
+          // console.log(user);
         } catch (error) {
           console.error("Error fetching UUID:", error);
         }
@@ -66,8 +66,8 @@ export default function Register() {
           // Handle the response data as needed
           const team = res.data.team;
           setTeamData(team);
-          console.log(team);
-          console.log(teamData);
+          // console.log(team);
+          // console.log(teamData);
         })
         .catch((err) => {
           console.error(err);
@@ -151,14 +151,6 @@ export default function Register() {
       return;
     }
     
-    console.log("REQ sent: Creating team with data", {
-      teamName,
-      leaderUUID,
-      leaderMobileNumber,
-      rollNumber: identificationValue,
-      user,
-    });
-
     axios
       .post("/api/teams/create", {
       teamName,
@@ -199,8 +191,8 @@ export default function Register() {
       return;
     }
 
-    console.log(teamCode);
-    console.log(userUUID);
+    // console.log(teamCode);
+    // console.log(userUUID);
 
     axios
       .post("/api/teams/join", { teamCode, userUUID, user })
@@ -467,7 +459,7 @@ export default function Register() {
       </motion.div>
 
         <br/>
-        
+
         {/* rules */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
