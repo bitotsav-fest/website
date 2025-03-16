@@ -8,12 +8,13 @@ export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
 
   const isLandingPage = pathname === "/";
+  const isScanner = pathname === "/scanner";
 
   return (
     <>
-      {!isLandingPage && <Nav />}
+      {!isLandingPage && !isScanner && <Nav />}
       <main className="flex-1">{children}</main>
-      {!isLandingPage && <Footer />}
+      {!isLandingPage && !isScanner && <Footer />}
     </>
   );
 }
