@@ -38,7 +38,7 @@ export async function POST(req) {
   }
   const membersData = {
     name:user.name,
-    rollNumber:rollNumber,
+    rollNumber:rollNumber.trim(),
     uuid: user.uuid,
     mobileNumber: leaderMobileNumber
   };
@@ -49,7 +49,7 @@ export async function POST(req) {
       leaderName: user.name,
       leader: leaderUUID,
       leaderMobileNumber,
-      rollNumber,
+      rollNumber: rollNumber.trim(),
       members: [membersData],
       events: [],
     });
@@ -65,7 +65,7 @@ export async function POST(req) {
       teamName,
       email: user.email,
       name: user.name,
-      rollNumber: rollNumber,
+      rollNumber: rollNumber.trim(),
       mobileNumber: leaderMobileNumber
     });
     await newUser.save();
