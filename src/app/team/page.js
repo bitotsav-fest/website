@@ -320,35 +320,37 @@ export default function Register() {
             </div>
 
             {/* Create Team Form */}
-                  {activeTab === "create" && (
-                    <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    className="max-w-md mx-auto"
-                    >
-                    <form className="space-y-4" onSubmit={handleCreateTeam}>
-                      <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
-                      Create Your Team
-                      </h4>
-                      <div className="space-y-4">
-                      <input
-                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                        name="teamName"
-                        placeholder="Team Name"
-                      />
-                      <input
-                        type="tel"
-                        pattern="[0-9]{10}"
-                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                        name="leaderMobileNumber"
-                        placeholder="Leader Mobile Number"
-                      />
+            {activeTab === "create" && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="max-w-md mx-auto"
+              >
+                <form className="space-y-4" onSubmit={handleCreateTeam}>
+                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
+                    Create Your Team
+                  </h4>
+                  <div className="space-y-4">
+                    <input
+                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                      name="teamName"
+                      placeholder="Team Name"
+                    />
+                    <input
+                      type="tel"
+                      pattern="[0-9]{10}"
+                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                      name="leaderMobileNumber"
+                      placeholder="Leader Mobile Number"
+                    />
 
-                      {/* Show student type options only if user is NOT a BIT Mesra student */}
+                    {/* Show student type options only if user is NOT a BIT Mesra student */}
                     {!user.isBITMesraStudent && (
                       <div className="space-y-3 p-4 bg-white/5 border border-[#EFCA4E]/20 rounded-xl">
-                        <h5 className="text-[#EFCA4E] font-medium">Select your student type:</h5>
-                        
+                        <h5 className="text-[#EFCA4E] font-medium">
+                          Select your student type:
+                        </h5>
+
                         <div className="flex items-center space-x-2">
                           <input
                             type="checkbox"
@@ -361,10 +363,11 @@ export default function Register() {
                             htmlFor="bitStudentNonBitMail"
                             className="text-white cursor-pointer"
                           >
-                            I am a BIT Mesra student (logged in with non-BIT mail)
+                            I am a BIT Mesra student (logged in with non-BIT
+                            mail)
                           </label>
                         </div>
-                        
+
                         <div className="flex items-center space-x-2">
                           <input
                             type="checkbox"
@@ -392,7 +395,7 @@ export default function Register() {
                         readOnly
                       />
                     )}
-                    
+
                     {isBITStudentNonBITMail && (
                       <div>
                         <input
@@ -404,12 +407,13 @@ export default function Register() {
                         />
                         {rollNumber && !validateRollNumber(rollNumber) && (
                           <p className="text-red-400 text-sm mt-1 ml-1">
-                            Please enter a valid roll number format (e.g., btech10377.23)
+                            Please enter a valid roll number format (e.g.,
+                            btech10377.23)
                           </p>
                         )}
                       </div>
                     )}
-                    
+
                     {isNonBITStudent && (
                       <input
                         className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
@@ -460,6 +464,73 @@ export default function Register() {
             )}
           </motion.div>
         )}
+      </motion.div>
+
+        <br/>
+        
+        {/* rules */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center justify-center min-h-screen"
+      >
+        <div className="bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-[#EFCA4E]/20 text-left space-y-4 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-[#EFCA4E] text-center">
+            Team Formation & Participation Rules
+          </h2>
+
+          <div className="text-[#F6F1E2]/80 space-y-3">
+            <h3 className="text-2xl font-semibold">General Rules</h3>
+            <ul className="list-disc pl-6">
+              <li>
+                <strong>Same Institution Requirement</strong>: All team members
+                must be from the same institution. No cross-institution teams.
+              </li>
+              <li>
+                <strong>BIT Mesra Students</strong>:
+                <ul className="list-disc pl-6">
+                  <li>BIT webmail login auto-verifies roll number.</li>
+                  <li>Non-webmail users must provide their college name.</li>
+                  <li>Strict regex-based roll number validation.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3 className="text-2xl font-semibold">Joining a Team</h3>
+            <ul className="list-disc pl-6">
+              <li>
+                <strong>Verification Process</strong>:
+                <ul className="list-disc pl-6">
+                  <li>
+                    BIT webmail users have automatic roll number verification.
+                  </li>
+                  <li>
+                    Non-BIT webmail users must provide a valid college name.
+                  </li>
+                  <li>Mismatched college names lead to rejection.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Non-BIT Students</strong>:
+                <ul className="list-disc pl-6">
+                  <li>
+                    Checkbox options: ✅ BIT student without webmail (Requires
+                    roll number verification) ✅ Non-BIT student
+                  </li>
+                  <li>
+                    <strong>Restriction</strong>: Non-BIT students can only join
+                    day events, not night events.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <p className="text-[#F6F1E2]/60 text-center">
+              These rules ensure fair, secure, and institutionally compliant
+              participation.
+            </p>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
