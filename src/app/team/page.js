@@ -14,7 +14,12 @@ export default function Register() {
   const [user, setUser] = useState("");
   const { data: session } = useSession();
   const [teamData, setTeamData] = useState(null);
-  const [useCollegeNumber, setUseCollegeNumber] = useState(false);
+  
+  // New state for student type options
+  const [isBITStudentNonBITMail, setIsBITStudentNonBITMail] = useState(false);
+  const [isNonBITStudent, setIsNonBITStudent] = useState(false);
+  const [rollNumber, setRollNumber] = useState("");
+  const [collegeName, setCollegeName] = useState("");
 
   useEffect(() => {
     const fetchUserUUID = async () => {
@@ -23,6 +28,7 @@ export default function Register() {
           const user = await getUser();
           setUserUUID(user.uuid);
           setUser(user);
+          console.log(user);
         } catch (error) {
           console.error("Error fetching UUID:", error);
         }
@@ -69,49 +75,110 @@ export default function Register() {
     }
   }, [teamCode]);
 
+  // Handle student type checkbox changes
+  const handleBITStudentChange = (e) => {
+    setIsBITStudentNonBITMail(e.target.checked);
+    if (e.target.checked) {
+      setIsNonBITStudent(false);
+      setCollegeName("");
+    }
+  };
+
+  const handleNonBITStudentChange = (e) => {
+    setIsNonBITStudent(e.target.checked);
+    if (e.target.checked) {
+      setIsBITStudentNonBITMail(false);
+      setRollNumber("");
+    }
+  };
+
+  // Validate roll number format
+  const validateRollNumber = (value) => {
+    // Regex for patterns like btech10377.23 or imh10121.22
+    const rollNumberRegex = /^[a-z]+\d+\.\d{2}$/i;
+    return rollNumberRegex.test(value);
+  };
+
+  // Handle roll number input change with validation
+  const handleRollNumberChange = (e) => {
+    const value = e.target.value;
+    setRollNumber(value);
+  };
+
+  // Handle college name input change with capitalization
+  const handleCollegeNameChange = (e) => {
+    const value = e.target.value.toUpperCase();
+    setCollegeName(value);
+  };
+
   const handleCreateTeam = (e) => {
     e.preventDefault();
 
-    const teamName = e.target.elements.teamName.value; // Access input by name
+    const teamName = e.target.elements.teamName.value;
     const leaderMobileNumber = e.target.elements.leaderMobileNumber.value;
-    const rollNumber = e.target.elements.rollNumber.value;
+    
+    // Get identification info based on user type
+    let identificationValue = "";
+    
+    if (user.isBITMesraStudent) {
+      identificationValue = user.rollNumber;
+    } else if (isBITStudentNonBITMail) {
+      if (!validateRollNumber(rollNumber)) {
+        toast.error("Please enter a valid roll number format (e.g., btech10377.23)");
+        return;
+      }
+      identificationValue = rollNumber;
+    } else if (isNonBITStudent) {
+      if (!collegeName.trim()) {
+        toast.error("Please enter your college name");
+        return;
+      }
+      identificationValue = collegeName;
+    } else {
+      toast.error("Please select your student type");
+      return;
+    }
 
-    if (!teamName.trim() || !leaderMobileNumber || !rollNumber) {
-      //alert("Please fill all the fields.");
+    if (!teamName.trim() || !leaderMobileNumber || !identificationValue) {
       toast.error("Please fill all the fields.");
       return;
     }
 
     // extracting uuid form sesssion storage
-    const leaderUUID = userUUID; // uuid;
+    const leaderUUID = userUUID;
     if (!leaderUUID) {
-      //alert("User ID not found. Please log in again.");
       toast.error("User ID not found. Please log in again.");
       return;
     }
+    
+    console.log("REQ sent: Creating team with data", {
+      teamName,
+      leaderUUID,
+      leaderMobileNumber,
+      rollNumber: identificationValue,
+      user,
+    });
+
     axios
       .post("/api/teams/create", {
-        teamName,
-        leaderUUID,
-        leaderMobileNumber,
-        rollNumber,
-        user,
+      teamName,
+      leaderUUID,
+      leaderMobileNumber,
+      rollNumber: identificationValue, // Using a single field for both roll number and college name
+      user,
       })
       .then((res) => {
         if (res.status === 201) {
-          //alert("Team created successfully");
           toast.success("Team created successfully");
           setTeamCode(res.data.teamCode);
         }
       })
       .catch((err) => {
         if (err.response) {
-          //alert(err.response.data.message);
           toast.error(
             err.response.data.message || "An unexpected error occurred."
           );
         } else {
-          //alert("An error occurred. Please try again later.");
           toast.error("An error occurred. Please try again later.");
         }
       });
@@ -122,14 +189,12 @@ export default function Register() {
     const teamCode = e.target.elements.teamId.value.trim();
 
     if (!teamCode) {
-      //alert("Please enter a valid Team ID.");
       toast.error("Please enter a valid Team ID.");
       return;
     }
 
     // extracting uuid form sesssion storage
     if (!userUUID) {
-      //alert("User ID not found. Please log in again.");
       toast.error("User ID not found. Please log in again.");
       return;
     }
@@ -141,20 +206,16 @@ export default function Register() {
       .post("/api/teams/join", { teamCode, userUUID, user })
       .then((res) => {
         if (res.status === 200) {
-          //alert("Team joined successfully!");
           toast.success("Team joined successfully!");
           setTeamCode(res.data.teamCode);
         } else {
-          //alert(`Unexpected response: ${res.status}`);
           toast.error(`Unexpected response: ${res.status}`);
         }
       })
       .catch((err) => {
         if (err.response) {
-          //alert(err.response.data.message);
           toast.error(err.response.data.message);
         } else {
-          //alert("An error occurred. Please try again later.");
           toast.error("An error occurred. Please try again later.");
         }
       });
@@ -259,59 +320,105 @@ export default function Register() {
             </div>
 
             {/* Create Team Form */}
-            {activeTab === "create" && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="max-w-md mx-auto"
-              >
-                <form className="space-y-4" onSubmit={handleCreateTeam}>
-                  <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
-                    Create Your Team
-                  </h4>
-                  <div className="space-y-4">
-                    <input
-                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                      name="teamName"
-                      placeholder="Team Name"
-                    />
-                    <input
-                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                      name="leaderMobileNumber"
-                      placeholder="Leader Mobile Number"
-                    />
+                  {activeTab === "create" && (
+                    <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="max-w-md mx-auto"
+                    >
+                    <form className="space-y-4" onSubmit={handleCreateTeam}>
+                      <h4 className="text-2xl font-semibold text-[#EFCA4E] mb-6">
+                      Create Your Team
+                      </h4>
+                      <div className="space-y-4">
+                      <input
+                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                        name="teamName"
+                        placeholder="Team Name"
+                      />
+                      <input
+                        type="tel"
+                        pattern="[0-9]{10}"
+                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                        name="leaderMobileNumber"
+                        placeholder="Leader Mobile Number"
+                      />
 
-                    {/* Show checkbox only if user is NOT a BIT Mesra student */}
+                      {/* Show student type options only if user is NOT a BIT Mesra student */}
                     {!user.isBITMesraStudent && (
-                      <div className="flex items-center space-x-2">
-                        <input
-                          type="checkbox"
-                          id="toggleCollegeNumber"
-                          className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
-                          checked={useCollegeNumber}
-                          onChange={() =>
-                            setUseCollegeNumber(!useCollegeNumber)
-                          }
-                        />
-                        <label
-                          htmlFor="toggleCollegeNumber"
-                          className="text-white cursor-pointer"
-                        >
-                          Use College Number instead of Roll Number
-                        </label>
+                      <div className="space-y-3 p-4 bg-white/5 border border-[#EFCA4E]/20 rounded-xl">
+                        <h5 className="text-[#EFCA4E] font-medium">Select your student type:</h5>
+                        
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="checkbox"
+                            id="bitStudentNonBitMail"
+                            className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
+                            checked={isBITStudentNonBITMail}
+                            onChange={handleBITStudentChange}
+                          />
+                          <label
+                            htmlFor="bitStudentNonBitMail"
+                            className="text-white cursor-pointer"
+                          >
+                            I am a BIT Mesra student (logged in with non-BIT mail)
+                          </label>
+                        </div>
+                        
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="checkbox"
+                            id="nonBitStudent"
+                            className="w-5 h-5 accent-[#EFCA4E] cursor-pointer"
+                            checked={isNonBITStudent}
+                            onChange={handleNonBITStudentChange}
+                          />
+                          <label
+                            htmlFor="nonBitStudent"
+                            className="text-white cursor-pointer"
+                          >
+                            I am not a BIT Mesra student
+                          </label>
+                        </div>
                       </div>
                     )}
 
-                    {/* Conditional Input Field */}
-                    <input
-                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                      name="rollNumber"
-                      placeholder={
-                        user.isBITMesraStudent || !useCollegeNumber
-                          ? "Roll Number"
-                          : "College Name"
-                      }
-                    />
+                    {/* Conditional Input Fields based on student type */}
+                    {user.isBITMesraStudent && (
+                      <input
+                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                        name="rollNumber"
+                        value={user.rollNumber}
+                        readOnly
+                      />
+                    )}
+                    
+                    {isBITStudentNonBITMail && (
+                      <div>
+                        <input
+                          className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                          name="rollNumber"
+                          placeholder="Roll Number (e.g., btech10377.23)"
+                          value={rollNumber}
+                          onChange={handleRollNumberChange}
+                        />
+                        {rollNumber && !validateRollNumber(rollNumber) && (
+                          <p className="text-red-400 text-sm mt-1 ml-1">
+                            Please enter a valid roll number format (e.g., btech10377.23)
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    
+                    {isNonBITStudent && (
+                      <input
+                        className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                        name="rollNumber" // Using the same name "rollNumber" for college name input
+                        placeholder="College Name"
+                        value={collegeName}
+                        onChange={handleCollegeNameChange}
+                      />
+                    )}
                   </div>
 
                   <motion.button
@@ -325,8 +432,6 @@ export default function Register() {
                 </form>
               </motion.div>
             )}
-
-            {/* Join Team Form */}
             {activeTab === "join" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
