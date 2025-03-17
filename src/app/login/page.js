@@ -70,8 +70,9 @@ export default function LoginPage() {
         >
           <span className="text-amber-400 font-medium">BIT Mesra Students</span>
           <span className="text-amber-100/60 ml-1">- Free Access using your institutional email </span>
+          <></>
           <span className="text-amber-100/60 ml-1">
-            - If BIT Webmail is not configured, please{" "}
+            If BIT Webmail is not configured, please{" "}
             <a href="https://bitmesra.ac.in/Email_Application/index.html" target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:text-amber-300 transition-colors">
               Configure email
             </a>

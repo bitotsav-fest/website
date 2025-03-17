@@ -332,9 +332,10 @@ export default function Register() {
                     <h3 className="text-2xl text-[#EFCA4E] pb-3 pt-2">Registered Events:</h3>
                     {teamData.events.map((event, index) => (
                       <li key={index} className="text-[#cbcbcb]">
-                        <span className="font-bold text-white">NAME:</span> <span className="text-[#cbcbcb]">{eventDetails.name}</span> |<span className="font-bold text-white">DAY: </span>{" "}
-                        <span className="text-[#cbcbcb]">{eventDetails.day}</span> |<span className="font-bold text-white">VENUE: </span> <span className="text-[#cbcbcb]">{eventDetails.venue}</span> |
-                        <span className="font-bold text-white">TIMINGS: </span> <span className="text-[#cbcbcb]">{eventDetails.time}</span>
+                        <span className="font-bold text-white">NAME:</span> <span className="text-[#cbcbcb]">{Eventsday[event - 1].name}</span> |<span className="font-bold text-white">DAY: </span>{" "}
+                        <span className="text-[#cbcbcb]">{Eventsday[event - 1].day}</span> |<span className="font-bold text-white">VENUE: </span>{" "}
+                        <span className="text-[#cbcbcb]">{Eventsday[event - 1].venue}</span> |<span className="font-bold text-white">TIMINGS: </span>{" "}
+                        <span className="text-[#cbcbcb]">{Eventsday[event - 1].time}</span>
                       </li>
                     ))}
                   </>
