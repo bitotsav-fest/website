@@ -75,7 +75,6 @@ export async function POST(req) {
 
     return NextResponse.json({ message: "Event registered successfully", team }, { status: 201 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Error registering event", error: error.message }, { status: 500 });
   }
 }

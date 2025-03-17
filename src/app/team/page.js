@@ -35,7 +35,6 @@ export default function Register() {
           const user = await getUser();
           setUserUUID(user.uuid);
           setUser(user);
-          // console.log(user);
         } catch (error) {
           console.error("Error fetching UUID:", error);
         }
@@ -73,8 +72,6 @@ export default function Register() {
           // Handle the response data as needed
           const team = res.data.team;
           setTeamData(team);
-          // console.log(team);
-          // console.log(teamData);
         })
         .catch((err) => {
           console.error(err);
@@ -253,11 +250,6 @@ export default function Register() {
       toast.error("User ID not found. Please log in again.");
       return;
     }
-
-    // console.log("Team Code:", teamCode);
-    // console.log("User UUID:", userUUID);
-    // console.log("User ",user)
-    // console.log("Identification Value:", identificationValue);
 
     axios
       .post("/api/teams/join", {

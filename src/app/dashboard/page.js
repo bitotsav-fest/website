@@ -46,13 +46,11 @@ export default function DashboardPage() {
   };
 
   if(session?.user?.email && !isBitEmail(session?.user?.email)) {
-    console.log("Not a BITMesra email");
     router.push('/dashboard/non-bit');
     return null;
   }
 
   if(session?.user?.email && !isBitWellfareEmail(session?.user?.email)) {
-    console.log("Not a BITMesra email");
     router.push('/dashboard/non-bit?msg=You are a day scholar');
     return null;
   }

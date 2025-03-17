@@ -8,8 +8,7 @@ export async function POST(req) {
 
   try {
     const { eventName } = await req.json(); // Extracting eventName from request body
-    console.log("Received Event Name:", eventName);
-
+    
     if (!eventName) {
       return NextResponse.json({ message: "Event name is required." }, { status: 400 });
     }

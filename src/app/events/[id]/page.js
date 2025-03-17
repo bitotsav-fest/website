@@ -42,7 +42,6 @@ export default function EventDetailPage() {
       axios
         .get(`/api/user/get?uuid=${userUUID}`)
         .then((res) => {
-          console.log(res.data);
           setTeamCode(res.data.teamCode);
         })
         .catch((err) => {
@@ -57,7 +56,6 @@ export default function EventDetailPage() {
           try {
             const user = await getUser();
             setUser(user);
-            console.log(user);
           } catch (error) {
             console.error("Error fetching UUID:", error);
           }
@@ -104,8 +102,7 @@ export default function EventDetailPage() {
       return;
     }
 
-    // console.log(eventId, teamCode, eventName, eventClub, eventVenue, eventTime);
-
+    
     axios
       .post("/api/events/register", {
         eventId,

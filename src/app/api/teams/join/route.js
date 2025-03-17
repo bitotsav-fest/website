@@ -38,10 +38,10 @@ export async function POST(req) {
 
     // test can BITIAn wnter non BITIAn team -- ho rha h isko bachana h 
     if(rollNumberRegex.test(rollNumber)){
-      console.log("YE BIT WALA H")
+      //console.log("YE BIT WALA H")
       // check agar team.rollNumber BIT wala nhi h to sendd reaponse
       if(!rollNumberRegex.test(team.rollNumber)){
-          console.log("BITian trying to enter non BITIAn team")
+          //console.log("BITian trying to enter non BITIAn team")
             return NextResponse.json(
             { message: "We can't have teams with participants from different colleges." },
             { status: 400 }

@@ -34,7 +34,7 @@ function processCSV() {
 
   // Write updated CSV
   fs.writeFileSync(path.join(__dirname, 'wellfare_with_email.csv'), outputCSV);
-  console.log('Successfully added email column to CSV');
+  //console.log('Successfully added email column to CSV');
 }
 
 processCSV();
