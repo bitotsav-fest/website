@@ -336,8 +336,8 @@ export default function Register() {
                   <>
                     <h3 className="text-2xl text-[#EFCA4E] pb-3 pt-2">Registed Events:</h3>
                     {teamData.events.map((event, index) => (
-                      <li key={index - 1} className="text-[#cbcbcb]">
-                        {Eventsday[event].name} {Eventsday[event].day} {Eventsday[event].venue} {Eventsday[event].time}
+                      <li key={index} className="text-[#cbcbcb]">
+                        {Eventsday[event - 1].name} {Eventsday[event - 1].day} {Eventsday[event - 1].venue} {Eventsday[event - 1].time}
                       </li>
                     ))}
                   </>
@@ -522,7 +522,9 @@ export default function Register() {
                         value={joinRollNumber}
                         onChange={handleJoinRollNumberChange}
                       />
-                      {joinRollNumber && !validateRollNumber(joinRollNumber) && <p className="text-red-400 text-sm mt-1 ml-1">Please enter a valid roll number format (e.g., btech10377.23 or imh10121.21)</p>}
+                      {joinRollNumber && !validateRollNumber(joinRollNumber) && (
+                        <p className="text-red-400 text-sm mt-1 ml-1">Please enter a valid roll number format (e.g., btech10377.23 or imh10121.21)</p>
+                      )}
                     </div>
                   )}
 
