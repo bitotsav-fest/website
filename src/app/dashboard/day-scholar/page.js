@@ -48,6 +48,16 @@ export default function DayScholarPage() {
                     </div>
                 </CardContent>
             </Card>
+
+            <div className="mt-8 text-center">
+                <p className="text-gray-300 mb-4">Not from BIT Mesra?</p>
+                <Button
+                    className="bg-gradient-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 border-2 border-purple-300"
+                    onClick={() => window.location.href = '/dashboard/non-bit'}
+                >
+                    Register as External Student
+                </Button>
+            </div>
         </div>
     );
 }

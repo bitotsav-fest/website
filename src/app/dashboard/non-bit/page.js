@@ -53,7 +53,10 @@ export default function NonBitPage() {
               <div className="mt-4 p-4 bg-red-900/30 border border-red-500/30 rounded-lg">
                 <p className="text-red-200 font-semibold">Day Scholar Notice</p>
                 <p className="text-gray-300 mt-2">Please note that day scholars are not eligible for free pass access. Standard registration fees apply.</p>
-                <a href="https://forms.gle/xyoDNBkvgqhUfdfq6" target="_blank" rel="noopener noreferrer" className="inline-block text-purple-400 hover:text-purple-300 underline">Day scholars form</a>
+                <div className="flex items-center gap-4 mt-3">
+                  <a href="https://forms.gle/xyoDNBkvgqhUfdfq6" target="_blank" rel="noopener noreferrer" className="inline-block text-purple-400 hover:text-purple-300 underline">Day scholars form</a>
+                  <a href="/dashboard/day-scholar" className="inline-block text-blue-400 hover:text-blue-300 underline">View Day Scholar Dashboard →</a>
+                </div>
               </div>
             </div>
           </section>
