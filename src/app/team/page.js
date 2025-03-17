@@ -14,15 +14,16 @@ export default function Register() {
   const [user, setUser] = useState("");
   const { data: session } = useSession();
   const [teamData, setTeamData] = useState(null);
-  
+
   // State for student type options - for both create and join forms
   const [isBITStudentNonBITMail, setIsBITStudentNonBITMail] = useState(false);
   const [isNonBITStudent, setIsNonBITStudent] = useState(false);
   const [rollNumber, setRollNumber] = useState("");
   const [collegeName, setCollegeName] = useState("");
-  
+
   // Join form specific state
-  const [joinIsBITStudentNonBITMail, setJoinIsBITStudentNonBITMail] = useState(false);
+  const [joinIsBITStudentNonBITMail, setJoinIsBITStudentNonBITMail] =
+    useState(false);
   const [joinIsNonBITStudent, setJoinIsNonBITStudent] = useState(false);
   const [joinRollNumber, setJoinRollNumber] = useState("");
   const [joinCollegeName, setJoinCollegeName] = useState("");
@@ -151,15 +152,17 @@ export default function Register() {
 
     const teamName = e.target.elements.teamName.value;
     const leaderMobileNumber = e.target.elements.leaderMobileNumber.value;
-    
+
     // Get identification info based on user type
     let identificationValue = "";
-    
+
     if (user.isBITMesraStudent) {
       identificationValue = user.rollNumber;
     } else if (isBITStudentNonBITMail) {
       if (!validateRollNumber(rollNumber)) {
-        toast.error("Please enter a valid roll number format (e.g., btech10377.23)");
+        toast.error(
+          "Please enter a valid roll number format (e.g., btech10377.23)"
+        );
         return;
       }
       identificationValue = rollNumber;
@@ -185,14 +188,14 @@ export default function Register() {
       toast.error("User ID not found. Please log in again.");
       return;
     }
-    
+
     axios
       .post("/api/teams/create", {
-      teamName,
-      leaderUUID,
-      leaderMobileNumber,
-      rollNumber: identificationValue, // Using a single field for both roll number and college name
-      user,
+        teamName,
+        leaderUUID,
+        leaderMobileNumber,
+        rollNumber: identificationValue, // Using a single field for both roll number and college name
+        user,
       })
       .then((res) => {
         if (res.status === 201) {
@@ -223,12 +226,14 @@ export default function Register() {
 
     // Get identification info based on user type for Join form
     let identificationValue = "";
-    
+
     if (user.isBITMesraStudent) {
       identificationValue = user.rollNumber;
     } else if (joinIsBITStudentNonBITMail) {
       if (!validateRollNumber(joinRollNumber)) {
-        toast.error("Please enter a valid roll number format (e.g., btech10377.23)");
+        toast.error(
+          "Please enter a valid roll number format (e.g., btech10377.23)"
+        );
         return;
       }
       identificationValue = joinRollNumber;
@@ -248,19 +253,19 @@ export default function Register() {
       toast.error("User ID not found. Please log in again.");
       return;
     }
-    
+
     // console.log("Team Code:", teamCode);
     // console.log("User UUID:", userUUID);
     // console.log("User ",user)
     // console.log("Identification Value:", identificationValue);
 
     axios
-      .post("/api/teams/join", { 
-        teamCode, 
-        userUUID, 
+      .post("/api/teams/join", {
+        teamCode,
+        userUUID,
         user,
         studentMobileNumber,
-        rollNumber: identificationValue // Adding identification value to join request
+        rollNumber: identificationValue, // Adding identification value to join request
       })
       .then((res) => {
         if (res.status === 200) {
@@ -494,7 +499,7 @@ export default function Register() {
                 </form>
               </motion.div>
             )}
-            
+
             {/* Join Team Form - Updated with student verification options */}
             {activeTab === "join" && (
               <motion.div
@@ -512,13 +517,13 @@ export default function Register() {
                     name="teamId"
                   />
                   <input
-                      type="tel"
-                      pattern="[0-9]{10}"
-                      className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                      name="studentMobileNumber"
-                      placeholder="Mobile Number"
-                    />
-                  
+                    type="tel"
+                    pattern="[0-9]{10}"
+                    className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
+                    name="studentMobileNumber"
+                    placeholder="Mobile Number"
+                  />
+
                   {/* Show read-only roll number if user is a BIT Mesra student */}
                   {user.isBITMesraStudent && (
                     <input
@@ -528,7 +533,7 @@ export default function Register() {
                       readOnly
                     />
                   )}
-                  
+
                   {/* Show student type options only if user is NOT a BIT Mesra student */}
                   {!user.isBITMesraStudent && (
                     <div className="space-y-3 p-4 bg-white/5 border border-[#EFCA4E]/20 rounded-xl">
@@ -548,8 +553,7 @@ export default function Register() {
                           htmlFor="joinBitStudentNonBitMail"
                           className="text-white cursor-pointer"
                         >
-                          I am a BIT Mesra student (logged in with non-BIT
-                          mail)
+                          I am a BIT Mesra student (logged in with non-BIT mail)
                         </label>
                       </div>
 
@@ -581,25 +585,26 @@ export default function Register() {
                         value={joinRollNumber}
                         onChange={handleJoinRollNumberChange}
                       />
-                      {joinRollNumber && !validateRollNumber(joinRollNumber) && (
-                        <p className="text-red-400 text-sm mt-1 ml-1">
-                          Please enter a valid roll number format (e.g.,
-                          btech10377.23)
-                        </p>
-                      )}
+                      {joinRollNumber &&
+                        !validateRollNumber(joinRollNumber) && (
+                          <p className="text-red-400 text-sm mt-1 ml-1">
+                            Please enter a valid roll number format (e.g.,
+                            btech10377.23)
+                          </p>
+                        )}
                     </div>
                   )}
 
                   {joinIsNonBITStudent && (
                     <input
                       className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all"
-                      name="joinCollegeName" 
+                      name="joinCollegeName"
                       placeholder="College Name"
                       value={joinCollegeName}
                       onChange={handleJoinCollegeNameChange}
                     />
                   )}
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -615,9 +620,9 @@ export default function Register() {
         )}
       </motion.div>
 
-        <br/>
+      <br />
 
-        {/* rules */}
+      {/* rules */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -627,6 +632,14 @@ export default function Register() {
           <h2 className="text-3xl font-bold text-[#EFCA4E] text-center">
             Team Formation & Participation Rules
           </h2>
+
+          {/* New rule */}
+          <div className="bg-red-500/10 backdrop-blur-lg border border-red-500/40 text-white p-3 rounded-lg text-sm text-center">
+            NOTE: It is <strong>compulsory</strong> to bring your current
+            institution ID card. If any information provided by you does not
+            match the details on your ID card, you will be{" "}
+            <strong>disqualified</strong>.
+          </div>
 
           <div className="text-[#F6F1E2]/80 space-y-3">
             <h3 className="text-2xl font-semibold">General Rules</h3>
