@@ -69,14 +69,18 @@ export default function RootLayout({ children }) {
         <Script
           id="google-analytics"
           strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-PC52W2PLKC');
-          `}
-        </Script>
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-PC52W2PLKC', {
+                page_path: window.location.pathname,
+                cookie_domain: 'www.bitotsav.com'
+              });
+            `,
+          }}
+        />
       </head>
       <body className="flex flex-col min-h-screen">
         <SessionProvider>
