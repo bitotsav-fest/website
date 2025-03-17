@@ -147,7 +147,7 @@ useEffect(() => {
         Logout
       </motion.button>
 
-      <AlertDialog>
+      {/* <AlertDialog>
         <AlertDialogTrigger asChild>
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -184,7 +184,7 @@ useEffect(() => {
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
-    </AlertDialog>
+    </AlertDialog> */}
     </div>
     </>
   );
