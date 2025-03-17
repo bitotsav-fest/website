@@ -27,6 +27,7 @@ export const Eventsday = [
       "In case of conflicts, the decision of the judges would be considered final.",
       "There will be 2 winners - 1st & 2nd place.",
     ],
+    contact: ["Laksh: 7970817208", "Ayushi: 9630526027"],
     venue: "GP BIRLA",
     time: "12PM - 3PM",
     day: 1,
@@ -62,7 +63,7 @@ export const Eventsday = [
       "There will be 3 winners - 1st, 2nd & 3rd.",
     ],
 
-    contact: ["Reetika Tiwary - 70612 07063", "Ayushi Purty - 96305 26027"],
+    contact: ["Reetika Tiwary: 7061207063", "Ayushi Purty: 9630526027"],
     venue: "SHORBAGH",
     time: "12PM - 3PM",
     day: 3,
@@ -157,7 +158,7 @@ export const Eventsday = [
       "Substitutions: No substitutions are allowed once a round begins.",
     ],
 
-    contact: ["Mohit: 7970752663", "Abhinav: 99341 26439"],
+    contact: ["Mohit: 7970752663", "Abhinav: 9934126439"],
     venue: "NCC",
     time: "9AM - 12PM",
     day: 1,
@@ -201,6 +202,7 @@ export const Eventsday = [
       "The organising team reserves the right to disqualify any team engaging in malpractice.",
       "The decision of the organising team is final, binding, and indisputable for any discrepancies or disputes.",
     ],
+
     venue: "NCC GROUND",
     time: "12PM - 3PM",
     day: 2,
@@ -688,7 +690,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "ROUND 2: Business Board Game\nA total of 16 participants will be shortlisted based on their performance in Round 1.\nIn this round, we will be conducting a Business Board Game, featuring 4 boards, each with 4 participants.\nThe properties on the boards will be based on key landmarks of BIT, such as the Main Building, IC, and others.\nThe participant with the highest net worth (cash + properties) at the end of the game will be declared the winner.",
     ],
 
-    contact: ["Pratik Singh: +91 8809493882", "Aditya Agarwal: +91 9508454048"],
+    contact: ["Pratik Singh: 8809493882", "Aditya Agarwal: 9508454048"],
     venue: "237 & 231",
     time: "12PM - 3PM",
     day: 2,
@@ -735,7 +737,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Judging criteria: Content - 15 Oration - 10 Body language - 5 Originality - 5 Creativity - 5 Total - 40.",
     ],
 
-    contact: ["Shail: +916201493576", "Ayush Raj: 8789610656"],
+    contact: ["Shail: 6201493576", "Ayush Raj: 8789610656"],
     venue: "206 & 207",
     time: "12PM - 3PM",
     day: 1,
@@ -817,8 +819,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: [
-      "Md Raja Istekhar: +91 6204185245",
-      "Naman Khatwani: +91 7880036191",
+      "Md Raja Istekhar: 6204185245",
+      "Naman Khatwani: 7880036191"
     ],
     venue: "216 & 217",
     time: "12PM - 3PM",
@@ -861,7 +863,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Decision of the judges will remain final.",
     ],
 
-    contact: ["Adarsh - 6202172061", "Ramendra – 9570245195"],
+    contact: ["Adarsh:  6202172061", "Ramendra: 9570245195"],
     venue: "SHORBAGH",
     time: "12PM - 3PM",
     day: 2,
@@ -999,7 +1001,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "No external help will be provided by anyone.",
     ],
 
-    contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
+    contact: ["Tanisha Samal: 7064426300", "Sagar Rangi: 8950729214"],
     venue: "206 & 207",
     time: "12PM - 3PM",
     day: 2,
@@ -1031,7 +1033,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Pitching & Persuasion",
     ],
 
-    contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
+    contact: ["Tanisha Samal: 7064426300", "Sagar Rangi: 8950729214"],
     venue: "LH-1",
     time: "12PM - 3PM",
     day: 3,
@@ -1280,6 +1282,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
 
       "Judging Criteria: Entries will be evaluated based on the following - Creativity & Originality: 30%, Composition & Framing: 30%, Relevance to Given Half: 20%, Technical Execution: 20%.",
     ],
+    contact: ["Swapnendu: 6287660402", "Rajnish: 771776769"],
     venue: "LH-2",
     time: "9AM - 12PM",
     day: 3,
@@ -1303,7 +1306,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
       "Referees’ decisions will be final and binding.",
     ],
 
-    contact: ["Vijay Prakash: +91 6205525743", "Aayush Sagar: +91 9835127422"],
+    contact: ["Vijay Prakash: 6205525743", "Aayush Sagar: 9835127422"],
     venue: "NCC",
     time: "9AM - 12PM",
     day: 2,
