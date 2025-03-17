@@ -331,31 +331,20 @@ export default function Register() {
                   <li className="text-[#F6F1E2]/70">No team members found.</li>
                 )}
               </ul>
-              <div>
+              <ul>
                 {teamData?.events?.length > 0 ? (
                   <>
-                    <h3 className="text-2xl text-[#EFCA4E] pb-3">Registed Events:</h3>
-                    <select className="w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white focus:outline-none focus:border-[#EFCA4E]/50 transition-all">
-                      {teamData.events.map((event, index) => (
-                        <option key={index} className="text-[#cbcbcb]">
-                          {Eventsday[event].name}
-                          <option key={index} className="text-[#cbcbcb]">
-                            {Eventsday[event].day}
-                          </option>
-                          <option key={index} className="text-[#cbcbcb]">
-                            {Eventsday[event].venue}
-                          </option>
-                          <option key={index} className="text-[#cbcbcb]">
-                            {Eventsday[event].time}
-                          </option>
-                        </option>
-                      ))}
-                    </select>
+                    <h3 className="text-2xl text-[#EFCA4E] pb-3 pt-2">Registed Events:</h3>
+                    {teamData.events.map((event, index) => (
+                      <li key={index - 1} className="text-[#cbcbcb]">
+                        {Eventsday[event].name} {Eventsday[event].day} {Eventsday[event].venue} {Eventsday[event].time}
+                      </li>
+                    ))}
                   </>
                 ) : (
-                  <p className="text-[#F6F1E2]/70">No Registrations Found.</p>
+                  <li className="text-[#F6F1E2]/70">No Registrations Found.</li>
                 )}
-              </div>
+              </ul>
             </div>
           </motion.div>
         )}
