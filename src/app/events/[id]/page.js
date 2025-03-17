@@ -6,6 +6,7 @@ import { Eventsday } from "../data";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { getUserUUID } from "@/app/actions/auth";
+import { getUser } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaXmark } from "react-icons/fa6";
@@ -26,6 +27,7 @@ export default function EventDetailPage() {
   const [userUUID, setUserUUID] = useState("");
   const [teamCode, setTeamCode] = useState("");
   const { data: session } = useSession();
+  const [user, setUser] = useState("");
   // const [confirm, setConfirm] = useState(false);
   const router = useRouter();
 
@@ -35,6 +37,34 @@ export default function EventDetailPage() {
       setEvent(foundEvent || null);
     }
   }, [id]);
+  useEffect(() => {
+    if (userUUID) {
+      axios
+        .get(`/api/user/get?uuid=${userUUID}`)
+        .then((res) => {
+          console.log(res.data);
+          setTeamCode(res.data.teamCode);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [userUUID]);
+
+  useEffect(() => {
+      const fetchUserUUID = async () => {
+        if (session?.user?.email) {
+          try {
+            const user = await getUser();
+            setUser(user);
+            console.log(user);
+          } catch (error) {
+            console.error("Error fetching UUID:", error);
+          }
+        }
+      };
+      fetchUserUUID();
+    }, [session]);
 
   useEffect(() => {
     const fetchUserUUID = async () => {
@@ -50,19 +80,7 @@ export default function EventDetailPage() {
     fetchUserUUID();
   }, [session]);
 
-  useEffect(() => {
-    if (userUUID) {
-      axios
-        .get(`/api/user/get?uuid=${userUUID}`)
-        .then((res) => {
-          console.log(res.data);
-          setTeamCode(res.data.teamCode);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  }, [userUUID]);
+  
 
   const handleRegister = () => {
     const eventId = event.id;
@@ -81,8 +99,12 @@ export default function EventDetailPage() {
       toast.error("Please join or create a team first.");
       return;
     }
+    if(!user){
+      toast.error("No user found,Please login.");
+      return;
+    }
 
-    console.log(eventId, teamCode, eventName, eventClub, eventVenue, eventTime);
+    // console.log(eventId, teamCode, eventName, eventClub, eventVenue, eventTime);
 
     axios
       .post("/api/events/register", {
@@ -92,6 +114,7 @@ export default function EventDetailPage() {
         eventClub,
         eventVenue,
         eventTime,
+        user
       })
       .then((response) => {
         if (response.status === 201) {
