@@ -1,11 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn } from "lucide-react"
+import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn, UserPen } from "lucide-react"
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMediaQuery } from "react-responsive"
 import { useSession } from "next-auth/react"
+import { useEffect } from "react"
 
 const items = [
   {
@@ -25,6 +26,18 @@ const items = [
     url: "/concerts",
     href: "/concerts",
     icon: Music,
+  },
+  {
+    name: "Dashboard",
+    url: "/dashboard",
+    href: "/dashboard",
+    icon: UserPen,
+  },
+  {
+    name: "Team",
+    url: "/team",
+    href: "/team",
+    icon: UsersRound,
   },
   {
     name: "Developers",
@@ -51,12 +64,6 @@ const items = [
     icon: Shirt,
   },
   {
-    name: "Team",
-    url: "/team",
-    href: "/team",
-    icon: UsersRound,
-  },
-  {
     name: "Gallery",
     url: "/gallery",
     href: "/gallery",
@@ -75,7 +82,7 @@ export function Nav() {
     name: session ? "Logout" : "Login",
     url: session ? "/logout" : "/login",
     href: session ? "/logout" : "/login",
-    icon: LogIn
+    icon: LogIn,
   }
 
   const allItems = [...items, authItem]
@@ -84,6 +91,12 @@ export function Nav() {
     router.push(url)
     setIsOpen(false)
   }
+
+  useEffect(() => {
+    const handleScroll = () => setIsOpen(false)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const desktopItems = allItems.slice(0, -4)
   const mobileItems = isMobile ? allItems : allItems.slice(-10)
@@ -126,8 +139,11 @@ export function Nav() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="p-2 
-            rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 
+            rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300"
+          >
             <span className="sr-only">Open menu</span>
             <Menu className="h-6 w-6" />
           </button>
@@ -141,7 +157,7 @@ export function Nav() {
             exit={{ opacity: 0, y: -10 }}
             className={`py-4 ${
               isMobile
-                ? "flex flex-col space-y-4" // Mobile styles
+                ? "flex flex-col space-y-4 z-50" // Mobile styles
                 : "absolute top-16 right-0 w-[20vw] h-screen bg-gradient-to-r from-[#2D1E0F]/90 via-[#1A0B2E]/90 to-[#2D1E0F]/90 shadow-lg rounded-lg p-4 items-center flex flex-col" // Desktop styles
             }`}
           >

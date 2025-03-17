@@ -1,7 +1,7 @@
 export const Eventsday = [
   {
     id: 1,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
@@ -45,7 +45,7 @@ export const Eventsday = [
 
     rules: [
       "This is a solo dance event.",
-      "Participants are required to send a video entry of not more than 2 minutes from their performance along with details (name, college name) at (email) before (date).",
+      "Participants are required to send a video entry of not more than 2 minutes from their performance along with details (name, college name) at bitmesra.danceclub@gmail.com (email) before (date).",
       "Props involving fire, water, and powdered substances (like talcum powder/Holi colour/rangoli colour, etc) are strictly prohibited. Any mess created on stage or in the green room must be cleaned by the team members; therefore it is advised to be very careful with things such as alta/body paint etc.",
       "The participants selected from the online round are required to report to BIT Mesra, Ranchi, main campus for further rounds.",
       "Multiple participants from the same college are permitted.",
@@ -478,12 +478,9 @@ export const Eventsday = [
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description:
-      "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
+    description: "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
 
-    rules: [
-      "This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold.",
-    ],
+    rules: ["This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold."],
 
     contact: ["Soamya Parashar: 9771753905", "Anand Kumar: 9905590361"],
     venue: "209 & 205",
@@ -498,8 +495,7 @@ export const Eventsday = [
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description:
-      "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
+    description: "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
 
     rules: [
       "This will be a team event of 2 members in each team. Prelims will be based on aptitude and basic aeronautics. The final model will be judged based on the maximum length of distance covered in three attempts of flight. The final model of the plane should not diverge more than 5 meters from the track otherwise it’d be considered as an invalid attempt.",
@@ -532,7 +528,7 @@ export const Eventsday = [
       "The judges’ decision will be final, abiding, and indisputable.",
     ],
 
-    contact: ["Pranav Raj Srivastav: 969316974", "Yogesh Kumar: 9708619840"],
+    contact: ["Pranav Raj Srivastav: 9693169743", "Yogesh Kumar: 9708619840"],
     venue: "LH-2",
     time: "9AM - 12PM",
     day: 2,
@@ -573,9 +569,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     theme: "Strategy & Gaming",
     description:
       "Phase 1: Quick-Fire Business game (Earn Components)\nBasically a monopoly in terms of electronics such as like, jail can be termed as power cut and so and so. Player aims to buy out the components required for completing their circuit in phase 2.\n\nPhase 2: Circuit Race (Build & Troubleshoot)\nTeams race to complete a working circuit using the components they earned.\nThe host may introduce random “power cuts” or faulty components to make it challenging!\nThe first team to successfully complete their circuit wins the round.\n\nWINNING CRITERIA\nThe team that completes their circuit first wins!\nBonus points for creativity (if they modify or improve the circuit).",
-    rules: [
-      "Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board.",
-    ],
+    rules: ["Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board."],
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
     venue: "206 & 207",
     time: "9AM - 12PM",
@@ -818,10 +812,12 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "- In case of a tie, the fastest single build-and-smash round will determine the winner.",
     ],
 
+
     contact: [
       "Md Raja Istekhar: 6204185245",
       "Naman Khatwani: 7880036191"
     ],
+
     venue: "216 & 217",
     time: "12PM - 3PM",
     day: 2,
@@ -930,60 +926,58 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "Round 1:\nDialogues, music, or speeches will be played, and participants have to guess the person, event, movie, or music.\n\nRound 2:\nPairs compete in a game of 'Higher or Lower.' Participants view pairs of celebrities, monuments, or animals and guess which one meets the given criteria, like more followers or Google searches. Top teams with the most correct guesses advance.\n\nRound 3:\nDumb Charades - Participants will be given words related to an event. One member of the team must act out the words within five minutes while teammates connect the words to guess the historical event. Only 3-4 teams will participate in this round to avoid chaos.",
 
-    rules: [
-      "Each team must consist of 4 members.",
-      "Answers should not be called out loud.",
-    ],
+    rules: ["Each team must consist of 4 members.", "Answers should not be called out loud."],
 
     contact: ["Tanisha: 7064426300"],
     venue: "LH-1",
     time: "12PM - 3PM",
     day: 2,
   },
-  // {
-  //   id: 37,
-  //   imgURL: "/comingsoon.png",
-  //   name: "TUG OF TORQUE",
-  //   club: "Firebolt",
-  //   category: "Formal",
-  //   description:
-  //     "Welcome to 'Tug of Torque', where raw strength meets teamwork in the ultimate battle of endurance! \n\nBut here’s the catch—our ATV weighs just 180kg, lighter than a Royal Enfield bike, yet pulling it won’t be as easy as you think! It’s not just about brute force; it’s about coordination, strategy, and resilience. Can your team conquer the torque and out-pull the competition? \n\nHow It Works: \n\nA 20-meter track will be marked with 2-meter distance checkpoints for easy tracking. \nTeams will grip a strong, non-slip rope at a designated start point. \nOnce the round begins, the challenge is to pull the ATV as far as possible within 30 seconds to 1 minute. \n\nThe distance covered will decide the rankings—the team that moves the least distance will be eliminated or ranked lower. \n\nWith its light yet powerful 180kg build, this ATV will challenge your teamwork like never before! \n\nWhy It’s Exciting: \n\nLighter than a Royal Enfield, but tougher to pull than you think! \nA test of strength, endurance, and synchronization! \nShort, high-energy rounds keep the adrenaline pumping!",
+  {
+    id: 37,
+    imgURL: "/comingsoon.png",
+    name: "SpeedForces",
+    club: "IET",
+    category: "Formal",
+    prize: "300, 250, 200",
+    theme: "Technical",
+    description:
+      "SpeedForces is an intensive time-bound coding sprint designed to assess participants’ ability to solve problems with maximum speed and precision. This competition focuses on solving a series of fundamental coding challenges within a strictly defined timeframe, rewarding those who can think and execute solutions rapidly. Participants must demonstrate quick analytical thinking, efficient implementation, and strategic problem selection to maximize their score. Open to both beginners and experienced programmers, SpeedForces is a test of coding reflexes, accuracy, and time optimization in a competitive environment.",
 
-  //   rules: [
-  //     "Secure Setup – The ATV and rope are positioned for a controlled, fair challenge.\n",
-  //     "Clear Markings – Chalk and cones define safe zones and track progress.\n",
-  //     "Quality Equipment – A sturdy rope ensures a strong yet comfortable grip.\n",
-  //     "Time-Limited Rounds – Prevents overexertion and keeps the competition fair.\n",
-  //     "On-Site Support – Safety personnel available for any assistance.\n",
-  //   ],
+    rules: [
+      "Individual Participation: This is a solo competition—team entries are not permitted.",
+      "Time Constraint: The contest will take place within a fixed duration, during which participants must solve as many problems as possible.",
+      "Problem Set: The competition will feature multiple coding challenges of varying complexity, mostly easy (15-16), primarily focusing on logic, syntax, and algorithmic implementation.",
+    ],
 
-  //   contact: ["Lavkesh Jaiswal: +917667094225"],
-  //   venue: "TBD",
-  //   time: "TBD",
-  //   day: 1,
-  // },
-  // {
-  //   id: 38,
-  //   imgURL: "/comingsoon.png",
-  //   name: "BLIND FURY",
-  //   club: "Firebolt",
-  //   category: "Formal",
-  //   description:
-  //     "Remote ATV Challenge\n\nGet ready for an adrenaline-pumping challenge where communication is the key to victory! Blind Fury: Remote ATV Challenge is a test of trust, strategy, and quick decision-making. Each team of two will navigate through unpredictable terrains using a remote-controlled ATV, but there’s a twist—the driver will be blindfolded! \n\nRound 1: Quiz Showdown \nTeams will compete in a knowledge-based quiz to test their understanding of automobiles, off-road racing, and general problem-solving. The top-performing teams advance to the next round. \n\nRound 2: Blind ATV Racing \nThe driver, completely blindfolded, must rely on their teammate’s voice commands (left, right, forward, backward) to maneuver their ATV through a challenging obstacle course. The course will feature sand, gravel, stones, thermocol barriers, and cones to test precision and coordination. Fastest and most accurate teams take the victory!",
+    contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
+    venue: "211",
+    time: "12PM - 3PM",
+    day: 2,
+  },
+  {
+    id: 38,
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xtbl9waw48vgo9oerjqe",
+    name: "BIT GOT TALENT",
+    club: "Events Team",
+    category: "Flagship",
+    prize: "Worth 15k",
+    theme: "Personality Development",
+    description:
+      "Step into the spotlight and showcase your talent at our electrifying college fest talent show! Whether you're a singer, dancer, comedian, or have a unique talent to share, this is your chance to shine. Join us for an unforgettable evening of entertainment, laughter, and incredible performances. Don't miss out on the opportunity to dazzle the crowd and win amazing prizes! See you on stage.",
 
-  //   rules: [
-  //     "Drivers are completely blindfolded.\n",
-  //     "Navigators stand at designated points along the track and can only shout commands (e.g., 'Left! Right! Brake!').\n",
-  //     "Collision = 5-second stop penalty for safety.\n",
-  //     "Teams must complete 3 laps (or a set time limit).\n",
-  //     "The winner is decided based on the best completion time with penalties added OR the first team to complete the required laps.\n",
-  //   ],
-
-  //   contact: ["Lavkesh Jaiswal: +917667094225"],
-  //   venue: "TBD",
-  //   time: "TBD",
-  //   day: 1,
-  // },
+    rules: [
+      "Members can participate individually or in teams.",
+      "2-3 mins will be provided for every performance.",
+      "No hazardous substances are allowed.",
+      "PA system will be provided.",
+      "Each entry will be judged according to the panel of judges present.",
+      "The decision of the judge will be final and binding.",
+    ],
+    venue: "SHORBAGH",
+    time: "9AM - 12PM",
+    day: 3,
+  },
   {
     id: 39,
     imgURL: "/comingsoon.png",
@@ -995,11 +989,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "The competition contains 2 rounds.\n\nRound 1: Nearly 50 teams can apply.\n- Participants have to give a quiz consisting of 10 questions related to:\n  • Marketing\n  • Industrial Management\n  • Business Ideas\n- Note: The top 20 teams will qualify for Round 2.\n\nRound 2: Judges will question participants on industrial-related issues, such as:\n- Loss of revenue over the last two months for FMCG industries.\n- Expansion of South India-based clothing brands into North India.\n- Case studies related to various industries (FMCG, Iron & Steel, etc.).\n- Answers must contain all specific details.",
 
-    rules: [
-      "Each team must have 4 members.",
-      "Participants are not allowed to engage in any unfair practices.",
-      "No external help will be provided by anyone.",
-    ],
+    rules: ["Each team must have 4 members.", "Participants are not allowed to engage in any unfair practices.", "No external help will be provided by anyone."],
 
     contact: ["Tanisha Samal: 7064426300", "Sagar Rangi: 8950729214"],
     venue: "206 & 207",
@@ -1025,13 +1015,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Q&A Compliance: Teams must answer all questions from the judges within the given time frame.",
     ],
 
-    judgement_criteria: [
-      "Innovation & Feasibility",
-      "Market Potential",
-      "Business & Revenue Model",
-      "Scalability",
-      "Pitching & Persuasion",
-    ],
+    judgement_criteria: ["Innovation & Feasibility", "Market Potential", "Business & Revenue Model", "Scalability", "Pitching & Persuasion"],
 
     contact: ["Tanisha Samal: 7064426300", "Sagar Rangi: 8950729214"],
     venue: "LH-1",
@@ -1046,8 +1030,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Fun",
-    description:
-      "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
+    description: "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
 
     rules: [
       "Round 1: Google Translate Lyrics\n",
@@ -1075,8 +1058,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     category: "Formal",
     prize: "300, 250, 200",
     theme: "Fine Arts",
-    description:
-      "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
+    description: "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
 
     rules: [
       "Participants can compete individually or in teams (max. 3 members).",
@@ -1093,8 +1075,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 43,
-    imgURL:
-      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742053026/lxeznn76efn0cymp9ds3.png",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
@@ -1133,7 +1114,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 44,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
     name: "BATTLE OF BANDS",
     club: "Dhwani",
     category: "Flagship",
@@ -1157,15 +1138,15 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 45,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
     name: "ABHINAY",
     club: "Ehsaas",
     category: "Flagship",
     prize: "Worth 15K",
     theme: "Performing Arts",
     description: `ABHINAY is an exciting stage play event. Prepare to be enthralled by an extraordinary stage play that promises to dazzle and inspire! This captivating event showcases a dynamic performance brimming with vivid storytelling, stunning visuals, and heartfelt emotion. Talented actors bring a compelling narrative to life, weaving together moments of drama, humor, and triumph on a beautifully crafted stage. 
-
-With dazzling costumes, immersive sets, and a powerful soundtrack, every detail is designed to transport you into the heart of the story. Whether you're a theater enthusiast or a first-time attendee, this unforgettable production will leave you spellbound. Don’t miss this magical celebration of creativity and artistry!`,
+    
+    With dazzling costumes, immersive sets, and a powerful soundtrack, every detail is designed to transport you into the heart of the story. Whether you're a theater enthusiast or a first-time attendee, this unforgettable production will leave you spellbound. Don’t miss this magical celebration of creativity and artistry!`,
     rules: [
       "The event is open to teams with a size of 10-15 members.",
       "Each team must register prior to the event deadline.",
@@ -1183,7 +1164,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
   },
   {
     id: 46,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
     name: "SQUID GAMES",
     club: "Events Team",
     category: "Flagship",
@@ -1412,8 +1393,8 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
   },
   {
     id: 55,
-    imgURL: "/comingsoon.png",
-    name: "SHORT MOVIE",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
+    name: "TALKIES - SHORT MOVIE",
     club: "Events Team",
     category: "Flagship",
     prize: "Worth 15k",
@@ -1435,6 +1416,7 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
       "Theme Relevance – Connection to the theme 'Celebrating Legends'.",
       "The team with the highest score will be declared the winner! Judges' decisions are final.",
     ],
+    contact: ["Divya: 6299854249", "Sanjana: 7541834074"],
     venue: "CAT HALL",
     time: "12PM - 3PM",
     day: 2,
@@ -1462,59 +1444,13 @@ With dazzling costumes, immersive sets, and a powerful soundtrack, every detail 
     time: "9AM - 12PM",
     day: 3,
   },
-  {
-    id: 57,
-    imgURL: "/comingsoon.png",
-    name: "SpeedForces",
-    club: "IET",
-    category: "Formal",
-    prize: "300, 250, 200",
-    theme: "Technical",
-    description:
-      "SpeedForces is an intensive time-bound coding sprint designed to assess participants’ ability to solve problems with maximum speed and precision. This competition focuses on solving a series of fundamental coding challenges within a strictly defined timeframe, rewarding those who can think and execute solutions rapidly. Participants must demonstrate quick analytical thinking, efficient implementation, and strategic problem selection to maximize their score. Open to both beginners and experienced programmers, SpeedForces is a test of coding reflexes, accuracy, and time optimization in a competitive environment.",
-
-    rules: [
-      "Individual Participation: This is a solo competition—team entries are not permitted.",
-      "Time Constraint: The contest will take place within a fixed duration, during which participants must solve as many problems as possible.",
-      "Problem Set: The competition will feature multiple coding challenges of varying complexity, mostly easy (15-16), primarily focusing on logic, syntax, and algorithmic implementation.",
-    ],
-
-    contact: ["Nayan: 9778080532", "Keshav: 9458769921"],
-    venue: "211",
-    time: "12PM - 3PM",
-    day: 2,
-  },
-  {
-    id: 58,
-    imgURL: "/comingsoon.png",
-    name: "BIT GOT TALENT",
-    club: "Events Team",
-    category: "Flagship",
-    prize: "Worth 15k",
-    theme: "Personality Development",
-    description:
-      "Step into the spotlight and showcase your talent at our electrifying college fest talent show! Whether you're a singer, dancer, comedian, or have a unique talent to share, this is your chance to shine. Join us for an unforgettable evening of entertainment, laughter, and incredible performances. Don't miss out on the opportunity to dazzle the crowd and win amazing prizes! See you on stage.",
-
-    rules: [
-      "Members can participate individually or in teams.",
-      "2-3 mins will be provided for every performance.",
-      "No hazardous substances are allowed.",
-      "PA system will be provided.",
-      "Each entry will be judged according to the panel of judges present.",
-      "The decision of the judge will be final and binding.",
-    ],
-    venue: "SHORBAGH",
-    time: "9AM - 12PM",
-    day: 3,
-  },
-];
+]
 
 export const Eventsnight = [
   {
     id: 200,
     name: "Heritage Night",
-    description:
-      "Experience the rich cultural heritage with traditional performances.",
+    description: "Experience the rich cultural heritage with traditional performances.",
     photo: "/revealing-soon.jpg",
   },
   {
@@ -1526,28 +1462,24 @@ export const Eventsnight = [
   {
     id: 202,
     name: "Dance Night",
-    description:
-      "Get ready for an energetic night of thrilling dance performances.",
+    description: "Get ready for an energetic night of thrilling dance performances.",
     photo: "/revealing-soon.jpg",
   },
   {
     id: 203,
     name: "Pro Artist Night",
-    description:
-      "An unforgettable evening with renowned artists and performances.",
+    description: "An unforgettable evening with renowned artists and performances.",
     photo: "/revealing-soon.jpg",
   },
-];
+]
 
 export const clubs = [
-  "ACM",
   "IEEE", //
   "SDS",
   "IET",
   "IETE", //
   "Robolution",
   "Aveon",
-  // "Firebolt",
   "Srijan", //
   "Dhwani", //
   "Dance club", //
@@ -1574,4 +1506,4 @@ export const clubs = [
   "ECESoc", //
   "EEESoc", //
   "Events Team",
-];
+]

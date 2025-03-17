@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calendar } from "lucide-react"
 import EventCard from "@/components/events/EventCard"
 import ChatbotPopup from "@/components/chatbot/chatbot-popup"
+import { ScrollProgress } from "@/components/magicui/scroll-progress"
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day")
@@ -51,6 +52,7 @@ export default function EventsPage() {
       <div className="min-h-screen bg-[#0A0118] fixed inset-0 -z-20"></div>
       <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10">
         <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+          <ScrollProgress />
           {/* Background effects */}
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
           <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
@@ -63,7 +65,6 @@ export default function EventsPage() {
                 Bitotsav <span className=" dw decoration-fuchsia-500">Events</span>
               </span>
             </h1>
-            <p className="text-[#F6F1E2]/70 text-lg">Registration starting soon!</p>
             <p className="text-[#F6F1E2]/70 text-lg">Discover amazing events and performances</p>
           </motion.div>
 

@@ -38,7 +38,9 @@ export async function POST(req) {
   }
   const membersData = {
     name:user.name,
-    uuid: user.uuid
+    rollNumber:rollNumber.trim(),
+    uuid: user.uuid,
+    mobileNumber: leaderMobileNumber
   };
   try {
     const newTeam = new Team({
@@ -47,22 +49,27 @@ export async function POST(req) {
       leaderName: user.name,
       leader: leaderUUID,
       leaderMobileNumber,
-      rollNumber,
+      rollNumber: rollNumber.trim(),
       members: [membersData],
       events: [],
     });
+
     await newTeam.save();
 
-    // create user
+
+
     const newUser = new User({
       uuid: leaderUUID,
       teamJoined: true,
       teamCode,
       teamName,
       email: user.email,
-      name: user.name
+      name: user.name,
+      rollNumber: rollNumber.trim(),
+      mobileNumber: leaderMobileNumber
     });
     await newUser.save();
+
 
     return NextResponse.json(
       { message: "Team created", team: newTeam, teamCode },

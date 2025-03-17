@@ -1,3 +1,4 @@
+import arr from "@/lib/wellfare-emails"
 
 
 // check if the email is of bit mesra
@@ -30,3 +31,13 @@ export function getYearFromEmail(email) {
   const year = rollNo.split('.')[1];
   return year;
 }
+
+
+
+// check if the user is from bit wellfare or not
+export function isBitWellfareEmail(email) {
+  return arr.includes(email)?true:false;
+}
+
+
+
