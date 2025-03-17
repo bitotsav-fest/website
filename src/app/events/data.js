@@ -1386,7 +1386,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 55,
     imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
-    name: "SHORT MOVIE",
+    name: "TALKIES - SHORT MOVIE",
     club: "Events Team",
     category: "Flagship",
     prize: "Worth 15k",

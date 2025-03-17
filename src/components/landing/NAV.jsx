@@ -33,6 +33,12 @@ const items = [
     icon: UserPen,
   },
   {
+    name: "Team",
+    url: "/team",
+    href: "/team",
+    icon: UsersRound,
+  },
+  {
     name: "Developers",
     url: "/developers",
     href: "/developers",
@@ -55,12 +61,6 @@ const items = [
     url: "/merch",
     href: "/merch",
     icon: Shirt,
-  },
-  {
-    name: "Team",
-    url: "/team",
-    href: "/team",
-    icon: UsersRound,
   },
   {
     name: "Gallery",
