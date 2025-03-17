@@ -1,7 +1,7 @@
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import LayoutWrapper from "@/components/LayoutWrapper"; // Adjust the import path as needed
-
+import Script from 'next/script';
 export const metadata = {
   title: "Bitotsav 2025 - BIT Mesra",
   description: "Bitotsav - The Annual Cultural, Sports and Technical Festival of Birla Institute of Technology, Mesra. Join us for an unforgettable celebration of talent, creativity and excellence.",
@@ -61,6 +61,23 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark h-full">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-PC52W2PLKC"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PC52W2PLKC');
+          `}
+        </Script>
+      </head>
       <body className="flex flex-col min-h-screen">
         <SessionProvider>
           <LayoutWrapper>{children}</LayoutWrapper>
