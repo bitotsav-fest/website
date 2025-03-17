@@ -37,6 +37,10 @@ const teamSchema = new mongoose.Schema({
   events: [{ type: String }], // Array to store event names
   leaderMobileNumber: { type: String, required: true },
   rollNumber: { type: String, required: true }, // apply validation for roll number
+
+  // New fields
+  points: { type: Number, default: 0 }, // Default to 0 if not provided
+  pointWonEvents: { type: [String], default: [] }, // Default empty array
 });
 
 const Team = mongoose.models.Team || mongoose.model("Team", teamSchema);
