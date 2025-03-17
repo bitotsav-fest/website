@@ -22,6 +22,8 @@ const eventSchema = new mongoose.Schema({
   eventId: { type: String, unique: true, required: true },
   teamsRegistered: [teamSubSchema],
   eventRegistrarList: [eventRegistrar],
+  points: { type: Number, default: 0 }, // Auto-set to 0 if not provided
+  pointWonEvents: { type: [String], default: [] } // Array of strings, default empty
 }, { timestamps: true });
 
 export default mongoose.models.Event || mongoose.model("Event", eventSchema);
