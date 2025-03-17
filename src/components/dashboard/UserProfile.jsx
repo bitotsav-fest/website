@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { LogOut } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getRollNoFromEmail, getYearFromEmail } from '@/lib/email';
@@ -135,16 +136,27 @@ useEffect(() => {
       </Card>
     </motion.div>
 
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full mt-6 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 font-medium rounded-lg border border-red-500/20 transition-all duration-300"
-        >
-          Delete Account
-        </motion.button>
-      </AlertDialogTrigger>
+    <div className="flex flex-col gap-4 mt-6">
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={() => signOut({ callbackUrl: '/' })}
+        className="w-full px-4 py-2 bg-white/5 hover:bg-white/10 text-white font-medium rounded-lg border border-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+      >
+        <LogOut className="w-4 h-4" />
+        Logout
+      </motion.button>
+
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 font-medium rounded-lg border border-red-500/20 transition-all duration-300"
+          >
+            Delete Account
+          </motion.button>
+        </AlertDialogTrigger>
       <AlertDialogContent className="bg-black/90 border border-white/10 backdrop-blur-xl">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-red-500">Are you absolutely sure?</AlertDialogTitle>
@@ -173,7 +185,9 @@ useEffect(() => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-    
-    </> 
+    </div>
+    </>
   );
 }
+
+ 

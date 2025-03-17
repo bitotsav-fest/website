@@ -69,20 +69,7 @@ export default function DashboardPage() {
       <div className="absolute top-0 -left-4 w-[500px] h-[500px] bg-gradient-to-r from-amber-500/20 to-purple-500/20 rounded-full mix-blend-normal filter blur-[120px] opacity-30 animate-pulse"></div>
       <div className="absolute bottom-0 -right-4 w-[500px] h-[500px] bg-gradient-to-l from-violet-500/20 to-pink-500/20 rounded-full mix-blend-normal filter blur-[120px] opacity-30 animate-pulse animation-delay-2000"></div>
       <div className="max-w-6xl mx-auto relative">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="absolute top-0 right-0 z-10"
-        >
-          <Button
-            onClick={() => signOut({ callbackUrl: '/' })}
-            className="bg-white/5 hover:bg-white/10 text-white flex items-center gap-2 backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-purple-500/20"
-          >
-            <LogOut className="w-4 h-4" />
-            Logout
-          </Button>
-        </motion.div>
+
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -96,7 +83,7 @@ export default function DashboardPage() {
             transition={{ delay: 0.3 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-violet-400 to-purple-500 mb-3 tracking-tight">
+            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-yellow-500 mb-3 tracking-tight">
               Welcome, {user.name}!
             </h1>
             <p className="text-gray-400 text-lg">Your premium festival experience awaits</p>

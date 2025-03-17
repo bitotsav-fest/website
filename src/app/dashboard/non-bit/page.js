@@ -2,10 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/landing/Button';
+import { LogOut } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
 export default function NonBitPage() {
   return (
-    <div className="min-h-screen mt-16 bg-gradient-to-br from-black via-gray-900 to-black p-8">
+    <div className="min-h-screen mt-16 bg-gradient-to-br from-black via-gray-900 to-black p-0">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -18,10 +21,7 @@ export default function NonBitPage() {
           <section className="bg-black/30 p-6 rounded-lg border border-gold/20">
             <h2 className="text-2xl font-semibold text-gold mb-4">Important Announcements</h2>
             <div className="space-y-4">
-              <div className="p-4 bg-red-900/30 border border-red-500/30 rounded-lg">
-                <p className="text-red-200 font-semibold">Registration Status</p>
-                <p className="text-gray-300 mt-2">Registration for non-BIT Mesra students is currently not open. Please check back later for updates.</p>
-              </div>
+              
               <div className="p-4 bg-green-900/30 border border-green-500/30 rounded-lg">
                 <p className="text-green-200 font-semibold">External College Registration</p>
                 <p className="text-gray-300 mt-2">To register for Bitotsav 2025, please fill out our registration form. You will receive payment details after form submission.</p>
@@ -93,10 +93,31 @@ export default function NonBitPage() {
             </ul>
           </section>
 
-          <div className="text-center">
-            <a href="https://forms.gle/aJ8PMAAra996TXxf6" target="_blank" rel="noopener noreferrer" className="inline-block bg-gradient-to-r from-yellow-200/80 to-yellow-600/80 hover:from-yellow-200 hover:to-yellow-600 text-black font-bold py-3 px-8 rounded-full transform transition-all hover:scale-105">
+          <div className="text-center space-y-6 mt-8">
+            <motion.a 
+              href="https://forms.gle/aJ8PMAAra996TXxf6" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-gradient-to-r from-yellow-300/90 to-yellow-600/90 hover:from-yellow-300 hover:to-yellow-600 text-black font-bold py-4 px-10 rounded-full transition-all duration-300 shadow-lg hover:shadow-yellow-500/20"
+            >
               Register Now
-            </a>
+            </motion.a>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex justify-center mt-4"
+            >
+              <Button
+                onClick={() => signOut({ callbackUrl: '/' })}
+                className="bg-white/5 hover:bg-white/10 text-white font-medium py-3 px-6 rounded-lg border border-white/20 transition-all duration-300 flex items-center gap-3 hover:border-white/30 hover:shadow-lg hover:shadow-white/5"
+              >
+                <LogOut className="w-5 h-5" />
+                Logout
+              </Button>
+            </motion.div>
           </div>
         </div>
       </motion.div>
