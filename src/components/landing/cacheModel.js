@@ -4,20 +4,20 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader"
 
 async function loadModelFromCacheOrNetwork(url, onLoad) {
   if (isIOS()) {
-    console.log("iOS device detected, loading model from network")
+    // console.log("iOS device detected, loading model from network")
     url = "/BIT-v1.glb"
     loadModel(url, onLoad)
   } else {
     let cachedModel = await get("BIT-v1.glb")
 
-    console.log("Cached model", cachedModel)
+    // console.log("Cached model", cachedModel)
 
     if (!cachedModel) {
-      console.log("Fetching model from network")
+      // console.log("Fetching model from network")
       url = "/BIT-v1.glb"
       fetchAndCacheModel(url, onLoad)
     } else {
-      console.log("Loaded model from cache")
+      // console.log("Loaded model from cache")
       const blob = new Blob([cachedModel], { type: "model/gltf-binary" })
       const objectURL = URL.createObjectURL(blob)
       loadModel(objectURL, onLoad)

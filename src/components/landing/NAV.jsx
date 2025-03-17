@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn } from "lucide-react"
+import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn, UserPen } from "lucide-react"
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMediaQuery } from "react-responsive"
@@ -25,6 +25,12 @@ const items = [
     url: "/concerts",
     href: "/concerts",
     icon: Music,
+  },
+  {
+    name: "Dashboard",
+    url: "/dashboard",
+    href: "/dashboard",
+    icon: UserPen,
   },
   {
     name: "Developers",
@@ -75,7 +81,7 @@ export function Nav() {
     name: session ? "Logout" : "Login",
     url: session ? "/logout" : "/login",
     href: session ? "/logout" : "/login",
-    icon: LogIn
+    icon: LogIn,
   }
 
   const allItems = [...items, authItem]
@@ -126,8 +132,11 @@ export function Nav() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="p-2 
-            rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 
+            rounded-md text-[#F6F1E2] hover:bg-[#EFCA4E]/10 transition-colors duration-300"
+          >
             <span className="sr-only">Open menu</span>
             <Menu className="h-6 w-6" />
           </button>
