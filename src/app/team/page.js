@@ -32,16 +32,10 @@ export default function Register() {
     const fetchUserUUID = async () => {
       if (session?.user?.email) {
         try {
-<<<<<<< HEAD
-          const user = await getUser();
-          setUserUUID(user.uuid);
-          setUser(user);
-=======
           const user = await getUser()
           setUserUUID(user.uuid)
           setUser(user)
           // console.log(user);
->>>>>>> f6153fa8f7cd354ac9de99493c22ff8df9657d9e
         } catch (error) {
           console.error("Error fetching UUID:", error)
         }
@@ -77,15 +71,10 @@ export default function Register() {
         .get(`/api/teams/get?teamCode=${teamCode}`)
         .then((res) => {
           // Handle the response data as needed
-<<<<<<< HEAD
-          const team = res.data.team;
-          setTeamData(team);
-=======
           const team = res.data.team
           setTeamData(team)
           // console.log(team);
           // console.log(teamData);
->>>>>>> f6153fa8f7cd354ac9de99493c22ff8df9657d9e
         })
         .catch((err) => {
           console.error(err)
