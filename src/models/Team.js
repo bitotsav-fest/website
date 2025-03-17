@@ -7,6 +7,14 @@ const MemberSubSchema = new mongoose.Schema({
   uuid: { type: String, required: true },
   mobileNumber: { type: String, required: true },
 });
+const eventRegistrar = new mongoose.Schema({
+  name: { type: String, required: true },
+  rollNumber: { type: String, required: true },
+  uuid: { type: String, required: true },
+  mobileNumber: { type: String, required: true },
+  eventName: { type: String, required: true },
+  eventId: { type: String, required: true },
+}, { timestamps: true });
 const teamSchema = new mongoose.Schema({
   teamCode: {
     type: String,
@@ -25,6 +33,7 @@ const teamSchema = new mongoose.Schema({
       message: "A team can have a maximum of 8 members.",
     },
   },
+  eventRegistrarList: [eventRegistrar],
   events: [{ type: String }], // Array to store event names
   leaderMobileNumber: { type: String, required: true },
   rollNumber: { type: String, required: true }, // apply validation for roll number

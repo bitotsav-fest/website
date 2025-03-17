@@ -533,7 +533,7 @@ export default function Register() {
                         value={joinRollNumber}
                         onChange={handleJoinRollNumberChange}
                       />
-                      {joinRollNumber && !validateRollNumber(joinRollNumber) && <p className="text-red-400 text-sm mt-1 ml-1">Please enter a valid roll number format (e.g., btech10377.23)</p>}
+                      {joinRollNumber && !validateRollNumber(joinRollNumber) && <p className="text-red-400 text-sm mt-1 ml-1">Please enter a valid roll number format (e.g., btech10377.21)</p>}
                     </div>
                   )}
 
