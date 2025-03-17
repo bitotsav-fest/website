@@ -44,7 +44,7 @@ export const Eventsday = [
 
     rules: [
       "This is a solo dance event.",
-      "Participants are required to send a video entry of not more than 2 minutes from their performance along with details (name, college name) at (email) before (date).",
+      "Participants are required to send a video entry of not more than 2 minutes from their performance along with details (name, college name) at bitmesra.danceclub@gmail.com (email) before (date).",
       "Props involving fire, water, and powdered substances (like talcum powder/Holi colour/rangoli colour, etc) are strictly prohibited. Any mess created on stage or in the green room must be cleaned by the team members; therefore it is advised to be very careful with things such as alta/body paint etc.",
       "The participants selected from the online round are required to report to BIT Mesra, Ranchi, main campus for further rounds.",
       "Multiple participants from the same college are permitted.",

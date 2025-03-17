@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMediaQuery } from "react-responsive"
 import { useSession } from "next-auth/react"
+import { useEffect } from "react"
 
 const items = [
   {
@@ -91,6 +92,12 @@ export function Nav() {
     setIsOpen(false)
   }
 
+  useEffect(() => {
+    const handleScroll = () => setIsOpen(false)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   const desktopItems = allItems.slice(0, -4)
   const mobileItems = isMobile ? allItems : allItems.slice(-10)
 
@@ -150,7 +157,7 @@ export function Nav() {
             exit={{ opacity: 0, y: -10 }}
             className={`py-4 ${
               isMobile
-                ? "flex flex-col space-y-4" // Mobile styles
+                ? "flex flex-col space-y-4 z-50" // Mobile styles
                 : "absolute top-16 right-0 w-[20vw] h-screen bg-gradient-to-r from-[#2D1E0F]/90 via-[#1A0B2E]/90 to-[#2D1E0F]/90 shadow-lg rounded-lg p-4 items-center flex flex-col" // Desktop styles
             }`}
           >

@@ -51,7 +51,7 @@ export default function DashboardPage() {
   }
 
   if(session?.user?.email && !isBitWellfareEmail(session?.user?.email)) {
-    router.push('/dashboard/non-bit?msg=You are a day scholar');
+    router.push('/dashboard/day-scholar');
     return null;
   }
 
