@@ -1,20 +1,29 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/models/Event";
-import Team from "@/models/Team";
+import { getToken } from "next-auth/jwt"; // For authentication
 
 export async function POST(req) {
   await dbConnect();
 
   try {
-    const { eventName } = await req.json(); // Extracting eventName from request body
-    
-    if (!eventName) {
-      return NextResponse.json({ message: "Event name is required." }, { status: 400 });
+    // Authenticate request using JWT
+    const token = await getToken({ req });
+    if (!token) {
+      return NextResponse.json({ message: "Unauthorized access" }, { status: 401 });
     }
 
-    // Find the event by eventName
-    const event = await Event.findOne({eventName});
+    const { eventName } = await req.json();
+
+    // Input validation
+    if (!eventName || typeof eventName !== "string") {
+      return NextResponse.json({ message: "Invalid event name." }, { status: 400 });
+    }
+
+    console.log(`Fetching event: ${eventName}`);
+
+    // Secure database query (Prevent NoSQL Injection)
+    const event = await Event.findOne({ eventName: eventName.trim() });
 
     if (!event) {
       return NextResponse.json({ message: "No participants found for this event." }, { status: 404 });
@@ -30,6 +39,6 @@ export async function POST(req) {
 
   } catch (error) {
     console.error("Error fetching registered teams:", error);
-    return NextResponse.json({ message: "Internal Server Error", error: error.message }, { status: 500 });
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

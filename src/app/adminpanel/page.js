@@ -1,15 +1,86 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Eventsday, clubs } from "../events/data";
+import { clubEvents } from "./pocData";
+import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react"; 
+// import { clubEvents } from "./pocData";
 
 export default function EventsPage() {
+  const { data: session, status } = useSession(); 
+  const router = useRouter();
+
   const [selectedClub, setSelectedClub] = useState("");
   const [selectedEvent, setSelectedEvent] = useState("");
   const [pocNumber, setPocNumber] = useState("");
   const [isdatafetched, setisdatafetched] = useState(false);
-  const [responseData, setresponseData] = useState([]);
+  const [responseData, setResponseData] = useState([]);
 
+  if (status === "loading") {
+    return <div className="text-center text-white">Checking authentication...</div>;
+  }
+
+  if (!session) {
+    router.push("/login");
+    return <div className="text-center text-white">Redirecting to login...</div>;
+  }
+
+  const handleSubmit1 = async (e) => {
+    e.preventDefault();
+    
+    if (!selectedClub || !selectedEvent || !pocNumber) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
+
+    const club = clubEvents.find((club) => club.clubName === selectedClub);
+
+    if (!club) {
+      alert("Club not found");
+      return;
+    }
+
+    const eventDetails = club.events.find(
+      (event) => event.name === selectedEvent
+    );
+
+    if (!eventDetails) {
+      alert("Event not found");
+     }
+    //  else {
+    //   console.log(eventDetails);
+    // }
+  
+    const validPOCs = eventDetails.poc.flatMap(
+      (contact) => contact.phone.match(/\d{10}/g) || [] // Extract valid phone numbers
+    );
+
+    if (!validPOCs.includes(pocNumber)) {
+      alert("Invalid POC number");
+      return;
+    }
+  //now i have vallid POC
+  
+    
+    try {
+    const response = await fetch("/api/adminpanel", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ eventName: selectedEvent })
+    });
+    
+    if (!response.ok) {
+    throw new Error("Failed to fetch data");
+    }
+    
+    const data = await response.json();
+    setResponseData(data);
+    setisdatafetched(true);
+    } catch (error) {
+    alert(error.message);
+    }
+    };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,49 +89,49 @@ export default function EventsPage() {
       return;
     }
 
-    const eventDetails = Eventsday.find(
-      (event) => event.name === selectedEvent
-    );
-
-    if (!eventDetails) {
-      alert("Selected event does not exist. Please choose a valid event.");
+    const club = clubEvents.find((club) => club.clubName === selectedClub);
+    if (!club) {
+      alert("Club not found");
       return;
     }
 
-    const validPOCs = eventDetails.contact
-      .map((contact) => {
-        const match = contact.match(/\d{10}/);
-        return match ? match[0] : null;
-      })
-      .filter(Boolean);
+    const eventDetails = club.events.find((event) => event.name === selectedEvent);
+    if (!eventDetails) {
+      alert("Event not found");
+      return;
+    }
+
+    const validPOCs = eventDetails.poc.flatMap(
+      (contact) => contact.phone.match(/\d{10}/g) || []
+    );
 
     if (!validPOCs.includes(pocNumber)) {
-      alert(
-        "The entered POC number does not match any contact for this event."
-      );
+      alert("Invalid POC number");
       return;
     }
 
     try {
       const response = await fetch("/api/adminpanel", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.user?.token}`, // Using NextAuth session token
+        },
         body: JSON.stringify({ eventName: selectedEvent }),
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to submit data");
+        throw new Error("Failed to fetch data");
       }
 
       const data = await response.json();
-      setresponseData(data);
+      setResponseData(data);
       setisdatafetched(true);
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert(error.message || "Submission failed. Please try again.");
+      alert(error.message);
     }
   };
+
 
   return (
     <>
@@ -150,11 +221,18 @@ export default function EventsPage() {
                   className="w-full text-black p-2 border rounded mb-4"
                 >
                   <option value="">Choose a club</option>
-                  {clubs.map((club) => (
+                  {/* {clubs.map((club) => (
                     <option key={club} value={club}>
                       {club}
                     </option>
-                  ))}
+                  ))} */}
+                  {[...new Set(clubEvents.map((event) => event.clubName))].map(
+                    (club, idx) => (
+                      <option key={idx} value={club}>
+                        {club}
+                      </option>
+                    )
+                  )}
                 </select>
 
                 {selectedClub && (
@@ -166,13 +244,20 @@ export default function EventsPage() {
                       className="w-full text-black p-2 border rounded mb-4"
                     >
                       <option value="">Choose an event</option>
-                      {Eventsday.filter(
+                      {/* {Eventsday.filter(
                         (event) => event.club === selectedClub
                       ).map((event) => (
                         <option key={event.id} value={event.name}>
                           {event.name}
                         </option>
-                      ))}
+                      ))} */}
+                      {clubEvents
+                        .find((club) => club.clubName === selectedClub)
+                        ?.events.map((event) => (
+                          <option key={event.name} value={event.name}>
+                            {event.name}
+                          </option>
+                        ))}
                     </select>
                   </>
                 )}
