@@ -224,32 +224,6 @@ export const clubEvents = [
       "clubName": "Aveon",
       "events": [
         {
-          "name": "Tug of Torque",
-          "poc": [
-            {
-              "name": "Lavkesh Jaiswal",
-              "phone": "7667094225"
-            },
-            {
-              "name": "Aayushman Singh Charan",
-              "phone": "8949057288"
-            }
-          ]
-        },
-        {
-          "name": "The Blind Fury",
-          "poc": [
-            {
-              "name": "Lavkesh Jaiswal",
-              "phone": "7667094225"
-            },
-            {
-              "name": "Aayushman Singh Charan",
-              "phone": "8949057288"
-            }
-          ]
-        },
-        {
           "name": "SURVIVAL SPRINT",
           "poc": [
             {
