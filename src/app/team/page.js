@@ -46,6 +46,8 @@ export default function Register() {
 
   const [Loading, setLoading] = useState(true)
 
+
+  // below 2 useEfefects needed to be merged
   useEffect(() => {
     if (userUUID) {
       axios

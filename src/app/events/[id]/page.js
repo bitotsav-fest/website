@@ -37,6 +37,21 @@ export default function EventDetailPage() {
       setEvent(foundEvent || null)
     }
   }, [id])
+  
+  useEffect(() => {
+    const fetchUserUUID = async () => {
+      if (session?.user?.email) {
+        try {
+          const uuid = await getUserUUID()
+          setUserUUID(uuid)
+        } catch (error) {
+          console.error("Error fetching UUID:", error)
+        }
+      }
+    }
+    fetchUserUUID()
+  }, [session])
+
   useEffect(() => {
     if (userUUID) {
       axios
@@ -64,19 +79,7 @@ export default function EventDetailPage() {
     fetchUserUUID()
   }, [session])
 
-  useEffect(() => {
-    const fetchUserUUID = async () => {
-      if (session?.user?.email) {
-        try {
-          const uuid = await getUserUUID()
-          setUserUUID(uuid)
-        } catch (error) {
-          console.error("Error fetching UUID:", error)
-        }
-      }
-    }
-    fetchUserUUID()
-  }, [session])
+  
 
   const proceedWithRegistration = () => {
     if (!event) {
