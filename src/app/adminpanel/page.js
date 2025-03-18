@@ -427,7 +427,7 @@ export default function EventsPage() {
                 )}
 
                 <label className="block mb-2">Mobile No. of POC:</label>
-                <input type="tel" value={pocNumber} onChange={(e) => setPocNumber(e.target.value)} className="w-full text-black p-2 border rounded mb-4" />
+                    <input type="tel" pattern="[0-9]{10}" value={pocNumber} onChange={(e) => setPocNumber(e.target.value)} className="w-full text-black p-2 border rounded mb-4" />
                 <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl" disabled={isLoading}>
                   {isLoading ? "Loading..." : "Submit"}
                 </button>
