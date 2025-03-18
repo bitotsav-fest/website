@@ -68,7 +68,7 @@ export default function EventsPage() {
     } catch (error) {
       console.error("Failed to log form submission start:", error)
       setIsLoading(false)
-      alert("An error occurred while logging the form submission.")
+      toast.error("An error occurred while logging the form submission.")
       return
     }
 
@@ -85,7 +85,7 @@ export default function EventsPage() {
         },
       })
       setIsLoading(false)
-      alert("Please fill all fields correctly.")
+      toast.error("Please fill all fields correctly.")
       return
     }
 
@@ -97,7 +97,7 @@ export default function EventsPage() {
         details: { reason: "Club not found", selectedClub },
       })
       setIsLoading(false)
-      alert("Club not found")
+      toast.error("Club not found")
       return
     }
 
@@ -109,7 +109,7 @@ export default function EventsPage() {
         details: { reason: "Event not found", selectedEvent },
       })
       setIsLoading(false)
-      alert("Event not found")
+      toast.error("Event not found")
       return
     }
 
@@ -125,7 +125,7 @@ export default function EventsPage() {
         },
       })
       setIsLoading(false)
-      alert("Invalid POC number")
+      toast.error("Invalid POC number")
       return
     }
 
@@ -181,7 +181,7 @@ export default function EventsPage() {
         error: error.message,
       })
       setIsLoading(false)
-      alert(error.message)
+      toast.error(error.message)
     }
   }
 
