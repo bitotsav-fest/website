@@ -1,5 +1,27 @@
 export const clubEvents = [
     {
+      "clubName": "ACM",
+      "events": [
+        {
+          "name": "Fool's Quest",
+          "poc": [
+            {
+              "name": "Hritabhash",
+              "phone": "8837261279"
+            },
+            {
+              "name": "Shouryaman",
+              "phone": "9523626949"
+            },
+            {
+              "name": "Varun Gupta",
+              "phone": "8755894909"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "clubName": "IEEE",
       "events": [
         {
@@ -16,7 +38,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Askgpt",
+          "name": "ASK GPT",
           "poc": [
             {
               "name": "Hritabhash Ray",
@@ -27,20 +49,20 @@ export const clubEvents = [
               "phone": "9523626949"
             }
           ]
-        },
-        {
-          "name": "Long contest",
-          "poc": [
-            {
-              "name": "Akash Kumar Tiwary",
-              "phone": "7070489408"
-            },
-            {
-              "name": "Hritabhash Ray",
-              "phone": "8837261279"
-            }
-          ]
         }
+        // {
+        //   "name": "Long contest",
+        //   "poc": [
+        //     {
+        //       "name": "Akash Kumar Tiwary",
+        //       "phone": "7070489408"
+        //     },
+        //     {
+        //       "name": "Hritabhash Ray",
+        //       "phone": "8837261279"
+        //     }
+        //   ]
+        // }
       ]
     },
     {

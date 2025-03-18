@@ -5,6 +5,7 @@ import { clubEvents } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
+import toast from "react-hot-toast";
 import ExportData from "./components/exportData"
 
 export default function EventsPage() {
