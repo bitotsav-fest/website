@@ -3,7 +3,7 @@ export const clubEvents = [
       "clubName": "IEEE",
       "events": [
         {
-          "name": "Where in BIT?",
+          "name": "WHERE IN BIT?",
           "poc": [
             {
               "name": "Akash Kumar Tiwary",
@@ -47,7 +47,7 @@ export const clubEvents = [
       "clubName": "SDS",
       "events": [
         {
-          "name": "Spotify Wrapped",
+          "name": "SPOTIFY WRAPPED",
           "poc": [
             {
               "name": "Rachit Bansal",
@@ -78,7 +78,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Speedforces",
+          "name": "SpeedForces",
           "poc": [
             {
               "name": "Nayan",
@@ -114,7 +114,7 @@ export const clubEvents = [
       "clubName": "Robolution",
       "events": [
         {
-          "name": "A-MaZe-&-Marble",
+          "name": "A-MAZE-&-MARBLE",
           "poc": [
             {
               "name": "Ayush Kumar",
@@ -158,7 +158,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Survival Sprint",
+          "name": "SURVIVAL SPRINT",
           "poc": [
             {
               "name": "Vijay Prakash",
@@ -176,7 +176,20 @@ export const clubEvents = [
       "clubName": "Dhwani",
       "events": [
         {
-          "name": "Battle of Bands, Jukebox",
+          "name": "Battle of Bands",
+          "poc": [
+            {
+              "name": "Ramendra Priyanshu",
+              "phone": "9570245195"
+            },
+            {
+              "name": "Adarsh Karn",
+              "phone": "6202172061"
+            }
+          ]
+        },
+        {
+          "name": "JUKEBOX",
           "poc": [
             {
               "name": "Ramendra Priyanshu",
@@ -194,7 +207,7 @@ export const clubEvents = [
       "clubName": "Dance club",
       "events": [
         {
-          "name": "Dance saga",
+          "name": "DANCE SAGA",
           "poc": [
             {
               "name": "Kumar Laksh",
@@ -207,7 +220,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Footloose",
+          "name": "FOOTLOOSE",
           "poc": [
             {
               "name": "Reetika Tiwary",
@@ -225,7 +238,7 @@ export const clubEvents = [
       "clubName": "Ehsaas",
       "events": [
         {
-          "name": "Natsamrat",
+          "name": "NATSAMRAT",
           "poc": [
             {
               "name": "Khushi Kumari",
@@ -238,7 +251,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Abhinay",
+          "name": "ABHINAY",
           "poc": [
             {
               "name": "Aarav Mithrani",
@@ -256,7 +269,7 @@ export const clubEvents = [
       "clubName": "SPICMACAY",
       "events": [
         {
-          "name": "Lost in Translation",
+          "name": "LOST IN TRANSLATION",
           "poc": [
             {
               "name": "Latisha",
@@ -269,7 +282,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Folk and Flair",
+          "name": "FOLK & FLAIR",
           "poc": [
             {
               "name": "Nishu",
@@ -287,7 +300,7 @@ export const clubEvents = [
       "clubName": "Leo",
       "events": [
         {
-          "name": "TAKESHI's CASTLE",
+          "name": "TAKESHI'S CASTLE",
           "poc": [
             {
               "name": "Shubham Kumar",
@@ -331,7 +344,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "MR. & MISS BITOTSAV",
+          "name": "MR. AND MS. BITOTSAV",
           "poc": [
             {
               "name": "DEBJYOTI DEY",
@@ -349,7 +362,7 @@ export const clubEvents = [
       "clubName": "EPAC",
       "events": [
         {
-          "name": "Jumanji 3.0",
+          "name": "JUMANJI 3.O",
           "poc": [
             {
               "name": "Md Raja Istekhar",
@@ -367,7 +380,7 @@ export const clubEvents = [
       "clubName": "NAPS",
       "events": [
         {
-          "name": "KBC: Kon Banega Collector",
+          "name": "KBC: KOUN BANEGA COLLECTOR",
           "poc": [
             {
               "name": "Nidhi",
@@ -380,7 +393,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Beyond the Screen - The Press Conference",
+          "name": "BEYOND THE SCREEN",
           "poc": [
             {
               "name": "Sumit Kumar",
@@ -398,7 +411,7 @@ export const clubEvents = [
       "clubName": "PSOC",
       "events": [
         {
-          "name": "Match The Cut",
+          "name": "MATCH THE CUT",
           "poc": [
             {
               "name": "Swapnendu",
@@ -416,7 +429,7 @@ export const clubEvents = [
       "clubName": "IEI Civil",
       "events": [
         {
-          "name": "En chessant",
+          "name": "EN CHESSANT",
           "poc": [
             {
               "name": "Richik Kumar",
@@ -429,7 +442,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "The tallest",
+          "name": "THE TALLEST",
           "poc": [
             {
               "name": "Richik Kumar",
@@ -460,7 +473,7 @@ export const clubEvents = [
       "clubName": "IICHE",
       "events": [
         {
-          "name": "Roast Battle",
+          "name": "ENGINEERS ROAST BATTLE",
           "poc": [
             {
               "name": "Nishant Kumar",
@@ -478,7 +491,7 @@ export const clubEvents = [
       "clubName": "EDC",
       "events": [
         {
-          "name": "Founder's Faceoff",
+          "name": "FOUNDER'S FACEOFF",
           "poc": [
             {
               "name": "Aditi Singh",
@@ -496,7 +509,7 @@ export const clubEvents = [
       "clubName": "Finance",
       "events": [
         {
-          "name": "Campus Capitalists",
+          "name": "CAMPUS CAPITALIST",
           "poc": [
             {
               "name": "Pratik Singh",
@@ -527,7 +540,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Business crisis simulation",
+          "name": "BUSINESS CRISIS SIMULATION",
           "poc": [
             {
               "name": "AMAR",
@@ -545,7 +558,7 @@ export const clubEvents = [
       "clubName": "AeroSoc",
       "events": [
         {
-          "name": "Skyfall Scramble",
+          "name": "SKYFALL SCRAMBLE",
           "poc": [
             {
               "name": "Prakriti Kumari",
@@ -558,7 +571,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Flight Simulation",
+          "name": "FLIGHT SIMULATION",
           "poc": [
             {
               "name": "Prakriti Kumari",
@@ -576,7 +589,7 @@ export const clubEvents = [
       "clubName": "SIME",
       "events": [
         {
-          "name": "Industrial Mayhem",
+          "name": "INDUSTRIAL MAYHEM",
           "poc": [
             {
               "name": "Sagar Rangi",
@@ -589,7 +602,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Shark Tank",
+          "name": "SHARK TANK 2.O",
           "poc": [
             {
               "name": "Tanisha Samal",
@@ -607,7 +620,7 @@ export const clubEvents = [
       "clubName": "LITSoc",
       "events": [
         {
-          "name": "Quill Quest",
+          "name": "QUILL QUEST",
           "poc": [
             {
               "name": "Aastha Chhabra",
@@ -620,7 +633,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Kalam-e-Tahir",
+          "name": "KALAM-E-TAHIR",
           "poc": [
             {
               "name": "Ayush Raj",
@@ -651,7 +664,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Bitotsav Quiz",
+          "name": "BITOTSAV QUIZ",
           "poc": [
             {
               "name": "Shourya Parihar",
@@ -664,7 +677,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "KKK: Krazy Karen Kwiz",
+          "name": "KKK: KRAZY KAREN KUIZ",
           "poc": [
             {
               "name": "Raghav Seth",
@@ -682,7 +695,7 @@ export const clubEvents = [
       "clubName": "BIOTS",
       "events": [
         {
-          "name": "Hera Pheri- Phir Se",
+          "name": "HERA PHERI PHIR SE",
           "poc": [
             {
               "name": "Ritik",
@@ -695,7 +708,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "The LOL Challenge",
+          "name": "THE LOL CHALLENGE",
           "poc": [
             {
               "name": "Ritik",
@@ -713,7 +726,7 @@ export const clubEvents = [
       "clubName": "SAC",
       "events": [
         {
-          "name": "Valomania",
+          "name": "VALOMANIA",
           "poc": [
             {
               "name": "Abhinav",
@@ -744,7 +757,20 @@ export const clubEvents = [
       "clubName": "FAS",
       "events": [
         {
-          "name": "Panache, Brewed Creativity",
+          "name": "PANACHE",
+          "poc": [
+            {
+              "name": "Divya Kamal",
+              "phone": "8840729222"
+            },
+            {
+              "name": "Shruti",
+              "phone": "9179659061"
+            }
+          ]
+        },
+        {
+          "name": "BREWED CREATIVITY",
           "poc": [
             {
               "name": "Divya Kamal",
@@ -762,7 +788,7 @@ export const clubEvents = [
       "clubName": "CES",
       "events": [
         {
-          "name": "Bridge the gap",
+          "name": "BRIDGE THE GAP",
           "poc": [
             {
               "name": "SOAMYA PARASHAR",
@@ -775,7 +801,7 @@ export const clubEvents = [
           ]
         },
         {
-          "name": "Plane crash",
+          "name": "PLANE CRASH",
           "poc": [
             {
               "name": "Prince raj",
@@ -793,7 +819,20 @@ export const clubEvents = [
       "clubName": "ECESoc",
       "events": [
         {
-          "name": "ELECTROPOLY & BINGO",
+          "name": "ELECTROPOLY",
+          "poc": [
+            {
+              "name": "Kumar Ishaan",
+              "phone": "6202998647"
+            },
+            {
+              "name": "Pratham Periwal",
+              "phone": "7207105737"
+            }
+          ]
+        },
+        {
+          "name": "ELECTRONICS BINGO",
           "poc": [
             {
               "name": "Kumar Ishaan",
@@ -811,7 +850,7 @@ export const clubEvents = [
       "clubName": "EEESoc",
       "events": [
         {
-          "name": "BYTE HUNT",
+          "name": "BYTEHUNT",
           "poc": [
             {
               "name": "Lucky kumar",
