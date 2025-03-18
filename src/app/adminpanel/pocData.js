@@ -514,6 +514,19 @@ export const clubEvents = [
               "phone": "771776769"
             }
           ]
+        },
+        {
+          "name": "Admakers Showdown",
+          "poc": [
+            {
+              "name": "Swapnendu",
+              "phone": "6287660402"
+            },
+            {
+              "name": "Rajnish",
+              "phone": "771776769"
+            }
+          ]
         }
       ]
     },
