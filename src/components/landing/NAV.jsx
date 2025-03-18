@@ -21,12 +21,12 @@ const items = [
     href: "/tickets",
     icon: Ticket,
   },
-  {
-    name: "Concerts",
-    url: "/concerts",
-    href: "/concerts",
-    icon: Music,
-  },
+  // {
+  //   name: "Concerts",
+  //   url: "/concerts",
+  //   href: "/concerts",
+  //   icon: Music,
+  // },
   {
     name: "Dashboard",
     url: "/dashboard",

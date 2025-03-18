@@ -72,7 +72,7 @@ export default function LoginPage() {
           <span className='text-amber-100/60 ml-1'>- Free Access using your institutional email </span>
           <br />
           <span className='text-amber-100/60 ml-1'>
-            If you don't own a BIT webmail then,{" "}
+            If you don&apos;t own a BIT webmail then,{" "}
             <a href='https://bitmesra.ac.in/Email_Application/index.html' target='_blank' rel='noopener noreferrer' className='text-amber-400 hover:text-amber-300 transition-colors'>
               Apply for webmail
             </a>

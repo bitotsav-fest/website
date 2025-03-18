@@ -568,6 +568,13 @@ export default function Register() {
             <strong>disqualified</strong>.
           </div>
 
+<div className="bg-yellow-500/10 border border-yellow-500/40 text-white p-3 rounded-lg text-sm text-center mb-4">
+  For any team-related modifications, please contact:<br/>
+  <strong>Mrityunjay Raj</strong><br/>
+  WhatsApp: <a href="tel:9471828932" className="text-yellow-400 hover:text-yellow-300">9471828932</a><br/>
+  <span className="text-yellow-400/80 text-xs">(Note: Team modifications will only be considered in extreme cases, so please create your team carefully)</span>
+</div>
+
           <div className="text-[#F6F1E2]/80 space-y-3">
             <h3 className="text-2xl font-semibold">General Rules</h3>
             <ul className="list-disc pl-6">
