@@ -100,14 +100,14 @@ export default function EventDetailPage() {
       })
       .then((response) => {
         if (response.status === 201) {
-          toast.success("Registered Successfully", { duration: 3000 }) // Dismiss toast after 3 seconds
+          toast.success("Registered Successfully") // Dismiss toast after 3 seconds
         }
       })
       .catch((err) => {
         if (err.response) {
-          toast.error(err.response.data.message, { duration: 3000 })
+          toast.error(err.response.data.message)
         } else {
-          toast.error("An error occurred. Please try again later.", { duration: 3000 })
+          toast.error("An error occurred. Please try again later.")
         }
       })
   }
@@ -115,11 +115,11 @@ export default function EventDetailPage() {
     const eventName = event.name
 
     if (!user) {
-      toast.error("No user found, Please login.", { duration: 3000 })
+      toast.error("No user found, Please login.")
       return
     }
     if (!teamCode) {
-      toast.error("Please join or create a team first.", { duration: 3000 })
+      toast.error("Please join or create a team first.")
       return
     }
 

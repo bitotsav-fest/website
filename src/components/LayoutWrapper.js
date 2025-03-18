@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { usePathname } from "next/navigation";
-import { Nav } from "@/components/landing/NAV";
-import Footer from "@/components/landing/FOOTER";
-import { Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation"
+import { Nav } from "@/components/landing/NAV"
+import Footer from "@/components/landing/FOOTER"
+import { Toaster } from "react-hot-toast"
 
 // Toaster
 const toastConfig = (
@@ -28,15 +28,16 @@ const toastConfig = (
           background: "rgba(239, 68, 68, 0.2)", // Red for error
         },
       },
+      duration: 2000, // Toast duration in milliseconds
     }}
   />
-);
+)
 
 export default function LayoutWrapper({ children }) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
-  const isLandingPage = pathname === "/";
-  const isScanner = pathname === "/scanner";
+  const isLandingPage = pathname === "/"
+  const isScanner = pathname === "/scanner"
 
   return (
     <>
@@ -46,5 +47,5 @@ export default function LayoutWrapper({ children }) {
       {/* Toaster */}
       {toastConfig}
     </>
-  );
+  )
 }

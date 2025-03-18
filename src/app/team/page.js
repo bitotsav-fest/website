@@ -333,7 +333,7 @@ export default function Register() {
                   <>
                     <h3 className="text-2xl text-[#EFCA4E] pb-3 pt-2">Registered Events:</h3>
                     {teamData.events.map((event, index) => (
-                      <li key={index} className="text-[#cbcbcb]">
+                      <li key={index} className="text-[#cbcbcb] my-2">
                         <span className="font-bold text-white">NAME:</span> <span className="text-[#cbcbcb]">{Eventsday[event - 1].name}</span> | <span className="font-bold text-white">DAY: </span>{" "}
                         <span className="text-[#cbcbcb]">{Eventsday[event - 1].day}</span> | <span className="font-bold text-white">VENUE: </span>{" "}
                         <span className="text-[#cbcbcb]">{Eventsday[event - 1].venue}</span> | <span className="font-bold text-white">TIMINGS: </span>{" "}
@@ -561,7 +561,7 @@ export default function Register() {
           <h2 className="text-3xl font-bold text-[#EFCA4E] text-center">Team Formation & Participation Rules</h2>
 
           {/* New rule */}
-          <div className="bg-red-500/10 backdrop-blur-lg border border-red-500/40 text-white p-3 rounded-lg text-sm text-center">
+          <div className="bg-red-500/10 border border-red-500/40 text-white p-3 rounded-lg text-sm text-center">
             NOTE: It is <strong>compulsory</strong> to bring your current institution ID card. If any information provided by you does not match the details on your ID card, you will be{" "}
             <strong>disqualified</strong>.
           </div>
