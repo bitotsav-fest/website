@@ -50,7 +50,7 @@ export default function EventsPage() {
   return (
     <>
       <div className="min-h-screen bg-[#0A0118] fixed inset-0 -z-20"></div>
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10">
+      <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10  overflow-x-hidden">
         <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
           <ScrollProgress />
           {/* Background effects */}

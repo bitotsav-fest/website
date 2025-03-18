@@ -274,7 +274,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] py-24 px-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] py-24 px-4 relative overflow-x-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.05] pointer-events-none"></div>
       <div className="absolute top-0 -left-4 w-96 h-96 bg-[#EFCA4E] rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
@@ -309,8 +309,8 @@ export default function Register() {
           >
             <h4 className="text-2xl font-semibold text-[#EFCA4E]">
               Your Team Name : <span className="text-2xl font-semibold text-white underline decoration-2 decoration-[#EFCA4E]">{teamData?.teamName}</span>
-               <br/>
-               <span className="text-2xl font-semibold text-[#EFCA4E] underline decoration-2 decoration-[#EFCA4E]">{teamData?.rollNumber}</span>
+              <br />
+              <span className="text-2xl font-semibold text-[#EFCA4E] underline decoration-2 decoration-[#EFCA4E]">{teamData?.rollNumber}</span>
             </h4>
             <h4 className="text-2xl font-semibold text-[#EFCA4E]">Your Team Code</h4>
             <p className="text-3xl font-mono text-white">{teamCode}</p>
