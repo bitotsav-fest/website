@@ -1,7 +1,8 @@
 export const Eventsday = [
   {
     id: 1,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
@@ -476,9 +477,12 @@ export const Eventsday = [
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description: "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
+    description:
+      "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
 
-    rules: ["This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold."],
+    rules: [
+      "This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold.",
+    ],
 
     contact: ["Soamya Parashar: 9771753905", "Anand Kumar: 9905590361"],
     venue: "209 & 205",
@@ -493,7 +497,8 @@ export const Eventsday = [
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description: "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
+    description:
+      "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
 
     rules: [
       "This will be a team event of 2 members in each team. Prelims will be based on aptitude and basic aeronautics. The final model will be judged based on the maximum length of distance covered in three attempts of flight. The final model of the plane should not diverge more than 5 meters from the track otherwise it’d be considered as an invalid attempt.",
@@ -567,7 +572,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     theme: "Strategy & Gaming",
     description:
       "Phase 1: Quick-Fire Business game (Earn Components)\nBasically a monopoly in terms of electronics such as like, jail can be termed as power cut and so and so. Player aims to buy out the components required for completing their circuit in phase 2.\n\nPhase 2: Circuit Race (Build & Troubleshoot)\nTeams race to complete a working circuit using the components they earned.\nThe host may introduce random “power cuts” or faulty components to make it challenging!\nThe first team to successfully complete their circuit wins the round.\n\nWINNING CRITERIA\nThe team that completes their circuit first wins!\nBonus points for creativity (if they modify or improve the circuit).",
-    rules: ["Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board."],
+    rules: [
+      "Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board.",
+    ],
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
     venue: "206 & 207",
     time: "9AM - 12PM",
@@ -810,7 +817,10 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "- In case of a tie, the fastest single build-and-smash round will determine the winner.",
     ],
 
-    contact: ["Md Raja Istekhar: +91 6204185245", "Naman Khatwani: +91 7880036191"],
+    contact: [
+      "Md Raja Istekhar: +91 6204185245",
+      "Naman Khatwani: +91 7880036191",
+    ],
     venue: "216 & 217",
     time: "12PM - 3PM",
     day: 2,
@@ -919,7 +929,10 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "Round 1:\nDialogues, music, or speeches will be played, and participants have to guess the person, event, movie, or music.\n\nRound 2:\nPairs compete in a game of 'Higher or Lower.' Participants view pairs of celebrities, monuments, or animals and guess which one meets the given criteria, like more followers or Google searches. Top teams with the most correct guesses advance.\n\nRound 3:\nDumb Charades - Participants will be given words related to an event. One member of the team must act out the words within five minutes while teammates connect the words to guess the historical event. Only 3-4 teams will participate in this round to avoid chaos.",
 
-    rules: ["Each team must consist of 4 members.", "Answers should not be called out loud."],
+    rules: [
+      "Each team must consist of 4 members.",
+      "Answers should not be called out loud.",
+    ],
 
     contact: ["Tanisha: 7064426300"],
     venue: "LH-1",
@@ -950,7 +963,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 38,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xtbl9waw48vgo9oerjqe",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xtbl9waw48vgo9oerjqe",
     name: "BIT GOT TALENT",
     club: "Events Team",
     category: "Flagship",
@@ -982,7 +996,11 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "The competition contains 2 rounds.\n\nRound 1: Nearly 50 teams can apply.\n- Participants have to give a quiz consisting of 10 questions related to:\n  • Marketing\n  • Industrial Management\n  • Business Ideas\n- Note: The top 20 teams will qualify for Round 2.\n\nRound 2: Judges will question participants on industrial-related issues, such as:\n- Loss of revenue over the last two months for FMCG industries.\n- Expansion of South India-based clothing brands into North India.\n- Case studies related to various industries (FMCG, Iron & Steel, etc.).\n- Answers must contain all specific details.",
 
-    rules: ["Each team must have 4 members.", "Participants are not allowed to engage in any unfair practices.", "No external help will be provided by anyone."],
+    rules: [
+      "Each team must have 4 members.",
+      "Participants are not allowed to engage in any unfair practices.",
+      "No external help will be provided by anyone.",
+    ],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
     venue: "206 & 207",
@@ -1008,7 +1026,13 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Q&A Compliance: Teams must answer all questions from the judges within the given time frame.",
     ],
 
-    judgement_criteria: ["Innovation & Feasibility", "Market Potential", "Business & Revenue Model", "Scalability", "Pitching & Persuasion"],
+    judgement_criteria: [
+      "Innovation & Feasibility",
+      "Market Potential",
+      "Business & Revenue Model",
+      "Scalability",
+      "Pitching & Persuasion",
+    ],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
     venue: "LH-1",
@@ -1023,7 +1047,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Fun",
-    description: "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
+    description:
+      "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
 
     rules: [
       "Round 1: Google Translate Lyrics\n",
@@ -1051,7 +1076,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     category: "Formal",
     prize: "300, 250, 200",
     theme: "Fine Arts",
-    description: "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
+    description:
+      "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
 
     rules: [
       "Participants can compete individually or in teams (max. 3 members).",
@@ -1068,7 +1094,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 43,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
@@ -1107,7 +1134,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 44,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
     name: "BATTLE OF BANDS",
     club: "Dhwani",
     category: "Flagship",
@@ -1131,7 +1159,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 45,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
     name: "ABHINAY",
     club: "Ehsaas",
     category: "Flagship",
@@ -1157,7 +1186,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 46,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
     name: "SQUID GAMES",
     club: "Events Team",
     category: "Flagship",
@@ -1385,7 +1415,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 55,
-    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
     name: "TALKIES - SHORT MOVIE",
     club: "Events Team",
     category: "Flagship",
@@ -1436,13 +1467,48 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     time: "9AM - 12PM",
     day: 3,
   },
-]
+  {
+    id: 57,
+    imgURL: "/comingsoon.png",
+    name: "Fool's Quest",
+    club: "ACM",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
+    description:
+      "Welcome to the realm of coding adventure with Fool’s Gold Quest—where logic meets lunacy! Inspired by the legendary April Fools' contests of Codeforces, this challenge invites coders of all levels to embark on a journey filled with thrilling challenges, mind-bending puzzles, and just the right amount of chaos. Prepare to question everything you know about coding as you chase the ever-elusive Fool’s Gold. Sharpen your wits, embrace the absurdity, and dive into a quest where the only certainty is uncertainty.",
+    contact: [
+      "Hritabhash: 8837261279",
+      "Shouryaman: 9523626949",
+      "Varun Gupta: 87558 94909",
+    ],
+    venue: "231",
+    time: "9AM - 12PM",
+    day: 1,
+  },
+  {
+    id: 58,
+    imgURL: "/comingsoon.png",
+    name: "ASK GPT",
+    club: "IEEE",
+    category: "Informal",
+    prize: "180, 150, 120",
+    theme: "Technical",
+    description:
+      "Step into the future of problem-solving with Ask GPT. In this innovative coding contest, participants will face a series of challenging coding problems—but with a twist. Instead of coding directly, contestants will guide ChatGPT to generate the correct solutions. The key to success lies in how effectively you communicate your logic and problem-solving strategy to the AI. Precision, clarity, and strategic thinking will determine who rises to the top. Can you outsmart the competition and harness the power of AI to crack the code? Join us for a thrilling fusion of coding expertise and communication mastery!",
+    contact: ["Hritabhash: 8837261279", "Shouryaman: 9523626949"],
+    venue: "233A & 235",
+    time: "12PM - 3PM",
+    day: 3,
+  },
+];
 
 export const Eventsnight = [
   {
     id: 200,
     name: "Heritage Night",
-    description: "Experience the rich cultural heritage with traditional performances.",
+    description:
+      "Experience the rich cultural heritage with traditional performances.",
     photo: "/revealing-soon.jpg",
   },
   {
@@ -1454,16 +1520,18 @@ export const Eventsnight = [
   {
     id: 202,
     name: "Dance Night",
-    description: "Get ready for an energetic night of thrilling dance performances.",
+    description:
+      "Get ready for an energetic night of thrilling dance performances.",
     photo: "/revealing-soon.jpg",
   },
   {
     id: 203,
     name: "Pro Artist Night",
-    description: "An unforgettable evening with renowned artists and performances.",
+    description:
+      "An unforgettable evening with renowned artists and performances.",
     photo: "/revealing-soon.jpg",
   },
-]
+];
 
 export const clubs = [
   "IEEE", //
@@ -1498,4 +1566,5 @@ export const clubs = [
   "ECESoc", //
   "EEESoc", //
   "Events Team",
-]
+  "ACM",
+];
