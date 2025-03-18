@@ -116,6 +116,11 @@ useEffect(() => {
             <div className="text-sm text-gray-400 font-medium mb-2">Ticket Usage Status</div>
             <div className="flex gap-3">
               <Badge 
+                className={`px-3 py-1 ${userData?.usedOnDay0 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-500/20 text-gray-400'} border-0`}
+              >
+                Day 0 {userData?.usedOnDay0 ? '✓' : '○'}
+              </Badge>
+              <Badge 
                 className={`px-3 py-1 ${userData?.usedOnDay1 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-500/20 text-gray-400'} border-0`}
               >
                 Day 1 {userData?.usedOnDay1 ? '✓' : '○'}

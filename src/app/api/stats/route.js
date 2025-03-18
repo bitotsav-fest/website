@@ -15,6 +15,7 @@ export async function GET() {
 
     // Calculate day-wise usage
     const dayWiseUsage = {
+      day0: users.filter(user => user.usedOnDay0).length,
       day1: users.filter(user => user.usedOnDay1).length,
       day2: users.filter(user => user.usedOnDay2).length,
       day3: users.filter(user => user.usedOnDay3).length,

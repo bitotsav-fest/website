@@ -19,6 +19,7 @@ export const getUser = async (email) => {
       isBITMesraStudent: true,
       role: true,
       verified: true,
+      usedOnDay0: true,
       usedOnDay1: true,
       usedOnDay2: true,
       usedOnDay3: true,

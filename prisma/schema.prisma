@@ -29,6 +29,7 @@ model User {
   role              Role     @default(bitian)
   image             String?
   verified          Boolean  @default(false)
+  usedOnDay0        Boolean  @default(false)
   usedOnDay1        Boolean  @default(false)
   usedOnDay2        Boolean  @default(false)
   usedOnDay3        Boolean  @default(false)

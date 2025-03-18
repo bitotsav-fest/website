@@ -15,6 +15,15 @@ import { decript } from '@/lib/security';
 import { verifyTicket } from '@/app/actions/verify-ticket';
 import Stats from './stats/page';
 
+// Configure which day to verify (0 for Day Zero, 1 for Day One, 2 for Day Two, 3 for Day Three)
+const VERIFY_DAY = 3;
+const DAY_FIELD_MAP = {
+  0: 'usedOnDay0',
+  1: 'usedOnDay1',
+  2: 'usedOnDay2',
+  3: 'usedOnDay3'
+};
+
 export default function ScannerPage() {
   const [scanning, setScanning] = useState(true);
   const [userData, setUserData] = useState(null);
@@ -41,7 +50,7 @@ export default function ScannerPage() {
       setScanning(false);
       try {
         const decryptedData = decript(data[0].rawValue);
-        const result = await verifyTicket(decryptedData, SECURITY_PASSCODE);
+        const result = await verifyTicket(decryptedData, SECURITY_PASSCODE, VERIFY_DAY);
 
         if (result.error) {
           setShowError(true);
@@ -49,7 +58,8 @@ export default function ScannerPage() {
           setTimeout(() => setShowError(false), 3000);
         } else {
           setUserData(result.user);
-          if (!result.user.usedOnDay2) {
+          const dayField = DAY_FIELD_MAP[VERIFY_DAY];
+          if (!result.user[dayField]) {
             setShowSuccess(true);
             setTimeout(() => setShowSuccess(false), 3000);
           }
@@ -192,7 +202,7 @@ export default function ScannerPage() {
                               <div className="flex items-center justify-between">
                                 <span className="text-gray-400">Status</span>
                                 <div className="flex items-center gap-2">
-                                  {userData.usedOnDay2 ? (
+                                  {userData[DAY_FIELD_MAP[VERIFY_DAY]] ? (
                                     <span className="text-orange-400 font-medium">Already Used</span>
                                   ) : (
                                     <span className="text-emerald-400 font-medium flex items-center gap-2">
