@@ -553,6 +553,24 @@ export const clubEvents = [
     ],
   },
   {
+    clubName: "Srijan",
+    events: [
+      {
+        name: "PITSTOP PURSUIT",
+        poc: [
+          {
+            name: "Ayush Nigam",
+            phone: "9305891636",
+          },
+          {
+            name: "Prem",
+            phone: "9109766552",
+          },
+        ],
+      },
+    ],
+  },
+  {
     clubName: "IICHE",
     events: [
       {
