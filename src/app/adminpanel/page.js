@@ -3,8 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { clubEvents } from "./pocData";
 import { useRouter } from "next/navigation";
-import { useSession, signOut } from "next-auth/react"; 
-// import { clubEvents } from "./pocData";
+import { useSession } from "next-auth/react"; 
 
 export default function EventsPage() {
   const { data: session, status } = useSession(); 
@@ -25,61 +24,234 @@ export default function EventsPage() {
     return <div className="text-center text-white">Redirecting to login...</div>;
   }
 
-  const handleSubmit1 = async (e) => {
-    e.preventDefault();
-    
-    if (!selectedClub || !selectedEvent || !pocNumber) {
-      alert("Please fill all fields correctly.");
-      return;
-    }
-
-    const club = clubEvents.find((club) => club.clubName === selectedClub);
-
-    if (!club) {
-      alert("Club not found");
-      return;
-    }
-
-    const eventDetails = club.events.find(
-      (event) => event.name === selectedEvent
-    );
-
-    if (!eventDetails) {
-      alert("Event not found");
-     }
-    //  else {
-    //   console.log(eventDetails);
-    // }
   
-    const validPOCs = eventDetails.poc.flatMap(
-      (contact) => contact.phone.match(/\d{10}/g) || [] // Extract valid phone numbers
-    );
+  const EventDetails = ({ responseData }) => {
+    return (
+      <div className="max-w-5xl mx-auto py-10 px-4">
+        {/* Event Title */}
+        <h1 className="text-6xl md:text-7xl text-center font-bold tracking-wide mb-6 sm:mb-10">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
+            {responseData.eventName}
+          </span>
+        </h1>
 
-    if (!validPOCs.includes(pocNumber)) {
-      alert("Invalid POC number");
-      return;
-    }
-  //now i have vallid POC
+        {/* Event Details */}
+        <div className="bg-gray-100 p-6 rounded-lg shadow-md border border-gray-300 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            📍 Event Details
+          </h2>
+          <p className="text-lg font-medium text-gray-700">
+            <span className="font-semibold">Club:</span>{" "}
+            {responseData.eventClub}
+          </p>
+          <p className="text-lg font-medium text-gray-700">
+            <span className="font-semibold">Venue:</span>{" "}
+            {responseData.eventVenue}
+          </p>
+          <p className="text-lg font-medium text-gray-700">
+            <span className="font-semibold">Time:</span>{" "}
+            {responseData.eventTime}
+          </p>
+        </div>
+
+        {/* Teams Registered */}
+        <div className="bg-white border-2 border-gray-300 rounded-lg p-6 text-center mb-8">
+          <h2 className="text-3xl font-bold text-black mb-4">
+            🏆 Total Registered Teams:{" "}
+            {responseData?.teamsRegistered?.length || 0}
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {responseData?.teamsRegistered?.map((team, index) => (
+              <div
+                key={team._id}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-300"
+              >
+                <h3 className="text-2xl font-bold text-black mb-4">
+                  {index + 1}. {team.teamName}
+                </h3>
+                <p className="text-lg font-medium text-gray-700">
+                  👤 <span className="font-semibold">Leader:</span>{" "}
+                  {team.leaderName}
+                </p>
+                <p className="text-lg font-medium text-gray-700">
+                  📞 <span className="font-semibold">Contact:</span>
+                  <a
+                    href={`tel:${team.leaderMobileNumber}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    {team.leaderMobileNumber}
+                  </a>
+                </p>
+                <p className="text-lg font-medium text-gray-700">
+                  🎓 <span className="font-semibold">Roll No:</span>{" "}
+                  {team.rollNumber}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Event Registrars */}
+        <div className="bg-white border-2 border-gray-300 rounded-lg p-6 text-center">
+          <h2 className="text-3xl font-bold text-black mb-4">
+            📋 Event Registering Participants:{" "}
+            {responseData?.eventRegistrarList?.length || 0}
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {responseData?.eventRegistrarList?.map((registrar, index) => (
+              <div
+                key={registrar._id}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-300"
+              >
+                <h3 className="text-2xl font-bold text-black mb-4">
+                  {index + 1}. {registrar.name}
+                </h3>
+                <p className="text-lg font-medium text-gray-700">
+                  🎓 <span className="font-semibold">Roll No:</span>{" "}
+                  {registrar.rollNumber}
+                </p>
+                <p className="text-lg font-medium text-gray-700">
+                  📞 <span className="font-semibold">Contact:</span>
+                  <a
+                    href={`tel:${registrar.mobileNumber}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    {registrar.mobileNumber}
+                  </a>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
   
-    
-    try {
-    const response = await fetch("/api/adminpanel", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ eventName: selectedEvent })
-    });
-    
-    if (!response.ok) {
-    throw new Error("Failed to fetch data");
-    }
-    
-    const data = await response.json();
-    setResponseData(data);
-    setisdatafetched(true);
-    } catch (error) {
-    alert(error.message);
-    }
-    };
+  const EventDashboard = ({ responseData }) => {
+    return (
+      <div className="max-w-6xl mx-auto py-10 px-4 bg-gray-900 text-white">
+        {/* Event Title */}
+        <h1 className="text-6xl md:text-7xl text-center font-bold tracking-wide mb-10">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400">
+            {responseData.eventName}
+          </span>
+        </h1>
+
+        {/* Event Details */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-600 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-3">
+            📍 Event Details
+          </h2>
+          <table className="w-full border-collapse border border-gray-600 text-gray-200">
+            <tbody>
+              <tr className="border border-gray-600">
+                <td className="px-4 py-2 font-semibold text-yellow-300">
+                  Club:
+                </td>
+                <td className="px-4 py-2">{responseData.eventClub}</td>
+              </tr>
+              <tr className="border border-gray-600">
+                <td className="px-4 py-2 font-semibold text-yellow-300">
+                  Venue:
+                </td>
+                <td className="px-4 py-2">{responseData.eventVenue}</td>
+              </tr>
+              <tr className="border border-gray-600">
+                <td className="px-4 py-2 font-semibold text-yellow-300">
+                  Time:
+                </td>
+                <td className="px-4 py-2">{responseData.eventTime}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Teams Registered */}
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 text-center mb-8">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-4">
+            🏆 Total Registered Teams:{" "}
+            {responseData?.teamsRegistered?.length || 0}
+          </h2>
+          <table className="w-full border-collapse border border-gray-600 text-left text-gray-200">
+            <thead>
+              <tr className="bg-gray-700 border border-gray-600 text-yellow-300">
+                <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Team Name</th>
+                <th className="px-4 py-2">Leader</th>
+                <th className="px-4 py-2">Contact</th>
+                <th className="px-4 py-2">Roll No</th>
+              </tr>
+            </thead>
+            <tbody>
+              {responseData?.teamsRegistered?.map((team, index) => (
+                <tr
+                  key={team._id}
+                  className="border border-gray-600 bg-gray-900 hover:bg-gray-700"
+                >
+                  <td className="px-4 py-2">{index + 1}</td>
+                  <td className="px-4 py-2 font-semibold text-yellow-300">
+                    {team.teamName}
+                  </td>
+                  <td className="px-4 py-2">{team.leaderName}</td>
+                  <td className="px-4 py-2">
+                    <a
+                      href={`tel:${team.leaderMobileNumber}`}
+                      className="text-blue-400 hover:underline"
+                    >
+                      {team.leaderMobileNumber}
+                    </a>
+                  </td>
+                  <td className="px-4 py-2">{team.rollNumber}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Event Registrars */}
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 text-center">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-4">
+            📋 Event Registering Participants:{" "}
+            {responseData?.eventRegistrarList?.length || 0}
+          </h2>
+          <table className="w-full border-collapse border border-gray-600 text-left text-gray-200">
+            <thead>
+              <tr className="bg-gray-700 border border-gray-600 text-yellow-300">
+                <th className="px-4 py-2">#</th>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Roll No</th>
+                <th className="px-4 py-2">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              {responseData?.eventRegistrarList?.map((registrar, index) => (
+                <tr
+                  key={registrar._id}
+                  className="border border-gray-600 bg-gray-900 hover:bg-gray-700"
+                >
+                  <td className="px-4 py-2">{index + 1}</td>
+                  <td className="px-4 py-2 font-semibold text-yellow-300">
+                    {registrar.name}
+                  </td>
+                  <td className="px-4 py-2">{registrar.rollNumber}</td>
+                  <td className="px-4 py-2">
+                    <a
+                      href={`tel:${registrar.mobileNumber}`}
+                      className="text-blue-400 hover:underline"
+                    >
+                      {registrar.mobileNumber}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
+  
+  
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -138,61 +310,14 @@ export default function EventsPage() {
       <div className="min-h-screen bg-[#0A0118] fixed inset-0 -z-20"></div>
       <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10">
         <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-          {isdatafetched ? (
-            <div className="max-w-4xl mx-auto py-8">
-              <h1 className="text-6xl md:text-7xl text-center font-bold tracking-normal mb-4 sm:mb-12">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-                  Registered Teams for {responseData.eventName}
-                </span>
-              </h1>
-
-              <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center max-w-md mx-auto mb-6">
-                <h2 className="text-3xl font-bold text-black">
-                  Total Registrations ={" "}
-                  {responseData?.teamsRegistered?.length || 0}
-                </h2>
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                {responseData?.teamsRegistered?.map((team, index) => (
-                  <div
-                    key={team._id}
-                    className="bg-white p-8 rounded-lg shadow-md border border-gray-300"
-                  >
-                    <h3 className="text-2xl font-bold text-black mb-6">
-                      {index + 1}. {team.teamName}
-                    </h3>
-                    <div className="mb-4 flex gap-x-2">
-                      <span className="text-lg font-semibold text-black">
-                        👤 Leader:
-                      </span>
-                      <span className="text-lg font-semibold text-black">
-                        {team.leaderName}
-                      </span>
-                    </div>
-                    <div className="mb-4 flex gap-x-2">
-                      <span className="text-lg font-semibold text-black">
-                        📞 Contact:
-                      </span>
-                      <a
-                        href={`tel:${team.leaderMobileNumber}`}
-                        className="text-lg font-semibold text-blue-500 hover:underline"
-                      >
-                        {team.leaderMobileNumber}
-                      </a>
-                    </div>
-                    <div className="flex gap-x-2">
-                      <span className="text-lg font-semibold text-black">
-                        🎓 Roll No:
-                      </span>
-                      <span className="text-lg font-semibold text-black">
-                        {team.rollNumber}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {isdatafetched && responseData ? (
+            <>
+              {window.innerWidth < 768 ? (
+                <EventDetails responseData={responseData} />
+              ) : (
+                <EventDashboard responseData={responseData} />
+              )}
+            </>
           ) : (
             <>
               <motion.div

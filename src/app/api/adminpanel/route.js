@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import Event from "@/models/Event";
-import Team from "@/models/Team";
 
 export async function POST(req) {
   await dbConnect();
@@ -17,18 +16,14 @@ export async function POST(req) {
     
     // Find the event by eventName
     const event = await Event.findOne({eventName});
+    // console.log(event);
 
     if (!event) {
       return NextResponse.json({ message: "No participants found for this event." }, { status: 404 });
     }
 
-    return NextResponse.json({
-      eventName: event.eventName,
-      eventClub: event.eventClub,
-      eventVenue: event.eventVenue,
-      eventTime: event.eventTime,
-      teamsRegistered: event.teamsRegistered, // Already contains team details
-    }, { status: 200 });
+    return NextResponse.json(event, { status: 200 });
+
 
   } catch (error) {
     console.error("Error fetching registered teams:", error);
