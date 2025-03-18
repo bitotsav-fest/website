@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { clubEvents } from "./pocData";
+import { Ripple } from "@/components/magicui/ripple"
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react"; 
 import ExportData from "./components/exportData";
@@ -427,8 +428,10 @@ export default function EventsPage() {
               ) : (
                 <EventDashboard responseData={responseData} />
               )}
-            <ExportData responseData={responseData} isDataFetched={isdatafetched}/>
-
+              <ExportData
+                responseData={responseData}
+                isDataFetched={isdatafetched}
+              />
             </>
           ) : (
             <>
@@ -439,7 +442,7 @@ export default function EventsPage() {
               >
                 <h1 className="text-6xl md:text-7xl font-bold tracking-normal mb-4 sm:mb-12">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">
-                    Check Registered Bitotshav Participants for Your Events
+                    Check Registered BITOTSAV'25 Participants for Your Events
                   </span>
                 </h1>
                 <p className="text-[#F6F1E2]/70 text-lg">
@@ -448,10 +451,20 @@ export default function EventsPage() {
               </motion.div>
 
               {isLoading && (
-              <div className="text-center mt-4 mb-4">
-                <p className="text-[#F6F1E2] text-xl">Loading...</p>
-              </div>
-            )}
+                <div className="relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-white/5 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden">
+                  <p>Submitting</p>
+                  <motion.img
+                    src="/bitotsav-logo.svg"
+                    alt="Bitotsav Logo"
+                    className="w-56 mx-auto opacity-50 group-hover:opacity-100 transition-all duration-300 relative z-10 drop-shadow-2xl transform group-hover:scale-110"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 0.5, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                  />
+                  <Ripple />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/10 via-transparent to-[#EFCA4E]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              )}
 
               <form
                 onSubmit={handleSubmit}
@@ -517,7 +530,7 @@ export default function EventsPage() {
                   className="w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl"
                   disabled={isLoading}
                 >
-                  {isLoading ? 'Loading...' : 'Submit'}
+                  {isLoading ? "Loading..." : "Submit"}
                 </button>
               </form>
             </>
