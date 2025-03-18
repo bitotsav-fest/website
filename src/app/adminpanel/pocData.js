@@ -532,20 +532,20 @@ export const clubEvents = [
               "phone": "7903831772"
             }
           ]
-        },
-        {
-          "name": "Cyberbridgeton",
-          "poc": [
-            {
-              "name": "Richik Kumar",
-              "phone": "9430372857"
-            },
-            {
-              "name": "Rishab Choudhary",
-              "phone": "7903831772"
-            }
-          ]
         }
+        // {
+        //   "name": "Cyberbridgeton",
+        //   "poc": [
+        //     {
+        //       "name": "Richik Kumar",
+        //       "phone": "9430372857"
+        //     },
+        //     {
+        //       "name": "Rishab Choudhary",
+        //       "phone": "7903831772"
+        //     }
+        //   ]
+        // }
       ]
     },
     {
