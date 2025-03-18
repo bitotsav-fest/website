@@ -1000,7 +1000,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 38,
     imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xtbl9waw48vgo9oerjqe",
+      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742312167/uxepbn6mw3xsk8stwo9g.png",
     name: "BIT GOT TALENT",
     club: "Events Team",
     category: "Flagship",
