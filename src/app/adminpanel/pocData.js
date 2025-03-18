@@ -6,12 +6,12 @@ export const clubEvents = [
         name: "HIT OR MISS",
         poc: [
           {
-            name: "Prem",
-            phone: "9109766552",
+            name: "Muaaz",
+            phone: "7781911379",
           },
           {
-            name: "Shreya",
-            phone: "8409742032",
+            name: "Nikunj",
+            phone: "7217623779",
           },
         ],
       },
@@ -19,12 +19,12 @@ export const clubEvents = [
         name: "BAZINGAA!",
         poc: [
           {
-            name: "Prem",
-            phone: "9109766552",
+            name: "Tanisha",
+            phone: "7064426300",
           },
           {
-            name: "Shreya",
-            phone: "8409742032",
+            name: "Aashish",
+            phone: "9262815123",
           },
         ],
       },
@@ -45,12 +45,12 @@ export const clubEvents = [
         name: "SQUID GAMES",
         poc: [
           {
-            name: "Prem",
-            phone: "9109766552",
+            name: "Ritesh Kumar",
+            phone: "9031502365",
           },
           {
-            name: "Shreya",
-            phone: "8409742032",
+            name: "Ujjawal",
+            phone: "9602050464",
           },
         ],
       },
@@ -58,12 +58,12 @@ export const clubEvents = [
         name: "TALKIES - SHORT MOVIE",
         poc: [
           {
-            name: "Prem",
-            phone: "9109766552",
+            name: "Sanjana",
+            phone: "75418340744",
           },
           {
-            name: "Shreya",
-            phone: "8409742032",
+            name: "Divya",
+            phone: "6299854249",
           },
         ],
       },
@@ -751,19 +751,19 @@ export const clubEvents = [
   {
     clubName: "UNESQUO",
     events: [
-      {
-        name: "Aurora",
-        poc: [
-          {
-            name: "Abhinav Kumar",
-            phone: "7320821977",
-          },
-          {
-            name: "Nisir",
-            phone: "9341808160",
-          },
-        ],
-      },
+      // {
+      //   name: "Aurora",
+      //   poc: [
+      //     {
+      //       name: "Abhinav Kumar",
+      //       phone: "7320821977",
+      //     },
+      //     {
+      //       name: "Nisir",
+      //       phone: "9341808160",
+      //     },
+      //   ],
+      // },
       {
         name: "BITOTSAV QUIZ",
         poc: [
