@@ -1,5 +1,75 @@
 export const clubEvents = [
     {
+      "clubName": "EVENTS TEAM",
+      "events": [
+        {
+          "name": "HIT OR MISS",
+          "poc": [
+            {
+              "name": "Prem",
+              "phone": "9109766552"
+            },
+            {
+              "name": "Shreya",
+              "phone": "8409742032"
+            }
+          ]
+        },
+        {
+          "name": "BAZINGAA!",
+          "poc": [
+            {
+              "name": "Prem",
+              "phone": "9109766552"
+            },
+            {
+              "name": "Shreya",
+              "phone": "8409742032"
+            }
+          ]
+        },
+        {
+          "name": "BIT GOT TALENT",
+          "poc": [
+            {
+              "name": "Prem",
+              "phone": "9109766552"
+            },
+            {
+              "name": "Shreya",
+              "phone": "8409742032"
+            }
+          ]
+        },
+        {
+          "name": "SQUID GAMES",
+          "poc": [
+            {
+              "name": "Prem",
+              "phone": "9109766552"
+            },
+            {
+              "name": "Shreya",
+              "phone": "8409742032"
+            }
+          ]
+        },
+        {
+          "name": "TALKIES - SHORT MOVIE",
+          "poc": [
+            {
+              "name": "Prem",
+              "phone": "9109766552"
+            },
+            {
+              "name": "Shreya",
+              "phone": "8409742032"
+            }
+          ]
+        },
+      ]
+    },
+    {
       "clubName": "ACM",
       "events": [
         {
