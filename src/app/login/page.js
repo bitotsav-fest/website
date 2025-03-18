@@ -44,7 +44,7 @@ export default function LoginPage() {
         </motion.button>
         {/* Additional Info */}
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-center mt-4 p-3 rounded-lg bg-white/5 backdrop-blur-sm">
-          <span className="text-purple-400 font-medium">BIT Mesra Students</span>
+          <span className="text-purple-400 font-medium">BIT Mesra (Main Campus) Students</span>
           <span className="text-gray-400 ml-1">- Free Access using your institutional email </span>
           <br />
           <span className="text-gray-400 ml-1">
