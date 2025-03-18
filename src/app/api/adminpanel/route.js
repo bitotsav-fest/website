@@ -12,7 +12,7 @@ export async function POST(req) {
       return NextResponse.json({ message: "Event name is required." }, { status: 400 });
     }
 
-    console.log(eventName);
+    // console.log(eventName);
     
     // Find the event by eventName
     const event = await Event.findOne({eventName});
