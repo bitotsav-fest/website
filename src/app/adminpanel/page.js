@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { clubEvents } from "./pocData";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react"; 
+import ExportData from "./components/exportData";
 
 export default function EventsPage() {
   const { data: session, status } = useSession(); 
@@ -312,6 +313,7 @@ export default function EventsPage() {
         <div className="relative min-h-screen py-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
           {isdatafetched && responseData ? (
             <>
+            <ExportData responseData={responseData} isDataFetched={isdatafetched}/>
               {window.innerWidth < 768 ? (
                 <EventDetails responseData={responseData} />
               ) : (
