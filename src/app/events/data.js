@@ -34,7 +34,8 @@ export const Eventsday = [
   },
   {
     id: 2,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fjkcgwtoqgztwdhfwyud",
     name: "FOOTLOOSE",
     club: "Dance club",
     category: "Formal",
@@ -70,7 +71,8 @@ export const Eventsday = [
   },
   {
     id: 3,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vmtiuz4bubcbnfzdcjep",
     name: "KBC: KOUN BANEGA COLLECTOR",
     club: "NAPS",
     category: "Informal",
@@ -105,7 +107,8 @@ export const Eventsday = [
   },
   {
     id: 4,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hib2bjvgnzpdj9k7pf64",
     name: "BEYOND THE SCREEN",
     club: "NAPS",
     category: "Formal",
@@ -141,7 +144,8 @@ export const Eventsday = [
   },
   {
     id: 5,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fwfvrbayznj9i1dlpzt5",
     name: "Race Rumble",
     club: "SAC",
     category: "Informal",
@@ -165,7 +169,8 @@ export const Eventsday = [
   },
   {
     id: 6,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/nsl7a5yxisoauswjitfb",
     name: "ELECTRONICS BINGO",
     club: "ECESoc",
     category: "Informal",
@@ -181,7 +186,8 @@ export const Eventsday = [
   },
   {
     id: 7,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rtvbmn1tojd1ueh19qtx",
     name: "HIT OR MISS",
     club: "Events Team",
     category: "Formal",
@@ -208,7 +214,8 @@ export const Eventsday = [
   },
   {
     id: 8,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bcgwwsvdjaanvv4adn4k",
     name: "HERA PHERI PHIR SE",
     club: "BIOTS",
     category: "Formal",
@@ -234,7 +241,8 @@ export const Eventsday = [
   },
   {
     id: 9,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/yuedhcrptlur9r3czine",
     name: "FLIGHT SIMULATION",
     club: "AeroSoc",
     category: "Formal",
@@ -250,7 +258,8 @@ export const Eventsday = [
   },
   {
     id: 10,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ce5ngwinihkindjpsvyj",
     name: "BUSINESS CRISIS SIMULATION",
     club: "180DC",
     category: "Informal",
@@ -274,7 +283,8 @@ export const Eventsday = [
   },
   {
     id: 11,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/lbiy33bbnkzq8j18awkh",
     name: "TIME TRAVELLER CONSULTANT",
     club: "180DC",
     category: "Formal",
@@ -298,7 +308,8 @@ export const Eventsday = [
   },
   {
     id: 12,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wqgyaogj5dn5vxxrckzj",
     name: "BYTEHUNT",
     club: "EEESoc",
     category: "Informal",
@@ -324,7 +335,8 @@ export const Eventsday = [
   },
   {
     id: 13,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v805vpqgl3dmb1jm1eid",
     name: "WHERE IN BIT?",
     club: "IEEE",
     category: "Informal",
@@ -345,7 +357,8 @@ export const Eventsday = [
   },
   {
     id: 14,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hcwb3kg8zuf2ajfzpc83",
     name: "PITSTOP PURSUIT",
     club: "Srijan",
     category: "Informal",
@@ -380,7 +393,8 @@ export const Eventsday = [
   },
   {
     id: 15,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qnxpfnfasbotuf4pzp9y",
     name: "MISMATCHED",
     club: "Leo",
     category: "Formal",
@@ -413,7 +427,8 @@ export const Eventsday = [
   },
   {
     id: 16,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/sm62ckotsf0qkr2hhwe3",
     name: "TAKESHI'S CASTLE",
     club: "Leo",
     category: "Formal",
@@ -439,13 +454,14 @@ export const Eventsday = [
     ],
 
     contact: ["Shubham Kumar: 6200926298", "Khushi Sharma: 9137128115"],
-    venue: "NCC",
+    venue: "SHORBAGH",
     time: "9AM - 12PM",
     day: 3,
   },
   {
     id: 17,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji1ge5tofdnimeogqv3o",
     name: "Hand 'N' Brain",
     club: "IETE",
     category: "Formal",
@@ -471,7 +487,8 @@ export const Eventsday = [
   },
   {
     id: 18,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/i96hlihvmj63rv8lvcek",
     name: "BRIDGE THE GAP",
     club: "CES",
     category: "Informal",
@@ -491,7 +508,8 @@ export const Eventsday = [
   },
   {
     id: 19,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j6stb3x4e76wi006xoqk",
     name: "PLANE CRASH",
     club: "CES",
     category: "Informal",
@@ -511,7 +529,8 @@ export const Eventsday = [
   },
   {
     id: 20,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ozev4apwjqwbazw9svt7",
     name: "FOUNDER'S FACEOFF",
     club: "EDC",
     category: "Formal",
@@ -538,7 +557,8 @@ export const Eventsday = [
   },
   {
     id: 21,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qtrzvtxtlx1buvthfp8r",
     name: "NATSAMRAT",
     club: "Ehsaas",
     category: "Formal",
@@ -564,7 +584,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 22,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bynycfdorhcbhkcwc1q8",
     name: "ELECTROPOLY",
     club: "ECESoc",
     category: "Informal",
@@ -582,7 +603,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 23,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/w1apvs0vs7tizk0pxsip",
     name: "KKK: KRAZY KAREN KUIZ",
     club: "UNESQUO",
     category: "Informal",
@@ -605,7 +627,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 24,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/r7m7ner9u91didajkvib",
     name: "SPOTIFY WRAPPED",
     club: "SDS",
     category: "Formal",
@@ -626,7 +649,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 25,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/pou1wzobxn2skikbge1j",
     name: "ENGINEERS ROAST BATTLE",
     club: "IICHE",
     category: "Informal",
@@ -651,7 +675,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 26,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fiugbkfrbsrlog4hxrkr",
     name: "BIT ROADIES",
     club: "Rotaract",
     category: "Formal",
@@ -674,7 +699,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 27,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vawr84zjfxudcgzyjp6s",
     name: "CAMPUS CAPITALIST",
     club: "Finance",
     category: "Formal",
@@ -696,7 +722,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 28,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/gw1flclyizjokgg561qi",
     name: "QUILL QUEST",
     club: "LITSoc",
     category: "Formal",
@@ -719,7 +746,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 29,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rxpcqgnuj6i3wngdau6c",
     name: "KALAM-E-TAHIR",
     club: "LITSoc",
     category: "Formal",
@@ -743,7 +771,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 30,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wesjjd0wpfmzsxtqkaei",
     name: "VALOMANIA",
     club: "SAC",
     category: "Informal",
@@ -767,7 +796,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 31,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vrew5mn7dnhnj2gcugnk",
     name: "JUMANJI 3.O",
     club: "EPAC",
     category: "Informal",
@@ -827,7 +857,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 32,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y7yfuam0jzbxa4xxbduc",
     name: "SKYFALL SCRAMBLE",
     club: "AeroSoc",
     category: "Informal",
@@ -845,7 +876,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 33,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y95jalqke7pb6dny9ltn",
     name: "JUKEBOX",
     club: "Dhwani",
     category: "Formal",
@@ -869,7 +901,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 34,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ftenk99ovl1zfhyjqtti",
     name: "EN CHESSANT",
     club: "IEI Civil",
     category: "Formal",
@@ -893,7 +926,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 35,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/d5uw266wxp2gpf6rhakr",
     name: "THE TALLEST",
     club: "IEI Civil",
     category: "Informal",
@@ -920,7 +954,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 36,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/jhlctfi6pehjwvvrrg67",
     name: "BAZINGAA!",
     club: "Events Team",
     category: "Informal",
@@ -941,7 +976,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 37,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/n7qvvicec2wd4kcboq2b",
     name: "SpeedForces",
     club: "IET",
     category: "Formal",
@@ -987,7 +1023,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 39,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji8pbieeakb0wsm4cjuq",
     name: "INDUSTRIAL MAYHEM",
     club: "SIME",
     category: "Formal",
@@ -1009,7 +1046,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 40,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ltvaopbfbcp00lzpd0yu",
     name: "SHARK TANK 2.O",
     club: "SIME",
     category: "Formal",
@@ -1041,7 +1079,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 41,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j3f1teeoutwp4pxccuxg",
     name: "LOST IN TRANSLATION",
     club: "SPICMACAY",
     category: "Informal",
@@ -1070,7 +1109,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 42,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bod8j4ecpotlwowe3fqj",
     name: "FOLK & FLAIR",
     club: "SPICMACAY",
     category: "Formal",
@@ -1218,7 +1258,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 47,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vzgrxch5y4ktf9asmbbh",
     name: "THE LOL CHALLENGE",
     club: "BIOTS",
     category: "Informal",
@@ -1242,7 +1283,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 48,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/kpujfsu0fsksfomp124p",
     name: "Admakers Showdown",
     club: "PSOC",
     category: "Formal",
@@ -1264,7 +1306,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 49,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/eeoabh3httt1vzxysqxn",
     name: "MATCH THE CUT",
     club: "PSOC",
     category: "Formal",
@@ -1292,7 +1335,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 50,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xxizpiwwzve8eyjkhbfe",
     name: "SURVIVAL SPRINT",
     club: "Aveon",
     category: "Formal",
@@ -1316,7 +1360,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 51,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/l4ifcdqbrrlfscga16mv",
     name: "BITOTSAV QUIZ",
     club: "UNESQUO",
     category: "Formal",
@@ -1339,7 +1384,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 52,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qq5zdvjs4muekbadtoea",
     name: "A-MAZE-&-MARBLE",
     club: "Robolution",
     category: "Informal",
@@ -1361,7 +1407,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 53,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wllndh4pbp6kitsvkqyj",
     name: "PANACHE",
     club: "FAS",
     category: "Formal",
@@ -1389,7 +1436,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 54,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hk8av1jsokgdnmnvgrnp",
     name: "BREWED CREATIVITY",
     club: "FAS",
     category: "Formal",
@@ -1446,7 +1494,8 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 56,
-    imgURL: "/comingsoon.png",
+    imgURL:
+      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/komjjlbwvohy6ncteqgh",
     name: "CodeJoust",
     club: "IET",
     category: "Informal",
