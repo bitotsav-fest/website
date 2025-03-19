@@ -455,8 +455,8 @@ export const Eventsday = [
 
     contact: ["Shubham Kumar: 6200926298", "Khushi Sharma: 9137128115"],
     venue: "SHORBAGH",
-    time: "9AM - 12PM",
-    day: 3,
+    time: "12PM - 3PM",
+    day: 1,
   },
   {
     id: 17,
@@ -1432,9 +1432,9 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Aditya Singh: 8987820978", "Divya Kamal: 8840729222"],
-    venue: "OAT",
-    time: "9AM - 12PM",
-    day: 2,
+    venue: "SHORBAGH",
+    time: "12PM - 3PM",
+    day: 1,
   },
   {
     id: 54,
@@ -1461,7 +1461,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     contact: ["Aditya Singh: 8987820978", "Divya Kamal: 8840729222"],
     venue: "OAT",
     time: "9AM - 12PM",
-    day: 1,
+    day: 2,
   },
   {
     id: 55,
