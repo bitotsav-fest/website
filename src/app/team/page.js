@@ -568,6 +568,10 @@ export default function Register() {
             <strong>disqualified</strong>.
           </div>
 
+          <div className="bg-red-500/10 border border-red-500/40 text-white p-3 rounded-lg text-sm text-center">
+          <strong>Teams are limited to a maximum of 8 participants</strong>
+          </div>
+
 <div className="bg-yellow-500/10 border border-yellow-500/40 text-white p-3 rounded-lg text-sm text-center mb-4">
   For any team-related modifications, please contact:<br/>
   <strong>Mrityunjay Raj</strong><br/>
