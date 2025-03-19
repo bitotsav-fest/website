@@ -195,6 +195,13 @@ export default function EventsPage() {
     }
   }
 
+  const displayTeamMembers = (team) => {
+    const teamMembers = team.members || []
+    const memberDetails = teamMembers.map((member, index) => `Member ${index + 1}:\nName: ${member.name}\nContact: ${member.contact}\nRoll No: ${member.rollNumber}`).join("\n\n")
+
+    toast(`Team Members:\n\n${memberDetails || "No members available."}`, { duration: 10000 })
+  }
+
   const EventDashboard = ({ responseData }) => {
     return (
       <div className='bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20'>
@@ -242,13 +249,7 @@ export default function EventsPage() {
                 <tr
                   key={team._id}
                   className='backdrop-blur-sm p-8 border border-[#EFCA4E]/20 mb-8 text-center hover:bg-white/10 transition-colors duration-500 cursor-pointer'
-                  onClick={() => {
-                    const teamDetails = team._id.members.map((member, idx) => `${idx + 1}. ${member.name} (${member.rollNumber})`).join("\n")
-                    toast.success(`Team Members:\n${teamDetails}`, {
-                      duration: 8000,
-                      style: { whiteSpace: "pre-line" },
-                    })
-                  }}
+                  onClick={() => displayTeamMembers(team)}
                 >
                   <td className='px-4 py-2 text-white/70'>{index + 1}</td>
                   <td className='px-4 py-2 font-normal text-yellow-300'>{team.teamName}</td>
