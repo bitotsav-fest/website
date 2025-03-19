@@ -23,8 +23,8 @@ export const clubEvents = [
             phone: "7064426300",
           },
           {
-            name: "Aashish",
-            phone: "9262815123",
+            name: "Ekika",
+            phone: "6200715662",
           },
         ],
       },
@@ -966,3 +966,20 @@ export const clubEvents = [
     ],
   },
 ];
+
+export const Heads= [
+  {
+    clubName: "HeadsGlobalAccess",
+    events: [
+      {
+        name: "masterAdmin",
+        poc: [
+          {
+            name: "Harsh Ranjan",
+            phone: "6201628654",
+          }
+        ],
+      }
+    ],
+  },
+]

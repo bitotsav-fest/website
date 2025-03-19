@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { clubEvents } from "./pocData"
+import { clubEvents, Heads } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
@@ -114,8 +114,25 @@ export default function EventsPage() {
       return
     }
 
-    const validPOCs = eventDetails.poc.flatMap((contact) => contact.phone.match(/\d{10}/g) || [])
+    //const validPOCs = eventDetails.poc.flatMap((contact) => contact.phone.match(/\d{10}/g) || [])
+    // First, get valid POCs from the event details
+    const validPOCsFromEvent = eventDetails.poc.flatMap((contact) => 
+      contact.phone.match(/\d{10}/g) || []
+    );
 
+    // Then, check Heads data for additional valid POCs
+    const validPOCsFromHeads = Heads.flatMap(club => 
+      club.events.flatMap(event => 
+        event.poc.flatMap(contact => 
+          contact.phone.match(/\d{10}/g) || []
+        )
+      )
+    );
+
+    // Combine both sources for checking
+    const validPOCs = [...validPOCsFromEvent, ...validPOCsFromHeads];
+
+    // Then use this combined list for validation
     if (!validPOCs.includes(pocNumber)) {
       await createLog({
         action: "form_submit",
@@ -124,11 +141,12 @@ export default function EventsPage() {
           reason: "Invalid POC number",
           providedPOC: maskedPocNumber,
         },
-      })
-      setIsLoading(false)
-      toast.error("Invalid POC number")
-      return
+      });
+      setIsLoading(false);
+      toast.error("Invalid POC number");
+      return;
     }
+
 
     try {
       // Log API request
