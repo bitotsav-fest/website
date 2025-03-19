@@ -242,7 +242,7 @@ export const clubEvents = [
     clubName: "Dhwani",
     events: [
       {
-        name: "Battle of Bands",
+        name: "BATTLE OF BANDS",
         poc: [
           {
             name: "Ramendra Priyanshu",

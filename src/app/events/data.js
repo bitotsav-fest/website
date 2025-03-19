@@ -1112,7 +1112,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   {
     id: 42,
     imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bod8j4ecpotlwowe3fqj",
+      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742369284/m4tytnfjeqrhdbz4pahl.png",
     name: "FOLK & FLAIR",
     club: "SPICMACAY",
     category: "Formal",
