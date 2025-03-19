@@ -243,7 +243,7 @@ export default function EventsPage() {
                   key={team._id}
                   className='backdrop-blur-sm p-8 border border-[#EFCA4E]/20 mb-8 text-center hover:bg-white/10 transition-colors duration-500 cursor-pointer'
                   onClick={() => {
-                    const teamDetails = team.members.map((member, idx) => `${idx + 1}. ${member.name} (${member.rollNumber})`).join("\n")
+                    const teamDetails = team._id.members.map((member, idx) => `${idx + 1}. ${member.name} (${member.rollNumber})`).join("\n")
                     toast.success(`Team Members:\n${teamDetails}`, {
                       duration: 8000,
                       style: { whiteSpace: "pre-line" },
