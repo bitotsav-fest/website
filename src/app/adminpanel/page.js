@@ -5,7 +5,7 @@ import { clubEvents, Heads } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
-import toast from "react-hot-toast";
+import toast from "react-hot-toast"
 import ExportData from "./components/exportData"
 
 export default function EventsPage() {
@@ -20,12 +20,12 @@ export default function EventsPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   if (status === "loading") {
-    return <div className="text-center text-white">Checking authentication...</div>
+    return <div className='text-center text-white'>Checking authentication...</div>
   }
 
   if (!session) {
     router.push("/login")
-    return <div className="text-center text-white">Redirecting to login...</div>
+    return <div className='text-center text-white'>Redirecting to login...</div>
   }
 
   const createLog = async (logData) => {
@@ -116,21 +116,13 @@ export default function EventsPage() {
 
     //const validPOCs = eventDetails.poc.flatMap((contact) => contact.phone.match(/\d{10}/g) || [])
     // First, get valid POCs from the event details
-    const validPOCsFromEvent = eventDetails.poc.flatMap((contact) => 
-      contact.phone.match(/\d{10}/g) || []
-    );
+    const validPOCsFromEvent = eventDetails.poc.flatMap((contact) => contact.phone.match(/\d{10}/g) || [])
 
     // Then, check Heads data for additional valid POCs
-    const validPOCsFromHeads = Heads.flatMap(club => 
-      club.events.flatMap(event => 
-        event.poc.flatMap(contact => 
-          contact.phone.match(/\d{10}/g) || []
-        )
-      )
-    );
+    const validPOCsFromHeads = Heads.flatMap((club) => club.events.flatMap((event) => event.poc.flatMap((contact) => contact.phone.match(/\d{10}/g) || [])))
 
     // Combine both sources for checking
-    const validPOCs = [...validPOCsFromEvent, ...validPOCsFromHeads];
+    const validPOCs = [...validPOCsFromEvent, ...validPOCsFromHeads]
 
     // Then use this combined list for validation
     if (!validPOCs.includes(pocNumber)) {
@@ -141,12 +133,11 @@ export default function EventsPage() {
           reason: "Invalid POC number",
           providedPOC: maskedPocNumber,
         },
-      });
-      setIsLoading(false);
-      toast.error("Invalid POC number");
-      return;
+      })
+      setIsLoading(false)
+      toast.error("Invalid POC number")
+      return
     }
-
 
     try {
       // Log API request
@@ -204,60 +195,71 @@ export default function EventsPage() {
     }
   }
 
+  const displayTeamMembers = (team) => {
+    const teamMembers = team.members || []
+    const memberDetails = teamMembers.map((member, index) => `Member ${index + 1}:\nName: ${member.name}\nContact: ${member.contact}\nRoll No: ${member.rollNumber}`).join("\n\n")
+
+    toast(`Team Members:\n\n${memberDetails || "No members available."}`, { duration: 10000 })
+  }
+
   const EventDashboard = ({ responseData }) => {
     return (
-      <div className="max-w-6xl mx-auto py-10 px-4 bg-gray-900 text-white">
+      <div className='bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20'>
         {/* Event Title */}
-        <h1 className="text-5xl md:text-7xl text-center font-bold tracking-wide mb-10">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400">{responseData.eventName}</span>
+        <h1 className='text-5xl md:text-7xl text-center font-bold tracking-wide mb-10'>
+          <span className='bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400'>{responseData.eventName}</span>
         </h1>
 
         {/* Event Details */}
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-600 mb-8 text-center">
-          <h2 className="text-3xl font-bold text-yellow-400 mb-3">📍 Event Details</h2>
-          <table className="w-full border-collapse border border-gray-600 text-gray-200">
+        <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
+          <h2 className='text-3xl font-bold text-yellow-400 mb-3'>📍 Event Details</h2>
+          <table className='w-full border-collapse border border-[#EFCA4E]/20 text-gray-200'>
             <tbody>
-              <tr className="border border-gray-600">
-                <td className="px-4 py-2 font-semibold text-yellow-300">Club:</td>
-                <td className="px-4 py-2">{responseData.eventClub}</td>
+              <tr className='border border-[#EFCA4E]/20'>
+                <td className='px-4 py-2 font-semibold text-yellow-300'>Club:</td>
+                <td className='px-4 py-2'>{responseData.eventClub}</td>
               </tr>
-              <tr className="border border-gray-600">
-                <td className="px-4 py-2 font-semibold text-yellow-300">Venue:</td>
-                <td className="px-4 py-2">{responseData.eventVenue}</td>
+              <tr className='border border-[#EFCA4E]/20'>
+                <td className='px-4 py-2 font-semibold text-yellow-300'>Venue:</td>
+                <td className='px-4 py-2'>{responseData.eventVenue}</td>
               </tr>
-              <tr className="border border-gray-600">
-                <td className="px-4 py-2 font-semibold text-yellow-300">Time:</td>
-                <td className="px-4 py-2">{responseData.eventTime}</td>
+              <tr className='border border-[#EFCA4E]/20'>
+                <td className='px-4 py-2 font-semibold text-yellow-300'>Time:</td>
+                <td className='px-4 py-2'>{responseData.eventTime}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         {/* Teams Registered */}
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 text-center mb-8">
-          <h2 className="text-3xl font-bold text-yellow-400 mb-4">🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
-          <table className="w-full border-collapse border border-gray-600 text-left text-gray-200">
+        <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
+          <h2 className='text-3xl font-bold text-yellow-400 mb-4'>🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
+          <table className='w-full border-collapse border border-[#EFCA4E]/20 text-gray-200'>
             <thead>
-              <tr className="bg-gray-700 border border-gray-600 text-yellow-300">
-                <th className="px-4 py-2">#</th>
-                <th className="px-4 py-2">Team Name</th>
-                <th className="px-4 py-2">Leader</th>
-                <th className="px-4 py-2">Contact</th>
-                <th className="px-4 py-2">Roll No</th>
+              <tr className='p-6 bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20 text-yellow-400'>
+                <th className='px-4 py-2'>#</th>
+                <th className='px-4 py-2'>Team Name</th>
+                <th className='px-4 py-2'>Leader</th>
+                <th className='px-4 py-2'>Contact</th>
+                <th className='px-4 py-2'>Roll No</th>
               </tr>
             </thead>
             <tbody>
               {responseData?.teamsRegistered?.map((team, index) => (
-                <tr key={team._id} className="border border-gray-600 bg-gray-900 hover:bg-gray-700">
-                  <td className="px-4 py-2">{index + 1}</td>
-                  <td className="px-4 py-2 font-semibold text-yellow-300">{team.teamName}</td>
-                  <td className="px-4 py-2">{team.leaderName}</td>
-                  <td className="px-4 py-2">
-                    <a href={`tel:${team.leaderMobileNumber}`} className="text-blue-400 hover:underline">
+                <tr
+                  key={team._id}
+                  className='backdrop-blur-sm p-8 border border-[#EFCA4E]/20 mb-8 text-center hover:bg-white/10 transition-colors duration-500 cursor-pointer'
+                  onClick={() => displayTeamMembers(team)}
+                >
+                  <td className='px-4 py-2 text-white/70'>{index + 1}</td>
+                  <td className='px-4 py-2 font-normal text-yellow-300'>{team.teamName}</td>
+                  <td className='px-4 py-2 text-white/70'>{team.leaderName}</td>
+                  <td className='px-4 py-2 text-white/70'>
+                    <a href={`tel:${team.leaderMobileNumber}`} className=''>
                       {team.leaderMobileNumber}
                     </a>
                   </td>
-                  <td className="px-4 py-2">{team.rollNumber}</td>
+                  <td className='px-4 py-2'>{team.rollNumber}</td>
                 </tr>
               ))}
             </tbody>
@@ -265,25 +267,25 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 text-center">
-          <h2 className="text-3xl font-bold text-yellow-400 mb-4">📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
-          <table className="w-full border-collapse border border-gray-600 text-left text-gray-200">
+        <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
+          <h2 className='text-2xl font-semibold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
+          <table className='w-full border-collapse border border-gray-600 text-left text-gray-200'>
             <thead>
-              <tr className="bg-gray-700 border border-gray-600 text-yellow-300">
-                <th className="px-4 py-2">#</th>
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Roll No</th>
-                <th className="px-4 py-2">Contact</th>
+              <tr className='p-6 bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20 text-yellow-400 text-center'>
+                <th className='px-4 py-2'>#</th>
+                <th className='px-4 py-2'>Name</th>
+                <th className='px-4 py-2'>Roll No</th>
+                <th className='px-4 py-2'>Contact</th>
               </tr>
             </thead>
             <tbody>
               {responseData?.eventRegistrarList?.map((registrar, index) => (
-                <tr key={registrar._id} className="border border-gray-600 bg-gray-900 hover:bg-gray-700">
-                  <td className="px-4 py-2">{index + 1}</td>
-                  <td className="px-4 py-2 font-semibold text-yellow-300">{registrar.name}</td>
-                  <td className="px-4 py-2">{registrar.rollNumber}</td>
-                  <td className="px-4 py-2">
-                    <a href={`tel:${registrar.mobileNumber}`} className="text-blue-400 hover:underline">
+                <tr key={registrar._id} className='backdrop-blur-sm p-6 border border-[#EFCA4E]/20 mb-8 text-center hover:bg-white/10 transition-colors duration-500 cursor-pointer'>
+                  <td className='px-4 py-2 text-white/70'>{index + 1}</td>
+                  <td className='px-4 py-2 font-semibold text-yellow-300'>{registrar.name}</td>
+                  <td className='px-4 py-2 text-white/70'>{registrar.rollNumber}</td>
+                  <td className='px-4 py-2 text-white/70'>
+                    <a href={`tel:${registrar.mobileNumber}`} className=''>
                       {registrar.mobileNumber}
                     </a>
                   </td>
@@ -298,46 +300,46 @@ export default function EventsPage() {
 
   const EventDetails = ({ responseData }) => {
     return (
-      <div className="max-w-5xl mx-auto py-10 px-4">
+      <div className='max-w-5xl mx-auto py-10 px-4'>
         {/* Event Title */}
-        <h1 className="text-5xl md:text-7xl text-center font-bold tracking-wide mb-6 sm:mb-10">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">{responseData.eventName}</span>
+        <h1 className='text-5xl md:text-7xl text-center font-bold tracking-wide mb-6 sm:mb-10'>
+          <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]'>{responseData.eventName}</span>
         </h1>
 
         {/* Event Details */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md border border-gray-300 mb-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">📍 Event Details</h2>
-          <p className="text-lg font-medium text-gray-700">
-            <span className="font-semibold">Club:</span> {responseData.eventClub}
+        <div className='rounded-2xl bg-white/10 backdrop-blur-xl border border-[#EFCA4E]/20 mb-8 py-6 space-y- text-center'>
+          <h2 className='text-3xl font-semibold text-[#EFCA4E]'>📍 Event Details</h2>
+          <p className='text-lg font-medium text-white/70'>
+            <span className='font-semibold'>Club:</span> {responseData.eventClub}
           </p>
-          <p className="text-lg font-medium text-gray-700">
-            <span className="font-semibold">Venue:</span> {responseData.eventVenue}
+          <p className='text-lg font-medium text-white/70'>
+            <span className='font-semibold'>Venue:</span> {responseData.eventVenue}
           </p>
-          <p className="text-lg font-medium text-gray-700">
-            <span className="font-semibold">Time:</span> {responseData.eventTime}
+          <p className='text-lg font-medium text-white/70'>
+            <span className='font-semibold'>Time:</span> {responseData.eventTime}
           </p>
         </div>
 
         {/* Teams Registered */}
-        <div className="bg-white border-2 border-gray-300 rounded-lg p-6 text-center mb-8">
-          <h2 className="text-3xl font-bold text-black mb-4">🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
+          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
+          <div className='grid gap-6 md:grid-cols-2'>
             {responseData?.teamsRegistered?.map((team, index) => (
-              <div key={team._id} className="bg-white p-6 rounded-lg shadow-md border border-gray-300">
-                <h3 className="text-2xl font-bold text-black mb-4">
+              <div key={team._id} className='bg-white/10 p-6 rounded-lg shadow-md border border-white/20' onClick={() => displayTeamMembers(team)}>
+                <h3 className='text-2xl font-bold text-yellow-400 mb-4'>
                   {index + 1}. {team.teamName}
                 </h3>
-                <p className="text-lg font-medium text-gray-700">
-                  👤 <span className="font-semibold">Leader:</span> {team.leaderName}
+                <p className='text-lg font-medium text-white/70'>
+                  👤 <span className='font-semibold'>Leader:</span> {team.leaderName}
                 </p>
-                <p className="text-lg font-medium text-gray-700">
-                  📞 <span className="font-semibold">Contact:</span>
-                  <a href={`tel:${team.leaderMobileNumber}`} className="text-blue-500 hover:underline">
+                <p className='text-lg font-medium text-white/70'>
+                  📞 <span className='font-semibold'>Contact: </span>
+                  <a href={`tel:${team.leaderMobileNumber}`} className='text-white/60'>
                     {team.leaderMobileNumber}
                   </a>
                 </p>
-                <p className="text-lg font-medium text-gray-700">
-                  🎓 <span className="font-semibold">Roll No:</span> {team.rollNumber}
+                <p className='text-lg font-medium text-white/70'>
+                  🎓 <span className='font-semibold'>Roll No:</span> {team.rollNumber}
                 </p>
               </div>
             ))}
@@ -345,22 +347,22 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        <div className="bg-white border-2 border-gray-300 rounded-lg p-6 text-center">
-          <h2 className="text-3xl font-bold text-black mb-4">📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
-          <div className="grid gap-6 md:grid-cols-2">
+        <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
+          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
+          <div className='grid gap-6 md:grid-cols-2'>
             {responseData?.eventRegistrarList?.map((registrar, index) => (
-              <div key={registrar._id} className="bg-white p-6 rounded-lg shadow-md border border-gray-300">
-                <h3 className="text-2xl font-bold text-black mb-4">
+              <div key={registrar._id} className='bg-white/10 p-6 rounded-lg shadow-md border border-white/20'>
+                <h3 className='text-2xl font-bold text-yellow-400 mb-4'>
                   {index + 1}. {registrar.name}
                 </h3>
-                <p className="text-lg font-medium text-gray-700">
-                  🎓 <span className="font-semibold">Roll No:</span> {registrar.rollNumber}
-                </p>
-                <p className="text-lg font-medium text-gray-700">
-                  📞 <span className="font-semibold">Contact:</span>
-                  <a href={`tel:${registrar.mobileNumber}`} className="text-blue-500 hover:underline">
+                <p className='text-lg font-medium text-white/70'>
+                  📞 <span className='font-semibold'>Contact: </span>
+                  <a href={`tel:${registrar.mobileNumber}`} className='text-lg font-medium text-white/70'>
                     {registrar.mobileNumber}
                   </a>
+                </p>
+                <p className='text-lg font-medium text-white/70'>
+                  🎓 <span className='font-semibold'>Roll No: </span> {registrar.rollNumber}
                 </p>
               </div>
             ))}
@@ -372,9 +374,9 @@ export default function EventsPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-[#0A0118] fixed inset-0 -z-20"></div>
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10">
-        <div className="relative min-h-screen pt-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className='min-h-screen bg-[#0A0118] fixed inset-0 -z-20'></div>
+      <div className='min-h-screen bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2] relative z-10'>
+        <div className='relative min-h-screen pt-24 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto'>
           {isdatafetched && responseData ? (
             <>
               {window.innerWidth < 768 ? <EventDetails responseData={responseData} /> : <EventDashboard responseData={responseData} />}
@@ -382,74 +384,106 @@ export default function EventsPage() {
             </>
           ) : (
             <>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-4 mb-6">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-normal mb-4 sm:mb-10">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]">Check Registered BITOTSAV'25 Participants for Your Events</span>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='text-center space-y-4 mb-6'>
+                <h1 className='text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]'>
+                  BITOTSAV'25 <br />
+                  Event Participants
                 </h1>
-                <p className="text-[#F6F1E2]/70 text-lg">Tick Tock! Time to review your event's participants.</p>
+                <p className='text-[#F6F1E2]/70 text-lg'>Tick Tock! Time to review your event's participants.</p>
               </motion.div>
 
               {isLoading && (
-                <div className="relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-white/5 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden">
-                  <p>Submitting</p>
-                  <motion.img
-                    src="/bitotsav-logo.svg"
-                    alt="Bitotsav Logo"
-                    className="w-56 mx-auto opacity-50 group-hover:opacity-100 transition-all duration-300 relative z-10 drop-shadow-2xl transform group-hover:scale-110"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 0.5, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                  />
-                  <Ripple />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/10 via-transparent to-[#EFCA4E]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                <>
+                  <div className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-white/5 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden max-w-[480px] mx-auto'>
+                    <p>Fetching Registrations</p>
+                    <motion.img
+                      src='/bitotsav-logo.svg'
+                      alt='Bitotsav Logo'
+                      className='w-56 mx-auto opacity-50 group-hover:opacity-100 transition-all duration-300 relative z-10 drop-shadow-2xl transform group-hover:scale-110'
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 0.5, scale: 1 }}
+                      transition={{ duration: 0.8 }}
+                    />
+                    <Ripple />
+                    <div className='absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/10 via-transparent to-[#EFCA4E]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+                  </div>
+                  <br /> <br />
+                </>
               )}
-
-              <form onSubmit={handleSubmit} className="p-4 max-w-lg mx-auto bg-[#2D1E0F] shadow-md border border-white rounded-lg">
-                <label className="block mb-2">Select Club:</label>
-                <select value={selectedClub} onChange={(e) => setSelectedClub(e.target.value)} className="w-full text-black p-2 border rounded mb-4">
-                  <option value="">Choose a club</option>
-                  {/* {clubs.map((club) => (
+              {!isLoading && !isdatafetched && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className='bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20 text-left space-y-4 flex justify-center items-center max-w-[480px] mx-auto'
+                >
+                  <form onSubmit={handleSubmit} className='space-y-4'>
+                    <label className='text-2xl font-semibold text-[#EFCA4E] mb-6'>Select Club:</label>
+                    <select
+                      value={selectedClub}
+                      onChange={(e) => setSelectedClub(e.target.value)}
+                      className='w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white focus:outline-none focus:border-[#EFCA4E]/50 transition-all'
+                    >
+                      <option value='' className='text-black'>
+                        Choose a club
+                      </option>
+                      {/* {clubs.map((club) => (
                     <option key={club} value={club}>
-                      {club}
+                    {club}
                     </option>
-                  ))} */}
-                  {[...new Set(clubEvents.map((event) => event.clubName))].map((club, idx) => (
-                    <option key={idx} value={club}>
-                      {club}
-                    </option>
-                  ))}
-                </select>
-
-                {selectedClub && (
-                  <>
-                    <label className="block mb-2">Select Event:</label>
-                    <select value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)} className="w-full text-black p-2 border rounded mb-4">
-                      <option value="">Choose an event</option>
-                      {/* {Eventsday.filter(
-                        (event) => event.club === selectedClub
-                      ).map((event) => (
-                        <option key={event.id} value={event.name}>
-                          {event.name}
+                    ))} */}
+                      {[...new Set(clubEvents.map((event) => event.clubName))].map((club, idx) => (
+                        <option key={idx} value={club} className='text-black'>
+                          {club}
                         </option>
-                      ))} */}
-                      {clubEvents
-                        .find((club) => club.clubName === selectedClub)
-                        ?.events.map((event) => (
-                          <option key={event.name} value={event.name}>
-                            {event.name}
-                          </option>
-                        ))}
+                      ))}
                     </select>
-                  </>
-                )}
 
-                <label className="block mb-2">Mobile No. of POC:</label>
-                    <input type="tel" pattern="[0-9]{10}" value={pocNumber} onChange={(e) => setPocNumber(e.target.value)} className="w-full text-black p-2 border rounded mb-4" />
-                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl" disabled={isLoading}>
-                  {isLoading ? "Loading..." : "Submit"}
-                </button>
-              </form>
+                    {selectedClub && (
+                      <>
+                        <br />
+                        <br />
+                        <label className='text-2xl font-semibold text-[#EFCA4E] mb-6'>Select Event:</label>
+                        <select
+                          value={selectedEvent}
+                          onChange={(e) => setSelectedEvent(e.target.value)}
+                          className='w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all'
+                        >
+                          <option value='' className='text-black'>
+                            Choose an event
+                          </option>
+                          {/* {Eventsday.filter(
+                        (event) => event.club === selectedClub
+                        ).map((event) => (
+                          <option key={event.id} value={event.name}>
+                          {event.name}
+                          </option>
+                          ))} */}
+                          {clubEvents
+                            .find((club) => club.clubName === selectedClub)
+                            ?.events.map((event) => (
+                              <option key={event.name} value={event.name} className='text-black'>
+                                {event.name}
+                              </option>
+                            ))}
+                        </select>
+                      </>
+                    )}
+                    <br />
+                    <br />
+                    <label className='text-2xl font-semibold text-[#EFCA4E] mb-6'>Mobile No. of POC:</label>
+                    <input
+                      type='tel'
+                      pattern='[0-9]{10}'
+                      value={pocNumber}
+                      onChange={(e) => setPocNumber(e.target.value)}
+                      className='w-full p-3 bg-white/5 border border-[#EFCA4E]/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-[#EFCA4E]/50 transition-all'
+                    />
+                    <button type='submit' className='w-full px-6 py-3 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-[#F6F1E2] font-semibold rounded-xl' disabled={isLoading}>
+                      {isLoading ? "Loading..." : "Submit"}
+                    </button>
+                  </form>
+                </motion.div>
+              )}
             </>
           )}
         </div>
