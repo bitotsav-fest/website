@@ -4,30 +4,40 @@ import Team from "@/models/Team";
 
 export async function GET() {
   await dbConnect();
-
+  
   try {
-    // const teams = await Team.find({}, "teamName leaderName points").lean();
     const teams = await Team.find({}, "teamName leaderName points")
       .sort({ points: -1 }) // Sort in descending order
       .lean();
-
-
-    // teamCode nhi dikhana h nhi to join kr skta h koi
-    // response format :teams": [
-    //   {
-    //       "_id": "67d7e9d2105414f16e57f629",
-    //       "teamName": "TechTeam",
-    //       "leaderName": "Mrityunjay Raj",
-    //       "points": 0
-    //   },
-    //   {
-    //       "_id": "67d811e507e67569192fafe2",
-    //       "teamName": "Lapata_Boyz",
-    //       "leaderName": "Parthib Saha",
-    //       "points": 0
-    //   },
-    return NextResponse.json({ teams }, { status: 200 });
+    
+    // Add position (rank) to each team
+    let currentRank = 1;
+    let prevPoints = null;
+    
+    const rankedTeams = teams.map((team, index) => {
+      // If this team has same points as previous team, assign same rank
+      if (index > 0 && team.points === prevPoints) {
+        // Keep the same rank as previous team
+      } else {
+        // Update the current rank to the position in the array (plus 1)
+        currentRank = index + 1;
+      }
+      
+      // Store points for next iteration
+      prevPoints = team.points;
+      
+      // Return team with position
+      return {
+        ...team,
+        position: currentRank
+      };
+    });
+    
+    return NextResponse.json({ teams: rankedTeams }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "Error fetching teams", error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { message: "Error fetching teams", error: error.message },
+      { status: 500 }
+    );
   }
 }
