@@ -310,9 +310,9 @@ export default function Register() {
             className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20 text-center space-y-4"
           >
             <h4 className="text-2xl font-semibold text-[#EFCA4E]">
-              Your Team Name : <span className="text-2xl font-semibold text-white underline decoration-2 decoration-[#EFCA4E]">{teamData?.teamName}</span>
+              Your Team Name : <span className="text-2xl font-semibold text-white decoration-2 ">{teamData?.teamName}</span>
               <br />
-              <span className="text-2xl font-semibold text-[#EFCA4E] underline decoration-2 decoration-[#EFCA4E]">{teamData?.rollNumber}</span>
+              <span className="text-2xl font-semibold text-[#EFCA4E] decoration-2 ">{teamData?.rollNumber}</span>
             </h4>
             <h4 className="text-2xl font-semibold text-[#EFCA4E]">Your Team Code</h4>
             <p className="text-3xl font-mono text-white">{teamCode}</p>
