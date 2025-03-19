@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Ripple } from '@/components/magicui/ripple';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function TeamLeaderboard() {
   const [teams, setTeams] = useState([]);
@@ -18,7 +18,10 @@ export default function TeamLeaderboard() {
         }
         
         const data = await response.json();
-        setTeams(data.teams);
+
+        // Sort teams by points in descending order and assign ranks
+        const sortedTeams = data.teams.sort((a, b) => b.points - a.points);
+        setTeams(sortedTeams);
       } catch (error) {
         console.error('Error fetching teams:', error);
         setError(error.message);
@@ -32,22 +35,19 @@ export default function TeamLeaderboard() {
 
   if (loading) {
     return (
-      <>
-        <div className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-[#1A0B2E]/50 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden max-w-[480px] mx-auto'>
-          <p className="text-[#F6F1E2]/70">Fetching Ranks</p>
-          <motion.img
-            src='/bitotsav-logo.svg'
-            alt='Bitotsav Logo'
-            className='w-56 mx-auto opacity-50 group-hover:opacity-100 transition-all duration-300 relative z-10 drop-shadow-2xl transform group-hover:scale-110'
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.5, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-          <Ripple />
-          <div className='absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/5 via-transparent to-[#EFCA4E]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
-        </div>
-        <br /> <br />
-      </>
+      <div className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-[#1A0B2E]/50 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden max-w-[480px] mx-auto'>
+        <p className="text-[#F6F1E2]/70">Fetching Ranks</p>
+        <motion.img
+          src='/bitotsav-logo.svg'
+          alt='Bitotsav Logo'
+          className='w-56 mx-auto opacity-50 group-hover:opacity-100 transition-all duration-300 relative z-10 drop-shadow-2xl transform group-hover:scale-110'
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.5, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+        <Ripple />
+        <div className='absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/5 via-transparent to-[#EFCA4E]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+      </div>
     );
   }
 
@@ -76,38 +76,28 @@ export default function TeamLeaderboard() {
         <p className="text-xl text-[#F6F1E2]/60 text-center">
           Rankings based on team points
         </p>
-        <div className="w-full text-right text-sm text-[#EFCA4E]/70 mt-2">
-          <p>Last updated on: 20/3/2025 at 4:46:41 AM</p>
-        </div>
       </div>
       
       <div className="backdrop-blur-sm p-6 rounded-2xl border border-[#EFCA4E]/10 mb-8 bg-[#0A0118]/50 overflow-x-auto">
         <table className="w-full border-collapse text-[#F6F1E2]/90">
           <thead>
             <tr className='p-6 bg-gradient-to-br from-[#2D1E0F]/50 to-[#1A0B2E]/50 border-b border-[#EFCA4E]/10 text-[#EFCA4E]'>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Rank
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Team
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Leader
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Points
-              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Rank</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Team</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Leader</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Points</th>
             </tr>
           </thead>
           <tbody>
             {teams.map((team, index) => {
+              const rank = index + 1;
               const rankColors = {
                 1: 'bg-[#EFCA4E]/40 border-[#EFCA4E]/60 text-[#EFCA4E]',
                 2: 'bg-[#C0C0C0]/30 border-[#C0C0C0]/50 text-[#C0C0C0]',
                 3: 'bg-[#CD7F32]/30 border-[#CD7F32]/50 text-[#CD7F32]'
               };
               
-              const rowHighlight = team.position <= 3 
+              const rowHighlight = rank <= 3 
                 ? `border-b border-[#EFCA4E]/20 bg-gradient-to-r from-[#1A0B2E]/30 to-transparent hover:from-[#2D1E0F]/30`
                 : `border-b border-[#EFCA4E]/5 hover:bg-[#2D1E0F]/20`;
               
@@ -117,11 +107,9 @@ export default function TeamLeaderboard() {
                     <div className="flex items-center">
                       <div className={`
                         flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center font-bold border
-                        ${team.position <= 3 
-                          ? rankColors[team.position]
-                          : 'bg-[#1A0B2E]/50 border-[#EFCA4E]/10 text-[#F6F1E2]/70'}
+                        ${rank <= 3 ? rankColors[rank] : 'bg-[#1A0B2E]/50 border-[#EFCA4E]/10 text-[#F6F1E2]/70'}
                       `}>
-                        {team.position}
+                        {rank}
                       </div>
                     </div>
                   </td>
