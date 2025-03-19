@@ -10,6 +10,7 @@ import { Calendar } from "lucide-react"
 import EventCard from "@/components/events/EventCard"
 import ChatbotPopup from "@/components/chatbot/chatbot-popup"
 import { ScrollProgress } from "@/components/magicui/scroll-progress"
+import NightEvents from "@/components/landing/night-events"
 
 export default function EventsPage() {
   const [activeTab, setActiveTab] = useState("day")
@@ -159,55 +160,7 @@ export default function EventsPage() {
 
             {/* Night Events */}
             {activeTab === "night" && (
-              <div className="relative text-[#F6F1E2] pb-12 rounded-lg max-w-6xl mx-auto px-6 md:px-16">
-                <h1 className="text-5xl md:text-6xl mb-16">Night Events</h1>
-                <div className="flex justify-center space-x-2 sm:space-x-4 mb-16">
-                  {nightEvents.map((event, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedEvent(event)}
-                      className={`bg-[#F6F1E2] text-[#2D1E0F] px-2 py-1 md:px-6 md:py-2 rounded-lg border border-[#EFCA4E] flex items-center space-x-1 shadow-md ${
-                        event === selectedEvent ? "ring-2 ring-[#EFCA4E]" : ""
-                      }`}
-                    >
-                      <img src={`/day${index}.png`} alt={`Day ${index} icon`} className="w-4 h-4 md:w-6 md:h-6 object-contain" />
-                      <span className="text-sm md:text-base">Day {index}</span>
-                    </button>
-                  ))}
-                </div>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedEvent?.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8"
-                  >
-                    <div className="w-full md:w-1/2">
-                      <Image
-                        src={selectedEvent?.photo || "/revealing-soon.jpg"}
-                        alt={selectedEvent?.name || "Event"}
-                        width={800}
-                        height={400}
-                        className="w-full h-80 object-cover rounded-lg"
-                        priority
-                      />
-                    </div>
-                    <div className="w-full md:w-1/2 flex flex-col justify-center text-start">
-                      <h2 className="text-4xl font-bold">{selectedEvent?.name}</h2>
-                      <p className="text-lg mt-2">{selectedEvent?.description}</p>
-                      <Button
-                        asChild
-                        variant="default"
-                        className="mt-6 bg-[#F6F1E2] text-[#2D1E0F] hover:bg-[#EFCA4E] rounded-lg px-8 py-4 font-medium text-lg shadow-md transform hover:scale-[1.02] transition-all duration-300"
-                      >
-                        <Link href="/tickets">Get Tickets</Link>
-                      </Button>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+              <NightEvents />
             )}
           </AnimatePresence>
           <ChatbotPopup />

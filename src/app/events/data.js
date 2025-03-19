@@ -634,9 +634,11 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     category: "Formal",
     prize: "300, 250, 200",
     theme: "Fun",
-    description: "TEAM SIZE: 2-3",
+    description: `Hey BIT Music Buffs!\nThink you’ve got what it takes to be the ultimate music maestro? Join us at Bitotsav ’25 for an epic Spotify Wrapped showdown!\n\nWe’ll drop song snippets, iconic images, and crafty hints — your job? Guess the song and artist before the other teams do.\nWinners score bragging rights and Bitotsav points — because knowing your music should count for something!\nSo, tune in, turn up, and let the guessing games begin!`,
+    //description: "TEAM SIZE: 2-3",
 
     rules: [
+      "TEAM SIZE: 2-3",
       "In the event consisting of three rounds, the first round will have screenshots of music videos and the contestants would have to guess the song.",
       "In the second round, a clip of the music video will be shown and the contestants have to guess the songs.",
       "The final round involves guessing the album.",
@@ -1518,7 +1520,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 57,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742358305/fools_quest_vo3qnt.png",
     name: "Fool's Quest",
     club: "ACM",
     category: "Informal",
@@ -1537,7 +1539,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 58,
-    imgURL: "/comingsoon.png",
+    imgURL: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742358305/ask_gpt_piavvv.png",
     name: "ASK GPT",
     club: "IEEE",
     category: "Informal",

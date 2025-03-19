@@ -3,35 +3,43 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const events = [
   {
-    day: "Day 0",
-    icon: "/day0.png",
-    title: "Heritage Night",
-    description:
-      "Discover the beauty of traditional dances, melodious music, and captivating storytelling as talented performers showcase the unique customs and traditions of our community.",
-    image: "/revealing-soon.jpg",
-  },
-  {
     day: "Day 1",
-    icon: "/day1.png",
-    title: "Band Night",
+    icon: "/day1.svg",
+    title: "अभिनंदन: Ghazal Night",
     description:
-      "Step onto the dance floor and let the beats take control as our talented Singer spin the hottest tracks, setting the stage for an unforgettable evening of music, rhythm, and euphoria.",
+      "Immerse yourself in the soulful melodies of Ghazals as the renowned artist Neeraj Gandhi takes the stage. Experience an evening filled with poetic charm, heartfelt lyrics, and mesmerizing tunes that will leave you spellbound.",
     image: "/revealing-soon.jpg",
   },
   {
     day: "Day 2",
     icon: "/day2.png",
-    title: "Dance Night",
+    title: "उदघोष: Heritage Night",
     description:
-      "Dive into a night of electrifying beats and unstoppable energy as the DJ turns up the heat for an unforgettable dance experience!",
+      "Join us for a magical evening with the legendary Anup Jalota as he takes you on a journey through timeless bhajans and soulful melodies. Celebrate the rich cultural heritage of India with his enchanting voice and captivating performance.",
     image: "/revealing-soon.jpg",
   },
   {
     day: "Day 3",
     icon: "/day3.png",
-    title: "Pro Artist Night",
+    title: "अनहद: Band Night",
     description:
-      "This extraordinary event brings together some of the most skilled and celebrated performers from across the artistic spectrum to showcase their mastery and creativity.",
+      "Get ready to rock the night away with the sensational band Sleeping Pills! Known for their electrifying performances and captivating stage presence, Sleeping Pills will take you on a musical journey filled with powerful vocals, dynamic instrumentals, and unforgettable energy. Don't miss this night of pure musical magic!",
+    image: "/revealing-soon.jpg",
+  },
+  {
+    day: "Day 4",
+    icon: "/day4.png",
+    title: "आवृति: Rock Night",
+    description:
+      "Experience the ultimate rock extravaganza with Bee Hive! Known for their high-octane performances and unmatched energy, Bee Hive will set the stage on fire with their electrifying music and captivating presence. Get ready to lose yourself in the rhythm and feel the adrenaline rush like never before!",
+    image: "/revealing-soon.jpg",
+  },
+  {
+    day: "Day 5",
+    icon: "/day5.png",
+    title: "हस्ताक्षर: Pro Night",
+    description:
+      "Get ready for an unforgettable Pro Night with the sensational Meet Bros! Known for their chart-topping hits and electrifying performances, Meet Bros will set the stage ablaze with their high-energy music and captivating charisma. Join us for a night filled with foot-tapping beats, soulful melodies, and an experience that will leave you wanting more!",
     image: "/revealing-soon.jpg",
   },
 ];
