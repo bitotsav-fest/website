@@ -8,7 +8,7 @@ const events = [
     title: "अभिनंदन: Ghazal Night",
     description:
       "Immerse yourself in the soulful melodies of Ghazals as the renowned artist Neeraj Gandhi takes the stage. Experience an evening filled with poetic charm, heartfelt lyrics, and mesmerizing tunes that will leave you spellbound.",
-    image: "/revealing-soon.jpg",
+    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742365490/hqdefault_yy4ius.jpg",
   },
   {
     day: "Day 2",
@@ -16,7 +16,7 @@ const events = [
     title: "उदघोष: Heritage Night",
     description:
       "Join us for a magical evening with the legendary Anup Jalota as he takes you on a journey through timeless bhajans and soulful melodies. Celebrate the rich cultural heritage of India with his enchanting voice and captivating performance.",
-    image: "/revealing-soon.jpg",
+    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742365529/anup_jalota_mj5l7o.jpg",
   },
   {
     day: "Day 3",
@@ -24,7 +24,7 @@ const events = [
     title: "अनहद: Band Night",
     description:
       "Get ready to rock the night away with the sensational band Sleeping Pills! Known for their electrifying performances and captivating stage presence, Sleeping Pills will take you on a musical journey filled with powerful vocals, dynamic instrumentals, and unforgettable energy. Don't miss this night of pure musical magic!",
-    image: "/revealing-soon.jpg",
+    image: "https://instagram.fpat1-2.fna.fbcdn.net/v/t39.30808-6/461294909_18253035913248152_6545239324337500226_n.webp?efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDk1Ny5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=instagram.fpat1-2.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2QEJ304UcYC3p99KA5kessS1oE4qNh1K6hLCWeeqv6Q-odQEaKZCJN7OR1QqfO89LQoOkBAR98qsZSRQ4kyeNNQq&_nc_ohc=h0HJZ9padq4Q7kNvgEAZj6H&_nc_gid=TzZS8x85d9ybFf6BzPf2yw&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzQ2NDkxNzcxMzM5Mzc0Nzk2Mg%3D%3D.3-ccb7-5&oh=00_AYEzXdPHC6WcasVHEAv71tjY1Ohx8788KhOtvT7pQbZhAw&oe=67E04346&_nc_sid=22de04",
   },
   {
     day: "Day 4",
@@ -40,7 +40,7 @@ const events = [
     title: "हस्ताक्षर: Pro Night",
     description:
       "Get ready for an unforgettable Pro Night with the sensational Meet Bros! Known for their chart-topping hits and electrifying performances, Meet Bros will set the stage ablaze with their high-energy music and captivating charisma. Join us for a night filled with foot-tapping beats, soulful melodies, and an experience that will leave you wanting more!",
-    image: "/revealing-soon.jpg",
+    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742366776/hq720_nmqufh.jpg",
   },
 ];
 
