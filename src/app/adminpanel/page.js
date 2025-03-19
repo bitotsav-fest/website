@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { clubEvents, Heads } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 import toast from "react-hot-toast"
 import ExportData from "./components/exportData"
+import axios from "axios"
 
 export default function EventsPage() {
   const { data: session, status } = useSession()
@@ -17,7 +18,35 @@ export default function EventsPage() {
   const [pocNumber, setPocNumber] = useState("")
   const [isdatafetched, setisdatafetched] = useState(false)
   const [responseData, setResponseData] = useState([])
+  const [userUUID, setUserUUID] = useState("")
+  const [teamCode, setTeamCode] = useState("")
+  const [teamData, setTeamData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (userUUID)
+      axios
+        .get(`/api/user/get?uuid=${userUUID}`)
+        .then((res) => {
+          setTeamCode(res.data.teamCode)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    if (teamCode)
+      axios
+        .get(`/api/teams/get?teamCode=${teamCode}`)
+        .then((res) => {
+          // Handle the response data as needed
+          const team = res.data.team
+          setTeamData(team)
+          // console.log(team)
+          // console.log(teamData)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+  }, [userUUID, teamCode])
 
   if (status === "loading") {
     return <div className='text-center text-white'>Checking authentication...</div>
@@ -195,11 +224,29 @@ export default function EventsPage() {
     }
   }
 
-  const displayTeamMembers = (team) => {
-    const teamMembers = team.members || []
-    const memberDetails = teamMembers.map((member, index) => `Member ${index + 1}:\nName: ${member.name}\nContact: ${member.contact}\nRoll No: ${member.rollNumber}`).join("\n\n")
+  const displayTeamMembers = (uuid) => {
+    toast.dismiss() // Dismiss any existing toast before showing a new one
+    setUserUUID(uuid)
+    const teamName = teamData.teamName
+    const teamMembers = teamData?.members?.map((member) => `${member.name} - ${member.rollNumber}, Mob: ${member.mobileNumber}`)
 
-    toast(`Team Members:\n\n${memberDetails || "No members available."}`, { duration: 10000 })
+    toast.custom(
+      (t) => (
+        <div className='bg-[rgba(140,126,102,0.4)] text-white/70 backdrop-blur-md rounded-lg p-4 border border-[rgba(239,202,78,0.2)] max-w-[400px] text-center relative'>
+          <button onClick={() => toast.dismiss(t.id)} className='absolute top-2 right-2 text-white bg-transparent hover:text-yellow-400 transition duration-200'>
+            ✖
+          </button>
+          <p className='text-2xl font-bold text-yellow-400 mb-1'>
+            Team Name:
+            <span className='font-normal text-white ml-1'>{teamName}</span>
+          </p>
+
+          <p className='text-xl font-bold text-yellow-400 my-2'>Team Members:</p>
+          <div className='text-white text-sm space-y-4'>{teamMembers?.length ? teamMembers.map((member, index) => <div key={index}>{member}</div>) : <div>No members available.</div>}</div>
+        </div>
+      ),
+      { duration: Infinity }
+    )
   }
 
   const EventDashboard = ({ responseData }) => {
@@ -233,7 +280,10 @@ export default function EventsPage() {
 
         {/* Teams Registered */}
         <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
-          <h2 className='text-3xl font-bold text-yellow-400 mb-4'>🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
+          <h2 className='text-3xl font-bold text-yellow-400 mb-4'>
+            🏆 Total Registered Teams: <span className='text-white'>{responseData?.teamsRegistered?.length || 0}</span>
+          </h2>
+          <p className='text-white/60 mb-2 text-lg'>Click on a team to view its members.</p>
           <table className='w-full border-collapse border border-[#EFCA4E]/20 text-gray-200'>
             <thead>
               <tr className='p-6 bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20 text-yellow-400'>
@@ -249,7 +299,7 @@ export default function EventsPage() {
                 <tr
                   key={team._id}
                   className='backdrop-blur-sm p-8 border border-[#EFCA4E]/20 mb-8 text-center hover:bg-white/10 transition-colors duration-500 cursor-pointer'
-                  onClick={() => displayTeamMembers(team)}
+                  onClick={() => displayTeamMembers(responseData.eventRegistrarList[index].uuid)}
                 >
                   <td className='px-4 py-2 text-white/70'>{index + 1}</td>
                   <td className='px-4 py-2 font-normal text-yellow-300'>{team.teamName}</td>
@@ -267,7 +317,7 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
+        {/* <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
           <h2 className='text-2xl font-semibold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
           <table className='w-full border-collapse border border-gray-600 text-left text-gray-200'>
             <thead>
@@ -293,7 +343,7 @@ export default function EventsPage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     )
   }
@@ -322,10 +372,13 @@ export default function EventsPage() {
 
         {/* Teams Registered */}
         <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
-          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>🏆 Total Registered Teams: {responseData?.teamsRegistered?.length || 0}</h2>
+          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>
+            🏆 Total Registered Teams: <span className='text-white'>{responseData?.teamsRegistered?.length || 0}</span>
+          </h2>
+          <p className='text-white/60 mb-4 text-lg/3'>Click on a team to view its members.</p>
           <div className='grid gap-6 md:grid-cols-2'>
             {responseData?.teamsRegistered?.map((team, index) => (
-              <div key={team._id} className='bg-white/10 p-6 rounded-lg shadow-md border border-white/20' onClick={() => displayTeamMembers(team)}>
+              <div key={team._id} className='bg-white/10 p-6 rounded-lg shadow-md border border-white/20' onClick={() => displayTeamMembers(responseData.eventRegistrarList[index].uuid)}>
                 <h3 className='text-2xl font-bold text-yellow-400 mb-4'>
                   {index + 1}. {team.teamName}
                 </h3>
@@ -347,7 +400,7 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
+        {/* <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
           <h2 className='text-2xl font-bold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
           <div className='grid gap-6 md:grid-cols-2'>
             {responseData?.eventRegistrarList?.map((registrar, index) => (
@@ -367,7 +420,7 @@ export default function EventsPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }
