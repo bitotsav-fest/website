@@ -78,15 +78,7 @@ export const Eventsday = [
     category: "Formal",
     prize: "300, 250, 200",
     theme: "Fun",
-    description: `Hey BIT Music Buffs!
-
-Think you’ve got what it takes to be the ultimate music maestro? Join us at Bitotsav ’25 for an epic Spotify Wrapped showdown!
-
-We’ll drop song snippets, iconic images, and crafty hints — your job? Guess the song and artist before the other teams do.
-
-Winners score bragging rights and Bitotsav points — because knowing your music should count for something!
-
-So, tune in, turn up, and let the guessing games begin!`,
+    description: `Hey BIT Music Buffs!\nThink you’ve got what it takes to be the ultimate music maestro? Join us at Bitotsav ’25 for an epic Spotify Wrapped showdown!\n\nWe’ll drop song snippets, iconic images, and crafty hints — your job? Guess the song and artist before the other teams do.\nWinners score bragging rights and Bitotsav points — because knowing your music should count for something!\nSo, tune in, turn up, and let the guessing games begin!`,
 
     rules: [
       "TEAM SIZE: 2-3",
