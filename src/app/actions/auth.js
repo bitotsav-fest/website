@@ -12,7 +12,7 @@ export async function getUserUUID() {
 
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
-    select: { uuid: true }
+    select: { uuid: true , verified: true }
   });
 
   if (!user) {
@@ -21,6 +21,28 @@ export async function getUserUUID() {
 
   return user.uuid;
 }
+
+
+export async function getUserVerified() {
+  const session = await auth();
+  
+  if (!session?.user?.email) {
+    throw new Error('Not authenticated');
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    select: { verified: true }
+  });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  return user.verified;
+}
+
+
 
 export async function getUser() {
   const session = await auth();
@@ -37,6 +59,7 @@ export async function getUser() {
       rollNumber: true,//
       email: true, //
       isBITMesraStudent: true, //
+      verified : true, //
     }
   });
 
