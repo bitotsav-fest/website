@@ -3,12 +3,10 @@
 import React, { useEffect, useState } from "react"
 import Model_2 from "./Model_2"
 import { motion } from "framer-motion"
-import { useRouter } from "next/navigation"
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [loadingProgress, setLoadingProgress] = useState(0)
-  const router = useRouter()
 
   useEffect(() => {
     if (isLoading) {
@@ -82,7 +80,7 @@ const Landing = () => {
               transition={{ delay: 2 }} // Delay before showing the button
             >
               <button
-                onClick={() => router.push("/login")}
+                onClick={() => (window.location.href = "/login")}
                 className='px-6 py-2 mt-4 rounded-xl font-medium transition-all duration-300 bg-gradient-to-r from-[#EFCA4E] to-[#2D1E0F] text-white shadow-lg shadow-[#EFCA4E]/20 hover:scale-110 hover:shadow-lg'
               >
                 Login
