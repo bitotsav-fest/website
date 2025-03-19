@@ -32,7 +32,7 @@ const events = [
     title: "आवृति: Rock Night",
     description:
       "Experience the ultimate rock extravaganza with Bee Hive! Known for their high-octane performances and unmatched energy, Bee Hive will set the stage on fire with their electrifying music and captivating presence. Get ready to lose yourself in the rhythm and feel the adrenaline rush like never before!",
-    image: "/revealing-soon.jpg",
+    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742376735/WhatsApp_Image_2025-03-19_at_14.41.18_v8w0om.jpg",
   },
   {
     day: "Day 5",
@@ -92,7 +92,7 @@ const NightEvents = () => {
               <img
                 src={selectedEvent.image}
                 alt={selectedEvent.title}
-                className="w-full h-80 object-cover rounded-lg"
+                className="w-full h-auto object-cover rounded-lg"
               />
             </div>
             <div className="w-full md:w-1/2 flex flex-col justify-center text-start">
