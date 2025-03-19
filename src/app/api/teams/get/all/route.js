@@ -6,8 +6,13 @@ export async function GET() {
   await dbConnect();
 
   try {
-    const teams = await Team.find({}, "teamName leaderName points").lean();
+    // const teams = await Team.find({}, "teamName leaderName points").lean();
+    const teams = await Team.find({}, "teamName leaderName points")
+      .sort({ points: -1 }) // Sort in descending order
+      .lean();
 
+
+    // teamCode nhi dikhana h nhi to join kr skta h koi
     // response format :teams": [
     //   {
     //       "_id": "67d7e9d2105414f16e57f629",
