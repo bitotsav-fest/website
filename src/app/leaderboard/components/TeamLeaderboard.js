@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { Ripple } from '@/components/magicui/ripple';
 import { motion } from "framer-motion";
@@ -6,12 +8,16 @@ export default function TeamLeaderboard() {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [teamsPerPage, setTeamsPerPage] = useState(10); // Default teams per page
 
   useEffect(() => {
     const fetchTeams = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/teams/get/all');
+        // Modified API call to include pagination parameters
+        const response = await fetch(`/api/teams/get/paginated?page=${currentPage}&limit=${teamsPerPage}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch teams');
@@ -19,9 +25,8 @@ export default function TeamLeaderboard() {
         
         const data = await response.json();
 
-        // Sort teams by points in descending order and assign ranks
-        const sortedTeams = data.teams.sort((a, b) => b.points - a.points);
-        setTeams(sortedTeams);
+        setTeams(data.teams);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error('Error fetching teams:', error);
         setError(error.message);
@@ -31,7 +36,18 @@ export default function TeamLeaderboard() {
     };
 
     fetchTeams();
-  }, []);
+  }, [currentPage, teamsPerPage]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
+
+  const handleTeamsPerPageChange = (event) => {
+    setTeamsPerPage(parseInt(event.target.value));
+    setCurrentPage(1); // Reset to first page when changing limit
+  };
 
   if (loading) {
     return (
@@ -65,6 +81,39 @@ export default function TeamLeaderboard() {
     );
   }
 
+  // Compute ranks with ties handling
+  const computeRanksWithTies = () => {
+    // Create a copy of teams array to avoid modifying the original
+    const teamsWithRanks = [...teams];
+    
+    // Sort teams by points in descending order (highest first)
+    teamsWithRanks.sort((a, b) => b.points - a.points);
+    
+    let currentRank = (currentPage - 1) * teamsPerPage + 1;
+    let currentPoints = teamsWithRanks.length > 0 ? teamsWithRanks[0].points : null;
+    let sameRankCount = 0;
+    
+    // Assign ranks to teams
+    teamsWithRanks.forEach((team, index) => {
+      if (index > 0 && team.points < currentPoints) {
+        // Different points than previous team, so rank changes
+        currentRank += sameRankCount + 1;
+        sameRankCount = 0;
+        currentPoints = team.points;
+      } else if (index > 0) {
+        // Same points as previous team
+        sameRankCount++;
+      }
+      
+      // Add rank property to team object
+      team.rank = currentRank;
+    });
+    
+    return teamsWithRanks;
+  };
+  
+  const teamsWithRanks = computeRanksWithTies();
+
   return (
     <div className='bg-[#1A0B2E]/30 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/10 shadow-xl'>
       <div className="flex flex-col items-center justify-center mb-6">
@@ -77,8 +126,28 @@ export default function TeamLeaderboard() {
           Rankings based on team points
         </p>
       </div>
+
+      {/* Teams per page selector */}
+      <div className="flex justify-end mb-4">
+        <div className="flex items-center space-x-2">
+          <label htmlFor="teamsPerPage" className="text-[#F6F1E2]/70 text-sm">
+            Teams per page:
+          </label>
+          <select
+            id="teamsPerPage"
+            value={teamsPerPage}
+            onChange={handleTeamsPerPageChange}
+            className="bg-[#1A0B2E] border border-[#EFCA4E]/20 text-[#F6F1E2] rounded-md px-2 py-1 text-sm focus:outline-none focus:border-[#EFCA4E]/50"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+      </div>
       
-      <div className="backdrop-blur-sm p-6 rounded-2xl border border-[#EFCA4E]/10 mb-8 bg-[#0A0118]/50 overflow-x-auto">
+      <div className="backdrop-blur-sm p-6 rounded-2xl border border-[#EFCA4E]/10 mb-4 bg-[#0A0118]/50 overflow-x-auto">
         <table className="w-full border-collapse text-[#F6F1E2]/90">
           <thead>
             <tr className='p-6 bg-gradient-to-br from-[#2D1E0F]/50 to-[#1A0B2E]/50 border-b border-[#EFCA4E]/10 text-[#EFCA4E]'>
@@ -89,8 +158,8 @@ export default function TeamLeaderboard() {
             </tr>
           </thead>
           <tbody>
-            {teams.map((team, index) => {
-              const rank = index + 1;
+            {teamsWithRanks.map((team) => {
+              const rank = team.rank;
               const rankColors = {
                 1: 'bg-[#EFCA4E]/40 border-[#EFCA4E]/60 text-[#EFCA4E]',
                 2: 'bg-[#C0C0C0]/30 border-[#C0C0C0]/50 text-[#C0C0C0]',
@@ -129,6 +198,59 @@ export default function TeamLeaderboard() {
             })}
           </tbody>
         </table>
+      </div>
+
+      {/* Pagination controls */}
+      <div className="flex items-center justify-between">
+        <div className="text-[#F6F1E2]/60 text-sm">
+          Page {currentPage} of {totalPages}
+        </div>
+        <div className="flex space-x-2">
+          <button
+            onClick={() => handlePageChange(1)}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 rounded-md text-[#F6F1E2] text-sm border ${
+              currentPage === 1
+                ? 'border-[#EFCA4E]/10 bg-[#1A0B2E]/30 cursor-not-allowed opacity-50'
+                : 'border-[#EFCA4E]/30 bg-[#1A0B2E]/70 hover:bg-[#2D1E0F]/50 hover:border-[#EFCA4E]/50'
+            } transition-colors`}
+          >
+            First
+          </button>
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 rounded-md text-[#F6F1E2] text-sm border ${
+              currentPage === 1
+                ? 'border-[#EFCA4E]/10 bg-[#1A0B2E]/30 cursor-not-allowed opacity-50'
+                : 'border-[#EFCA4E]/30 bg-[#1A0B2E]/70 hover:bg-[#2D1E0F]/50 hover:border-[#EFCA4E]/50'
+            } transition-colors`}
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 rounded-md text-[#F6F1E2] text-sm border ${
+              currentPage === totalPages
+                ? 'border-[#EFCA4E]/10 bg-[#1A0B2E]/30 cursor-not-allowed opacity-50'
+                : 'border-[#EFCA4E]/30 bg-[#1A0B2E]/70 hover:bg-[#2D1E0F]/50 hover:border-[#EFCA4E]/50'
+            } transition-colors`}
+          >
+            Next
+          </button>
+          <button
+            onClick={() => handlePageChange(totalPages)}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 rounded-md text-[#F6F1E2] text-sm border ${
+              currentPage === totalPages
+                ? 'border-[#EFCA4E]/10 bg-[#1A0B2E]/30 cursor-not-allowed opacity-50'
+                : 'border-[#EFCA4E]/30 bg-[#1A0B2E]/70 hover:bg-[#2D1E0F]/50 hover:border-[#EFCA4E]/50'
+            } transition-colors`}
+          >
+            Last
+          </button>
+        </div>
       </div>
     </div>
   );
