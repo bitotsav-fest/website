@@ -1130,7 +1130,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     ],
 
     contact: ["Latisha Tiga: 9931653674", "Nishu Kumari: 6299303104"],
-    venue: "OAT",
+    venue: "216",
     time: "12PM - 3PM",
     day: 3,
   },
