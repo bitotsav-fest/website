@@ -203,7 +203,7 @@ export default function ScannerPage() {
                                 <span className="text-gray-400">Status</span>
                                 <div className="flex items-center gap-2">
                                   {userData[DAY_FIELD_MAP[VERIFY_DAY]] ? (
-                                    <span className="text-orange-400 font-medium">Already Used</span>
+                                    <span className="text-emerald-800 font-medium">✅ Already Used (valid)</span>
                                   ) : (
                                     <span className="text-emerald-400 font-medium flex items-center gap-2">
                                       Valid
