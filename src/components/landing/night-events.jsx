@@ -15,8 +15,8 @@ const events = [
     icon: "/day2.png",
     title: "उदघोष: Heritage Night",
     description:
-      "Join us for a magical evening with the legendary Anup Jalota as he takes you on a journey through timeless bhajans and soulful melodies. Celebrate the rich cultural heritage of India with his enchanting voice and captivating performance.",
-    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742365529/anup_jalota_mj5l7o.jpg",
+      "Join us for a magical evening with the legendary Shalini Dubey and Diljeet Lal as they takes you on a journey through timeless bhajans and soulful melodies. Celebrate the rich cultural heritage of India with their enchanting voices and captivating performance.",
+    image: "https://res.cloudinary.com/dntt0tha9/image/upload/v1742455616/shalini_cih03v.jpg",
   },
   {
     day: "Day 3",
