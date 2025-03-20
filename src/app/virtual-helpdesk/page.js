@@ -13,6 +13,7 @@ export default function VirtualHelpdesk() {
         { name: "Shaswat Raj", role: "Tech Team", phone: "+91 9508846600" },
         { name: "Abhinav Kumar Choudhary", role: "Tech Team", phone: "+91 9939110848" },
         { name: "Mrityunjay Raj", role: "Tech Team", phone: "+91 9304584358" },
+        { name: "Saahit Kamu", role: "Tech Team", phone: "+91 7075661642" },
       ],
     },
   ]

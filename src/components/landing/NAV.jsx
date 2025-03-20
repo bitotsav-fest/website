@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn, UserPen } from "lucide-react"
+import { Calendar, Ticket, Info, Music, Images, Menu, Handshake, SquareUser, Shirt, UsersRound, LogIn, UserPen, ChartNoAxesColumn } from "lucide-react"
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useMediaQuery } from "react-responsive"
@@ -40,16 +40,16 @@ const items = [
     icon: UsersRound,
   },
   {
+    name: "Leaderboard",
+    url: "/leaderboard",
+    href: "/leaderboard",
+    icon: ChartNoAxesColumn,
+  },
+  {
     name: "Developers",
     url: "/developers",
     href: "/developers",
     icon: SquareUser,
-  },
-  {
-    name: "Sponsors",
-    url: "/sponsors",
-    href: "/sponsors",
-    icon: Handshake,
   },
   {
     name: "About",
@@ -68,6 +68,12 @@ const items = [
     url: "/gallery",
     href: "/gallery",
     icon: Images,
+  },
+  {
+    name: "Sponsors",
+    url: "/sponsors",
+    href: "/sponsors",
+    icon: Handshake,
   },
 ]
 

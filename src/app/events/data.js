@@ -1,8 +1,7 @@
 export const Eventsday = [
   {
     id: 1,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xuboh1vsbyvd79z74lby",
     name: "DANCE SAGA",
     club: "Dance club",
     category: "Flagship",
@@ -34,8 +33,7 @@ export const Eventsday = [
   },
   {
     id: 2,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fjkcgwtoqgztwdhfwyud",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fjkcgwtoqgztwdhfwyud",
     name: "FOOTLOOSE",
     club: "Dance club",
     category: "Formal",
@@ -71,8 +69,7 @@ export const Eventsday = [
   },
   {
     id: 3,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vmtiuz4bubcbnfzdcjep",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vmtiuz4bubcbnfzdcjep",
     name: "KBC: KOUN BANEGA COLLECTOR",
     club: "NAPS",
     category: "Informal",
@@ -107,8 +104,7 @@ export const Eventsday = [
   },
   {
     id: 4,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hib2bjvgnzpdj9k7pf64",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hib2bjvgnzpdj9k7pf64",
     name: "BEYOND THE SCREEN",
     club: "NAPS",
     category: "Formal",
@@ -144,8 +140,7 @@ export const Eventsday = [
   },
   {
     id: 5,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fwfvrbayznj9i1dlpzt5",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fwfvrbayznj9i1dlpzt5",
     name: "Race Rumble",
     club: "SAC",
     category: "Informal",
@@ -169,8 +164,7 @@ export const Eventsday = [
   },
   {
     id: 6,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/nsl7a5yxisoauswjitfb",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/nsl7a5yxisoauswjitfb",
     name: "ELECTRONICS BINGO",
     club: "ECESoc",
     category: "Informal",
@@ -186,8 +180,7 @@ export const Eventsday = [
   },
   {
     id: 7,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rtvbmn1tojd1ueh19qtx",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rtvbmn1tojd1ueh19qtx",
     name: "HIT OR MISS",
     club: "Events Team",
     category: "Formal",
@@ -214,8 +207,7 @@ export const Eventsday = [
   },
   {
     id: 8,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bcgwwsvdjaanvv4adn4k",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bcgwwsvdjaanvv4adn4k",
     name: "HERA PHERI PHIR SE",
     club: "BIOTS",
     category: "Formal",
@@ -241,8 +233,7 @@ export const Eventsday = [
   },
   {
     id: 9,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/yuedhcrptlur9r3czine",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/yuedhcrptlur9r3czine",
     name: "FLIGHT SIMULATION",
     club: "AeroSoc",
     category: "Formal",
@@ -250,7 +241,14 @@ export const Eventsday = [
     theme: "Technical",
     description:
       "1. In this event, participants get the opportunity to step into a flight simulator, where they can try piloting an aircraft.\n2. They can simulate takeoff, navigation, and landing, giving them a taste of what it's like to fly a plane.",
-
+    rules: [
+      "Competition Structure",
+      "Take off Phase: Aircraft must take off smoothly, maintaining the centreline. Points are deducted for veering off the runway or excessive climb rate.",
+      "Navigation Course: Participants must follow a predefined route with waypoints. Missing a waypoint adds a time penalty. Obstacles (e.g., flying between buildings or mountains) can add difficulty.",
+      "Precision Landing: Land within the designated touchdown zone. Points will be deducted for hard landings, veering off the runway, or unstable approaches.",
+      "Scoring System (Out of 100 points) :\nTotal Time (50 points) – Shortest time wins, but penalties apply for missed waypoints orunstable flight.\nTake off Execution (10 points) – Smoothness, alignment, and climb rate.\nWaypoint Accuracy (20 points) – Staying on course and flying at the correct altitude.\nLanding Precision (20 points) – Touchdown smoothness, accuracy, and correct approach speed.",
+      "Penalties: +5 sec for missing a waypoint, +10 sec for a rough landing and Disqualification for a crash or going off-course",
+    ],
     contact: ["Prakriti Kumari: 9142714804"],
     venue: "231 & 237",
     time: "12PM - 3PM",
@@ -258,8 +256,7 @@ export const Eventsday = [
   },
   {
     id: 10,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ce5ngwinihkindjpsvyj",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ce5ngwinihkindjpsvyj",
     name: "BUSINESS CRISIS SIMULATION",
     club: "180DC",
     category: "Informal",
@@ -283,8 +280,7 @@ export const Eventsday = [
   },
   {
     id: 11,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/lbiy33bbnkzq8j18awkh",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/lbiy33bbnkzq8j18awkh",
     name: "TIME TRAVELLER CONSULTANT",
     club: "180DC",
     category: "Formal",
@@ -308,8 +304,7 @@ export const Eventsday = [
   },
   {
     id: 12,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wqgyaogj5dn5vxxrckzj",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wqgyaogj5dn5vxxrckzj",
     name: "BYTEHUNT",
     club: "EEESoc",
     category: "Informal",
@@ -335,8 +330,7 @@ export const Eventsday = [
   },
   {
     id: 13,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v805vpqgl3dmb1jm1eid",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v805vpqgl3dmb1jm1eid",
     name: "WHERE IN BIT?",
     club: "IEEE",
     category: "Informal",
@@ -357,8 +351,7 @@ export const Eventsday = [
   },
   {
     id: 14,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hcwb3kg8zuf2ajfzpc83",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hcwb3kg8zuf2ajfzpc83",
     name: "PITSTOP PURSUIT",
     club: "Srijan",
     category: "Informal",
@@ -393,8 +386,7 @@ export const Eventsday = [
   },
   {
     id: 15,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qnxpfnfasbotuf4pzp9y",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qnxpfnfasbotuf4pzp9y",
     name: "MISMATCHED",
     club: "Leo",
     category: "Formal",
@@ -427,8 +419,7 @@ export const Eventsday = [
   },
   {
     id: 16,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/sm62ckotsf0qkr2hhwe3",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/sm62ckotsf0qkr2hhwe3",
     name: "TAKESHI'S CASTLE",
     club: "Leo",
     category: "Formal",
@@ -460,8 +451,7 @@ export const Eventsday = [
   },
   {
     id: 17,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji1ge5tofdnimeogqv3o",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji1ge5tofdnimeogqv3o",
     name: "Hand 'N' Brain",
     club: "IETE",
     category: "Formal",
@@ -487,19 +477,15 @@ export const Eventsday = [
   },
   {
     id: 18,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/i96hlihvmj63rv8lvcek",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/i96hlihvmj63rv8lvcek",
     name: "BRIDGE THE GAP",
     club: "CES",
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description:
-      "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
+    description: "Create a bridge using paper, sticks, and adhesive/tying materials. The strength of the bridge will determine the outcome of the judgement.",
 
-    rules: [
-      "This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold.",
-    ],
+    rules: ["This will be a team event. Prelims based on aptitude and structural accuracy. The final structure will be judged on the amount of weight the bridge can hold."],
 
     contact: ["Soamya Parashar: 9771753905", "Anand Kumar: 9905590361"],
     venue: "209 & 205",
@@ -508,15 +494,13 @@ export const Eventsday = [
   },
   {
     id: 19,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j6stb3x4e76wi006xoqk",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j6stb3x4e76wi006xoqk",
     name: "PLANE CRASH",
     club: "CES",
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
-    description:
-      "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
+    description: "Create a Plane using paper, sticks, and adhesive/tying materials. The flight distance of the plane will determine the outcome of the judgement.",
 
     rules: [
       "This will be a team event of 2 members in each team. Prelims will be based on aptitude and basic aeronautics. The final model will be judged based on the maximum length of distance covered in three attempts of flight. The final model of the plane should not diverge more than 5 meters from the track otherwise it’d be considered as an invalid attempt.",
@@ -529,8 +513,7 @@ export const Eventsday = [
   },
   {
     id: 20,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ozev4apwjqwbazw9svt7",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ozev4apwjqwbazw9svt7",
     name: "FOUNDER'S FACEOFF",
     club: "EDC",
     category: "Formal",
@@ -557,8 +540,7 @@ export const Eventsday = [
   },
   {
     id: 21,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qtrzvtxtlx1buvthfp8r",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qtrzvtxtlx1buvthfp8r",
     name: "NATSAMRAT",
     club: "Ehsaas",
     category: "Formal",
@@ -584,8 +566,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 22,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bynycfdorhcbhkcwc1q8",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/bynycfdorhcbhkcwc1q8",
     name: "ELECTROPOLY",
     club: "ECESoc",
     category: "Informal",
@@ -593,9 +574,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     theme: "Strategy & Gaming",
     description:
       "Phase 1: Quick-Fire Business game (Earn Components)\nBasically a monopoly in terms of electronics such as like, jail can be termed as power cut and so and so. Player aims to buy out the components required for completing their circuit in phase 2.\n\nPhase 2: Circuit Race (Build & Troubleshoot)\nTeams race to complete a working circuit using the components they earned.\nThe host may introduce random “power cuts” or faulty components to make it challenging!\nThe first team to successfully complete their circuit wins the round.\n\nWINNING CRITERIA\nThe team that completes their circuit first wins!\nBonus points for creativity (if they modify or improve the circuit).",
-    rules: [
-      "Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board.",
-    ],
+    rules: ["Players: (divided into 1-2 member in a teams). Each team gets a station with a mini board."],
     contact: ["Ishaan: 6202998647", "Pratham: 7207105737"],
     venue: "206 & 207",
     time: "9AM - 12PM",
@@ -603,8 +582,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 23,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/w1apvs0vs7tizk0pxsip",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/w1apvs0vs7tizk0pxsip",
     name: "KKK: KRAZY KAREN KUIZ",
     club: "UNESQUO",
     category: "Informal",
@@ -627,8 +605,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 24,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/r7m7ner9u91didajkvib",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/r7m7ner9u91didajkvib",
     name: "SPOTIFY WRAPPED",
     club: "SDS",
     category: "Formal",
@@ -651,8 +628,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 25,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/pou1wzobxn2skikbge1j",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/pou1wzobxn2skikbge1j",
     name: "ENGINEERS ROAST BATTLE",
     club: "IICHE",
     category: "Informal",
@@ -677,8 +653,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 26,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fiugbkfrbsrlog4hxrkr",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/fiugbkfrbsrlog4hxrkr",
     name: "BIT ROADIES",
     club: "Rotaract",
     category: "Formal",
@@ -701,8 +676,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 27,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vawr84zjfxudcgzyjp6s",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vawr84zjfxudcgzyjp6s",
     name: "CAMPUS CAPITALIST",
     club: "Finance",
     category: "Formal",
@@ -724,8 +698,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 28,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/gw1flclyizjokgg561qi",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/gw1flclyizjokgg561qi",
     name: "QUILL QUEST",
     club: "LITSoc",
     category: "Formal",
@@ -748,8 +721,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 29,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rxpcqgnuj6i3wngdau6c",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/rxpcqgnuj6i3wngdau6c",
     name: "KALAM-E-TAHIR",
     club: "LITSoc",
     category: "Formal",
@@ -773,8 +745,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 30,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wesjjd0wpfmzsxtqkaei",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wesjjd0wpfmzsxtqkaei",
     name: "VALOMANIA",
     club: "SAC",
     category: "Informal",
@@ -798,8 +769,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 31,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vrew5mn7dnhnj2gcugnk",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vrew5mn7dnhnj2gcugnk",
     name: "JUMANJI 3.O",
     club: "EPAC",
     category: "Informal",
@@ -849,28 +819,27 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "- In case of a tie, the fastest single build-and-smash round will determine the winner.",
     ],
 
-    contact: [
-      "Md Raja Istekhar: +91 6204185245",
-      "Naman Khatwani: +91 7880036191",
-    ],
+    contact: ["Md Raja Istekhar: +91 6204185245", "Naman Khatwani: +91 7880036191"],
     venue: "216 & 217",
     time: "12PM - 3PM",
     day: 2,
   },
   {
     id: 32,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y7yfuam0jzbxa4xxbduc",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y7yfuam0jzbxa4xxbduc",
     name: "SKYFALL SCRAMBLE",
     club: "AeroSoc",
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Technical",
     description:
-      "(Egg on Parachute): In this event, participants will drop an egg with a parachute. The goal is to ensure the egg survives the fall, testing both the effectiveness of the parachute and the participants' ability to design a safe landing system.",
-
-    rules: ["Time Duration: 3 hours."],
-
+      "Skyfall Scramble: In this event, participants will drop a water ballon with a parachute. The goal is to ensure the water ballon survives the fall, testing both the effectiveness of the parachute and the participants' ability to design a safe landing system.",
+    rules: [
+      "Time Duration: 3 hours.",
+      "Participants can use basic household items like plastic bags, string, tape, and cups to create the parachute and water balloon cradle.",
+      "Participants must stick to the items provided by the team forconstruction of the parachute and its corresponding balloon mount,use of other items will lead to disqualification.",
+      "The parachute with the ballon shall ne tested from different heights,the one surviving all drop tests shall be used as the judging criteria.",
+    ],
     contact: ["Prakriti Kumari: 9142714804"],
     venue: "OAT",
     time: "12PM - 3PM",
@@ -878,8 +847,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 33,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y95jalqke7pb6dny9ltn",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/y95jalqke7pb6dny9ltn",
     name: "JUKEBOX",
     club: "Dhwani",
     category: "Formal",
@@ -903,8 +871,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 34,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ftenk99ovl1zfhyjqtti",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ftenk99ovl1zfhyjqtti",
     name: "EN CHESSANT",
     club: "IEI Civil",
     category: "Formal",
@@ -928,8 +895,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 35,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/d5uw266wxp2gpf6rhakr",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/d5uw266wxp2gpf6rhakr",
     name: "THE TALLEST",
     club: "IEI Civil",
     category: "Informal",
@@ -956,8 +922,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 36,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/jhlctfi6pehjwvvrrg67",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/jhlctfi6pehjwvvrrg67",
     name: "BAZINGAA!",
     club: "Events Team",
     category: "Informal",
@@ -966,10 +931,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "Round 1:\nDialogues, music, or speeches will be played, and participants have to guess the person, event, movie, or music.\n\nRound 2:\nPairs compete in a game of 'Higher or Lower.' Participants view pairs of celebrities, monuments, or animals and guess which one meets the given criteria, like more followers or Google searches. Top teams with the most correct guesses advance.\n\nRound 3:\nDumb Charades - Participants will be given words related to an event. One member of the team must act out the words within five minutes while teammates connect the words to guess the historical event. Only 3-4 teams will participate in this round to avoid chaos.",
 
-    rules: [
-      "Each team must consist of 4 members.",
-      "Answers should not be called out loud.",
-    ],
+    rules: ["Each team must consist of 4 members.", "Answers should not be called out loud."],
 
     contact: ["Tanisha: 7064426300"],
     venue: "LH-1",
@@ -978,8 +940,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 37,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/n7qvvicec2wd4kcboq2b",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/n7qvvicec2wd4kcboq2b",
     name: "SpeedForces",
     club: "IET",
     category: "Formal",
@@ -1001,8 +962,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 38,
-    imgURL:
-      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742312167/uxepbn6mw3xsk8stwo9g.png",
+    imgURL: "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742312167/uxepbn6mw3xsk8stwo9g.png",
     name: "BIT GOT TALENT",
     club: "Events Team",
     category: "Flagship",
@@ -1025,8 +985,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 39,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji8pbieeakb0wsm4cjuq",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ji8pbieeakb0wsm4cjuq",
     name: "INDUSTRIAL MAYHEM",
     club: "SIME",
     category: "Formal",
@@ -1035,11 +994,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     description:
       "The competition contains 2 rounds.\n\nRound 1: Nearly 50 teams can apply.\n- Participants have to give a quiz consisting of 10 questions related to:\n  • Marketing\n  • Industrial Management\n  • Business Ideas\n- Note: The top 20 teams will qualify for Round 2.\n\nRound 2: Judges will question participants on industrial-related issues, such as:\n- Loss of revenue over the last two months for FMCG industries.\n- Expansion of South India-based clothing brands into North India.\n- Case studies related to various industries (FMCG, Iron & Steel, etc.).\n- Answers must contain all specific details.",
 
-    rules: [
-      "Each team must have 4 members.",
-      "Participants are not allowed to engage in any unfair practices.",
-      "No external help will be provided by anyone.",
-    ],
+    rules: ["Each team must have 4 members.", "Participants are not allowed to engage in any unfair practices.", "No external help will be provided by anyone."],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
     venue: "206 & 207",
@@ -1048,8 +1003,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 40,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ltvaopbfbcp00lzpd0yu",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/ltvaopbfbcp00lzpd0yu",
     name: "SHARK TANK 2.O",
     club: "SIME",
     category: "Formal",
@@ -1066,13 +1020,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
       "Q&A Compliance: Teams must answer all questions from the judges within the given time frame.",
     ],
 
-    judgement_criteria: [
-      "Innovation & Feasibility",
-      "Market Potential",
-      "Business & Revenue Model",
-      "Scalability",
-      "Pitching & Persuasion",
-    ],
+    judgement_criteria: ["Innovation & Feasibility", "Market Potential", "Business & Revenue Model", "Scalability", "Pitching & Persuasion"],
 
     contact: ["Tanisha Samal: +91 7064426300", "Sagar Rangi: +91 8950729214"],
     venue: "LH-1",
@@ -1081,15 +1029,13 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 41,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j3f1teeoutwp4pxccuxg",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/j3f1teeoutwp4pxccuxg",
     name: "LOST IN TRANSLATION",
     club: "SPICMACAY",
     category: "Informal",
     prize: "180, 150, 120",
     theme: "Fun",
-    description:
-      "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
+    description: "A unique two-round competition that tests participants' knowledge of pop culture and their ability to perform movie scenes entirely in Hindi.",
 
     rules: [
       "Round 1: Google Translate Lyrics\n",
@@ -1111,15 +1057,13 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 42,
-    imgURL:
-      "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742369284/m4tytnfjeqrhdbz4pahl.png",
+    imgURL: "https://res.cloudinary.com/djs2cpfmg/image/upload/v1742369284/m4tytnfjeqrhdbz4pahl.png",
     name: "FOLK & FLAIR",
     club: "SPICMACAY",
     category: "Formal",
     prize: "300, 250, 200",
     theme: "Fine Arts",
-    description:
-      "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
+    description: "A costume design competition celebrating India's diverse cultural heritage. Participants must design and present outfits inspired by different Indian states and folk traditions.",
 
     rules: [
       "Participants can compete individually or in teams (max. 3 members).",
@@ -1136,8 +1080,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 43,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qf1vclbqw4ysbc30m2vc",
     name: "MR. AND MS. BITOTSAV",
     club: "Rotaract",
     category: "Flagship",
@@ -1176,8 +1119,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 44,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/oglkgvt9poiar2gpko7x",
     name: "BATTLE OF BANDS",
     club: "Dhwani",
     category: "Flagship",
@@ -1201,8 +1143,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 45,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vcqoqmpeutdcssptd6w4",
     name: "ABHINAY",
     club: "Ehsaas",
     category: "Flagship",
@@ -1228,8 +1169,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 46,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/v9xf6dug1jwo1mgffkpa",
     name: "SQUID GAMES",
     club: "Events Team",
     category: "Flagship",
@@ -1260,8 +1200,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 47,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vzgrxch5y4ktf9asmbbh",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/vzgrxch5y4ktf9asmbbh",
     name: "THE LOL CHALLENGE",
     club: "BIOTS",
     category: "Informal",
@@ -1285,8 +1224,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 48,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/kpujfsu0fsksfomp124p",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/kpujfsu0fsksfomp124p",
     name: "Admakers Showdown",
     club: "PSOC",
     category: "Formal",
@@ -1308,8 +1246,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 49,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/eeoabh3httt1vzxysqxn",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/eeoabh3httt1vzxysqxn",
     name: "MATCH THE CUT",
     club: "PSOC",
     category: "Formal",
@@ -1337,8 +1274,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 50,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xxizpiwwzve8eyjkhbfe",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xxizpiwwzve8eyjkhbfe",
     name: "SURVIVAL SPRINT",
     club: "Aveon",
     category: "Formal",
@@ -1362,8 +1298,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 51,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/l4ifcdqbrrlfscga16mv",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/l4ifcdqbrrlfscga16mv",
     name: "BITOTSAV QUIZ",
     club: "UNESQUO",
     category: "Formal",
@@ -1386,8 +1321,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 52,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qq5zdvjs4muekbadtoea",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/qq5zdvjs4muekbadtoea",
     name: "A-MAZE-&-MARBLE",
     club: "Robolution",
     category: "Informal",
@@ -1409,8 +1343,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 53,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wllndh4pbp6kitsvkqyj",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/wllndh4pbp6kitsvkqyj",
     name: "PANACHE",
     club: "FAS",
     category: "Formal",
@@ -1438,8 +1371,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 54,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hk8av1jsokgdnmnvgrnp",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/hk8av1jsokgdnmnvgrnp",
     name: "BREWED CREATIVITY",
     club: "FAS",
     category: "Formal",
@@ -1465,8 +1397,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 55,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/xe6sbku8hc9htpzvfrlr",
     name: "TALKIES - SHORT MOVIE",
     club: "Events Team",
     category: "Flagship",
@@ -1496,8 +1427,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
   },
   {
     id: 56,
-    imgURL:
-      "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/komjjlbwvohy6ncteqgh",
+    imgURL: "https://res.cloudinary.com/dt7sq6bi5/image/upload/f_auto,q_auto/v1/Bitotsav%20-%20events/komjjlbwvohy6ncteqgh",
     name: "CodeJoust",
     club: "IET",
     category: "Informal",
@@ -1528,11 +1458,7 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     theme: "Technical",
     description:
       "Welcome to the realm of coding adventure with Fool’s Gold Quest—where logic meets lunacy! Inspired by the legendary April Fools' contests of Codeforces, this challenge invites coders of all levels to embark on a journey filled with thrilling challenges, mind-bending puzzles, and just the right amount of chaos. Prepare to question everything you know about coding as you chase the ever-elusive Fool’s Gold. Sharpen your wits, embrace the absurdity, and dive into a quest where the only certainty is uncertainty.",
-    contact: [
-      "Hritabhash: 8837261279",
-      "Shouryaman: 9523626949",
-      "Varun Gupta: 87558 94909",
-    ],
+    contact: ["Hritabhash: 8837261279", "Shouryaman: 9523626949", "Varun Gupta: 87558 94909"],
     venue: "231",
     time: "9AM - 12PM",
     day: 1,
@@ -1552,14 +1478,13 @@ Prepare to be spellbound by the sheer brilliance, intensity, and passion of thes
     time: "12PM - 3PM",
     day: 3,
   },
-];
+]
 
 export const Eventsnight = [
   {
     id: 200,
     name: "Heritage Night",
-    description:
-      "Experience the rich cultural heritage with traditional performances.",
+    description: "Experience the rich cultural heritage with traditional performances.",
     photo: "/revealing-soon.jpg",
   },
   {
@@ -1571,18 +1496,16 @@ export const Eventsnight = [
   {
     id: 202,
     name: "Dance Night",
-    description:
-      "Get ready for an energetic night of thrilling dance performances.",
+    description: "Get ready for an energetic night of thrilling dance performances.",
     photo: "/revealing-soon.jpg",
   },
   {
     id: 203,
     name: "Pro Artist Night",
-    description:
-      "An unforgettable evening with renowned artists and performances.",
+    description: "An unforgettable evening with renowned artists and performances.",
     photo: "/revealing-soon.jpg",
   },
-];
+]
 
 export const clubs = [
   "IEEE", //
@@ -1618,4 +1541,4 @@ export const clubs = [
   "EEESoc", //
   "Events Team",
   "ACM",
-];
+]

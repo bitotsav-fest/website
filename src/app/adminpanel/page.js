@@ -317,8 +317,10 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        {/* <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
-          <h2 className='text-2xl font-semibold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
+        <div className='backdrop-blur-sm p-8 rounded-2xl border border-[#EFCA4E]/20 mb-8 text-center bg-black/30'>
+          <h2 className='text-2xl font-semibold text-yellow-400 mb-4'>
+            📋 Event Registering Participants: <span className='text-white'>{responseData?.eventRegistrarList?.length || 0}</span>
+          </h2>
           <table className='w-full border-collapse border border-gray-600 text-left text-gray-200'>
             <thead>
               <tr className='p-6 bg-gradient-to-br from-[#EFCA4E]/10 to-transparent border border-[#EFCA4E]/20 text-yellow-400 text-center'>
@@ -343,7 +345,7 @@ export default function EventsPage() {
               ))}
             </tbody>
           </table>
-        </div> */}
+        </div>
       </div>
     )
   }
@@ -400,8 +402,10 @@ export default function EventsPage() {
         </div>
 
         {/* Event Registrars */}
-        {/* <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
-          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>📋 Event Registering Participants: {responseData?.eventRegistrarList?.length || 0}</h2>
+        <div className='bg-white/10 border border-[#EFCA4E]/20 rounded-lg p-6 text-center mb-8'>
+          <h2 className='text-2xl font-bold text-yellow-400 mb-4'>
+            📋 Event Registering Participants: <span className='text-white'>{responseData?.eventRegistrarList?.length || 0}</span>
+          </h2>
           <div className='grid gap-6 md:grid-cols-2'>
             {responseData?.eventRegistrarList?.map((registrar, index) => (
               <div key={registrar._id} className='bg-white/10 p-6 rounded-lg shadow-md border border-white/20'>
@@ -420,7 +424,7 @@ export default function EventsPage() {
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
       </div>
     )
   }
