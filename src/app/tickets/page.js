@@ -1,41 +1,73 @@
 "use client"
-import React from "react"
+import React, { use, useRef } from "react"
+import { useState, useEffect } from "react"
 import { RainbowButton } from "@/components/ui/rainbow-button"
 import { motion } from "framer-motion"
 import { Sparkles, Calendar, Star, Gift, Music } from "lucide-react"
 import { redirect } from "next/navigation"
-import Link from "next/link"
+import { useSession } from "next-auth/react"
+import { QRCodeSVG } from "qrcode.react"
+import { getUser } from "@/app/dashboard/actions/getUser"
+import Image from "next/image"
+import Night0 from "./Night_tickets/day0.jpg"
+import Night1 from "./Night_tickets/day1.jpg"
+import Night2 from "./Night_tickets/day2.jpg"
+import Night3 from "./Night_tickets/day3.jpg"
+import { toPng } from "html-to-image"
 
 export default function TicketPage() {
+  const { data: session } = useSession()
+  const [userData, setUserData] = useState(null)
+  const [ticketId, setTicketId] = useState(null)
+  const ticketRef = useRef(null)
+
   const handleGetPass = async () => {
     redirect("/login")
   }
 
-  const [timeLeft, setTimeLeft] = React.useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
+  useEffect(() => {
+    if (session) {
+      const fetchUserData = async () => {
+        const data = await getUser(session.user.email)
+        setUserData(data)
+      }
 
-  React.useEffect(() => {
-    const calculateTimeLeft = () => {
-      const artistRevealDate = new Date("2025-03-15") // Example date for artist reveal
-      const difference = artistRevealDate - new Date()
+      fetchUserData()
+    }
+  }, [session])
 
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        })
+  useEffect(() => {
+    if (userData && userData.uuid) {
+      const encodedTicketId = btoa(userData.uuid)
+      setTicketId(encodedTicketId)
+    }
+  }, [userData])
+
+  const handleDownloadTicket = async (index) => {
+    if (ticketRef.current && ticketRef.current[index]) {
+      const ticketElement = ticketRef.current[index]
+      try {
+        // Hide the download button
+        const downloadButton = ticketElement.querySelector("button")
+        if (downloadButton) {
+          downloadButton.style.display = "none"
+        }
+
+        const dataUrl = await toPng(ticketElement, { cacheBust: true })
+        const link = document.createElement("a")
+        link.download = `ticket_${index + 1}.png`
+        link.href = dataUrl
+        link.click()
+
+        // Show the download button again
+        if (downloadButton) {
+          downloadButton.style.display = "block"
+        }
+      } catch (error) {
+        console.error("Failed to download ticket:", error)
       }
     }
-
-    const timer = setInterval(calculateTimeLeft, 1000)
-    return () => clearInterval(timer)
-  }, [])
+  }
 
   return (
     <div className='min-h-screen relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#2D1E0F] to-[#1A0B2E] text-[#F6F1E2]'>
@@ -55,7 +87,6 @@ export default function TicketPage() {
           <p className='text-2xl text-gray-400 max-w-2xl mx-auto'>Where Technology Meets Culture</p>
         </motion.div>
 
-        {/* Premium Ticket Card */}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className='relative max-w-4xl mx-auto mb-24'>
           <div className='absolute inset-0 bg-gradient-to-r from-[#EFCA4E]/30 via-[#F6F1E2]/30 to-[#EFCA4E]/30 rounded-[2rem] blur-xl transform rotate-1'></div>
           <div className='relative backdrop-blur-xl bg-black/40 border border-white/10 rounded-[2rem] p-8 md:p-12 overflow-hidden'>
@@ -92,7 +123,6 @@ export default function TicketPage() {
                     <div className='text-sm text-[#EFCA4E] mb-2'>Outside Students | DayScholar | BIT-Extention</div>
                     <div className='flex items-baseline gap-2'>
                       <span className='text-2xl font-bold text-[#F6F1E2]'>Not Allowed for Night Events</span>
-                      {/* <span className="text-[#EFCA4E]">early bird</span> */}
                     </div>
                   </div>
 
@@ -112,56 +142,52 @@ export default function TicketPage() {
             </div>
           </div>
         </motion.div>
+        {/* Night Event Tickets */}
+        {session && userData?.isBITMesraStudent && (
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className='max-w-4xl mx-auto mb-24'>
+            <h2 className='text-3xl font-bold mb-8 text-center'>Night Event Tickets</h2>
+            <div className='grid grid-cols-1 gap-8'>
+              {(() => {
+                const today = new Date()
+                const eventDates = [
+                  { date: new Date("2025-03-20T00:00:00+05:30"), image: Night0, title: "Heritage Night" },
+                  { date: new Date("2025-03-21T00:00:00+05:30"), image: Night1, title: "Band Night" },
+                  { date: new Date("2025-03-22T00:00:00+05:30"), image: Night2, title: "Rock Night" },
+                  { date: new Date("2025-03-23T00:00:00+05:30"), image: Night3, title: "Pro Night" },
+                ]
+                const currentEvent = eventDates.find((event) => today.toDateString() === event.date.toDateString())
+                return currentEvent ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className='relative flex flex-col items-center gap-4'
+                    ref={(el) => (ticketRef.current = { ...ticketRef.current, [0]: el })}
+                  >
+                    <div className='relative w-full max-w-[600px] mx-auto'>
+                      {/* Event Image */}
+                      <Image src={currentEvent.image} alt={currentEvent.title} className='w-full h-auto rounded-2xl' />
 
-        {/* Artist Reveal Countdown */}
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className='text-center mb-24'>
-          <h2 className='text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]'>Artist Lineup Reveal</h2>
+                      {/* User Details & QR Code */}
+                      <div className='h-[95%] absolute top-1/2 right-[0] sm:right-4 -translate-y-1/2 flex flex-col items-center text-black font-semibold text-center gap-2 sm:gap-4 md:gap-6 leading-tight max-w-[30%]'>
+                        <span className='text-md md:text-lg'>{userData?.name}</span>
 
-          <div className='flex justify-center gap-6'>
-            {Object.entries(timeLeft).map(([unit, value], index) => (
-              <motion.div
-                key={unit}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className='w-24 h-24 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center'
-              >
-                <div className='text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60'>{value}</div>
-                <div className='text-sm text-gray-400 capitalize'>{unit}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                        <QRCodeSVG value={ticketId} className='w-[80px] sm:w-[140px] bg-transparent rounded-lg [&>path:nth-of-type(1)]:fill-[#fff0]' />
 
-        {/* Event Schedule */}
-        <div className='mb-24'>
-          <h2 className='text-4xl font-bold text-center mb-12'>Event Schedule</h2>
-          <div className='grid md:grid-cols-3 gap-8'>
-            {["Cultural Extravaganza", "Art & Innovation", "Grand Finale"].map((day, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className='backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300'
-              >
-                <h3 className='text-xl font-bold mb-6 text-violet-300'>
-                  Day {i + 1} - {day}
-                </h3>
-                <ul className='space-y-4'>{/* ... existing schedule items ... */}</ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                        <span className='text-xs sm:text-sm md:text-lg'>{userData?.rollNumber}</span>
+                      </div>
+                    </div>
 
-        {/* Why Choose Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='text-center max-w-3xl mx-auto'>
-          <h2 className='text-4xl font-bold mb-6'>Why Choose Bitotsav?</h2>
-          <p className='text-xl text-gray-400 leading-relaxed mb-12'>
-            Join us for an unforgettable celebration of talent, technology, and culture. Create memories that will last a lifetime at BIT Mesra&nbsp;s flagship festival.
-          </p>
-          <RainbowButton className='px-12 py-4 text-lg'>Secure Your Spot Now</RainbowButton>
-        </motion.div>
+                    <RainbowButton className='relative py-2 px-8 text-sm font-medium' onClick={() => handleDownloadTicket(0)}>
+                      Download
+                    </RainbowButton>
+                  </motion.div>
+                ) : (
+                  <p className='text-center text-gray-400'>No event scheduled for today.</p>
+                )
+              })()}
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   )
