@@ -73,7 +73,7 @@ const Landing = () => {
               Preparing Scene
             </motion.span>
           </motion.div>
-          {loadingProgress >= 99 && (
+          {loadingProgress >= 90 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
