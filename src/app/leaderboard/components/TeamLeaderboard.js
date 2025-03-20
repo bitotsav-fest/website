@@ -4,6 +4,8 @@ import { Ripple } from "@/components/magicui/ripple"
 import { motion } from "framer-motion"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { getUser } from "@/app/actions/auth"
+import axios from "axios"
 import toast from "react-hot-toast"
 export default function TeamLeaderboard() {
   const { data: session, status } = useSession()
@@ -13,7 +15,12 @@ export default function TeamLeaderboard() {
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const [teamsPerPage, setTeamsPerPage] = useState(10) // Default teams per page
+  const [userUUID, setUserUUID] = useState(null)
+  const [user, setUser] = useState(null)
+  const [teamCode, setTeamCode] = useState(null)
+  const [teamData, setTeamData] = useState([])
+  const [teamsPerPage, setTeamsPerPage] = useState(5)
+  const [selectedTeam, setSelectedTeam] = useState(null)
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -40,6 +47,58 @@ export default function TeamLeaderboard() {
     fetchTeams()
   }, [currentPage, teamsPerPage])
 
+  useEffect(() => {
+    const fetchUserUUID = async () => {
+      if (session?.user?.email) {
+        try {
+          const user = await getUser()
+          setUserUUID(user.uuid)
+          setUser(user)
+          // console.log(user);
+        } catch (error) {
+          console.error("Error fetching UUID:", error)
+        }
+      }
+    }
+    fetchUserUUID()
+  }, [session])
+
+  useEffect(() => {
+    if (userUUID) {
+      axios
+        .get(`/api/user/get?uuid=${userUUID}`)
+        .then((res) => {
+          setTeamCode(res.data.teamCode)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.error(err)
+          setLoading(false)
+        })
+    }
+  }, [userUUID])
+
+  setTimeout(() => {
+    setLoading(false)
+  }, 6000)
+
+  useEffect(() => {
+    if (teamCode) {
+      axios
+        .get(`/api/teams/get?teamCode=${teamCode}`)
+        .then((res) => {
+          // Handle the response data as needed
+          const team = res.data.team
+          // console.log(team)
+          setTeamData(team)
+          // console.log(teamData)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
+  }, [teamCode])
+
   if (status === "loading") {
     return <div className='text-center text-white'>Checking authentication...</div>
   }
@@ -61,12 +120,40 @@ export default function TeamLeaderboard() {
   }
 
   const displayTeamMembers = async (teamCode) => {
-    console.log("displayTeamMembers")
+    try {
+      const response = await axios.get(`/api/teams/get?teamCode=${teamCode}`)
+      const selteam = response.data.team
+      setSelectedTeam(selteam)
+      toast.dismiss() // Dismiss any existing toast before showing a new one
+      const teamName = selteam.teamName
+      const teamMembers = selteam?.members?.map((member) => `${member.name} - ${member.rollNumber}, Mob: ${member.mobileNumber}`)
+
+      toast.custom(
+        (t) => (
+          <div className='bg-[rgba(140,126,102,0.4)] text-white/70 backdrop-blur-md rounded-lg p-4 border border-[rgba(239,202,78,0.2)] max-w-[400px] text-center relative'>
+            <button onClick={() => toast.dismiss(t.id)} className='absolute top-2 right-2 text-white bg-transparent hover:text-yellow-400 transition duration-200'>
+              ✖
+            </button>
+            <p className='text-2xl font-bold text-yellow-400 mb-1'>
+              Team Name:
+              <span className='font-normal text-white ml-1'>{teamName}</span>
+            </p>
+
+            <p className='text-xl font-bold text-yellow-400 my-2'>Team Members:</p>
+            <div className='text-white text-sm space-y-4'>{teamMembers?.length ? teamMembers.map((member, index) => <div key={index}>{member}</div>) : <div>No members available.</div>}</div>
+          </div>
+        ),
+        { duration: Infinity }
+      )
+    } catch (error) {
+      console.error("Error fetching team members:", error)
+      toast.error("Error fetching team members. Please try again.")
+    }
   }
 
   if (loading) {
     return (
-      <div className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-[#1A0B2E]/50 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden max-w-[480px] mx-auto'>
+      <div className='relative flex h-[480px] w-full flex-col items-center justify-center border mb-4 border-[#EFCA4E]/20 rounded-3xl bg-[#1A0B2E]/50 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-300 group overflow-hidden max-w-[480px] mx-auto'>
         <p className='text-[#F6F1E2]/70'>Fetching Ranks</p>
         <motion.img
           src='/bitotsav-logo.svg'
@@ -137,7 +224,6 @@ export default function TeamLeaderboard() {
         </h1>
         <p className='text-xl text-[#F6F1E2]/60 text-center'>Rankings based on team points</p>
       </div>
-
       {/* Teams per page selector */}
       <div className='flex justify-end mb-4'>
         <div className='flex items-center space-x-2'>
@@ -157,7 +243,29 @@ export default function TeamLeaderboard() {
           </select>
         </div>
       </div>
-
+      <div className='flex justify-center mb-6'>
+        <div className='text-center'>
+          <h2 className='text-2xl font-bold text-[#EFCA4E]'>Your Team</h2>
+          {teamData ? (
+            <div className='mt-4 p-4 bg-[#1A0B2E]/50 border border-[#EFCA4E]/20 rounded-lg'>
+              <p className='text-lg font-semibold text-[#EFCA4E]'>
+                Team Name: <span className='text-white/70'>{teamData.teamName}</span>
+              </p>
+              <p className='text-md text-[#EFCA4E]'>
+                Points: <span className='text-white/70'>{teamData.points}</span>
+              </p>
+              <p className='text-md text-[#EFCA4E]'>
+                Leader: <span className='text-white/70'>{teamData.leaderName}</span>
+              </p>
+              {/*<p className='text-md text-[#EFCA4E]'>
+                Rank: <span className='text-white/70'>{teamsWithRanks.find((team) => team.teamCode === teamData.teamCode)?.rank || "Loading..."}</span>
+              </p>*/}
+            </div>
+          ) : (
+            <p className='text-sm text-[#F6F1E2]/70'>You are not part of any team.</p>
+          )}
+        </div>
+      </div>
       <div className='backdrop-blur-sm p-6 rounded-2xl border border-[#EFCA4E]/10 mb-4 bg-[#0A0118]/50 overflow-x-auto'>
         <table className='w-full border-collapse text-[#F6F1E2]/90'>
           <thead>
@@ -211,7 +319,6 @@ export default function TeamLeaderboard() {
           </tbody>
         </table>
       </div>
-
       {/* Pagination controls */}
       <div className='flex items-center justify-between'>
         <div className='text-[#F6F1E2]/60 text-sm'>
