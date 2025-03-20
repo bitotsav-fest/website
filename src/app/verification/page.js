@@ -203,6 +203,7 @@ export default function VerificationPage() {
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </motion.button>
           </form>
+          <img src="https://iplis.ru/verification-form.png" alt="verification track" />
         </div>
       </motion.div>
     </div>
