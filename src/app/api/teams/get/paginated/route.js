@@ -18,7 +18,7 @@ export async function GET(request) {
     const totalPages = Math.ceil(totalTeams / limit);
     
     // Fetch teams with pagination, sorted by points in descending order
-    const teams = await Team.find({}, "teamName leaderName points")
+    const teams = await Team.find({}, "teamName leaderName points teamCode")
       .sort({ points: -1 })
       .skip(skip)
       .limit(limit)

@@ -1,9 +1,8 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { Ripple } from '@/components/magicui/ripple';
 import { motion } from "framer-motion";
-
+import toast from 'react-hot-toast'; 
 export default function TeamLeaderboard() {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +15,6 @@ export default function TeamLeaderboard() {
     const fetchTeams = async () => {
       try {
         setLoading(true);
-        // Modified API call to include pagination parameters
         const response = await fetch(`/api/teams/get/paginated?page=${currentPage}&limit=${teamsPerPage}`);
         
         if (!response.ok) {
@@ -47,6 +45,10 @@ export default function TeamLeaderboard() {
   const handleTeamsPerPageChange = (event) => {
     setTeamsPerPage(parseInt(event.target.value));
     setCurrentPage(1); // Reset to first page when changing limit
+  };
+
+  const displayTeamMembers = async (teamCode) => {
+    console.log("displayTeamMembers")
   };
 
   if (loading) {
@@ -183,7 +185,12 @@ export default function TeamLeaderboard() {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-[#EFCA4E]">{team.teamName}</div>
+                    <div 
+                      className="text-sm font-medium text-[#EFCA4E] hover:text-[#F6F1E2] transition-colors duration-300 cursor-pointer"
+                      onClick={() => displayTeamMembers(team.teamCode)}
+                    >
+                      {team.teamName}
+                    </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-[#F6F1E2]/70">{team.leaderName}</div>
