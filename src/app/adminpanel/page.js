@@ -57,63 +57,63 @@ export default function EventsPage() {
   //   return <div className='text-center text-white'>Redirecting to login...</div>
   // }
 
-  // const createLog = async (logData) => {
-  //   try {
-  //     const response = await fetch("/api/logs", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(logData),
-  //     })
+  const createLog = async (logData) => {
+    try {
+      const response = await fetch("/api/logs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(logData),
+      })
 
-  //     if (!response.ok) {
-  //       console.error("Logging failed:", await response.text())
-  //       return null
-  //     }
+      if (!response.ok) {
+        console.error("Logging failed:", await response.text())
+        return null
+      }
 
-  //     const result = await response.json()
-  //     return result.logId
-  //   } catch (error) {
-  //     console.error("Failed to log:", error)
-  //     return null
-  //   }
-  // }
+      const result = await response.json()
+      return result.logId
+    } catch (error) {
+      console.error("Failed to log:", error)
+      return null
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const maskedPocNumber = pocNumber ? "****" + pocNumber.slice(-4) : ""
     setIsLoading(true)
 
-    // try {
-    //   await createLog({
-    //     action: "form_submit",
-    //     status: "started",
-    //     requestData: {
-    //       selectedClub,
-    //       selectedEvent,
-    //       pocNumber: maskedPocNumber,
-    //     },
-    //   })
-    // } catch (error) {
-    //   console.error("Failed to log form submission start:", error)
-    //   setIsLoading(false)
-    //   toast.error("An error occurred while logging the form submission.")
-    //   return
-    // }
+    try {
+      await createLog({
+        action: "form_submit",
+        status: "started",
+        requestData: {
+          selectedClub,
+          selectedEvent,
+          pocNumber: maskedPocNumber,
+        },
+      })
+    } catch (error) {
+      console.error("Failed to log form submission start:", error)
+      setIsLoading(false)
+      toast.error("An error occurred while logging the form submission.")
+      return
+    }
 
     if (!selectedClub || !selectedEvent || !pocNumber) {
-      // await createLog({
-      //   action: "form_submit",
-      //   status: "validation_failed",
-      //   details: {
-      //     missingFields: {
-      //       club: !selectedClub,
-      //       event: !selectedEvent,
-      //       poc: !pocNumber,
-      //     },
-      //   },
-      // })
+      await createLog({
+        action: "form_submit",
+        status: "validation_failed",
+        details: {
+          missingFields: {
+            club: !selectedClub,
+            event: !selectedEvent,
+            poc: !pocNumber,
+          },
+        },
+      })
       setIsLoading(false)
       toast.error("Please fill all fields correctly.")
       return
@@ -121,11 +121,11 @@ export default function EventsPage() {
 
     const club = clubEvents.find((club) => club.clubName === selectedClub)
     if (!club) {
-      // await createLog({
-      //   action: "form_submit",
-      //   status: "validation_failed",
-      //   details: { reason: "Club not found", selectedClub },
-      // })
+      await createLog({
+        action: "form_submit",
+        status: "validation_failed",
+        details: { reason: "Club not found", selectedClub },
+      })
       setIsLoading(false)
       toast.error("Club not found")
       return
@@ -133,11 +133,11 @@ export default function EventsPage() {
 
     const eventDetails = club.events.find((event) => event.name === selectedEvent)
     if (!eventDetails) {
-      // await createLog({
-      //   action: "form_submit",
-      //   status: "validation_failed",
-      //   details: { reason: "Event not found", selectedEvent },
-      // })
+      await createLog({
+        action: "form_submit",
+        status: "validation_failed",
+        details: { reason: "Event not found", selectedEvent },
+      })
       setIsLoading(false)
       toast.error("Event not found")
       return
@@ -155,14 +155,14 @@ export default function EventsPage() {
 
     // Then use this combined list for validation
     if (!validPOCs.includes(pocNumber)) {
-      // await createLog({
-      //   action: "form_submit",
-      //   status: "validation_failed",
-      //   details: {
-      //     reason: "Invalid POC number",
-      //     providedPOC: maskedPocNumber,
-      //   },
-      // })
+      await createLog({
+        action: "form_submit",
+        status: "validation_failed",
+        details: {
+          reason: "Invalid POC number",
+          providedPOC: maskedPocNumber,
+        },
+      })
       setIsLoading(false)
       toast.error("Invalid POC number")
       return
@@ -170,17 +170,17 @@ export default function EventsPage() {
 
     try {
       // Log API request
-      // await createLog({
-      //   action: "api_request",
-      //   status: "started",
-      //   requestData: { eventName: selectedEvent },
-      // })
+      await createLog({
+        action: "api_request",
+        status: "started",
+        requestData: { eventName: selectedEvent },
+      })
 
       const response = await fetch("/api/adminpanel", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer NAdbDown`,
+          "Authorization": `Bearer NoDBuser`,
         },
         body: JSON.stringify({ eventName: selectedEvent }),
       })
@@ -188,12 +188,12 @@ export default function EventsPage() {
       if (!response.ok) {
         const errorText = await response.text()
 
-        // await createLog({
-        //   action: "api_request",
-        //   status: "failed",
-        //   error: `HTTP ${response.status}: ${errorText}`,
-        //   details: { status: response.status },
-        // })
+        await createLog({
+          action: "api_request",
+          status: "failed",
+          error: `HTTP ${response.status}: ${errorText}`,
+          details: { status: response.status },
+        })
         setIsLoading(false)
         throw new Error("Failed to fetch data")
       }
@@ -201,24 +201,24 @@ export default function EventsPage() {
       const data = await response.json()
 
       // Log success ho gya
-      // await createLog({
-      //   action: "api_request",
-      //   status: "success",
-      //   responseData: {
-      //     eventName: data.eventName,
-      //     teamsCount: data.teamsRegistered?.length || 0,
-      //     registrarsCount: data.eventRegistrarList?.length || 0,
-      //   },
-      // })
+      await createLog({
+        action: "api_request",
+        status: "success",
+        responseData: {
+          eventName: data.eventName,
+          teamsCount: data.teamsRegistered?.length || 0,
+          registrarsCount: data.eventRegistrarList?.length || 0,
+        },
+      })
       setResponseData(data)
       setisdatafetched(true)
       setIsLoading(false)
     } catch (error) {
-      // await createLog({
-      //   action: "api_request",
-      //   status: "error",
-      //   error: error.message,
-      // })
+      await createLog({
+        action: "api_request",
+        status: "error",
+        error: error.message,
+      })
       setIsLoading(false)
       toast.error(error.message)
     }
