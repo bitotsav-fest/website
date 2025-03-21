@@ -197,7 +197,7 @@ export default function EventsPage() {
 
     if (uuid) {
       axios
-        .get(`/api/teams/get?memberUUID=${uuid}`)
+        .get(`/api/teams/admin?memberUUID=${uuid}`)
         .then((res) => {
           // Handle the response data as needed
           const team = res.data.team;
