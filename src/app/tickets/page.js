@@ -14,11 +14,13 @@ import Night1 from "./Night_tickets/day1.jpg"
 import Night2 from "./Night_tickets/day2.jpg"
 import Night3 from "./Night_tickets/day3.jpg"
 import { toPng } from "html-to-image"
+import { set } from "mongoose"
 
 export default function TicketPage() {
   const { data: session } = useSession()
   const [userData, setUserData] = useState(null)
   const [ticketId, setTicketId] = useState(null)
+  const [isBITMesraStudent, setIsBITMesraStudent] = useState(false)
   const ticketRef = useRef(null)
 
   const handleGetPass = async () => {
@@ -40,6 +42,7 @@ export default function TicketPage() {
     if (userData && userData.uuid) {
       const encodedTicketId = btoa(userData.uuid)
       setTicketId(encodedTicketId)
+      setIsBITMesraStudent(userData.isBITMesraStudent)
     }
   }, [userData])
 
@@ -143,7 +146,7 @@ export default function TicketPage() {
           </div>
         </motion.div>
         {/* Night Event Tickets */}
-        {session && userData?.isBITMesraStudent && (
+        {session && isBITMesraStudent && (
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className='max-w-4xl mx-auto mb-24'>
             <h2 className='text-3xl font-bold mb-8 text-center'>Night Event Tickets</h2>
             <div className='grid grid-cols-1 gap-8'>
