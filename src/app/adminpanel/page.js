@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
 import toast from "react-hot-toast"
 import ExportData from "./components/exportData"
-import axios from "axios"
 
 export default function EventsPage() {
   const { data: session, status } = useSession()
