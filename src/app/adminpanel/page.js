@@ -3,15 +3,15 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { clubEvents, Heads } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
-// import { useRouter } from "next/navigation"
-// import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 import toast from "react-hot-toast"
 import ExportData from "./components/exportData"
 import axios from "axios"
 
 export default function EventsPage() {
-  // const { data: session, status } = useSession()
-  // const router = useRouter()
+  const { data: session, status } = useSession()
+  const router = useRouter()
 
   const [selectedClub, setSelectedClub] = useState("")
   const [selectedEvent, setSelectedEvent] = useState("")
@@ -52,10 +52,10 @@ export default function EventsPage() {
     return <div className='text-center text-white'>Checking authentication...</div>
   }
 
-  // if (!session) {
-  //   router.push("/login")
-  //   return <div className='text-center text-white'>Redirecting to login...</div>
-  // }
+  if (!session) {
+    router.push("/login")
+    return <div className='text-center text-white'>Redirecting to login...</div>
+  }
 
   const createLog = async (logData) => {
     try {
@@ -443,10 +443,10 @@ export default function EventsPage() {
             <>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='text-center space-y-4 mb-6'>
                 <h1 className='text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]'>
-                  BITOTSAV'25 <br />
+                  BITOTSAV&apos;25 <br />
                   Event Participants
                 </h1>
-                <p className='text-[#F6F1E2]/70 text-lg'>Tick Tock! Time to review your event's participants.</p>
+                <p className='text-[#F6F1E2]/70 text-lg'>Tick Tock! Time to review your event&apos;s participants.</p>
               </motion.div>
 
               {isLoading && (
