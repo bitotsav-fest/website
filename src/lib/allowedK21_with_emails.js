@@ -145,7 +145,7 @@ export const bitk21 = [
   "btech10617.21@bitmesra.ac.in",
   "btech10468.21@bitmesra.ac.in",
   "btech10670.21@bitmesra.ac.in",
-  "barch10004.21@bitmesra.ac.in",
+  // "barch10004.21@bitmesra.ac.in",
   "barch10015.21@bitmesra.ac.in",
   "barch10022.21@bitmesra.ac.in",
   "btech10666.21@bitmesra.ac.in",
