@@ -23,14 +23,14 @@ export default function NonBitPage() {
             <div className="space-y-4">
               
               <div className="p-4 bg-green-900/30 border border-green-500/30 rounded-lg">
-                <p className="text-green-200 font-semibold">External College Registration</p>
-                <p className="text-gray-300 mt-2">To register for Bitotsav 2025, please fill out our registration form. You will receive payment details after form submission.</p>
-                <a href="https://forms.gle/vrGVevEJKeDMRW4k7" target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-green-200 hover:text-green-400 underline">Register Here →</a>
+                <p className="text-green-200 font-semibold">K21 Intern Registration</p>
+                <p className="text-gray-300 mt-2">To register for Bitotsav 2025, please fill out our registration form and join the whatsapp group</p>
+                <a href="https://forms.gle/8o8QTcsatgs5cMQS8" target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-green-200 hover:text-green-400 underline">Register Here →</a>
               </div>
             </div>
           </section>
           
-          <section className="bg-black/30 p-6 rounded-lg border border-gold/20 mb-6">
+          {/* <section className="bg-black/30 p-6 rounded-lg border border-gold/20 mb-6">
             <h2 className="text-2xl font-semibold text-gold mb-4">BIT Mesra Students (Without Webmail & Day scholars)</h2>
             <div className="space-y-4">
               <p className="text-gray-300">If you are a current BIT Mesra student but don&apos;t have access to your institutional webmail, you have two options:</p>
@@ -59,8 +59,8 @@ export default function NonBitPage() {
                 </div>
               </div>
             </div>
-          </section>
-
+          </section> */}
+{/* 
           <section className="bg-black/30 p-6 rounded-lg border border-gold/20 mb-6">
             <h2 className="text-2xl font-semibold text-gold mb-4">External College Students</h2>
             <div className="space-y-4">
@@ -77,29 +77,30 @@ export default function NonBitPage() {
                   </ul>
                 </div>
               </div>
-              <div className="mt-4 p-4 bg-emerald-900/30 border border-emerald-500/30 rounded-lg">
+              {/* <div className="mt-4 p-4 bg-emerald-900/30 border border-emerald-500/30 rounded-lg">
                 <p className="text-emerald-200 font-semibold">Registration Requirements</p>
                 <ul className="list-disc list-inside space-y-2 text-gray-300 mt-2">
                   <li>Valid college ID card</li>
                   <li>Recent passport-size photograph</li>
                   <li>Government-issued ID proof</li>
                 </ul>
-              </div>
+              </div> 
             </div>
-          </section>
+          </section> */
+          }
 
           <section className="bg-black/30 p-6 rounded-lg border border-gold/20">
             <h2 className="text-2xl font-semibold text-gold mb-4">Important Notes</h2>
             <ul className="space-y-3 text-gray-300">
               <li>• Valid college ID is mandatory for entry</li>
               <li>• Tickets are non-refundable and non-transferable</li>
-              <li>• Limited seats available, book early to avoid disappointment</li>
+              {/* <li>• Limited seats available, book early to avoid disappointment</li> */}
             </ul>
           </section>
 
           <div className="text-center space-y-6 mt-8">
             <motion.a 
-              href="https://forms.gle/aJ8PMAAra996TXxf6" 
+              href="https://forms.gle/8o8QTcsatgs5cMQS8" 
               target="_blank" 
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
