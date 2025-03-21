@@ -21,8 +21,6 @@ export default function EventsPage() {
   const [teamData, setTeamData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
-  
-
   const createLog = async (logData) => {
     try {
       const response = await fetch("/api/logs", {
@@ -192,50 +190,54 @@ export default function EventsPage() {
 
   const displayTeamMembers = (uuid) => {
     toast.dismiss() // Dismiss any existing toast before showing a new one
-    setUserUUID(uuid)
-    // team data mangao or set kro 
 
     if (uuid) {
       axios
         .get(`/api/teams/admin?memberUUID=${uuid}`)
         .then((res) => {
-          // Handle the response data as needed
-          const team = res.data.team;
-          setTeamData(team);
-          // console.log(team);
-          // console.log(teamData);
+          const team = res.data.team
+
+          // Use the team data directly here
+          const teamName = team.teamName
+          const teamMembers = team?.members?.map((member) => `${member.name} - ${member.rollNumber}, Mob: ${member.mobileNumber}`)
+
+          toast.custom(
+            (t) => (
+              <div className='bg-[rgba(140,126,102,0.4)] text-white/70 backdrop-blur-md rounded-lg p-4 border border-[rgba(239,202,78,0.2)] max-w-[400px] text-center relative'>
+                <button onClick={() => toast.dismiss(t.id)} className='absolute top-2 right-2 text-white bg-transparent hover:text-yellow-400 transition duration-200'>
+                  ✖
+                </button>
+                <p className='text-2xl font-bold text-yellow-400 mb-1'>
+                  Team Name:
+                  <span className='font-normal text-white ml-1'>{teamName}</span>
+                </p>
+
+                <p className='text-xl font-bold text-yellow-400 my-2'>Team Members:</p>
+                <div className='text-white text-sm space-y-4'>{teamMembers?.length ? teamMembers.map((member, index) => <div key={index}>{member}</div>) : <div>No members available.</div>}</div>
+              </div>
+            ),
+            { duration: Infinity }
+          )
         })
         .catch((err) => {
-          console.error(err);
-        });
+          console.error(err)
+          toast.error("Failed to fetch team data.")
+        })
     }
-    
-
-    const teamName = teamData.teamName
-    const teamMembers = teamData?.members?.map((member) => `${member.name} - ${member.rollNumber}, Mob: ${member.mobileNumber}`)
-
-    toast.custom(
-      (t) => (
-        <div className='bg-[rgba(140,126,102,0.4)] text-white/70 backdrop-blur-md rounded-lg p-4 border border-[rgba(239,202,78,0.2)] max-w-[400px] text-center relative'>
-          <button onClick={() => toast.dismiss(t.id)} className='absolute top-2 right-2 text-white bg-transparent hover:text-yellow-400 transition duration-200'>
-            ✖
-          </button>
-          <p className='text-2xl font-bold text-yellow-400 mb-1'>
-            Team Name:
-            <span className='font-normal text-white ml-1'>{teamName}</span>
-          </p>
-
-          <p className='text-xl font-bold text-yellow-400 my-2'>Team Members:</p>
-          <div className='text-white text-sm space-y-4'>{teamMembers?.length ? teamMembers.map((member, index) => <div key={index}>{member}</div>) : <div>No members available.</div>}</div>
-        </div>
-      ),
-      { duration: Infinity }
-    )
   }
 
   const EventDashboard = ({ responseData }) => {
     return (
       <div className='bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20'>
+        {/* Back Button */}
+        <div className='absolute top-4 left-4'>
+          <button onClick={() => window.location.reload()} className='flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition duration-200'>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={2} stroke='currentColor' className='w-6 h-6'>
+              <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7' />
+            </svg>
+            <span className='text-lg font-semibold'>Back</span>
+          </button>
+        </div>
         {/* Event Title */}
         <h1 className='text-5xl md:text-7xl text-center font-bold tracking-wide mb-10'>
           <span className='bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400'>{responseData.eventName}</span>
@@ -337,6 +339,15 @@ export default function EventsPage() {
   const EventDetails = ({ responseData }) => {
     return (
       <div className='max-w-5xl mx-auto py-10 px-4'>
+        {/* Back Button */}
+        <div className='absolute top-[80px] left-4'>
+          <button onClick={() => window.location.reload()} className='flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition duration-200'>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={2} stroke='currentColor' className='w-6 h-6'>
+              <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7' />
+            </svg>
+            <span className='text-lg font-semibold'>Back</span>
+          </button>
+        </div>
         {/* Event Title */}
         <h1 className='text-5xl md:text-7xl text-center font-bold tracking-wide mb-6 sm:mb-10'>
           <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] via-[#F6F1E2] to-[#EFCA4E]'>{responseData.eventName}</span>
