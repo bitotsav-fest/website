@@ -1,4 +1,5 @@
 import arr from "@/lib/wellfare-emails"
+import { bitk21 } from "./allowedK21_with_emails";
 
 
 // check if the email is of bit mesra
@@ -39,5 +40,8 @@ export function isBitWellfareEmail(email) {
   return arr.includes(email)?true:false;
 }
 
-
+// check if the user is from k21 bit wellfare or not
+export function isBitK21WellfareEmail(email) {
+  return bitk21.includes(email)?true:false;
+}
 

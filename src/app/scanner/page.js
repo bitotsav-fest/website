@@ -13,6 +13,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Check, X } from 'lucide-react';
 import { decript } from '@/lib/security';
 import { verifyTicket } from '@/app/actions/verify-ticket';
+import { isBitK21WellfareEmail } from '@/lib/email';
 
 // Configure which day to verify (0 for Day Zero, 1 for Day One, 2 for Day Two, 3 for Day Three)
 const VERIFY_DAY = 1;
@@ -49,6 +50,7 @@ export default function ScannerPage() {
       setScanning(false);
       try {
         const decryptedData = decript(data[0].rawValue);
+        
         const result = await verifyTicket(decryptedData, SECURITY_PASSCODE, VERIFY_DAY);
 
         if (result.error) {
@@ -63,6 +65,14 @@ export default function ScannerPage() {
             setTimeout(() => setShowSuccess(false), 3000);
           }
         }
+        if(result.user && isBitK21WellfareEmail(result.user.email)){
+          setShowError(true);
+          setUserData({...result.user, error: 'The user is k21 intern',  });
+          setTimeout(() => setShowError(false), 3000);
+        }
+        // setScanning(true);
+        // setUserData(null);
+
       } catch (error) {
         setShowError(true);
         setUserData({ error: 'Invalid QR code' });
