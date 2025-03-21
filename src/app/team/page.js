@@ -308,7 +308,7 @@ export default function Register() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-white/5 backdrop-blur-xl shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-500 group overflow-hidden'
+            className='relative flex h-[480px] w-full flex-col items-center justify-center border border-[#EFCA4E]/20 rounded-3xl bg-white/5  shadow-xl hover:border-[#EFCA4E]/40 transition-all duration-500 group overflow-hidden'
           >
             {/* Animated background effects */}
             <div className='absolute inset-0'>
@@ -360,7 +360,7 @@ export default function Register() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className='relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-[#EFCA4E]/20 text-center space-y-8 overflow-hidden'
+            className='relative bg-white/10  p-8 rounded-3xl border border-[#EFCA4E]/20 text-center space-y-8 overflow-hidden'
           >
             {/* Animated background effects */}
             <div className='absolute inset-0 bg-gradient-to-br from-[#EFCA4E]/5 via-transparent to-[#2D1E0F]/5 animate-gradient-shift'></div>
@@ -480,7 +480,7 @@ export default function Register() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className='bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-[#EFCA4E]/20 relative overflow-hidden'
+            className='bg-white/10  p-8 rounded-2xl border border-[#EFCA4E]/20 relative overflow-hidden'
           >
             {/* Enhanced animated background effects */}
             <div className='absolute inset-0'>
@@ -729,7 +729,7 @@ export default function Register() {
 
       {/* rules */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='flex items-center justify-center min-h-screen'>
-        <div className='relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-[#EFCA4E]/20 text-left space-y-6 max-w-4xl mx-auto overflow-hidden'>
+        <div className='relative bg-white/10  p-8 rounded-3xl border border-[#EFCA4E]/20 text-left space-y-6 max-w-4xl mx-auto overflow-hidden'>
           {/* Animated background effects */}
           <div className='absolute inset-0 bg-gradient-to-br from-[#EFCA4E]/5 via-transparent to-[#2D1E0F]/5 animate-gradient-shift'></div>
           <div className='absolute -top-20 -left-20 w-72 h-72 bg-[#EFCA4E]/10 rounded-full blur-3xl animate-pulse'></div>
