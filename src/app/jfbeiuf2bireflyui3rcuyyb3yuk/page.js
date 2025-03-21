@@ -86,7 +86,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="container mx-auto mt-24 p-6 space-y-6">
       <h1 className="text-3xl font-bold">Admin Dashboard</h1>
       
       <div className="flex gap-4">
