@@ -214,6 +214,31 @@ export default function TeamLeaderboard() {
     return teamsWithRanks
   }
 
+  const calculateTimeDifference = (inputTime) => {
+    try {
+      const currentTime = new Date()
+      const [datePart, timePart] = inputTime.split(" ")
+      const [day, month] = datePart.split("/").map(Number)
+      const [hours, minutes] = timePart.split(":").map(Number)
+
+      if (isNaN(day) || isNaN(month) || isNaN(hours) || isNaN(minutes) || day < 1 || day > 31 || month < 1 || month > 12 || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        return "Invalid time format"
+      }
+
+      const targetTime = new Date(currentTime.getFullYear(), month - 1, day, hours, minutes, 0, 0)
+
+      const differenceInMilliseconds = targetTime - currentTime
+      const differenceInMinutes = Math.abs(Math.floor(differenceInMilliseconds / (1000 * 60)))
+      const hoursDifference = Math.floor(differenceInMinutes / 60)
+      const minutesDifference = differenceInMinutes % 60
+
+      return `${hoursDifference}h ${minutesDifference}m`
+    } catch (error) {
+      console.error("Error in calculateTimeDifference:", error)
+      return "Error calculating time difference"
+    }
+  }
+
   const teamsWithRanks = computeRanksWithTies()
 
   return (
@@ -266,7 +291,9 @@ export default function TeamLeaderboard() {
           )}
         </div>
       </div>
+      <span className='text-white/60 flex text-center align-center justify-center self-center'>Last Updated: {calculateTimeDifference("21/03 12:00")} </span>
       <div className='backdrop-blur-sm p-6 rounded-2xl border border-[#EFCA4E]/10 mb-4 bg-[#0A0118]/50 overflow-x-auto'>
+        <span className='text-white/60 pl-1'>Click on Team Name to view Members</span>
         <table className='w-full border-collapse text-[#F6F1E2]/90'>
           <thead>
             <tr className='p-6 bg-gradient-to-br from-[#2D1E0F]/50 to-[#1A0B2E]/50 border-b border-[#EFCA4E]/10 text-[#EFCA4E]'>
