@@ -16,7 +16,7 @@ import { verifyTicket } from '@/app/actions/verify-ticket';
 import Stats from './stats/page';
 
 // Configure which day to verify (0 for Day Zero, 1 for Day One, 2 for Day Two, 3 for Day Three)
-const VERIFY_DAY = 0;
+const VERIFY_DAY = 1;
 const DAY_FIELD_MAP = {
   0: 'usedOnDay0',
   1: 'usedOnDay1',
