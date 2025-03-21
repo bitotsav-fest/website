@@ -4,11 +4,12 @@ import { motion } from "framer-motion"
 import { clubEvents, Heads } from "./pocData"
 import { Ripple } from "@/components/magicui/ripple"
 import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 import toast from "react-hot-toast"
 import ExportData from "./components/exportData"
-import axios from "axios"
 
 export default function EventsPage() {
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   const [selectedClub, setSelectedClub] = useState("")
@@ -17,11 +18,43 @@ export default function EventsPage() {
   const [isdatafetched, setisdatafetched] = useState(false)
   const [responseData, setResponseData] = useState([])
   const [userUUID, setUserUUID] = useState("")
-  // const [teamCode, setTeamCode] = useState("")
+  const [teamCode, setTeamCode] = useState("")
   const [teamData, setTeamData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
-  
+  // useEffect(() => {
+  //   if (userUUID)
+  //     axios
+  //       .get(`/api/user/get?uuid=${userUUID}`)
+  //       .then((res) => {
+  //         setTeamCode(res.data.teamCode)
+  //       })
+  //       .catch((err) => {
+  //         console.error(err)
+  //       })
+  //   if (teamCode)
+  //     axios
+  //       .get(`/api/teams/get?teamCode=${teamCode}`)
+  //       .then((res) => {
+  //         // Handle the response data as needed
+  //         const team = res.data.team
+  //         setTeamData(team)
+  //         // console.log(team)
+  //         // console.log(teamData)
+  //       })
+  //       .catch((err) => {
+  //         console.error(err)
+  //       })
+  // }, [userUUID, teamCode])
+
+  if (status === "loading") {
+    return <div className='text-center text-white'>Checking authentication...</div>
+  }
+
+  if (!session) {
+    router.push("/login")
+    return <div className='text-center text-white'>Redirecting to login...</div>
+  }
 
   const createLog = async (logData) => {
     try {
@@ -193,24 +226,6 @@ export default function EventsPage() {
   const displayTeamMembers = (uuid) => {
     toast.dismiss() // Dismiss any existing toast before showing a new one
     setUserUUID(uuid)
-    // team data mangao or set kro 
-
-    if (uuid) {
-      axios
-        .get(`/api/teams/get?memberUUID=${uuid}`)
-        .then((res) => {
-          // Handle the response data as needed
-          const team = res.data.team;
-          setTeamData(team);
-          // console.log(team);
-          // console.log(teamData);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-    
-
     const teamName = teamData.teamName
     const teamMembers = teamData?.members?.map((member) => `${member.name} - ${member.rollNumber}, Mob: ${member.mobileNumber}`)
 
@@ -467,6 +482,11 @@ export default function EventsPage() {
                       <option value='' className='text-black'>
                         Choose a club
                       </option>
+                      {/* {clubs.map((club) => (
+                    <option key={club} value={club}>
+                    {club}
+                    </option>
+                    ))} */}
                       {[...new Set(clubEvents.map((event) => event.clubName))].map((club, idx) => (
                         <option key={idx} value={club} className='text-black'>
                           {club}
@@ -487,6 +507,13 @@ export default function EventsPage() {
                           <option value='' className='text-black'>
                             Choose an event
                           </option>
+                          {/* {Eventsday.filter(
+                        (event) => event.club === selectedClub
+                        ).map((event) => (
+                          <option key={event.id} value={event.name}>
+                          {event.name}
+                          </option>
+                          ))} */}
                           {clubEvents
                             .find((club) => club.clubName === selectedClub)
                             ?.events.map((event) => (

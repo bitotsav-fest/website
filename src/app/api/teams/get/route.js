@@ -5,14 +5,14 @@ import Team from "@/models/Team";
 export async function GET(req) {
   await dbConnect();
   const { searchParams } = new URL(req.url);
-  const memberUUID = searchParams.get("memberUUID");
+  const teamCode = searchParams.get("teamCode");
 
-  if (!memberUUID) {
-    return NextResponse.json({ message: "memberUUID is required" }, { status: 400 });
+  if (!teamCode) {
+    return NextResponse.json({ message: "Team code is required" }, { status: 400 });
   }
 
   try {
-    const team = await Team.findOne({ "members.uuid": memberUUID });
+    const team = await Team.findOne({ teamCode });
 
     if (!team) {
       return NextResponse.json({ message: "Team not found" }, { status: 404 });
