@@ -10,7 +10,7 @@ import { useEffect } from "react"
 
 const items = [
   {
-    name: "Saahit",
+    name: "Events",
     url: "/events",
     href: "/events",
     icon: Calendar,
