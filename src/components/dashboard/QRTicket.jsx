@@ -7,7 +7,7 @@ import { Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import Image from 'next/image';
 
-export default function QRTicket({ ticketId }) {
+export default function QRTicket({ ticketId, userData }) {
   const downloadTicket = async () => {
     const ticketElement = document.getElementById('event-ticket');
     if (!ticketElement) return;
@@ -42,6 +42,21 @@ export default function QRTicket({ ticketId }) {
           </div>
           <p className="text-amber-400 font-medium tracking-wider mt-4">ALL ACCESS PASS</p>
         </div>
+
+{/* User Details */}
+<div className="text-center mb-6 transform transition-all duration-300 hover:scale-105">
+  <div className="space-y-2">
+    <p className="text-amber-300 font-medium">
+      {userData?.name || 'N/A'}
+    </p>
+    <p className="text-amber-300 font-medium">
+      {userData?.email || 'N/A'}
+    </p>
+    <p className="text-amber-300 font-medium">
+      {userData?.rollNo || 'N/A'}
+    </p>
+  </div>
+</div>
 
         {/* QR Code */}
         <div className="flex-grow flex items-center justify-center my-6 relative">

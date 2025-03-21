@@ -8,9 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { getRollNoFromEmail, getYearFromEmail } from '@/lib/email';
 import { getUser } from '@/app/dashboard/actions/getUser';
 import { useEffect, useState } from 'react';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { signOut } from 'next-auth/react';
-import axios from 'axios';
+
 
 export default  function UserProfile({ user }) {
   const rollNo = getRollNoFromEmail(user.email);

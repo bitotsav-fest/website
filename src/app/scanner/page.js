@@ -262,7 +262,8 @@ export default function ScannerPage() {
           </AnimatePresence>
         </motion.div>
       </div>
-      <Stats />
+      {/* <Stats /> */}
     </div>
   );
 }
+// when the qr is is used already then also show the la

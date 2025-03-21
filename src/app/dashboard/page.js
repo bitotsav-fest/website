@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSession, signOut } from "next-auth/react";
 import { encript } from '@/lib/security';
-import { getUserUUID, getUserVerified } from '@/app/actions/auth';
+import { getUser, getUserUUID, getUserVerified } from '@/app/actions/auth';
 import UserProfile from '@/components/dashboard/UserProfile';
 import QRTicket from '@/components/dashboard/QRTicket';
 import BitMesraPopup from '@/components/dashboard/BitMesraPopup';
@@ -15,6 +15,8 @@ export default function DashboardPage() {
   const [userUUID, setUserUUID] = useState('');
   const [userVerified, setuserVerified] = useState("pending");
   const [purchaseDate, setPurchaseDate] = useState('-');
+  const [userLoading, setUserLoading] = useState(true);
+  const [userRollNumber, setUserRollNumber] = useState('Loading...');
 
   const router = useRouter();
 
@@ -27,10 +29,11 @@ export default function DashboardPage() {
           const isVerified = await getUserVerified();
           console.log("isVerified hai ki nhi ",isVerified);
           const uuid = await getUserUUID();
+          const userData = await getUser();
           setUserUUID(encript(uuid));
-          
-          
+          setUserRollNumber(userData.rollNumber || 'Not Available');
           setuserVerified(isVerified);
+          setUserLoading(false);
         } catch (error) {
           console.error('Error fetching UUID:', error);
         }
@@ -46,7 +49,8 @@ export default function DashboardPage() {
     ticketType: 'All-Access Festival Pass',
     ticketId: userUUID || 'Loading...',
     purchaseDate: purchaseDate,
-    avatar: session?.user?.image || '/avatar-placeholder.png'
+    avatar: session?.user?.image || '/avatar-placeholder.png',
+    rollNo: userLoading ? 'N/A' : userRollNumber,
   };
 
   // if(session?.user?.email && !isBitEmail(session?.user?.email)) {
@@ -121,7 +125,7 @@ export default function DashboardPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <QRTicket ticketId={user.ticketId} />
+              <QRTicket ticketId={user.ticketId} userData={user}/>
             </motion.div>
             
             <motion.div
