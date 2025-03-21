@@ -46,13 +46,13 @@ export default function QRTicket({ ticketId, userData }) {
 {/* User Details */}
 <div className="text-center mb-6 transform transition-all duration-300 hover:scale-105">
   <div className="space-y-2">
-    <p className="text-amber-300 font-medium">
+    <p className="text-amber-300 text-4xl font-medium">
       {userData?.name || 'N/A'}
     </p>
-    <p className="text-amber-300 font-medium">
+    <p className="text-amber-300 text-sm underline font-medium">
       {userData?.email || 'N/A'}
     </p>
-    <p className="text-amber-300 font-medium">
+    <p className="text-amber-300 text-sm underline font-medium">
       {userData?.rollNo || 'N/A'}
     </p>
   </div>
