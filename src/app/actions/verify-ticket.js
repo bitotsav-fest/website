@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 
 export async function verifyTicket(uuid, passcode, day = 0) {
-  const SECURITY_PASSCODE = '192020';
+  const SECURITY_PASSCODE = '192021';
   const DAY_FIELD_MAP = {
     0: 'usedOnDay0',
     1: 'usedOnDay1',
@@ -27,7 +27,9 @@ export async function verifyTicket(uuid, passcode, day = 0) {
       usedOnDay0: true,
       usedOnDay1: true,
       usedOnDay2: true,
-      usedOnDay3: true
+      usedOnDay3: true,
+      rollNumber: true,
+      updatedAt : true,
     };
 
     const user = await prisma.user.findUnique({
@@ -40,7 +42,7 @@ export async function verifyTicket(uuid, passcode, day = 0) {
     }
 
     if (user[dayField]) {
-      return { error: 'Ticket already used for this day', status: 400 };
+      return { error: 'Ticket already used for this day', user,  status: 400 };
     }
 
     const updateData = {};

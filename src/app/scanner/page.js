@@ -13,7 +13,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Check, X } from 'lucide-react';
 import { decript } from '@/lib/security';
 import { verifyTicket } from '@/app/actions/verify-ticket';
-import Stats from './stats/page';
 
 // Configure which day to verify (0 for Day Zero, 1 for Day One, 2 for Day Two, 3 for Day Three)
 const VERIFY_DAY = 1;
@@ -33,7 +32,7 @@ export default function ScannerPage() {
   const [passcode, setPasscode] = useState('');
   const [showPasscodeError, setShowPasscodeError] = useState(false);
 
-  const SECURITY_PASSCODE = '192020';
+  const SECURITY_PASSCODE = '192021';
 
   const handlePasscodeSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +53,7 @@ export default function ScannerPage() {
 
         if (result.error) {
           setShowError(true);
-          setUserData({ error: result.error });
+          setUserData({ ...result.user, error: result.error ,  });
           setTimeout(() => setShowError(false), 3000);
         } else {
           setUserData(result.user);
@@ -140,6 +139,7 @@ export default function ScannerPage() {
                       Scan QR Code
                     </motion.h2>
                     <p className="text-gray-400 mt-2 text-sm">Position the QR code within the frame</p>
+                    <p className="text-gray-400 mt-1 text-xs">Make sure the QR code is clearly visible and well-lit</p>
                   </div>
                   <motion.div 
                     className="relative overflow-hidden rounded-2xl border-2 border-violet-500/20"
@@ -185,8 +185,44 @@ export default function ScannerPage() {
                           </h3>
                         </div>
                         {userData.error ? (
-                          <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-xl text-red-400 text-center">
-                            {userData.error}
+                          <div className="space-y-4">
+                            <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-xl text-red-400 text-center">
+                              {userData.error}
+                            </div>
+                            {userData.name && (
+                              <div className="bg-violet-500/10 border border-violet-500/20 p-4 rounded-xl space-y-3">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-gray-400">Name</span>
+                                  <span className="text-white font-medium">{userData.name}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-gray-400">Email</span>
+                                  <span className="text-white font-medium">{userData.email}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-gray-400">Roll Number</span>
+                                  <span className="text-white font-medium">{userData.rollNumber || 'N/A'}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-gray-400">Status</span>
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-red-400 font-medium flex items-center gap-2">
+                                      Invalid
+                                      <X className="w-4 h-4" />
+                                    </span>
+                                  </div>
+                                </div>
+                                <p className="text-gray-400">Last Updated: {new Date(userData.updatedAt).toLocaleString('en-IN', {
+                                  timeZone: 'Asia/Kolkata',
+                                  day: 'numeric',
+                                  month: 'long',
+                                  year: 'numeric',
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                  hour12: true
+                                })}</p>
+                              </div>
+                            )}
                           </div>
                         ) : (
                           <div className="space-y-4">
@@ -200,6 +236,10 @@ export default function ScannerPage() {
                                 <span className="text-white font-medium">{userData.email}</span>
                               </div>
                               <div className="flex items-center justify-between">
+                                <span className="text-gray-400">Roll Number</span>
+                                <span className="text-white font-medium">{userData.rollNumber || 'N/A'}</span>
+                              </div>
+                              <div className="flex items-center justify-between">
                                 <span className="text-gray-400">Status</span>
                                 <div className="flex items-center gap-2">
                                   {userData[DAY_FIELD_MAP[VERIFY_DAY]] ? (
@@ -210,8 +250,24 @@ export default function ScannerPage() {
                                       <Check className="w-4 h-4" />
                                     </span>
                                   )}
+
                                 </div>
+                                
                               </div>
+                              <p className="text-gray-400">Last Updated: {new Date(userData.updatedAt).toLocaleString('en-IN', {
+                                  timeZone: 'Asia/Kolkata',
+                                  day: 'numeric',
+                                  month: 'long',
+                                  year: 'numeric',
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                  hour12: true
+                                })}</p>
+                              {/* {userData[DAY_FIELD_MAP[VERIFY_DAY]] && (
+                                <div className="mt-4 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+                                  <p className="text-amber-400 text-sm text-center">This ticket has been previously used. Please verify the user details above.</p>
+                                </div>
+                              )} */}
                             </div>
                           </div>
                         )}
@@ -266,4 +322,3 @@ export default function ScannerPage() {
     </div>
   );
 }
-// when the qr is is used already then also show the la
