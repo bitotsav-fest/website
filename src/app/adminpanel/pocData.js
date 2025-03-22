@@ -977,7 +977,11 @@ export const Heads= [
           {
             name: "Harsh Ranjan",
             phone: "6201628654",
-          }
+          },
+          {
+            name: "Aashish Bhaiya",
+            phone: "9262815123",
+          },
         ],
       }
     ],
