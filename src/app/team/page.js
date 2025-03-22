@@ -386,6 +386,11 @@ export default function Register() {
                     <p className='text-4xl font-mono font-bold bg-gradient-to-r from-white to-[#F6F1E2] bg-clip-text text-transparent tracking-wider'>{teamCode}</p>
                   </div>
                   <p className='text-sm text-[#F6F1E2]/70 italic'>Share this code with your team members to join</p>
+                  {teamData?.points && (
+                    <p className='text-lg font-medium text-[#EFCA4E]'>
+                      Team Points: {teamData.points}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
