@@ -39,8 +39,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <LandingComponent /> */}
-      <h1>Maintenance Active- Only Admin Panel accessible</h1>
+      <LandingComponent />
     </>
   );
 }
