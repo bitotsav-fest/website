@@ -5,19 +5,6 @@ import { Bug, Phone, Home, Calendar, Ticket, Music, Info, Images, Star, SquareUs
 import Link from "next/link"
 
 export default function VirtualHelpdesk() {
-  const supportCategories = [
-    {
-      title: "Technical Queries",
-      icon: <Bug className="w-6 h-6" />,
-      contacts: [
-        { name: "Shaswat Raj", role: "Tech Team", phone: "+91 9508846600" },
-        { name: "Abhinav Kumar Choudhary", role: "Tech Team", phone: "+91 9939110848" },
-        { name: "Mrityunjay Raj", role: "Tech Team", phone: "+91 9304584358" },
-        { name: "Saahit Kamu", role: "Tech Team", phone: "+91 7075661642" },
-      ],
-    },
-  ]
-
   return (
     <div className="min-h-screen mt-20 bg-[#0A0118] relative overflow-hidden p-8">
       {/* Background elements */}
@@ -32,34 +19,6 @@ export default function VirtualHelpdesk() {
 
       {/* Cards */}
       <div className="flex justify-center gap-8 max-w-7xl mx-auto relative z-10 flex-wrap">
-        {supportCategories.map((category, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 }}
-            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 w-[400px]"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-full bg-gradient-to-r from-[#EFCA4E]/20 to-[#F6F1E2]/20 border border-[#EFCA4E]/20">{category.icon}</div>
-              <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
-            </div>
-
-            <div className="space-y-6">
-              {category.contacts.map((contact, contactIndex) => (
-                <div key={contactIndex} className="space-y-2">
-                  <h3 className="text-lg font-medium text-[#EFCA4E]">{contact.name}</h3>
-                  <p className="text-gray-400">{contact.role}</p>
-                  <a href={`tel:${contact.phone}`} className="flex items-center gap-2 text-sm text-gray-300 hover:text-[#EFCA4E] transition-colors">
-                    <Phone className="w-4 h-4" />
-                    {contact.phone}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-
         {/* WhatsApp Contact */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
