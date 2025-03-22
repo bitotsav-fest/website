@@ -33,7 +33,7 @@ export default function ScannerPage() {
   const [passcode, setPasscode] = useState('');
   const [showPasscodeError, setShowPasscodeError] = useState(false);
 
-  const SECURITY_PASSCODE = '192021';
+  const SECURITY_PASSCODE = '696969';
 
   const handlePasscodeSubmit = (e) => {
     e.preventDefault();
