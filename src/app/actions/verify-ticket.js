@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 
 export async function verifyTicket(uuid, passcode, day = 0) {
-  const SECURITY_PASSCODE = '192021';
+  const SECURITY_PASSCODE = '17092006';
   const DAY_FIELD_MAP = {
     0: 'usedOnDay0',
     1: 'usedOnDay1',
