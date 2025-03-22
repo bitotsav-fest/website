@@ -1,5 +1,6 @@
 import arr from "@/lib/wellfare-emails"
 import { bitk21 } from "./allowedK21_with_emails";
+import { daysholarsbitmesraarray } from "./dayscholarbitmesra";
 
 
 // check if the email is of bit mesra
@@ -45,3 +46,7 @@ export function isBitK21WellfareEmail(email) {
   return bitk21.includes(email)?true:false;
 }
 
+
+export function isDaySholarsBITMesraEmail(email) {
+  return daysholarsbitmesraarray.includes(email)?true:false;
+}
