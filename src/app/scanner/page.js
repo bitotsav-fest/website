@@ -16,7 +16,7 @@ import { verifyTicket } from '@/app/actions/verify-ticket';
 import { isBitK21WellfareEmail } from '@/lib/email';
 
 // Configure which day to verify (0 for Day Zero, 1 for Day One, 2 for Day Two, 3 for Day Three)
-const VERIFY_DAY = 1;
+const VERIFY_DAY = 2;
 const DAY_FIELD_MAP = {
   0: 'usedOnDay0',
   1: 'usedOnDay1',
