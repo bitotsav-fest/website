@@ -1,16 +1,13 @@
 import { auth } from "@/auth"
 import { NextResponse } from 'next/server'
 
+// List of routes that are NOT allowed during scan period
+const blockedRoutes = [
+  '/team',
+  '/leaderboard'
+];
+
 // List of specifically permitted routes during scan period
-const allowedRoutes = [
-  '/login',
-  '/logout',
-  '/api',
-  '/scanner',
-  '/dashboard',
-  '/jfbeiuf2bireflyui3rcuyyb3yuk',
-  '/dashboard/non-bit'
-]
 
 export default auth((req) => {
   const isAuthenticated = !!req.auth
@@ -26,19 +23,12 @@ export default auth((req) => {
   }
   
   // Special handling for server actions
-  if (req.method === 'POST' && pathname.includes('/action/')) {
+  if (req.method === 'POST') {
     return NextResponse.next()
   }
   
-  // Check if the current path exactly matches one of our allowed routes
-  const isAllowedRoute = allowedRoutes.some(route => pathname === route) ||
-    // Also allow necessary Next.js resources
-    pathname.startsWith('/_next/') || 
-    pathname.startsWith('/api/') || 
-    pathname === '/favicon.ico' ||
-    pathname.startsWith('/public/');
-  
-  if (!isAllowedRoute) {
+  // Check if current path is in blocked routes
+  if (blockedRoutes.includes(pathname)) {
     // Return a properly formatted HTML response
     return new NextResponse(
       `<html>
@@ -66,7 +56,18 @@ export default auth((req) => {
     )
   }
   
-  return NextResponse.next()
+  // Allow Next.js resources
+  const isNextJsResource = 
+    pathname.startsWith('/_next/') || 
+    pathname.startsWith('/api/') || 
+    pathname === '/favicon.ico' ||
+    pathname.startsWith('/public/');
+    
+  if (isNextJsResource) {
+    return NextResponse.next();
+  }
+  
+  return NextResponse.next();
 })
 
 // Protect all routes except system routes

@@ -19,6 +19,8 @@ import toast from "react-hot-toast";
 let LandingComponent;
 let showPopup = false;
 
+window.location.href="https://www.bitotsav.com/login"
+
 if (isIOS()) {
   LandingComponent = Landing_2;
   showPopup = true;
