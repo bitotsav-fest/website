@@ -65,16 +65,7 @@ export default function ScannerPage() {
             setTimeout(() => setShowSuccess(false), 3000);
           }
         }
-        if(result.user && isBitK21WellfareEmail(result.user.email)){
-          setShowError(true);
-          setUserData({...result.user, error: 'The user is k21 intern',  });
-          setTimeout(() => setShowError(false), 3000);
-        }
-        if(result.user && isDaySholarsBITMesraEmail(result.user.email)){
-          setShowError(true);
-          setUserData({...result.user, error: 'The user is BIT Day Scolar',  });
-          setTimeout(() => setShowError(false), 3000);
-        }
+        
         // setScanning(true);
         // setUserData(null);
 
