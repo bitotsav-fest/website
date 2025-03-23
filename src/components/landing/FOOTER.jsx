@@ -66,53 +66,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Technical Queries */}
-          <div className="text-center md:text-left bg-[#EFCA4E]/5 p-6 rounded-2xl backdrop-blur-sm border border-[#EFCA4E]/10">
-            <h3 className="text-lg font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
-              Technical Queries
-            </h3>
-            <div className="space-y-3">
-              <p className="text-sm">
-                <span className="text-[#EFCA4E]/80">Shaswat Raj:</span>{" "}
-                <a
-                  href="tel:+919508846600"
-                  className="hover:text-[#EFCA4E] transition-colors"
-                >
-                  9508846600
-                </a>
-              </p>
-              <p className="text-sm">
-                <span className="text-[#EFCA4E]/80">Mrityunjay Raj:</span>{" "}
-                <a
-                  href="https://wa.me/919471828932"
-                  className="hover:text-[#EFCA4E] transition-colors"
-                >
-                  9471828932 <span className="text-[9px]">(WhatsApp)</span>
-                </a>
-              </p>
-              <p className="text-sm">
-                <span className="text-[#EFCA4E]/80">
-                  Abhinav Kumar Choudhary:
-                </span>{" "}
-                <a
-                  href="tel:+919939110848"
-                  className="hover:text-[#EFCA4E] transition-colors"
-                >
-                  9939110848
-                </a>
-              </p>
-              <p className="text-sm">
-                <span className="text-[#EFCA4E]/80">Saahit Kamu:</span>{" "}
-                <a
-                  href="tel:+917075661642"
-                  className="hover:text-[#EFCA4E] transition-colors"
-                >
-                  7075661642
-                </a>
-              </p>
-            </div>
-          </div>
-
           {/* Virtual Helpdesk */}
           <div className="text-center md:text-left bg-[#EFCA4E]/5 p-6 rounded-2xl backdrop-blur-sm border border-[#EFCA4E]/10">
             <h3 className="text-lg font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#EFCA4E] to-[#F6F1E2]">
