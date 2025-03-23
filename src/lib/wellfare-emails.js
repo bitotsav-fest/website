@@ -4975,7 +4975,7 @@ const arr2
 "sannidhyaagrawalbitlalpur@gmail.com",
 "mba40046.24@bitmesra.ac.in",
 "bCa40071.24@bitmesra.ac.in",
-"bca40004.22@bumesra.ac.in",
+"bca40004.22@bitmesra.ac.in", // fix typo
 "bba40060.24@bitmesra.ac.in",
 "bca40061.24@bitmesra.ac.in",
 "bca38.24@bitmesra.ac.in",
@@ -4989,6 +4989,7 @@ const arr2
 "bca40019.22@bitmesra.ac.in",
 "bca40026.24@bitmesra.ac.in", //fix typo
 "bca40083.24@gmail.com",
+"bca40083.24@bitmesra.ac.in",// fix typo
 "bba40029.23@bitmesra.ac.in",
 "bca057.24@bitmesra.ac.in",
 "bba40105.22@bitmesra.ac.in",
