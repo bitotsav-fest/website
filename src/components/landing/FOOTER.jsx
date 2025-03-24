@@ -79,6 +79,28 @@ export default function Footer() {
                 Virtual Helpdesk
               </button>
             </Link>
+
+            <div className="mt-4">
+              <p className="text-sm text-[#F6F1E2]/80 mb-2">
+                Contact Developer:
+              </p>
+              <Link 
+                href="https://shaswat.live" 
+                target="_blank" 
+                rel="dofollow doreferrer"
+                className="text-sm text-[#EFCA4E] hover:text-[#EFCA4E]/80 transition-all duration-300"
+              >
+                Shaswat Raj
+              </Link>
+
+              <div className="sr-only">
+                <Link
+                
+                rel="dofollow doreferrer"
+                
+                href={"https://sketchflow.space/"}>Sketchflow - Professional Whiteboarding Made Simple</Link>
+              </div>
+            </div>
           </div>
         </div>
 
