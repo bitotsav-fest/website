@@ -78,12 +78,12 @@ export default function VirtualHelpdesk() {
             { name: "Tickets", icon: Ticket, href: "/tickets" },
             { name: "Concerts", icon: Music, href: "/concerts" },
             { name: "Dashboard", icon: UserPen, href: "/dashboard" },
+            { name: "Developers", icon: SquareUser, href: "/developers" },
             { name: "Team", icon: UsersRound, href: "/team" },
             { name: "Merch", icon: Shirt, href: "/merch" },
             { name: "About", icon: Info, href: "/about" },
             { name: "Gallery", icon: Images, href: "/gallery" },
             { name: "Sponsors", icon: Star, href: "/sponsors" },
-            // { name: "Developers", icon: SquareUser, href: "/developers" },
           ].map((item, index) => (
             <motion.div key={index} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
               <Link

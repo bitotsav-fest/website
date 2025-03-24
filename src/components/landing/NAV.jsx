@@ -45,12 +45,12 @@ const items = [
     href: "/leaderboard",
     icon: ChartNoAxesColumn,
   },
-  // {
-  //   name: "Developers",
-  //   url: "/developers",
-  //   href: "/developers",
-  //   icon: SquareUser,
-  // },
+  {
+    name: "Developers",
+    url: "/developers",
+    href: "/developers",
+    icon: SquareUser,
+  },
   {
     name: "About",
     url: "/about",
